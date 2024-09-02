@@ -1,0 +1,32 @@
+{
+    "type": "group/container/box/frame/div",
+    "version": "0.1.0",
+
+    "config": {
+        "padding": 16,
+        "direction": "vertical",
+        "width": "5",
+        "widthUnits": "fraction"
+    },
+
+    "content": [
+        {
+            "id": "expense-tracker",
+            "name": "headline",
+            "type": "typography/h1"
+        },
+        {
+            "type": "group",
+            "config": {
+                "direction": "horizontal"
+            },
+
+            "contains": [
+                {
+                    "name": "button",
+                    "type:": "body"
+                }
+            ]
+        }
+    ]
+}

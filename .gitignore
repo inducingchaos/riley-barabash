@@ -1,0 +1,46 @@
+# @file Prevents sensitive or unwanted files from being committed to source control.
+# @author Riley Barabash <riley@rileybarabash.com>
+#
+# @tags
+# #gitignore
+# #git
+#
+# @see [Ignoring Files](https://help.github.com/articles/ignoring-files)
+
+# Environment variables.
+
+.env
+.env*.local
+.vercel
+
+# Dependencies.
+
+.pnp
+.pnp.js
+node_modules
+
+# Debug.
+
+.pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing.
+
+*.test.ts
+coverage
+
+# Build.
+
+.next
+*.tsbuildinfo
+build
+dist
+next-env.d.ts
+out
+
+# Miscellaneous.
+
+.DS_Store
+*.pem

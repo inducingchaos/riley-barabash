@@ -1,0 +1,34 @@
+[
+    {
+        "code": "en",
+
+        "content": {
+            "Hero Text": "Keep track of your subscriptions."
+        }
+    },
+
+    {
+        "id": "en-US",
+        "code": "en",
+        "name": "%%SELF%% | United States",
+        "extend": ["en"],
+
+        "content": {
+            "Hero Text": "Keep track of your purchases."
+        },
+
+        "regions": {
+            "include": ["US"],
+            "exclude": ["CA"]
+        }
+    },
+
+    {
+        "code": "fr",
+        "name": "Français",
+
+        "contents": {
+            "headline": "Gérer votre abonnement."
+        }
+    }
+]

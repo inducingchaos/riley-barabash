@@ -1,0 +1,73 @@
+/**
+ * @file A configuration for Typescript.
+ * @author Riley Barabash <riley@rileybarabash.com>
+ *
+ * @tags
+ * #tsconfig
+ * #config
+ * #typescript
+ *
+ * @see [TSConfig Documentation](https://www.typescriptlang.org/tsconfig)
+ */
+
+{
+    "compilerOptions": {
+        /* Type checking. */
+
+        "noUncheckedIndexedAccess": true,
+        "strict": true,
+
+        /* Modules. */
+
+        "baseUrl": ".",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "paths": {
+            "~/*": ["src/*"],
+            "@sdkit/*": ["src/packages/sdkit/src/*"]
+        },
+        "resolveJsonModule": true,
+
+        /* Emit. */
+
+        "noEmit": true,
+
+        /* Javascript support. */
+
+        "allowJs": true,
+        "checkJs": true,
+
+        /* Editor support. */
+
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+
+        /* Interop constraints. */
+
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+
+        /* Language and environment. */
+
+        "jsx": "preserve",
+        "lib": ["dom", "dom.iterable", "ESNext"],
+        "moduleDetection": "force",
+        "target": "ESNext",
+
+        /* Projects. */
+
+        "incremental": true,
+
+        /* Completeness. */
+
+        "skipLibCheck": true
+    },
+
+    "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.js", "**/*.jsx", ".next/types/**/*.ts"],
+    "exclude": ["node_modules"]
+}

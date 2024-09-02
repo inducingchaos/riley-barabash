@@ -1,0 +1,28 @@
+/**
+ * @file Custom errors for API routes.
+ * @author Riley Barabash <riley@rileybarabash.com>
+ *
+ * @tags
+ * #config
+ * #errors
+ * #api
+ * #custom-error
+ */
+
+import { Error, type ErrorOptions } from "~/abstractions"
+
+const apiErrors = {
+    TRPC_FAILURE: 500,
+    INVALID_REQUEST: 400
+} as const
+
+type ErrorName = keyof typeof apiErrors
+
+export class APIError extends Error<ErrorName> {
+    public status: number
+
+    constructor({ name, message, cause }: ErrorOptions<ErrorName>) {
+        super({ name, message, cause })
+        this.status = apiErrors[name]
+    }
+}
