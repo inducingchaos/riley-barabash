@@ -12,6 +12,8 @@
  * #tsx
  */
 
+import Link from "next/link"
+import { Button } from "~/components/ui/primitives"
 import { H1, InlineCode, Muted } from "~/components/ui/primitives/typography"
 
 export default async function Landing(): Promise<JSX.Element> {
@@ -30,8 +32,19 @@ export default async function Landing(): Promise<JSX.Element> {
 
                         <div className="flex flex-col items-center justify-center gap-4">
                             <H1>{"My name is Riley Barabash."}</H1>
-                            <InlineCode>{"X: @inducingchaos"}</InlineCode>
+                            <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>
                             <Muted>{"This won't last long. Take a look around."}</Muted>
+                            <div className="flex flex-row gap-2">
+                                <Button variant="destructive" asChild>
+                                    <Link href="/internal/test">{"Enter the testing grounds"}</Link>
+                                </Button>
+                                <Button variant="outline" asChild>
+                                    <Link href="/kyzn">{"Kyzn"}</Link>
+                                </Button>
+                                <Button variant="default" asChild>
+                                    <Link href="/solopreneurkit">{"SK"}</Link>
+                                </Button>
+                            </div>
                         </div>
                     </section>
                 </div>

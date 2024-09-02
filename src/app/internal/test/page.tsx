@@ -14,6 +14,8 @@
 
 "use client"
 
+import Link from "next/link"
+import { ThemeToggle } from "~/components/ui/compositions"
 import { Button } from "~/components/ui/primitives"
 import { personal } from "~/config"
 import { api } from "~/lib/infra/rpc/react"
@@ -32,11 +34,25 @@ export default function Test(): JSX.Element {
                     {/* Section one. */}
 
                     <section className="flex min-h-screen flex-col items-center justify-center">
-                        {/* If you wanna holla at my SMS. */}
+                        {/* Wrapper. */}
 
-                        <Button disabled={isSending} onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}>
-                            {isSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
-                        </Button>
+                        <div className="flex flex-col items-center justify-center gap-4">
+                            {/* Change the theme. */}
+
+                            <ThemeToggle />
+
+                            {/* If you wanna holla at my SMS (don't spam pls). */}
+
+                            <Button disabled={isSending} onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}>
+                                {isSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
+                            </Button>
+
+                            {/* Go back. */}
+
+                            <Button variant="outline" asChild>
+                                <Link href="/">{"Go back"}</Link>
+                            </Button>
+                        </div>
                     </section>
                 </div>
             </main>

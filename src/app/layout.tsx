@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
                 <body>
                     {/* Theme provider. */}
 
-                    <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         {/* tRPC provider. */}
 
                         <TRPCReactProvider>
