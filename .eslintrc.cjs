@@ -17,7 +17,7 @@
  *
  * @type { import ( "eslint" ) .Linter.Config }
  */
-export default {
+const config = {
     parser: "@typescript-eslint/parser",
     parserOptions: { project: true },
     plugins: ["@typescript-eslint", "drizzle"],
@@ -47,3 +47,5 @@ export default {
         // "lines-around-comment": ["warn", { beforeBlockComment: true }],
     }
 }
+
+module.exports = config

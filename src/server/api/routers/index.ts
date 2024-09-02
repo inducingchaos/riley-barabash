@@ -12,6 +12,7 @@
  * #root
  */
 
+import { commsRouter } from "./comms"
 import { experimentalRouter } from "./experimental"
 import { ledgerRouter } from "./ledger"
 import { createCallerFactory, createTRPCRouter } from "~/server/api/init/rpc"
@@ -22,6 +23,7 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/init/rpc"
  * All routers added in "~/server/api/routers" should be manually added here.
  */
 export const appRouter = createTRPCRouter({
+    comms: commsRouter,
     experimental: experimentalRouter,
     ledger: ledgerRouter
 })

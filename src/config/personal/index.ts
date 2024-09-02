@@ -46,7 +46,7 @@ export const config = {
 
     contact: {
         email: "riley@rileybarabash.com",
-        phone: "+1 (780) 379-0221"
+        phone: "+17803790221"
     },
 
     stats: {

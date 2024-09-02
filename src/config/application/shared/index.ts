@@ -36,14 +36,26 @@ const config = {
     },
 
     credentials: {
-        public: {},
-        private: {
-            internal: process.env.INTERNAL_SECRET_KEY,
+        public: {
+            twilio: {
+                sid: process.env.TWILIO_SID,
+                number: process.env.TWILIO_NUMBER
+            },
             database: {
                 name: process.env.DATABASE_NAME,
                 host: process.env.DATABASE_HOST,
-                username: process.env.DATABASE_USERNAME,
+                username: process.env.DATABASE_USERNAME
+            }
+        },
+        private: {
+            internal: {
+                secret: process.env.INTERNAL_SECRET
+            },
+            database: {
                 password: process.env.DATABASE_PASSWORD
+            },
+            twilio: {
+                secret: process.env.TWILIO_SECRET
             }
         }
     }

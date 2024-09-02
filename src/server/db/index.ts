@@ -20,8 +20,8 @@ import * as schema from "./schemas"
 
 export const db = drizzle(
     new Client({
-        host: application.credentials.private.database.host,
-        username: application.credentials.private.database.username,
+        host: application.credentials.public.database.host,
+        username: application.credentials.public.database.username,
         password: application.credentials.private.database.password
     }),
     { schema }

@@ -12,9 +12,15 @@
  * #tsx
  */
 
+"use client"
+
 import { Button } from "~/components/ui/primitives"
+import { personal } from "~/config"
+import { api } from "~/lib/infra/rpc/react"
 
 export default function Test(): JSX.Element {
+    const { mutate: sendMessage, isPending: isSending } = api.comms.sms.messages.send.useMutation()
+
     return (
         <>
             {/* Main tag. */}
@@ -28,7 +34,9 @@ export default function Test(): JSX.Element {
                     <section className="flex min-h-screen flex-col items-center justify-center">
                         {/* Content. */}
 
-                        <Button>Yolo, dude!</Button>
+                        <Button disabled={isSending} onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}>
+                            {isSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
+                        </Button>
                     </section>
                 </div>
             </main>

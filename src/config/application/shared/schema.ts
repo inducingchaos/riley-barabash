@@ -40,15 +40,27 @@ export const schema = z.object({
     }),
 
     credentials: z.object({
-        public: z.object({}),
-
-        private: z.object({
-            internal: z.string().optional(),
+        public: z.object({
+            twilio: z.object({
+                sid: z.string().optional(),
+                number: z.string().optional()
+            }),
             database: z.object({
                 name: z.string().optional(),
                 host: z.string().optional(),
-                username: z.string().optional(),
+                username: z.string().optional()
+            })
+        }),
+
+        private: z.object({
+            internal: z.object({
+                secret: z.string().optional()
+            }),
+            database: z.object({
                 password: z.string().optional()
+            }),
+            twilio: z.object({
+                secret: z.string().optional()
             })
         })
     })

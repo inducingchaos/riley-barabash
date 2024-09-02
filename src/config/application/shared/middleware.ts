@@ -17,25 +17,25 @@ import type { Config } from "./schema"
 
 export function middleware(application: Config): Config {
     if (onServer) {
-        if (!application.credentials.private.internal)
+        if (!application.credentials.private.internal.secret)
             throw new ConfigError({
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
-                message: "You forgot to configure the `API_SECRET` environment variable."
+                message: "You forgot to configure the `INTERNAL_SECRET` environment variable."
             })
 
-        if (!application.credentials.private.database.name)
+        if (!application.credentials.public.database.name)
             throw new ConfigError({
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
                 message: "You forgot to configure the `DATABASE_NAME` environment variable."
             })
 
-        if (!application.credentials.private.database.host)
+        if (!application.credentials.public.database.host)
             throw new ConfigError({
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
                 message: "You forgot to configure the `DATABASE_HOST` environment variable."
             })
 
-        if (!application.credentials.private.database.username)
+        if (!application.credentials.public.database.username)
             throw new ConfigError({
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
                 message: "You forgot to configure the `DATABASE_USERNAME` environment variable."
@@ -45,6 +45,24 @@ export function middleware(application: Config): Config {
             throw new ConfigError({
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
                 message: "You forgot to configure the `DATABASE_PASSWORD` environment variable."
+            })
+
+        if (!application.credentials.public.twilio.sid)
+            throw new ConfigError({
+                name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                message: "You forgot to configure the `TWILIO_SID` environment variable."
+            })
+
+        if (!application.credentials.public.twilio.number)
+            throw new ConfigError({
+                name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                message: "You forgot to configure the `TWILIO_NUMBER` environment variable."
+            })
+
+        if (!application.credentials.private.twilio.secret)
+            throw new ConfigError({
+                name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                message: "You forgot to configure the `TWILIO_SECRET` environment variable."
             })
     }
 

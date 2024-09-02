@@ -62,7 +62,7 @@ remove_gitkeep() {
 
             # Print a message indicating that the '.gitkeep' file was removed.
 
-            echo "Removed .gitkeep from $dir"
+            echo "Removed '.gitkeep' from '$dir'"
 
         fi
 
