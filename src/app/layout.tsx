@@ -31,6 +31,11 @@ const pxGroteskMono = localFont({
     variable: "--font-px-grotesk-mono"
 })
 
+const pxGroteskScreen = localFont({
+    src: "../../public/fonts/px-grotesk-screen.otf",
+    variable: "--font-px-grotesk-screen"
+})
+
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter"
@@ -47,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
         <>
             {/* Shell. */}
 
-            <html lang="en" suppressHydrationWarning className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${inter.variable}`}>
+            <html lang="en" suppressHydrationWarning className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${pxGroteskScreen.variable} ${inter.variable}`}>
                 <body>
                     {/* Theme provider. */}
 

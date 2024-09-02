@@ -18,6 +18,7 @@ export default {
             fontFamily: {
                 sans: ["var(--font-px-grotesk)", ...fontFamily.sans],
                 mono: ["var(--font-px-grotesk-mono)", ...fontFamily.mono],
+                screen: ["var(--font-px-grotesk-screen)", ...fontFamily.serif],
                 inter: ["var(--font-inter)", ...fontFamily.sans]
             },
             transitionTimingFunction: {
