@@ -12,6 +12,8 @@
  * #tsx
  */
 
+import { H1, InlineCode, Muted } from "~/components/ui/primitives/typography"
+
 export default async function Landing(): Promise<JSX.Element> {
     return (
         <>
@@ -26,7 +28,11 @@ export default async function Landing(): Promise<JSX.Element> {
                     <section className="flex min-h-screen flex-col items-center justify-center">
                         {/* Content. */}
 
-                        <h1 className="bg-gradient-to-r from-black/50 to-black bg-clip-text text-3xl font-bold tracking-tight text-transparent">{"My name is Riley Barabash."}</h1>
+                        <div className="flex flex-col items-center justify-center gap-4">
+                            <H1>{"My name is Riley Barabash."}</H1>
+                            <InlineCode>{"X: @inducingchaos"}</InlineCode>
+                            <Muted>{"This won't last long. Take a look around."}</Muted>
+                        </div>
                     </section>
                 </div>
             </main>

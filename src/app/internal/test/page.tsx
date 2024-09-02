@@ -32,7 +32,7 @@ export default function Test(): JSX.Element {
                     {/* Section one. */}
 
                     <section className="flex min-h-screen flex-col items-center justify-center">
-                        {/* Content. */}
+                        {/* If you wanna holla at my SMS. */}
 
                         <Button disabled={isSending} onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}>
                             {isSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
