@@ -1,17 +1,20 @@
 /**
- * @file The purpose of the file.
+ * @file A page for testing UI.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
- * #component
+ * #src
+ * #app
+ * #internal
+ * #experimental
+ * #test
  * #page
  * #tsx
  */
 
-/**
- * A detailed explanation of the component.
- */
-export default function Page(): JSX.Element {
+import { Button } from "~/components/ui/primitives"
+
+export default function Test(): JSX.Element {
     return (
         <>
             {/* Main tag. */}
@@ -25,7 +28,7 @@ export default function Page(): JSX.Element {
                     <section className="flex min-h-screen flex-col items-center justify-center">
                         {/* Content. */}
 
-                        <p>Hello, world!</p>
+                        <Button>Yolo, dude!</Button>
                     </section>
                 </div>
             </main>

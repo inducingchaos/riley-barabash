@@ -23,8 +23,8 @@
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "paths": {
-            "~/*": ["src/*"],
-            "@sdkit/*": ["src/packages/sdkit/src/*"]
+            "~/*": ["./src/*"],
+            "@sdkit/*": ["./src/packages/sdkit/src/*"]
         },
         "resolveJsonModule": true,
 
