@@ -36,7 +36,7 @@ export default async function Landing(): Promise<JSX.Element> {
                             <Muted>{"This won't last long. Take a look around."}</Muted>
                             <div className="flex flex-row gap-2">
                                 <Button variant="destructive" asChild>
-                                    <Link href="/internal/test">{"Enter the testing grounds"}</Link>
+                                    <Link href="/experimental/test">{"Enter the testing grounds"}</Link>
                                 </Button>
                                 <Button variant="outline" asChild>
                                     <Link href="/kyzn">{"Kyzn"}</Link>
