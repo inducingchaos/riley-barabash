@@ -9,7 +9,7 @@
  * #custom-error
  */
 
-import { Error, type ErrorOptions } from "~/abstractions"
+import { Error, type ErrorOptions } from "~/meta"
 
 const apiErrors = {
     TRPC_FAILURE: 500,

@@ -13,7 +13,7 @@
  */
 
 import Link from "next/link"
-import { Button } from "~/components/ui/primitives"
+import { Button } from "~/components/ui/primitives/inputs"
 import { H1, InlineCode, Muted } from "~/components/ui/primitives/typography"
 
 export default async function Landing(): Promise<JSX.Element> {

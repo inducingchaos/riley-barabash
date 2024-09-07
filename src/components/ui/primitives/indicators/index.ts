@@ -1,5 +1,5 @@
 /**
- * @file A collection of primitive UI components.
+ * @file A collection of indicator-related components.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
@@ -7,8 +7,9 @@
  * #components
  * #ui
  * #primitives
+ * #indicators
  * #index
- * #exports
+ * #export
  */
 
-// export * from "./path"
+export * from "./progress"

@@ -31,7 +31,7 @@ export const messagesRouter = createTRPCRouter({
                 mediaUrls: z.string().or(z.array(z.string())).optional()
             })
         )
-        .mutation(async ({ ctx, input }) => {
+        .mutation(async ({ input }) => {
             return await sendMessage({
                 content: input.content,
                 from: input.from,

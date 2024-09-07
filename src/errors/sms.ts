@@ -8,7 +8,7 @@
  * #sms
  */
 
-import { Error } from "~/abstractions"
+import { Error } from "~/meta"
 
 /**
  * Twilio failed to create the message.

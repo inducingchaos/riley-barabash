@@ -8,7 +8,7 @@
  * #errors
  */
 
-import { Error } from "~/abstractions"
+import { Error } from "~/meta"
 
 type EnvironmentVariableNotFound = "ENVIRONMENT_VARIABLE_NOT_FOUND"
 type MissingConfigValue = "MISSING_CONFIG_VALUE"

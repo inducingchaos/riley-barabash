@@ -16,7 +16,7 @@
 export default {
     arrowParens: "avoid",
     plugins: ["prettier-plugin-tailwindcss"],
-    printWidth: 999,
+    printWidth: 128,
     semi: false,
     singleQuote: false,
     tabWidth: 4,

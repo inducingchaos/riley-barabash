@@ -1,5 +1,5 @@
 /**
- * @file A collection of design-related components.
+ * @file Exports the routing compositions.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
@@ -7,7 +7,9 @@
  * #components
  * #ui
  * #compositions
- * #design
+ * #routing
+ * #index
+ * #exports
  */
 
-export * from "./theme-toggle"
+export * from "./delayed-redirect"

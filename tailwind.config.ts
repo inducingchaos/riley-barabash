@@ -9,6 +9,7 @@
 
 import { type Config } from "tailwindcss"
 import { fontFamily } from "tailwindcss/defaultTheme"
+import animate from "tailwindcss-animate"
 
 export default {
     darkMode: ["class"],
@@ -22,8 +23,11 @@ export default {
                 inter: ["var(--font-inter)", ...fontFamily.sans]
             },
             transitionTimingFunction: {
-                "ease-out-expo": "cubic-bezier(0.125, 1.0, 0.25, 1.0)",
-                "ease-in-out-expo": "cubic-bezier(0.875, 0.0, 0.125, 1.0)"
+                "out-expo": "cubic-bezier(0.125, 1.0, 0.25, 1.0)",
+                "in-out-expo": "cubic-bezier(0.875, 0.0, 0.125, 1.0)"
+            },
+            transitionDuration: {
+                "5000": "5000ms"
             },
             borderRadius: {
                 lg: "var(--radius)",
@@ -75,5 +79,5 @@ export default {
         }
     },
 
-    plugins: [require("tailwindcss-animate")]
+    plugins: [animate]
 } satisfies Config

@@ -15,8 +15,8 @@
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
-import { Button } from "~/components/ui/primitives"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "~/components/ui/primitives/inputs/dropdown-menu"
+import { Button } from "~/components/ui/primitives/inputs"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "~/components/ui/primitives/inputs"
 
 export function ThemeToggle(): JSX.Element {
     const { setTheme } = useTheme()

@@ -15,8 +15,8 @@
 "use client"
 
 import Link from "next/link"
-import { ThemeToggle } from "~/components/ui/compositions"
-import { Button } from "~/components/ui/primitives"
+import { ThemeToggle } from "~/components/ui/compositions/design"
+import { Button } from "~/components/ui/primitives/inputs"
 import { personal } from "~/config"
 import { api } from "~/lib/infra/rpc/react"
 
@@ -43,7 +43,10 @@ export default function Test(): JSX.Element {
 
                             {/* If you wanna holla at my SMS (don't spam pls). */}
 
-                            <Button disabled={isSending} onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}>
+                            <Button
+                                disabled={isSending}
+                                onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}
+                            >
                                 {isSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
                             </Button>
 

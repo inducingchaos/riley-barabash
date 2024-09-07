@@ -1,18 +1,19 @@
 /**
- * @file The Kyzn home page.
+ * @file The unauthenticated page.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
- * #component
- * #page
- * #tsx
  * #src
  * #app
- * #subdomains
- * #kyzn
+ * #auth
+ * #unauthenticated
+ * #page
+ * #tsx
  */
 
-export default function Landing(): JSX.Element {
+import { DelayedRedirect } from "~/components/ui/compositions/routing"
+
+export default function Unauthenticated(): JSX.Element {
     return (
         <>
             {/* Main tag. */}
@@ -24,9 +25,9 @@ export default function Landing(): JSX.Element {
                     {/* Section one. */}
 
                     <section className="flex min-h-screen flex-col items-center justify-center">
-                        {/* Content. */}
+                        {/* Redirect modal. */}
 
-                        <p className="text-8xl font-bold tracking-tight">{"\u25A6 Kyzn."}</p>
+                        <DelayedRedirect title="401: Unauthenticated" description="You need to be signed in to access this page. Redirecting in 5 seconds..." buttonText="Go back" redirectUrl="/" />
                     </section>
                 </div>
             </main>

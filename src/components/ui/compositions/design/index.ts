@@ -1,5 +1,5 @@
 /**
- * @file A collection of UI compositions.
+ * @file A collection of design-related components.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
@@ -7,6 +7,7 @@
  * #components
  * #ui
  * #compositions
+ * #design
  */
 
-// export * from "./path"
+export * from "./theme-toggle"
