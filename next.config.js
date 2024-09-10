@@ -8,6 +8,8 @@
  * #build
  */
 
+import "./env.config.js"
+
 /**
  * @type { import ( "next" ) .NextConfig }
  */

@@ -47,10 +47,10 @@ export function middleware(application: Config): Config {
                 message: "You forgot to configure the `DATABASE_PASSWORD` environment variable."
             })
 
-        if (!application.credentials.public.twilio.sid)
+        if (!application.credentials.public.twilio.account)
             throw new ConfigError({
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
-                message: "You forgot to configure the `TWILIO_SID` environment variable."
+                message: "You forgot to configure the `TWILIO_ACCOUNT` environment variable."
             })
 
         if (!application.credentials.public.twilio.number)

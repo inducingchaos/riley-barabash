@@ -7,8 +7,7 @@
  * #app
  * #component
  * #layout
- * #font
- * #metadata
+ * #tsx
  */
 
 import { Analytics } from "@vercel/analytics/react"
@@ -16,6 +15,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { type Metadata } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
+import type { ReactNode } from "react"
+import { AuthProvider } from "~/components/providers/auth"
 import { ThemeProvider } from "~/components/providers/theme"
 import { brand } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
@@ -47,26 +48,34 @@ export const metadata: Metadata = {
     icons: [{ rel: "icon", url: "brand/pfp.jpg" }]
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
+export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
     return (
         <>
             {/* Shell. */}
 
-            <html lang="en" suppressHydrationWarning className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${pxGroteskScreen.variable} ${inter.variable}`}>
+            <html
+                lang="en"
+                suppressHydrationWarning
+                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${pxGroteskScreen.variable} ${inter.variable}`}
+            >
                 <body>
-                    {/* Theme provider. */}
+                    {/* Theming. */}
 
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        {/* tRPC provider. */}
+                        {/* Auth. */}
 
-                        <TRPCReactProvider>
-                            {/* The application. */}
+                        <AuthProvider>
+                            {/* tRPC. */}
 
-                            {children}
-                        </TRPCReactProvider>
+                            <TRPCReactProvider>
+                                {/* The application. */}
+
+                                {children}
+                            </TRPCReactProvider>
+                            <Analytics />
+                            <SpeedInsights />
+                        </AuthProvider>
                     </ThemeProvider>
-                    <Analytics />
-                    <SpeedInsights />
                 </body>
             </html>
         </>

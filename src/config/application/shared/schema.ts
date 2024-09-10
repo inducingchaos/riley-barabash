@@ -31,7 +31,15 @@ export const schema = z.object({
             vercel: z.string().optional()
         }),
         paths: z.object({
-            pages: z.object({}),
+            pages: z.object({
+                legal: z.object({
+                    privacyPolicy: z.string(),
+                    termsOfService: z.string()
+                }),
+                auth: z.object({
+                    callback: z.string()
+                })
+            }),
             api: z.object({
                 infra: z.string(),
                 trpc: z.string()
@@ -42,7 +50,7 @@ export const schema = z.object({
     credentials: z.object({
         public: z.object({
             twilio: z.object({
-                sid: z.string().optional(),
+                account: z.string().optional(),
                 number: z.string().optional()
             }),
             database: z.object({

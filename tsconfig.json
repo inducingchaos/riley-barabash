@@ -68,6 +68,16 @@
         "skipLibCheck": true
     },
 
-    "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.js", "**/*.jsx", ".next/types/**/*.ts"],
+    "include": [
+        ".eslintrc.cjs",
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.cjs",
+        "**/*.js",
+        "**/*.jsx",
+        ".next/types/**/*.ts",
+        "env.config.js"
+    ],
     "exclude": ["node_modules"]
 }

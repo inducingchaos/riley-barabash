@@ -31,7 +31,7 @@ export default async function Landing(): Promise<JSX.Element> {
                         {/* Content. */}
 
                         <div className="flex flex-col items-center justify-center gap-4">
-                            <H1>{"My name is Riley Barabash."}</H1>
+                            <H1>{"My name is Riley."}</H1>
                             <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>
                             <Muted>{"This won't last long. Take a look around."}</Muted>
                             <div className="flex flex-row gap-2">

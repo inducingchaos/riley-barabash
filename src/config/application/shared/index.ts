@@ -27,7 +27,15 @@ const config = {
             vercel: process.env.VERCEL_URL
         },
         paths: {
-            pages: {},
+            pages: {
+                legal: {
+                    privacyPolicy: "/privacy",
+                    termsOfService: "/terms"
+                },
+                auth: {
+                    callback: "/"
+                }
+            },
             api: {
                 infra: "/api/infra",
                 trpc: "/api/infra/rpc"
@@ -38,7 +46,7 @@ const config = {
     credentials: {
         public: {
             twilio: {
-                sid: process.env.TWILIO_SID,
+                account: process.env.TWILIO_ACCOUNT,
                 number: process.env.TWILIO_NUMBER
             },
             database: {

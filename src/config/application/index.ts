@@ -52,7 +52,7 @@ const mergedConfig = {
 if (!process.env.NEXT_PUBLIC_ENVIRONMENT)
     throw new ConfigError({
         name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
-        message: "You forgot to configure the `NEXT_PUBLIC_ENVIRONMENT` environment variable."
+        message: "You forgot to configure the `ENVIRONMENT` environment variable."
     })
 
 const environment = process.env.NEXT_PUBLIC_ENVIRONMENT as Environment

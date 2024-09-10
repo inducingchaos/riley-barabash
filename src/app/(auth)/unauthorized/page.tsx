@@ -1,19 +1,19 @@
 /**
- * @file The unauthenticated page.
+ * @file The unauthorized page.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
  * #src
  * #app
  * #auth
- * #unauthenticated
+ * #unauthorized
  * #page
  * #tsx
  */
 
 import { DelayedRedirect } from "~/components/ui/compositions/routing"
 
-export default function Unauthenticated(): JSX.Element {
+export default function Unauthorized(): JSX.Element {
     return (
         <>
             {/* Main tag. */}
@@ -28,10 +28,10 @@ export default function Unauthenticated(): JSX.Element {
                         {/* Redirect modal. */}
 
                         <DelayedRedirect
-                            title="401: Unauthenticated"
-                            description="You need to be signed in to access this page. Redirecting in 5 seconds..."
-                            buttonText="Sign in"
-                            redirectUrl="/sign-in"
+                            title="403: Unauthorized"
+                            description="You don't have permission to access this page. You will be redirected in 5 seconds..."
+                            buttonText="Go back"
+                            redirectUrl="/"
                         />
                     </section>
                 </div>
