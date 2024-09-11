@@ -16,7 +16,6 @@ import { type Metadata } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import type { ReactNode } from "react"
-import { AuthProvider } from "~/components/providers/auth"
 import { ThemeProvider } from "~/components/providers/theme"
 import { brand } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
@@ -62,19 +61,15 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
                     {/* Theming. */}
 
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        {/* Auth. */}
+                        {/* tRPC. */}
 
-                        <AuthProvider>
-                            {/* tRPC. */}
+                        <TRPCReactProvider>
+                            {/* The application. */}
 
-                            <TRPCReactProvider>
-                                {/* The application. */}
-
-                                {children}
-                            </TRPCReactProvider>
-                            <Analytics />
-                            <SpeedInsights />
-                        </AuthProvider>
+                            {children}
+                        </TRPCReactProvider>
+                        <Analytics />
+                        <SpeedInsights />
                     </ThemeProvider>
                 </body>
             </html>
