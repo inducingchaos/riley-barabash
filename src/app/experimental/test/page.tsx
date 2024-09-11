@@ -19,10 +19,11 @@ import { ThemeToggle } from "~/components/ui/compositions/design"
 import { Button } from "~/components/ui/primitives/inputs"
 import { personal } from "~/config"
 import { api } from "~/lib/infra/rpc/react"
+import { createSenderIdentity } from "~/utils/comms/email"
 
 export default function Test(): JSX.Element {
-    const { mutate: sendMessage, isPending: isSending } = api.comms.sms.messages.send.useMutation()
-
+    const { mutate: sendSms, isPending: smsIsSending } = api.comms.sms.messages.send.useMutation()
+    const { mutate: sendEmail, isPending: emailIsSending } = api.comms.email.messages.send.useMutation()
     return (
         <>
             {/* Main tag. */}
@@ -44,10 +45,27 @@ export default function Test(): JSX.Element {
                             {/* If you wanna holla at my SMS (don't spam pls). */}
 
                             <Button
-                                disabled={isSending}
-                                onClick={() => sendMessage({ content: "Yolo, dude!", to: personal.contact.phone })}
+                                disabled={smsIsSending}
+                                onClick={() => sendSms({ content: "Yolo, dude!", to: personal.contact.phone })}
                             >
-                                {isSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
+                                {smsIsSending ? "YAHHH BUDDY!!!" : "Yolo, dude!"}
+                            </Button>
+
+                            {/* Email test? */}
+
+                            <Button
+                                variant="destructive"
+                                disabled={emailIsSending}
+                                onClick={() =>
+                                    sendEmail({
+                                        content: "Moolah!",
+                                        to: personal.contact.email,
+                                        subject: "From rileybarabash.com",
+                                        from: createSenderIdentity({ email: "test@kyzn.app" })
+                                    })
+                                }
+                            >
+                                {emailIsSending ? "Sending email..." : "Something more formal"}
                             </Button>
 
                             {/* Go back. */}

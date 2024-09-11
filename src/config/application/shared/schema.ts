@@ -69,6 +69,9 @@ export const schema = z.object({
             }),
             twilio: z.object({
                 secret: z.string().optional()
+            }),
+            resend: z.object({
+                secret: z.string().optional()
             })
         })
     })

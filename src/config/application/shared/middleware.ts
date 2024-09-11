@@ -64,6 +64,12 @@ export function middleware(application: Config): Config {
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
                 message: "You forgot to configure the `TWILIO_SECRET` environment variable."
             })
+
+        if (!application.credentials.private.resend.secret)
+            throw new ConfigError({
+                name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                message: "You forgot to configure the `RESEND_SECRET` environment variable."
+            })
     }
 
     if (!application.routing.urls.base) {

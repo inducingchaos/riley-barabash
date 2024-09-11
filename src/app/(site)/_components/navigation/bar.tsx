@@ -23,7 +23,7 @@ const links = [
 export function Bar(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 flex w-full flex-row items-center justify-between bg-background">
-            <h1 className="text-nowrap px-6 py-4 text-2xl font-bold tracking-tighter">{"Riley Barabash"}</h1>
+            <h1 className="text-nowrap px-6 py-4 text-2xl font-bold tracking-tighter">{"RILEY BARABASH"}</h1>
 
             <nav className="flex flex-row items-center justify-center gap-2">
                 {links.map(item => (

@@ -64,6 +64,9 @@ const config = {
             },
             twilio: {
                 secret: process.env.TWILIO_SECRET
+            },
+            resend: {
+                secret: process.env.RESEND_SECRET
             }
         }
     }

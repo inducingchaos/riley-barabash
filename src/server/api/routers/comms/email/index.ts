@@ -1,5 +1,5 @@
 /**
- * @file A router for communications.
+ * @file A router for email communications.
  * @author Riley Barabash <riley@rileybarabash.com>
  *
  * @tags
@@ -8,15 +8,14 @@
  * #api
  * #routers
  * #comms
+ * #email
  * #index
  * #trpc
  */
 
 import { createTRPCRouter } from "~/server/api/init/rpc"
-import { smsRouter } from "./sms"
-import { emailRouter } from "./email"
+import { messagesRouter } from "./messages"
 
-export const commsRouter = createTRPCRouter({
-    sms: smsRouter,
-    email: emailRouter
+export const emailRouter = createTRPCRouter({
+    messages: messagesRouter
 })
