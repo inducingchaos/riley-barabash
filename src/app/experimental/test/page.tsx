@@ -16,6 +16,7 @@
 
 import Link from "next/link"
 import { ThemeToggle } from "~/components/ui/compositions/design"
+import { Separator } from "~/components/ui/primitives/display"
 import { Button } from "~/components/ui/primitives/inputs"
 import { personal } from "~/config"
 import { api } from "~/lib/infra/rpc/react"
@@ -72,6 +73,28 @@ export default function Test(): JSX.Element {
 
                             <Button variant="outline" asChild>
                                 <Link href="/">{"Go back"}</Link>
+                            </Button>
+
+                            {/* Divider. */}
+
+                            <Separator />
+
+                            {/* Dataset. */}
+
+                            <Button variant="outline" asChild>
+                                <Link href="/experimental/dataset">{"Dataset"}</Link>
+                            </Button>
+
+                            {/* Do. */}
+
+                            <Button variant="outline" asChild>
+                                <Link href="/experimental/do">{"Do"}</Link>
+                            </Button>
+
+                            {/* Ingest. */}
+
+                            <Button variant="outline" asChild>
+                                <Link href="/experimental/ingest">{"Ingest"}</Link>
                             </Button>
                         </div>
                     </section>
