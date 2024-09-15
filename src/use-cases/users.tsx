@@ -13,6 +13,7 @@ import { sendEmail } from "~/lib/email"
 import { generateRandomName } from "~/lib/names"
 import { AuthenticationError, EmailInUseError, LoginError, NotFoundError } from "./errors"
 import { createTransaction } from "~/data/utils"
+import { deleteSessionForUser } from "~/data/sessions"
 
 export async function deleteUserUseCase(authenticatedUser: UserSession, userToDeleteId: UserId): Promise<void> {
     if (authenticatedUser.id !== userToDeleteId) {
@@ -117,6 +118,7 @@ export async function changePasswordUseCase(token: string, password: string) {
     await createTransaction(async trx => {
         await deletePasswordResetToken(token, trx)
         await updatePassword(userId, password, trx)
+        await deleteSessionForUser(userId, trx)
     })
 }
 
