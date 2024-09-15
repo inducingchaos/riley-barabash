@@ -18,5 +18,17 @@ export async function middleware(request: NextRequest): Promise<NextResponse | u
         return NextResponse.redirect(new URL("/", request.url))
     }
 
+    const isKyznDomain = request.headers.get("host")?.endsWith("kyzn.app")
+    const isKyznSubdomain = request.headers.get("host")?.startsWith(`kyzn.${"rileybarabash.com"}`)
+
+    if (isKyznDomain || isKyznSubdomain) {
+        const path = request.nextUrl.pathname
+
+        const newUrl = new URL(`rileybarabash.com/kyzn/${path}`)
+        newUrl.search = request.nextUrl.search
+
+        return NextResponse.rewrite(newUrl)
+    }
+
     return undefined
 }
