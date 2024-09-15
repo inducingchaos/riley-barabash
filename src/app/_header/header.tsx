@@ -115,11 +115,15 @@ async function ProfileDropdown({ userId }: { userId: UserId }) {
             <DropdownMenuContent className="space-y-2">
                 <DropdownMenuLabel>{profile.displayName}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild className="cursor-pointer">
-                    <Link className="flex items-center" href={"/api/sign-out"}>
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Sign Out
-                    </Link>
+                <DropdownMenuItem className="cursor-pointer">
+                    <form action="/api/sign-out" method="POST">
+                        <Button type="submit" variant="ghost" className="flex h-auto p-0">
+                            <>
+                                <LogOut className="mr-2 h-4 w-4" />
+                                {"Sign Out"}
+                            </>
+                        </Button>
+                    </form>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
