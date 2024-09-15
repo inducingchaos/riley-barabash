@@ -21,12 +21,16 @@ const config = {
     parser: "@typescript-eslint/parser",
     parserOptions: { project: true },
     plugins: ["@typescript-eslint", "drizzle"],
-    extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended-type-checked", "plugin:@typescript-eslint/stylistic-type-checked"],
+    extends: [
+        "next/core-web-vitals",
+        "plugin:@typescript-eslint/recommended-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked"
+    ],
     rules: {
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/consistent-type-definitions": "warn",
         "@typescript-eslint/consistent-type-imports": ["warn", { prefer: "type-imports", fixStyle: "inline-type-imports" }],
-        "@typescript-eslint/explicit-function-return-type": "warn",
+        // "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
         "@typescript-eslint/require-await": "off",

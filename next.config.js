@@ -11,4 +11,15 @@
 /**
  * @type { import ( "next" ) .NextConfig }
  */
-export default {}
+export default {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "*.googleusercontent.com",
+                port: "",
+                pathname: "**"
+            }
+        ]
+    }
+}

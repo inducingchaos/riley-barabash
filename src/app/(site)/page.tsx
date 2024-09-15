@@ -12,6 +12,8 @@
  * #tsx
  */
 
+import { getCurrentUser } from "~/lib/session"
+import { redirect } from "next/navigation"
 import { Separator } from "@radix-ui/react-separator"
 import Image from "next/image"
 import Link from "next/link"
@@ -19,6 +21,12 @@ import { Button } from "~/components/ui/primitives/inputs"
 import { H1, InlineCode, Muted } from "~/components/ui/primitives/typography"
 
 export default async function Landing(): Promise<JSX.Element> {
+    //  do sum
+
+    const user = await getCurrentUser()
+    if (user) redirect("/dashboard")
+    redirect("/sign-in")
+
     return (
         <>
             {/* Main tag. */}

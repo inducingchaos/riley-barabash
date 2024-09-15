@@ -20,6 +20,8 @@ import { ThemeProvider } from "~/components/providers/theme"
 import { brand } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
 import "~/styles/globals.css"
+import { Header } from "./_header/header"
+import { Toaster } from "~/components/toaster"
 
 const pxGrotesk = localFont({
     src: "../../public/fonts/px-grotesk-regular.otf",
@@ -44,7 +46,8 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: `${brand.info.name} | ${brand.info.tagline}`,
     description: brand.info.description,
-    icons: [{ rel: "icon", url: "brand/pfp.jpg" }]
+    icons: [{ rel: "icon", url: "brand/pfp.jpg" }],
+    keywords: ""
 }
 
 export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
@@ -55,7 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
             <html
                 lang="en"
                 suppressHydrationWarning
-                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${pxGroteskScreen.variable} ${inter.variable}`}
+                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${pxGroteskScreen.variable} ${inter.variable} antialiased`}
             >
                 <body>
                     {/* Theming. */}
@@ -64,12 +67,18 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
                         {/* tRPC. */}
 
                         <TRPCReactProvider>
+                            {/* Header. */}
+
+                            <Header />
+
                             {/* The application. */}
 
                             {children}
                         </TRPCReactProvider>
                         <Analytics />
                         <SpeedInsights />
+
+                        <Toaster />
                     </ThemeProvider>
                 </body>
             </html>
