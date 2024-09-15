@@ -22,6 +22,8 @@ import { TRPCReactProvider } from "~/lib/infra/rpc/react"
 import "~/styles/globals.css"
 import { Header } from "./_header/header"
 import { Toaster } from "~/components/toaster"
+import { getCurrentUser } from "~/lib/session"
+import AuthProvider from "~/components/providers/auth"
 
 const pxGrotesk = localFont({
     src: "../../public/fonts/px-grotesk-regular.otf",
@@ -50,7 +52,8 @@ export const metadata: Metadata = {
     keywords: ""
 }
 
-export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
+export default async function RootLayout({ children }: { children: ReactNode }): Promise<JSX.Element> {
+    const user = (await getCurrentUser()) ?? null
     return (
         <>
             {/* Shell. */}
@@ -64,21 +67,23 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
                     {/* Theming. */}
 
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        {/* tRPC. */}
+                        <AuthProvider user={user}>
+                            {/* tRPC. */}
 
-                        <TRPCReactProvider>
-                            {/* Header. */}
+                            <TRPCReactProvider>
+                                {/* Header. */}
 
-                            <Header />
+                                <Header />
 
-                            {/* The application. */}
+                                {/* The application. */}
 
-                            {children}
-                        </TRPCReactProvider>
-                        <Analytics />
-                        <SpeedInsights />
+                                {children}
+                            </TRPCReactProvider>
+                            <Analytics />
+                            <SpeedInsights />
 
-                        <Toaster />
+                            <Toaster />
+                        </AuthProvider>
                     </ThemeProvider>
                 </body>
             </html>
