@@ -8,8 +8,15 @@
  * #next
  */
 
-import { type NextResponse, type NextRequest } from "next/server"
+import { NextResponse, type NextRequest } from "next/server"
+import { validateRequest } from "./lib/auth"
 
-export function middleware(_request: NextRequest): NextResponse | undefined {
+export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
+    const session = await validateRequest()
+
+    if (session.user && request.nextUrl.pathname.startsWith("/sign-in")) {
+        return NextResponse.redirect(new URL("/", request.url))
+    }
+
     return undefined
 }
