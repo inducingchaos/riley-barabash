@@ -1,15 +1,5 @@
 /**
- * @file Configures and exports helpers for server-side data fetching and client-side state management.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #lib
- * #infra
- * #rpc
- * #server
- * #trpc
- * #react-query
  */
 
 import "server-only"

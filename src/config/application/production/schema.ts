@@ -1,18 +1,28 @@
 /**
- * @file The production app configuration schema.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #zod
- * #production
- * #schema
- * #application
  */
 
-import { z } from "zod"
+import { type z } from "zod"
+import shared from "../shared"
 
-export const schema = z.object({})
+export const schema = shared.schema
+    .pick({
+        credentials: true
+    })
+    .extend({
+        credentials: shared.schema.shape.credentials
+            .pick({
+                public: true,
+                private: true
+            })
+            .extend({
+                public: shared.schema.shape.credentials.shape.public.pick({
+                    database: true
+                }),
+                private: shared.schema.shape.credentials.shape.private.pick({
+                    database: true
+                })
+            })
+    })
 
 export type Config = z.input<typeof schema>

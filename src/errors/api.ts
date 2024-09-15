@@ -1,12 +1,5 @@
 /**
- * @file Custom errors for API routes.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #config
- * #errors
- * #api
- * #custom-error
  */
 
 import { Error, type ErrorOptions } from "~/meta"

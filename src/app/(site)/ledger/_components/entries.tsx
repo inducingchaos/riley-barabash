@@ -1,14 +1,5 @@
 /**
- * @file Allows for the viewing and creation of ledger entries.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #app
- * #ledger
- * #components
- * #entries
- * #page
+ * 
  */
 
 "use client"

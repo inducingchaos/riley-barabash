@@ -1,11 +1,5 @@
 /**
- * @file Custom errors for configurations.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #config
- * #custom-error
- * #errors
  */
 
 import { Error } from "~/meta"

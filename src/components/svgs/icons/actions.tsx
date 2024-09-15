@@ -1,14 +1,5 @@
 /**
- * @file Action icons.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #svgs
- * #icons
- * #actions
- * #tsx
  */
 
 "use client"

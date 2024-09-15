@@ -1,15 +1,5 @@
 /**
- * @file An OTP input component.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #inputs
- * #otp
- * #tsx
  */
 
 "use client"

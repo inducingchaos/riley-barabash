@@ -1,15 +1,9 @@
 /**
- * @file A collection of display components.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #display
- * #index
  */
 
-export * from "./separator"
+export * from "./avatar"
 export * from "./label"
+export * from "./separator"
+export * from "./skeleton"
+

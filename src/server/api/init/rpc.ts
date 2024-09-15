@@ -1,16 +1,4 @@
 /**
- * @file Where the tRPC API is initialized.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #server
- * #api
- * #init
- * #rpc
- * #trpc
- * #context
- *
  * @remarks
  * - You probably don't need to edit this file unless you want to modify request context (see `createTrpcContext`) or create a new middleware or type of procedure (see `createTrpcRouter`)
  * - TL;DR: This is where all the tRPC server stuff is initialized. The pieces you will need to use are documented accordingly near the end.

@@ -1,14 +1,5 @@
 /**
- * @file Refreshes the page on window focus.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #headless
- * #navigation
- * #refresh-on-focus
- * #tsx
  */
 
 "use client"

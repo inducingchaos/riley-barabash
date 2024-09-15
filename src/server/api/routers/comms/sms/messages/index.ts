@@ -1,17 +1,5 @@
 /**
- * @file A router for managing SMS messages.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #server
- * #api
- * #routers
- * #comms
- * #sms
- * #messages
- * #index
- * #trpc
  */
 
 import { z } from "zod"
@@ -22,7 +10,7 @@ export const messagesRouter = createTRPCRouter({
     send: publicProcedure
         .input(
             z.object({
-                content: z.string().min(1).max(255),
+                content: z.string().min(1).max(4096),
                 from: z.string().max(16).optional(),
                 to: z
                     .string()

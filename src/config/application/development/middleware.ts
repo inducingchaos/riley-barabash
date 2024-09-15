@@ -1,14 +1,5 @@
 /**
- * @file Middleware for the development app configuration.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #zod
- * #middleware
- * #application
- * #development
  */
 
 import type { Config } from "./schema"

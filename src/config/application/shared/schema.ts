@@ -1,16 +1,4 @@
 /**
- * @file The shared app configuration schema.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #application
- * #config
- * #validation
- * #schema
- * #zod
- * #shared
- *
  * @remarks
  * - Always make environment variables optional and validate them in middleware on the server (do an environment check).
  */
@@ -21,7 +9,11 @@ export const schema = z.object({
     settings: z.object({
         port: z.number().optional(),
         flags: z.object({
-            vercel: z.string().optional()
+            vercel: z.string().optional(),
+            database: z.object({
+                filterTables: z.string().optional(),
+                useTestBranch: z.string().optional()
+            })
         })
     }),
 
@@ -35,9 +27,6 @@ export const schema = z.object({
                 legal: z.object({
                     privacyPolicy: z.string(),
                     termsOfService: z.string()
-                }),
-                auth: z.object({
-                    callback: z.string()
                 })
             }),
             api: z.object({

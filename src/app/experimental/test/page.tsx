@@ -1,15 +1,5 @@
 /**
- * @file A page for testing UI.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #app
- * #internal
- * #experimental
- * #test
- * #page
- * #tsx
  */
 
 "use client"

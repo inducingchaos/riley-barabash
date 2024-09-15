@@ -1,16 +1,5 @@
 /**
- * @file Pre-configures a Query Client for tRPC. Used to interact with the cache while fetching data.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #lib
- * #infra
- * #rpc
- * #helpers
- * #query-client
- * #trpc
- * #react-query
  */
 
 import { defaultShouldDehydrateQuery, QueryClient } from "@tanstack/react-query"

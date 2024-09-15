@@ -1,13 +1,5 @@
 /**
- * @file The layout for the app.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #app
- * #component
- * #layout
- * #tsx
  */
 
 import { Analytics } from "@vercel/analytics/react"
@@ -17,13 +9,10 @@ import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import type { ReactNode } from "react"
 import { ThemeProvider } from "~/components/providers/theme"
-import { brand } from "~/config"
+import { Toaster } from "~/components/ui/compositions/indicators/toaster"
+import { project } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
 import "~/styles/globals.css"
-import { Header } from "./_header/header"
-import { Toaster } from "~/components/toaster"
-import { getCurrentUser } from "~/lib/session"
-import AuthProvider from "~/components/providers/auth"
 
 const pxGrotesk = localFont({
     src: "../../public/fonts/px-grotesk-regular.otf",
@@ -46,14 +35,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-    title: `${brand.info.name} | ${brand.info.tagline}`,
-    description: brand.info.description,
-    icons: [{ rel: "icon", url: "brand/pfp.jpg" }],
+    title: `${project.info.name} | ${project.info.tagline}`,
+    description: project.info.description,
+    icons: [{ rel: "icon", url: "entities/riley-barabash/brand/pfp.jpg" }],
     keywords: ""
 }
 
 export default async function RootLayout({ children }: { children: ReactNode }): Promise<JSX.Element> {
-    const user = (await getCurrentUser()) ?? null
     return (
         <>
             {/* Shell. */}
@@ -67,23 +55,22 @@ export default async function RootLayout({ children }: { children: ReactNode }):
                     {/* Theming. */}
 
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        <AuthProvider user={user}>
-                            {/* tRPC. */}
+                        {/* tRPC. */}
 
-                            <TRPCReactProvider>
-                                {/* Header. */}
+                        <TRPCReactProvider>
+                            {/* The application. */}
 
-                                <Header />
+                            {children}
+                        </TRPCReactProvider>
 
-                                {/* The application. */}
+                        {/* Vercel stuff. */}
 
-                                {children}
-                            </TRPCReactProvider>
-                            <Analytics />
-                            <SpeedInsights />
+                        <Analytics />
+                        <SpeedInsights />
 
-                            <Toaster />
-                        </AuthProvider>
+                        {/* Toast component. */}
+
+                        <Toaster />
                     </ThemeProvider>
                 </body>
             </html>

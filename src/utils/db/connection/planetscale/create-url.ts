@@ -1,15 +1,5 @@
 /**
- * @file Creates a connection string for a Planetscale database.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #utils
- * #db
- * #connection
- * #planetscale
- * #create-connection-string
- * #database
  */
 
 export interface CreateURLParams {

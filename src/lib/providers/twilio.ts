@@ -1,12 +1,5 @@
 /**
- * @file Initializes a Twilio client.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #lib
- * #providers
- * #twilio
  */
 
 import { Twilio } from "twilio"

@@ -1,14 +1,5 @@
 /**
- * @file The development app configuration schema.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #zod
- * #development
- * #schema
- * #application
  */
 
 import { type z } from "zod"

@@ -1,14 +1,5 @@
 /**
- * @file A visual separator component.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #display
- * #separator
  */
 
 "use client"

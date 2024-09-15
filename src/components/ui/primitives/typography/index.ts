@@ -1,14 +1,5 @@
 /**
- * @file A collection of typography components.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #typography
- * #components
  */
 
 export * from "./blockquote"

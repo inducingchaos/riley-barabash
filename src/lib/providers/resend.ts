@@ -1,6 +1,5 @@
 /**
- * @file Initializes and exports a shared `Resend` instance.
- * @author Riley Barabash <riley@rileybarabash.com>
+ *
  */
 
 import { application } from "~/config"

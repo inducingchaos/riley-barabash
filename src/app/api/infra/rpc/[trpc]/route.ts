@@ -1,17 +1,4 @@
 /**
- * @file Configures the tRPC API routes for the app.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #app
- * #api
- * #infra
- * #rpc
- * #route
- * #server
- * #trpc
- *
  * @remarks
  * - Previously, the `onError` handler only logged the error message - if throwing an error causes unwanted behavior, revert to the previous implementation.
  */

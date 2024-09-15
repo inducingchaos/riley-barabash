@@ -1,20 +1,26 @@
 /**
- * @file The production app configuration.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #zod
- * #production
- * #schema
- * #application
  */
 
 import { middleware } from "./middleware"
 import { schema, type Config } from "./schema"
 
-export const config = {} satisfies Config
+export const config = {
+    credentials: {
+        public: {
+            database: {
+                name: process.env.DATABASE_NAME,
+                host: process.env.DATABASE_HOST,
+                username: process.env.DATABASE_USERNAME
+            }
+        },
+        private: {
+            database: {
+                password: process.env.DATABASE_PASSWORD
+            }
+        }
+    }
+} satisfies Config
 
 export default {
     config,

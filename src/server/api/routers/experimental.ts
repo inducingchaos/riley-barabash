@@ -1,14 +1,5 @@
 /**
- * @file A router for experimental queries and mutations.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #server
- * #api
- * #routers
- * #experimental
- * #trpc
  */
 
 import { z } from "zod"
@@ -21,7 +12,6 @@ export const experimentalRouter = createTRPCRouter({
                 name: z.string()
             })
         )
-
         .query(({ input }) => {
             return {
                 greeting: `Hello, ${input.name}`

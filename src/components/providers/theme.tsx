@@ -1,13 +1,5 @@
 /**
- * @file Exports a provider for "next-themes".
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #providers
- * #theme
- * #next-themes
  */
 
 "use client"

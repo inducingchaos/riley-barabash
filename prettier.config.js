@@ -1,12 +1,4 @@
 /**
- * @file The configuration for Prettier.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #prettier
- * #config
- * #formatting
- *
  * @see [Prettier Options](https://prettier.io/docs/en/options.html)
  */
 

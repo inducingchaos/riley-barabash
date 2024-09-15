@@ -1,13 +1,8 @@
 /**
- * @file Config file types.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #types
- * #config
  */
 
-import { type environments } from "~/constants"
+import { type environments, type projects } from "~/constants"
 
 export type Environment = (typeof environments)[number]
+export type Project = (typeof projects)[number]

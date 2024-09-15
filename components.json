@@ -11,10 +11,10 @@
         "prefix": ""
     },
     "aliases": {
-        "components": "~/components",
-        "utils": "~/utils",
-        "ui": "~/components",
-        "lib": "~/utils",
-        "hooks": "~/hooks"
+        "components": "~/ingest/components",
+        "utils": "~/ingest/utils",
+        "ui": "~/ingest/components",
+        "lib": "~/ingest/utils",
+        "hooks": "~/ingest/hooks"
     }
 }

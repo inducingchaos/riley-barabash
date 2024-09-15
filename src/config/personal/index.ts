@@ -1,11 +1,5 @@
 /**
- * @file The config for personal info.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #personal
  */
 
 import { middleware } from "./middleware"
@@ -50,7 +44,7 @@ export const config = {
     },
 
     stats: {
-        kilometersRan: 950,
+        kilometersRan: 983,
         minutesListened: 11576,
         pagesRead: 0,
         linesWritten: 376,

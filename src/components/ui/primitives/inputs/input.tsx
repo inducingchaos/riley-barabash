@@ -1,14 +1,5 @@
 /**
- * @file A text input component.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #inputs
- * #text
  */
 
 import { forwardRef, type InputHTMLAttributes } from "react"

@@ -1,14 +1,5 @@
 /**
- * @file The shared app configuration.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #application
- * #zod
- * #shared
- * #environment
  */
 
 import { middleware } from "./middleware"
@@ -17,7 +8,11 @@ import { type Config, schema } from "./schema"
 const config = {
     settings: {
         flags: {
-            vercel: process.env.VERCEL
+            vercel: process.env.VERCEL,
+            database: {
+                filterTables: process.env.FILTER_DATABASE_TABLES,
+                useTestBranch: process.env.USE_DATABASE_TEST_BRANCH
+            }
         }
     },
 
@@ -31,9 +26,6 @@ const config = {
                 legal: {
                     privacyPolicy: "/privacy",
                     termsOfService: "/terms"
-                },
-                auth: {
-                    callback: "/"
                 }
             },
             api: {

@@ -1,12 +1,5 @@
 /**
- * @file The schema for the personal config.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #personal
- * #schema
  */
 
 import { z } from "zod"

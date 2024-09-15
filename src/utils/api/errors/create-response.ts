@@ -1,13 +1,5 @@
 /**
- * @file Creates a response for an API error.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #utils
- * #api
- * #errors
- * #create-response
  */
 
 import { NextResponse } from "next/server"

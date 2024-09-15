@@ -1,10 +1,5 @@
 /**
- * @file A configuration for Tailwind.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #tailwind
- * #config
  */
 
 import { type Config } from "tailwindcss"

@@ -1,14 +1,5 @@
 /**
- * @file The unauthorized page.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #app
- * #auth
- * #unauthorized
- * #page
- * #tsx
  */
 
 import { DelayedRedirect } from "~/components/ui/compositions/routing"
@@ -16,14 +7,8 @@ import { DelayedRedirect } from "~/components/ui/compositions/routing"
 export default function Unauthorized(): JSX.Element {
     return (
         <>
-            {/* Main tag. */}
-
             <main className="flex flex-col items-center justify-center">
-                {/* Container. */}
-
                 <div className="container">
-                    {/* Section one. */}
-
                     <section className="flex min-h-screen flex-col items-center justify-center">
                         {/* Redirect modal. */}
 

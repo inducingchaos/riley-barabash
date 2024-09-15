@@ -1,12 +1,5 @@
 /**
- * @file A utility for merging Tailwind classes.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #utils
- * #ui
- * #cn
  */
 
 import { clsx, type ClassValue } from "clsx"

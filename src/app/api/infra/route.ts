@@ -1,15 +1,4 @@
 /**
- * @file Handles miscellaneous infrastructure requests.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #app
- * #api
- * #route
- * #infra
- * #server
- *
  * @remarks
  * - This route is mostly used for testing and development purposes, and it may be removed in the future.
  */

@@ -1,14 +1,5 @@
 /**
- * @file For sending SMS messages.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #lib
- * #comms
- * #sms
- * #send-message
- * #twilio
  */
 
 import type { MessageInstance } from "twilio/lib/rest/api/v2010/account/message"
@@ -45,7 +36,12 @@ export interface SendMessageParams {
  *
  * @remarks Returns an array of Twilio MessageInstance objects.
  */
-export async function sendMessage({ content, from: sender = application.credentials.public.twilio.number, to: recipients, mediaUrls }: SendMessageParams): Promise<MessageInstance[]> {
+export async function sendMessage({
+    content,
+    from: sender = application.credentials.public.twilio.number,
+    to: recipients,
+    mediaUrls
+}: SendMessageParams): Promise<MessageInstance[]> {
     if (typeof recipients === "string") recipients = [recipients]
     if (typeof mediaUrls === "string") mediaUrls = [mediaUrls]
 

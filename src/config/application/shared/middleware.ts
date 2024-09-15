@@ -1,14 +1,5 @@
 /**
- * @file Middleware for the shared app configuration.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #middleware
- * #shared
- * #zod
- * #application
  */
 
 import { ConfigError } from "~/errors"
@@ -70,6 +61,37 @@ export function middleware(application: Config): Config {
                 name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
                 message: "You forgot to configure the `RESEND_SECRET` environment variable."
             })
+
+        if (application.settings.flags.database.useTestBranch === "true") {
+            if (!process.env.TEST_DATABASE_NAME)
+                throw new ConfigError({
+                    name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                    message: "You forgot to configure the `TEST_DATABASE_NAME` environment variable."
+                })
+
+            if (!process.env.TEST_DATABASE_HOST)
+                throw new ConfigError({
+                    name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                    message: "You forgot to configure the `TEST_DATABASE_HOST` environment variable."
+                })
+
+            if (!process.env.TEST_DATABASE_USERNAME)
+                throw new ConfigError({
+                    name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                    message: "You forgot to configure the `TEST_DATABASE_USERNAME` environment variable."
+                })
+
+            if (!process.env.TEST_DATABASE_PASSWORD)
+                throw new ConfigError({
+                    name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
+                    message: "You forgot to configure the `TEST_DATABASE_PASSWORD` environment variable."
+                })
+
+            application.credentials.public.database.name = process.env.TEST_DATABASE_NAME
+            application.credentials.public.database.host = process.env.TEST_DATABASE_HOST
+            application.credentials.public.database.username = process.env.TEST_DATABASE_USERNAME
+            application.credentials.private.database.password = process.env.TEST_DATABASE_PASSWORD
+        }
     }
 
     if (!application.routing.urls.base) {

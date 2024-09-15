@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 import Image from "next/image"
 import Link from "next/link"
 import { type IconType } from "react-icons"
@@ -17,7 +21,12 @@ export function Bar(): JSX.Element {
             <header className="flex h-auto w-64 flex-col items-start justify-between gap-6 rounded-xl bg-background/[0.5] p-6 shadow-[0_0_96px_rgba(0,0,0,0.09375)] backdrop-blur-md dark:border dark:border-foreground/[0.0625] dark:shadow-none">
                 <div className="flex flex-col items-start gap-4">
                     <div className="relative h-24 w-24">
-                        <Image src="/brand/pfp.jpg" alt="Profile Picture" fill className="rounded-xl object-cover" />
+                        <Image
+                            src="/entities/riley-barabash/brand/pfp.jpg"
+                            alt="Profile Picture"
+                            fill
+                            className="rounded-xl object-cover"
+                        />
                     </div>
                     <div className="flex flex-col items-start">
                         <h1 className="text-2xl font-bold">Riley Barabash</h1>

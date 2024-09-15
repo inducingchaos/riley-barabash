@@ -1,15 +1,5 @@
 /**
- * @file Client components for the delayed redirect composition.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #compositions
- * #routing
- * #delayed-redirect
- * #client
  */
 
 "use client"

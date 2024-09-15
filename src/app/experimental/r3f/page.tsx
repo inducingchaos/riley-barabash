@@ -1,8 +1,8 @@
-"use client"
+/**
+ * @see [](https://tympanus.net/codrops/2020/12/17/recreating-a-dave-whyte-animation-in-react-three-fiber)
+ */
 
-/*
-https://tympanus.net/codrops/2020/12/17/recreating-a-dave-whyte-animation-in-react-three-fiber/
-*/
+"use client"
 
 import { useMemo, useRef } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"

@@ -1,16 +1,4 @@
 /**
- * @file Runs a bash script with Node.js.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #scripts
- * #bash
- * #stabilize
- * #script
- * #utility
- * #filesystem
- *
  * @todo
  * - [P4] Extract into a utility for running custom bash scripts.
  *

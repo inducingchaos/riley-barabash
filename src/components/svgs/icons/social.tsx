@@ -1,14 +1,5 @@
 /**
- * @file Social media icons.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #svgs
- * #icons
- * #social
- * #tsx
  */
 
 "use client"

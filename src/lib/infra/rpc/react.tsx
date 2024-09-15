@@ -1,14 +1,5 @@
 /**
- * @file Configures a tRPC provider component with React Query.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #lib
- * #infra
- * #rpc
- * #react-query
- * #client
  */
 
 "use client"
@@ -61,7 +52,8 @@ export function TRPCReactProvider(props: { children: React.ReactNode }): JSX.Ele
         api.createClient({
             links: [
                 loggerLink({
-                    enabled: op => application.environment === "development" || (op.direction === "down" && op.result instanceof Error)
+                    enabled: op =>
+                        application.environment === "development" || (op.direction === "down" && op.result instanceof Error)
                 }),
 
                 unstable_httpBatchStreamLink({

@@ -1,17 +1,5 @@
 /**
- * @file A router for managing email messages.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #server
- * #api
- * #routers
- * #comms
- * #email
- * #messages
- * #index
- * #trpc
  */
 
 import { z } from "zod"
@@ -22,10 +10,10 @@ export const messagesRouter = createTRPCRouter({
     send: publicProcedure
         .input(
             z.object({
-                content: z.string().min(1).max(255),
+                content: z.string().min(1).max(4096),
                 from: z.string(),
-                to: z.string().email(),
-                subject: z.string().min(1).max(255)
+                to: z.string(),
+                subject: z.string().min(1).max(1024)
             })
         )
         .mutation(async ({ input }) => {

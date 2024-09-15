@@ -1,15 +1,4 @@
 /**
- * @file Redirects after the elapse of an artificial delay, providing a button to force redirect.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #components
- * #ui
- * #compositions
- * #routing
- * #delayed-redirect
- *
  * @todo
  * - [P4] Add support for arbitrary durations.
  * - [P4] Add a config option for the default 404 redirect URL.
@@ -25,48 +14,34 @@ import { Progress } from "~/components/ui/primitives/indicators"
 import { Button } from "~/components/ui/primitives/inputs"
 import { DelayedRedirectButton, DelayedRedirectProgress } from "./client"
 
-interface DelayedRedirectOptions {
+export function DelayedRedirect({
+    title,
+    description,
+    buttonText,
+    redirectUrl
+}: {
     title: string
     description: string
     buttonText: string
     // duration?: number
     redirectUrl?: string
-}
-
-export function DelayedRedirect({ title, description, buttonText, redirectUrl }: DelayedRedirectOptions): JSX.Element {
+}): JSX.Element {
     return (
         <>
-            {/* Modal. */}
-
             <Card className="w-full max-w-[256px]">
-                {/* Header. */}
-
                 <CardHeader>
-                    {/* Title. */}
-
                     <CardTitle>{title}</CardTitle>
-
-                    {/* Description. */}
-
                     <CardDescription>{description}</CardDescription>
                 </CardHeader>
-
-                {/* Content. */}
-
                 <CardContent>
-                    {/* Suspense boundary for search params (uses CSR). */}
+                    {/* Suspense boundary is required since `useSearchParams` uses CSR. */}
 
                     <Suspense fallback={<Progress value={0} />}>
-                        {/* Progress bar. */}
-
                         <DelayedRedirectProgress redirectUrl={redirectUrl} />
                     </Suspense>
                 </CardContent>
-
-                {/* Footer. */}
-
                 <CardFooter>
-                    {/* Suspense boundary for search params (uses CSR). */}
+                    {/* Suspense boundary is required since `useSearchParams` uses CSR. */}
 
                     <Suspense
                         fallback={
@@ -75,8 +50,6 @@ export function DelayedRedirect({ title, description, buttonText, redirectUrl }:
                             </Button>
                         }
                     >
-                        {/* Force redirect. */}
-
                         <DelayedRedirectButton redirectUrl={redirectUrl} buttonText={buttonText} />
                     </Suspense>
                 </CardFooter>

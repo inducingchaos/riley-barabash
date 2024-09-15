@@ -1,13 +1,4 @@
 /**
- * @file The config for the application.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #config
- * #application
- * #environment
- *
  * @remarks
  * - To set or override the current environment, adjust the `NEXT_PUBLIC_ENVIRONMENT` variable in the '.env' file. This value must be set everywhere the application is running.
  * - To access configuration values for a specific environment, use `application.<environment>`.
@@ -18,7 +9,7 @@
  * - [P4] Fix if still applicable: https://chatgpt.com/c/8456d4d1-34d8-4d23-89c1-054d9c23e23f.
  */
 
-import lodash from "lodash"
+import merge from "lodash/merge"
 import { ConfigError } from "~/errors"
 import type { Environment } from "~/types"
 import development from "./development"
@@ -44,9 +35,9 @@ const transformedConfig = {
 
 const mergedConfig = {
     shared: transformedConfig.shared,
-    development: lodash.merge({}, transformedConfig.shared, transformedConfig.development),
-    preview: lodash.merge({}, transformedConfig.shared, transformedConfig.preview),
-    production: lodash.merge({}, transformedConfig.shared, transformedConfig.production)
+    development: merge({}, transformedConfig.shared, transformedConfig.development),
+    preview: merge({}, transformedConfig.shared, transformedConfig.preview),
+    production: merge({}, transformedConfig.shared, transformedConfig.production)
 }
 
 if (!process.env.NEXT_PUBLIC_ENVIRONMENT)

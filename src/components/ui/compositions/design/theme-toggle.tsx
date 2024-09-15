@@ -1,14 +1,5 @@
 /**
- * @file A dropdown for switching between light mode, dark mode, and the system theme.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #compositions
- * #design
- * #theme-toggle
  */
 
 "use client"

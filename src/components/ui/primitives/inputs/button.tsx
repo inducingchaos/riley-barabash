@@ -1,11 +1,5 @@
 /**
- * @file A button component.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #component
- * #button
- * #tsx
  */
 
 import { Slot } from "@radix-ui/react-slot"
@@ -53,11 +47,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     asChild?: boolean
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, ...props }, ref) => {
-    const DynamicButton = asChild ? Slot : "button"
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ className, variant, size, asChild = false, ...props }, ref) => {
+        const DynamicButton = asChild ? Slot : "button"
 
-    return <DynamicButton className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-})
+        return <DynamicButton className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+    }
+)
 
 Button.displayName = "Button"
 

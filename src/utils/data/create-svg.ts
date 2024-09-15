@@ -1,16 +1,6 @@
 /**
- * @file Utilities for creating, exporting, and implementing static and dynamic SVGs.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #utils
- * #data
- * #create-svg
- * #ts
- *
  * @todo
- * - [P4] Review and revise this code. It works, but it's old.
+ * - [P4] Review code.
  */
 
 import { useTheme } from "next-themes"

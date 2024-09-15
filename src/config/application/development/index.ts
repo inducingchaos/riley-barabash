@@ -1,13 +1,5 @@
 /**
- * @file The development app configuration.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #config
- * #zod
- * #development
- * #application
  */
 
 import { middleware } from "./middleware"

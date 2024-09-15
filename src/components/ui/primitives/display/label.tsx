@@ -1,14 +1,5 @@
 /**
- * @file An accessible label component.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #display
- * #label
  */
 
 "use client"

@@ -1,16 +1,4 @@
 /**
- * @file Allows the use of one database for multiple projects.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #utils
- * #db
- * #schema
- * #multi-project
- * #drizzle
- * #mysql
- *
  * @todo
  * - [P4] Add support for other database types.
  * - [P1] Implement environment control for accessing test branches/tables.
@@ -18,9 +6,11 @@
  */
 
 import { mysqlTableCreator } from "drizzle-orm/mysql-core"
-import { brand } from "~/config"
+import { project } from "~/config"
+import type { Project } from "~/types"
 
-export const createTableName = (name: string): string => `${brand.info.name.toLowerCase().replace(/ /g, "_")}_${name}`
+export const createTableName = ({ for: projectName, from: tableName }: { for?: Project; from: string }): string =>
+    `${(projectName ?? project.info.name).toLowerCase().replace(/[ -]/g, "_")}_${tableName}`
 
 /**
  * Uses Drizzle's multi-project schema feature, which allows you to use the same database instance for multiple projects.
@@ -30,4 +20,8 @@ export const createTableName = (name: string): string => `${brand.info.name.toLo
  *
  * @see [Multi-Project Schema Docs](https://orm.drizzle.team/docs/goodies#multi-project-schema)
  */
-export const createMysqlTable = mysqlTableCreator(createTableName)
+// export const createMysqlTable = mysqlTableCreator(createTableName)
+
+export function createMysqlTable({ for: projectName }: { for?: Project }) {
+    return mysqlTableCreator((tableName: string): string => createTableName({ for: projectName, from: tableName }))
+}

@@ -1,12 +1,3 @@
-# @file Prevents sensitive or unwanted files from being committed to source control.
-# @author Riley Barabash <riley@rileybarabash.com>
-#
-# @tags
-# #gitignore
-# #git
-#
-# @see [Ignoring Files](https://help.github.com/articles/ignoring-files)
-
 # Environment variables.
 
 .env

@@ -1,15 +1,5 @@
 /**
- * @file The navigation bar.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #app
- * #site
- * #components
- * #navigation
- * #bar
- * #tsx
  */
 
 import Link from "next/link"
@@ -22,8 +12,12 @@ const links = [
 
 export function Bar(): JSX.Element {
     return (
-        <header className="fixed left-0 right-0 top-0 flex w-full flex-row items-center justify-between bg-background">
+        <header className="fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between bg-background">
+            {/* Logo. */}
+
             <h1 className="text-nowrap px-6 py-4 text-2xl font-bold tracking-tighter">{"RILEY BARABASH"}</h1>
+
+            {/* Menu bar links. */}
 
             <nav className="flex flex-row items-center justify-center gap-2">
                 {links.map(item => (
@@ -32,6 +26,8 @@ export function Bar(): JSX.Element {
                     </Button>
                 ))}
             </nav>
+
+            {/* Sign in/out button. */}
 
             <div className="flex flex-row items-center justify-center px-4 py-4">
                 <Button asChild variant="default">

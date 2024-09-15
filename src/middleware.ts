@@ -1,74 +1,85 @@
 /**
- * @file Middleware for Next.js routes.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #src
- * #middleware
- * #next
+ * @todo
+ * - [P2] Fix the issue causing all non-recognized subdomains work as the base domain.
  */
 
 import { NextResponse, type NextRequest } from "next/server"
-import { validateRequest } from "./lib/auth"
 
 export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
-    let response: NextResponse | undefined
+    let response: NextResponse | undefined = undefined
 
-    /* Rewrites. */
-
-    // const projectSubdomains = ["kyzn", "sortify"]
-    // const projectDomains = {
-    //     kyzn: "kyzn.app",
-    //     // null or undefined means that the project is on the root domain.
-    //     sortify: undefined
-    // }
-
-    // const allProjectSubdomains = projectSubdomains.map(subdomain => {
-    //     return `${subdomain}.${projectDomains[subdomain]}`
+    // response = rewriteSubdomains({
+    //     for: request,
+    //     config: {
+    //         kyzn: ["kyzn.app"],
+    //         "feed-is-for-horse": []
+    //     }
     // })
 
-    // if (allProjectSubdomains.includes(getDomain({ for: request })!)) {
-    //     //
-    // }
+    //  Fuck it, just do it manually.
 
-    const session = await validateRequest()
+    const currentHost = request.headers.get("host")
+    const baseUrl = process.env.NEXT_PUBLIC_MODE === "development" ? "localhost:221" : "rileybarabash.com"
 
-    if (session.user && request.nextUrl.pathname.startsWith("/sign-in")) {
-        return NextResponse.redirect(new URL("/", request.url))
+    if (currentHost === "kyzn.app" || currentHost === `kyzn.${baseUrl}`) {
+        const url = new URL(request.url)
+        url.pathname = `/kyzn${url.pathname}`
+
+        response = NextResponse.rewrite(url)
     }
 
-    // const kyznMiddlewareResponse = await kyznMiddleware(request)
+    if (currentHost === "s--k.it" || currentHost === `solopreneurkit.${baseUrl}`) {
+        const url = new URL(request.url)
+        url.pathname = `/solopreneurkit${url.pathname}`
 
-    // if (kyznMiddlewareResponse) {
-    //     return kyznMiddlewareResponse
-    // }
+        response = NextResponse.rewrite(url)
+    }
+
+    if (currentHost === `feed-is-for-horse.${baseUrl}`) {
+        const url = new URL(request.url)
+        url.pathname = `/feed-is-for-horse${url.pathname}`
+
+        response = NextResponse.rewrite(url)
+    }
 
     return response
 }
 
-// const getDomain = ({ for: request }: { for: NextRequest }) => request.headers.get("host")
-// const getPath = ({ for: request }: { for: NextRequest }) => request.nextUrl.pathname
+export function rewriteSubdomains({
+    for: request,
+    config
+}: {
+    for: NextRequest
+    config: Record<string, string[]>
+}): NextResponse | undefined {
+    //  Get the original domain and the current domain. We can't use the `application` config here because this is run on the Edge.
 
-// const currentDomain = ({ for: request, is: domain }: { for: NextRequest; is: string }) =>
-//     getDomain({ for: request })?.endsWith(domain)
-// const currentSubdomain = ({ for: request, is: subdomain }: { for: NextRequest; is: string }) =>
-//     getDomain({ for: request })?.startsWith(subdomain + ".")
+    const baseUrlHost = process.env.NEXT_PUBLIC_MODE === "development" ? "localhost:221" : "rileybarabash.com"
+    const currentUrlHost = request.headers.get("host")!
 
-// export async function kyznMiddleware(request: NextRequest): Promise<NextResponse | undefined> {
-//     let response: NextResponse | undefined
+    //  Extend the rewrite config to include the original domain with the subdomain.
 
-//     const isKyznDomain = currentDomain({ for: request, is: "kyzn.app" })
-//     const isKzSubdomainOnRbDomain =
-//         currentSubdomain({ for: request, is: "kyzn" }) && currentDomain({ for: request, is: "rileybarabash.com" })
+    const rewrites = Object.fromEntries(
+        Object.entries(config).map(([key, value]) => [key, [...value, `${key}.${baseUrlHost}`]])
+    )
 
-//     if (isKyznDomain || isKzSubdomainOnRbDomain) {
-//         const path = getPath({ for: request })
+    const matchingSubdomain = Object.keys(rewrites).find(key => rewrites[key]?.includes(currentUrlHost))
 
-//         const newUrl = new URL(`rileybarabash.com/kyzn/${path}`)
-//         newUrl.search = request.nextUrl.search
+    //  If a matching subdomain is found, rewrite the URL.
 
-//         response = NextResponse.rewrite(newUrl)
-//     }
+    if (matchingSubdomain) {
+        const path = request.nextUrl.pathname
 
-//     return response
-// }
+        //  Avoid re-writing the `_next` and `api` directories to resource errors.
+
+        if (!path.startsWith("/_next") && !path.startsWith("/api")) {
+            const targetUrl = new URL(
+                `${request.nextUrl.protocol}//${baseUrlHost}/${matchingSubdomain}${path}${request.nextUrl.search}`
+            )
+
+            return NextResponse.rewrite(targetUrl)
+        }
+    }
+
+    return undefined
+}

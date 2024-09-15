@@ -1,22 +1,12 @@
 /**
- * @file Creates a connection to the database.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #server
- * #db
- * #index
- * #database
- * #drizzle
- * #mysql
- * #planetscale
  */
 
 import { Client } from "@planetscale/database"
 import { drizzle } from "drizzle-orm/planetscale-serverless"
 import { application } from "~/config"
-import * as schema from "./schemas"
+import * as kyzn from "./schemas/projects/kyzn"
+import * as rileyBarabash from "./schemas/projects/riley-barabash"
 
 export const db = drizzle(
     new Client({
@@ -24,9 +14,7 @@ export const db = drizzle(
         username: application.credentials.public.database.username,
         password: application.credentials.private.database.password
     }),
-    { schema }
+    { schema: { ...kyzn, ...rileyBarabash } }
 )
 
 export type Drizzle = typeof db
-
-export { schema }

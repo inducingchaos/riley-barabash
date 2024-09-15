@@ -1,14 +1,5 @@
 #!/bin/bash
-# @file Adds and removes '.gitkeep' files from empty directories.
-# @author Riley Barabash <riley@rileybarabash.com>
-#
-# @tags
-# #src
-# #scripts
-# #bash
-# #utility
-# #fs
-# #git
+# Adds and removes '.gitkeep' files from empty directories.
 
 # Capture the target directory from the first argument, defaulting to './src' if not provided.
 

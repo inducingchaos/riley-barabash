@@ -1,19 +1,7 @@
 /**
- * @file The landing page.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #app
- * #page
- * #marketing
- * #home
- * #landing
- * #tsx
  */
 
-import { getCurrentUser } from "~/lib/session"
-import { redirect } from "next/navigation"
 import { Separator } from "@radix-ui/react-separator"
 import Image from "next/image"
 import Link from "next/link"
@@ -21,28 +9,19 @@ import { Button } from "~/components/ui/primitives/inputs"
 import { H1, InlineCode, Muted } from "~/components/ui/primitives/typography"
 
 export default async function Landing(): Promise<JSX.Element> {
-    //  do sum
-
-    const user = await getCurrentUser()
-    if (user) redirect("/dashboard")
-    redirect("/sign-in")
-
     return (
         <>
-            {/* Main tag. */}
-
             <main className="flex flex-col items-center justify-center">
-                {/* Container. */}
-
                 <div className="container">
-                    {/* Section one. */}
-
                     <section className="flex min-h-screen flex-col items-center justify-center">
-                        {/* Content. */}
-
                         <div className="flex flex-col items-center justify-center gap-6">
                             <div className="relative h-24 w-24">
-                                <Image src="/brand/pfp.jpg" alt="Profile Picture" fill className="rounded-xl object-cover" />
+                                <Image
+                                    src="/entities/riley-barabash/brand/pfp.jpg"
+                                    alt="Profile Picture"
+                                    fill
+                                    className="rounded-xl object-cover"
+                                />
                             </div>
                             <H1>{"My name is Riley."}</H1>
                             <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>

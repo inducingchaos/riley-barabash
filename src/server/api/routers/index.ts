@@ -1,15 +1,5 @@
 /**
- * @file Contains the root router for the application.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #server
- * #api
- * #routers
- * #trpc
- * #index
- * #root
  */
 
 import { commsRouter } from "./comms"

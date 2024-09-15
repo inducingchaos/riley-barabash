@@ -1,12 +1,4 @@
 /**
- * @file A configuration for Typescript.
- * @author Riley Barabash <riley@rileybarabash.com>
- *
- * @tags
- * #tsconfig
- * #config
- * #typescript
- *
  * @see [TSConfig Documentation](https://www.typescriptlang.org/tsconfig)
  */
 

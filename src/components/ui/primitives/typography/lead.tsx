@@ -1,14 +1,5 @@
 /**
- * @file A lead element.
- * @author Riley Barabash <riley@rileybarabash.com>
  *
- * @tags
- * #src
- * #components
- * #ui
- * #primitives
- * #typography
- * #lead
  */
 
 import { cn } from "~/utils/ui"
@@ -16,6 +7,14 @@ import { cn } from "~/utils/ui"
 /**
  * A modal dialog that interrupts the user with important content and expects a response.
  */
-export function Lead({ children, className, ...props }: React.HTMLAttributes<HTMLParagraphElement> & { children: React.ReactNode }): JSX.Element {
-    return <p className={cn("text-xl text-muted-foreground", className)} {...props}>{children}</p>
+export function Lead({
+    children,
+    className,
+    ...props
+}: React.HTMLAttributes<HTMLParagraphElement> & { children: React.ReactNode }): JSX.Element {
+    return (
+        <p className={cn("text-xl text-muted-foreground", className)} {...props}>
+            {children}
+        </p>
+    )
 }
