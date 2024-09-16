@@ -5,7 +5,7 @@
 
 import { NextResponse, type NextRequest } from "next/server"
 
-export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
+export async function middleware(_request: NextRequest): Promise<NextResponse | undefined> {
     // let response: NextResponse | undefined = undefined
 
     // response = rewriteSubdomains({
@@ -18,20 +18,20 @@ export async function middleware(request: NextRequest): Promise<NextResponse | u
 
     //  Fuck it, just do it manually.
 
-    if (request.nextUrl.hostname.endsWith("kyzn.app") || request.nextUrl.hostname.endsWith("kyzn.rileybarabash.com")) {
-        return NextResponse.rewrite(new URL("/kyzn", request.url))
-    }
+    // if (request.nextUrl.hostname.endsWith("kyzn.app") || request.nextUrl.hostname.endsWith("kyzn.rileybarabash.com")) {
+    //     return NextResponse.rewrite(new URL("/kyzn", request.url))
+    // }
 
-    if (request.nextUrl.hostname.endsWith("s--k.it") || request.nextUrl.hostname.endsWith("solopreneurkit.rileybarabash.com")) {
-        return NextResponse.rewrite(new URL("/solopreneurkit", request.url))
-    }
+    // if (request.nextUrl.hostname.endsWith("s--k.it") || request.nextUrl.hostname.endsWith("solopreneurkit.rileybarabash.com")) {
+    //     return NextResponse.rewrite(new URL("/solopreneurkit", request.url))
+    // }
 
-    if (
-        request.nextUrl.hostname.endsWith("feed-is-for.horse") ||
-        request.nextUrl.hostname.endsWith("feed-is-for-horse.rileybarabash.com")
-    ) {
-        return NextResponse.rewrite(new URL("/feed-is-for-horse", request.url))
-    }
+    // if (
+    //     request.nextUrl.hostname.endsWith("feed-is-for.horse") ||
+    //     request.nextUrl.hostname.endsWith("feed-is-for-horse.rileybarabash.com")
+    // ) {
+    //     return NextResponse.rewrite(new URL("/feed-is-for-horse", request.url))
+    // }
 
     return undefined
 }
