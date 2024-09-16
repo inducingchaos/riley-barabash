@@ -6,7 +6,7 @@
 import { NextResponse, type NextRequest } from "next/server"
 
 export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
-    let response: NextResponse | undefined = undefined
+    // let response: NextResponse | undefined = undefined
 
     // response = rewriteSubdomains({
     //     for: request,
@@ -18,31 +18,22 @@ export async function middleware(request: NextRequest): Promise<NextResponse | u
 
     //  Fuck it, just do it manually.
 
-    const currentHost = request.headers.get("host")
-    const baseUrl = process.env.NEXT_PUBLIC_MODE === "development" ? "localhost:221" : "rileybarabash.com"
-
-    if (currentHost === "kyzn.app" || currentHost === `kyzn.${baseUrl}`) {
-        const url = new URL(request.url)
-        url.pathname = `/kyzn${url.pathname}`
-
-        response = NextResponse.rewrite(url)
+    if (request.nextUrl.hostname.endsWith("kyzn.app") || request.nextUrl.hostname.endsWith("kyzn.rileybarabash.com")) {
+        return NextResponse.rewrite(new URL("/kyzn", request.url))
     }
 
-    if (currentHost === "s--k.it" || currentHost === `solopreneurkit.${baseUrl}`) {
-        const url = new URL(request.url)
-        url.pathname = `/solopreneurkit${url.pathname}`
-
-        response = NextResponse.rewrite(url)
+    if (request.nextUrl.hostname.endsWith("s--k.it") || request.nextUrl.hostname.endsWith("solopreneurkit.rileybarabash.com")) {
+        return NextResponse.rewrite(new URL("/solopreneurkit", request.url))
     }
 
-    if (currentHost === `feed-is-for-horse.${baseUrl}`) {
-        const url = new URL(request.url)
-        url.pathname = `/feed-is-for-horse${url.pathname}`
-
-        response = NextResponse.rewrite(url)
+    if (
+        request.nextUrl.hostname.endsWith("feed-is-for.horse") ||
+        request.nextUrl.hostname.endsWith("feed-is-for-horse.rileybarabash.com")
+    ) {
+        return NextResponse.rewrite(new URL("/feed-is-for-horse", request.url))
     }
 
-    return response
+    return undefined
 }
 
 export function rewriteSubdomains({
