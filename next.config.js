@@ -8,6 +8,16 @@
 export default {
     assetPrefix: process.env.NEXT_PUBLIC_ENVIRONMENT === "production" ? "https://rileybarabash.com" : undefined,
 
+    async redirects() {
+        return [
+            {
+                source: "/links",
+                destination: "https://linktr.ee/rileybarabash",
+                permanent: false
+            }
+        ]
+    },
+
     async rewrites() {
         return {
             beforeFiles: [
