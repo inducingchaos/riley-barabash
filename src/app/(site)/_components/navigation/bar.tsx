@@ -2,6 +2,7 @@
  *
  */
 
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import { Button } from "~/components/ui/primitives/inputs"
 
@@ -30,8 +31,15 @@ export function Bar(): JSX.Element {
             {/* Sign in/out button. */}
 
             <div className="flex flex-row items-center justify-center px-4 py-4">
-                <Button asChild variant="default">
-                    <Link href={true ? "/sign-in" : "/sign-out"}>{true ? "Sign In" : "Sign Out"}</Link>
+                <Button variant="default">
+                    <>
+                        <SignedOut>
+                            <SignInButton />
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
+                    </>
                 </Button>
             </div>
         </header>

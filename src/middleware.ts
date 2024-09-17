@@ -2,10 +2,15 @@
  *
  */
 
-import { type NextRequest, type NextResponse } from "next/server"
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
+import { NextResponse, type NextRequest } from "next/server"
 import { redirectUrls, rewriteDomainsToPath } from "~/lib/infra/middleware/helpers"
 
-export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
+const isProtectedRoute = createRouteMatcher(["/internal(.*)"])
+
+export default clerkMiddleware((auth, request: NextRequest): NextResponse | undefined => {
+    /* Routing. */
+
     const redirectUrlsResponse: NextResponse | undefined = redirectUrls({
         for: request,
         config: [
@@ -47,5 +52,19 @@ export async function middleware(request: NextRequest): Promise<NextResponse | u
 
     if (rewriteDomainsToPathResponse) return rewriteDomainsToPathResponse
 
-    return undefined
+    /* Authentication. */
+
+    if (!auth().userId && isProtectedRoute(request)) return NextResponse.redirect(new URL("/unauthenticated", request.url))
+})
+
+export const config = {
+    matcher: [
+        //  Skip Next.js internals and all static files, unless found in search params.
+
+        "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+
+        //  Always run for API routes.
+
+        "/(api|trpc)(.*)"
+    ]
 }
