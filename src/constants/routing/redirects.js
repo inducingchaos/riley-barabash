@@ -24,6 +24,12 @@ export const redirects = [
     //  For Kyzn.
 
     {
+        source: "/kyzn/:path*",
+        has: [{ type: "host", value: "rileybarabash.com" }],
+        destination: "https://kyzn.app/:path*",
+        permanent: true
+    },
+    {
         source: "/:path*",
         has: [{ type: "host", value: "kyzn.rileybarabash.com" }],
         destination: "https://kyzn.app/:path*",
@@ -38,6 +44,12 @@ export const redirects = [
 
     //  For SolopreneurKit.
 
+    {
+        source: "/solopreneurkit/:path*",
+        has: [{ type: "host", value: "rileybarabash.com" }],
+        destination: "https://s--k.it/:path*",
+        permanent: true
+    },
     {
         source: "/:path*",
         has: [{ type: "host", value: "solopreneurkit.rileybarabash.com" }],
