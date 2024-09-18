@@ -6,7 +6,8 @@ import { Error, type ErrorOptions } from "~/meta"
 
 const apiErrors = {
     TRPC_FAILURE: 500,
-    INVALID_REQUEST: 400
+    INVALID_REQUEST: 400,
+    UNAUTHORIZED: 401
 } as const
 
 type ErrorName = keyof typeof apiErrors

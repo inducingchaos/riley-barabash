@@ -1,0 +1,121 @@
+/**
+ *
+ */
+
+import { currentUser } from "@clerk/nextjs/server"
+import { and, eq } from "drizzle-orm"
+import { z } from "zod"
+import { APIError } from "~/errors"
+import { createTRPCRouter, publicProcedure } from "~/server/api/init/rpc"
+import { neurons, neuronsToTags, tags } from "~/server/db/schemas/projects/kyzn"
+
+export const neuronsRouter = createTRPCRouter({
+    create: publicProcedure
+        .input(
+            z.object({
+                content: z.string().min(1).max(768),
+                tags: z.array(z.string().min(1).max(255))
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            const user = await currentUser()
+
+            if (!user)
+                throw new APIError({
+                    name: "UNAUTHORIZED",
+                    message: "The user is not authorized to create a neuron."
+                })
+
+            const { id: neuronId } = (
+                await ctx.db
+                    .insert(neurons)
+                    .values({
+                        content: input.content,
+                        userId: user.id
+                    })
+                    .$returningId()
+            )[0]!
+
+            for (const tag of input.tags) {
+                let tagId = (
+                    await ctx.db.query.tags.findFirst({
+                        columns: {
+                            id: true
+                        },
+                        where: eq(tags.name, tag)
+                    })
+                )?.id
+
+                if (!tagId) {
+                    tagId = (
+                        await ctx.db
+                            .insert(tags)
+                            .values({
+                                name: tag,
+                                userId: user.id
+                            })
+                            .$returningId()
+                    )[0]!.id
+                }
+
+                await ctx.db.insert(neuronsToTags).values({
+                    neuronId,
+                    tagId
+                })
+            }
+        }),
+
+    all: publicProcedure.query(async ({ ctx }) => {
+        try {
+            const user = await currentUser()
+
+            if (!user)
+                throw new APIError({
+                    name: "UNAUTHORIZED",
+                    message: "The user is not authorized to retrieve neurons."
+                })
+
+            return await ctx.db.query.neurons.findMany({
+                columns: {
+                    id: true,
+                    content: true
+                },
+                with: {
+                    tags: {
+                        with: {
+                            tag: {
+                                columns: {
+                                    name: true
+                                }
+                            }
+                        }
+                    }
+                },
+                where: eq(neurons.userId, user.id),
+                orderBy: (neurons, { desc }) => [desc(neurons.createdAt)]
+            })
+        } catch (error) {
+            // figure out how to get errors back to the client
+            console.error(error)
+            throw error
+        }
+    }),
+
+    delete: publicProcedure
+        .input(
+            z.object({
+                id: z.number()
+            })
+        )
+        .mutation(async ({ ctx, input }) => {
+            const user = await currentUser()
+
+            if (!user)
+                throw new APIError({
+                    name: "UNAUTHORIZED",
+                    message: "The user is not authorized to delete neurons."
+                })
+
+            await ctx.db.delete(neurons).where(and(eq(neurons.id, input.id), eq(neurons.userId, user.id)))
+        })
+})

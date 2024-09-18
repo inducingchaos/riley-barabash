@@ -6,7 +6,6 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
 import { type NextRequest } from "next/server"
 import { application } from "~/config"
-import { APIError } from "~/errors"
 import { createTrpcContext, type TRPCContext } from "~/server/api/init/rpc"
 import { appRouter } from "~/server/api/routers"
 
@@ -29,13 +28,10 @@ const handler = (req: NextRequest): Promise<Response> =>
         createContext: () => createContext(req),
         onError:
             application.environment === "development"
-                ? ({ path, error }): void => {
-                      throw new APIError({
-                          name: "TRPC_FAILURE",
-                          message: `tRPC failed on '${path ?? "<unknown-path>"}': ${error.message}.`,
+                ? ({ path, error }): void =>
+                      console.error(`tRPC failed on '${path ?? "<unknown-path>"}': ${error.message}.`, {
                           cause: error
                       })
-                  }
                 : undefined
     })
 

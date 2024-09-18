@@ -4,6 +4,7 @@
 
 import { commsRouter } from "./comms"
 import { experimentalRouter } from "./experimental"
+import { kyznRouter } from "./kyzn"
 import { ledgerRouter } from "./ledger"
 import { createCallerFactory, createTRPCRouter } from "~/server/api/init/rpc"
 
@@ -15,7 +16,8 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/init/rpc"
 export const appRouter = createTRPCRouter({
     comms: commsRouter,
     experimental: experimentalRouter,
-    ledger: ledgerRouter
+    ledger: ledgerRouter,
+    kyzn: kyznRouter
 })
 
 export type AppRouter = typeof appRouter
