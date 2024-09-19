@@ -27,6 +27,10 @@ export default clerkMiddleware((auth, request: NextRequest): NextResponse | unde
                 from: ["rileybarabash.com/links"],
                 to: "linktr.ee/rileybarabash"
             },
+            // {
+            //     from: ["self-state.com"],
+            //     to: "https://rileybarabash.notion.site/Hello-10676f79def580749da9dc2c8fcc0db9?pvs=4"
+            // },
             {
                 from: ["*.rileybarabash.com*"],
                 to: "rileybarabash.com"
