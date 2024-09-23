@@ -87,7 +87,11 @@ export const getColumns = (data: Neuron[]): ColumnDef<Neuron>[] => [
         header: () => <div className="text-right font-mono tracking-tighter">id.</div>,
         cell: ({ row }) => {
             const id = row.getValue("id")
-            return <div className="text-right font-bold">{!!id ? id : <div className="h-0.5 w-2 bg-border"></div>}</div>
+            return (
+                <div className="text-right font-bold">
+                    {!!id ? <div>{id as string}</div> : <div className="h-0.5 w-2 bg-border" />}
+                </div>
+            )
         }
     },
     {
