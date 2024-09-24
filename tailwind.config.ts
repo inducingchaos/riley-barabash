@@ -75,6 +75,11 @@ export default {
                 "caret-blink": {
                     "0%,70%,100%": { opacity: "1" },
                     "20%,50%": { opacity: "0" }
+                },
+                shimmer: {
+                    "100%": {
+                        transform: "translateX(100%)"
+                    }
                 }
             },
             animation: {
