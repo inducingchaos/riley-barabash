@@ -22,6 +22,10 @@ export default clerkMiddleware((auth, request: NextRequest): NextResponse | unde
                 from: ["rileybarabash.com/solopreneurkit*", "solopreneurkit.rileybarabash.com*", "*.s--k.it*"],
                 to: "s--k.it"
             },
+            {
+                from: ["rileybarabash.com/my-future-self*", "my-future-self.rileybarabash.com*", "*.myfutureself.app*"],
+                to: "myfutureself.app"
+            },
 
             {
                 from: ["rileybarabash.com/links"],
@@ -46,6 +50,10 @@ export default clerkMiddleware((auth, request: NextRequest): NextResponse | unde
             {
                 from: "s--k.it",
                 to: "/solopreneurkit"
+            },
+            {
+                from: "myfutureself.app",
+                to: "/my-future-self"
             }
         ]
     })
