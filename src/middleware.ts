@@ -34,6 +34,10 @@ export default clerkMiddleware((auth, request: NextRequest): NextResponse | unde
                 ],
                 to: "yourfutureself.app"
             },
+            {
+                from: ["rileybarabash.com/value-only*", "value-only.rileybarabash.com*", "*.value-only.com*"],
+                to: "value-only.com"
+            },
 
             {
                 from: ["rileybarabash.com/links"],
@@ -62,6 +66,10 @@ export default clerkMiddleware((auth, request: NextRequest): NextResponse | unde
             {
                 from: "yourfutureself.app",
                 to: "/your-future-self"
+            },
+            {
+                from: "value-only.com",
+                to: "/value-only"
             }
         ]
     })
