@@ -6,15 +6,18 @@ import { ConfigError } from "~/errors"
 import type { Project as ProjectType } from "~/types"
 import kyzn from "./kyzn"
 import rileyBarabash from "./riley-barabash"
+import valueOnly from "./value-only"
 
 const parsedConfig = {
     kyzn: kyzn.schema.parse(kyzn.config),
-    "riley-barabash": rileyBarabash.schema.parse(rileyBarabash.config)
+    "riley-barabash": rileyBarabash.schema.parse(rileyBarabash.config),
+    "value-only": valueOnly.schema.parse(valueOnly.config)
 }
 
 const transformedConfig = {
     kyzn: kyzn.middleware(parsedConfig.kyzn),
-    "riley-barabash": rileyBarabash.middleware(parsedConfig["riley-barabash"])
+    "riley-barabash": rileyBarabash.middleware(parsedConfig["riley-barabash"]),
+    "value-only": valueOnly.middleware(parsedConfig["value-only"])
 }
 
 if (!process.env.NEXT_PUBLIC_PROJECT)
