@@ -9,8 +9,11 @@ import { mysqlTableCreator } from "drizzle-orm/mysql-core"
 import { project } from "~/config"
 import type { Project } from "~/types"
 
-export const createTableName = ({ for: projectName, from: tableName }: { for?: Project; from: string }): string =>
-    `${(projectName ?? project.info.name).toLowerCase().replace(/[ -]/g, "_")}_${tableName}`
+export const createTableName = ({ for: projectName, from: tableName }: { for?: Project | ""; from: string }): string => {
+    const resolvedProjectName = (projectName ?? project.info.name).toLowerCase().replace(/[ -]/g, "_")
+
+    return `${resolvedProjectName}${resolvedProjectName ? "_" : ""}${tableName}`
+}
 
 /**
  * Uses Drizzle's multi-project schema feature, which allows you to use the same database instance for multiple projects.
@@ -22,6 +25,6 @@ export const createTableName = ({ for: projectName, from: tableName }: { for?: P
  */
 // export const createMysqlTable = mysqlTableCreator(createTableName)
 
-export function createMysqlTable({ for: projectName }: { for?: Project }) {
+export function createMysqlTable({ for: projectName }: { for?: Project | "" }) {
     return mysqlTableCreator((tableName: string): string => createTableName({ for: projectName, from: tableName }))
 }

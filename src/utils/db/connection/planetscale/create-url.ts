@@ -10,5 +10,5 @@ export interface CreateURLParams {
 }
 
 export function createUrl({ database, host, username, password }: CreateURLParams): string {
-    return `mysql://${username}:${password}@${host}/${database}?sslaccept=strict`
+    return `mysql://${username}:${password}@${host}/${database}?ssl={"rejectUnauthorized":true}`
 }
