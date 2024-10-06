@@ -1,13 +1,19 @@
 /**
- *
+ * @todo
+ * - [P0] Replace the test user object with the new auth method.
  */
 
-import { currentUser } from "@clerk/nextjs/server"
 import { and, eq } from "drizzle-orm"
 import { z } from "zod"
 import { APIError } from "~/errors"
 import { createTRPCRouter, publicProcedure } from "~/server/api/init/rpc"
 import { neurons, neuronsToTags, tags } from "~/server/db/schemas/projects/kyzn"
+
+const testUserObject = {
+    id: "1",
+    email: "test@test.com",
+    name: "Test"
+}
 
 export const neuronsRouter = createTRPCRouter({
     create: publicProcedure
@@ -18,7 +24,7 @@ export const neuronsRouter = createTRPCRouter({
             })
         )
         .mutation(async ({ ctx, input }) => {
-            const user = await currentUser()
+            const user = testUserObject
 
             if (!user)
                 throw new APIError({
@@ -67,7 +73,7 @@ export const neuronsRouter = createTRPCRouter({
 
     all: publicProcedure.query(async ({ ctx }) => {
         try {
-            const user = await currentUser()
+            const user = testUserObject
 
             if (!user)
                 throw new APIError({
@@ -108,7 +114,7 @@ export const neuronsRouter = createTRPCRouter({
             })
         )
         .mutation(async ({ ctx, input }) => {
-            const user = await currentUser()
+            const user = testUserObject
 
             if (!user)
                 throw new APIError({
