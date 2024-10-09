@@ -8,8 +8,8 @@ import { type Metadata } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import type { ReactNode } from "react"
-import { AuthProvider, ThemeProvider } from "~/components/providers"
-import { Toaster } from "~/components/ui/compositions/indicators/toaster"
+import { ThemeProvider } from "~/components/providers"
+import { Toaster } from "~/components/ui/compositions/indicators"
 import { project } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
 import "~/styles/globals.css"
@@ -57,24 +57,24 @@ export default async function RootLayout({ children }: { children: ReactNode }):
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                         {/* Auth. */}
 
-                        <AuthProvider>
-                            {/* tRPC. */}
+                        {/* <AuthProvider> */}
+                        {/* tRPC. */}
 
-                            <TRPCReactProvider>
-                                {/* The application. */}
+                        <TRPCReactProvider>
+                            {/* The application. */}
 
-                                {children}
-                            </TRPCReactProvider>
+                            {children}
+                        </TRPCReactProvider>
 
-                            {/* Vercel stuff. */}
+                        {/* Vercel stuff. */}
 
-                            <Analytics />
-                            <SpeedInsights />
+                        <Analytics />
+                        <SpeedInsights />
 
-                            {/* Toast component. */}
+                        {/* Toast component. */}
 
-                            <Toaster />
-                        </AuthProvider>
+                        <Toaster />
+                        {/* </AuthProvider> */}
                     </ThemeProvider>
                 </body>
             </html>

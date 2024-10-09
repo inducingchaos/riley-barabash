@@ -53,3 +53,11 @@ class CustomError<ErrorName extends string> extends Error {
 }
 
 export { CustomError as Error }
+
+export function serializeError<ErrorName extends string>(error: CustomError<ErrorName>) {
+    return {
+        name: error.name,
+        message: error.message,
+        cause: error.cause
+    }
+}

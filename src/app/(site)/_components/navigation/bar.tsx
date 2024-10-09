@@ -4,13 +4,16 @@
 
 import Link from "next/link"
 import { Button } from "~/components/ui/primitives/inputs"
+import { getCurrentUser } from "~/lib/auth/core"
 
 const links = [
     { label: "Entities", url: "/entities" },
     { label: "Content", url: "/content" }
 ] satisfies { label: string; url: string }[]
 
-export function Bar(): JSX.Element {
+export async function Bar(): Promise<JSX.Element> {
+    const user = await getCurrentUser()
+
     return (
         <header className="fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between bg-background">
             {/* Logo. */}
@@ -30,9 +33,17 @@ export function Bar(): JSX.Element {
             {/* Sign in/out button. */}
 
             <div className="flex flex-row items-center justify-center px-4 py-4">
-                <Button asChild variant="default">
-                    <Link href={true ? "/sign-in" : "/sign-out"}>{true ? "Sign In" : "Sign Out"}</Link>
-                </Button>
+                {user ? (
+                    <form action="/api/sign-out" method="POST">
+                        <Button type="submit" variant="ghost" className="flex h-auto p-0">
+                            {"Sign Out"}
+                        </Button>
+                    </form>
+                ) : (
+                    <Button asChild variant="default">
+                        <Link href="/sign-in">Sign In</Link>
+                    </Button>
+                )}
             </div>
         </header>
     )

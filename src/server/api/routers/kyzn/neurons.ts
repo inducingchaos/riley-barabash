@@ -7,7 +7,7 @@ import { and, eq } from "drizzle-orm"
 import { z } from "zod"
 import { APIError } from "~/errors"
 import { createTRPCRouter, publicProcedure } from "~/server/api/init/rpc"
-import { neurons, neuronsToTags, tags } from "~/server/db/schemas/projects/kyzn"
+import { neurons, neuronsToTags, tags } from "~/server/data/schemas/kyzn"
 
 const testUserObject = {
     id: "1",

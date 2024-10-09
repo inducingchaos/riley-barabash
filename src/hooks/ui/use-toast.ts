@@ -7,7 +7,6 @@
 //  Inspired by react-hot-toast library.
 
 import { useEffect, useState, type ReactNode } from "react"
-
 import type { ToastActionElement, ToastProps } from "~/components/ui/primitives/indicators"
 
 const TOAST_LIMIT = 1

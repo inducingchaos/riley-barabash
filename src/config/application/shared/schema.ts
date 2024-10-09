@@ -24,6 +24,11 @@ export const schema = z.object({
         }),
         paths: z.object({
             pages: z.object({
+                auth: z.object({
+                    signIn: z.string(),
+                    signUp: z.string(),
+                    forgotPassword: z.string()
+                }),
                 legal: z.object({
                     privacyPolicy: z.string(),
                     termsOfService: z.string()
@@ -31,7 +36,19 @@ export const schema = z.object({
             }),
             api: z.object({
                 infra: z.string(),
-                trpc: z.string()
+                trpc: z.string(),
+                auth: z.object({
+                    oauth: z.object({
+                        apple: z.string(),
+                        google: z.string()
+                    })
+                })
+            }),
+            callbacks: z.object({
+                auth: z.object({
+                    signIn: z.string(),
+                    signOut: z.string()
+                })
             })
         })
     }),

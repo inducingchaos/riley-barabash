@@ -69,7 +69,8 @@
         "**/*.js",
         "**/*.jsx",
         ".next/types/**/*.ts",
-        "env.config.js"
+        "env.config.js",
+        "src/lib/auth/google."
     ],
     "exclude": ["node_modules"]
 }

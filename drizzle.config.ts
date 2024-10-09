@@ -8,11 +8,7 @@ import { createUrl } from "~/utils/db/connection/planetscale"
 import { createTableName } from "~/utils/db/schema"
 
 export default {
-    schema: [
-        "./src/server/db/schemas/projects/kyzn",
-        "./src/server/db/schemas/projects/riley-barabash",
-        "./src/server/db/schemas/projects/shared"
-    ],
+    schema: ["./src/server/data/schemas/kyzn", "./src/server/data/schemas/riley-barabash", "./src/server/data/schemas/shared"],
     dialect: "mysql",
     dbCredentials: {
         //  Drizzle Kit seems to contain a bug with the user/password connection method, so we have to connect using a connection string.

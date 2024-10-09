@@ -23,6 +23,12 @@ const config = {
         },
         paths: {
             pages: {
+                auth: {
+                    signIn: "/sign-in",
+                    signUp: "/sign-up",
+                    forgotPassword: "/sign-in/forgot-password"
+                },
+
                 legal: {
                     privacyPolicy: "/privacy",
                     termsOfService: "/terms"
@@ -30,7 +36,20 @@ const config = {
             },
             api: {
                 infra: "/api/infra",
-                trpc: "/api/infra/rpc"
+                trpc: "/api/infra/rpc",
+                auth: {
+                    oauth: {
+                        apple: "/api/auth/apple",
+                        google: "/api/auth/google"
+                    }
+                }
+            },
+
+            callbacks: {
+                auth: {
+                    signIn: "/",
+                    signOut: "/"
+                }
             }
         }
     },

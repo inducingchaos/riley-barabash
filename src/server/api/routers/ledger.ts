@@ -5,7 +5,7 @@
 import { eq } from "drizzle-orm"
 import { z } from "zod"
 import { createTRPCRouter, publicProcedure } from "~/server/api/init/rpc"
-import { ledger } from "~/server/db/schemas/projects/riley-barabash"
+import { ledger } from "~/server/data/schemas/riley-barabash"
 
 export const ledgerRouter = createTRPCRouter({
     save: publicProcedure
