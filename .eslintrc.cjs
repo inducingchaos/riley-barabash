@@ -17,7 +17,7 @@ const config = {
     ],
     rules: {
         "@typescript-eslint/array-type": "off",
-        "@typescript-eslint/consistent-type-definitions": "warn",
+        "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
         "@typescript-eslint/consistent-type-imports": ["warn", { prefer: "type-imports", fixStyle: "inline-type-imports" }],
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
@@ -29,7 +29,9 @@ const config = {
         "max-len": ["warn", { code: 9999 }],
         "drizzle/enforce-update-with-where": ["error", { drizzleObjectName: ["db", "ctx.db"] }],
         "import/no-anonymous-default-export": ["off"],
-        "@typescript-eslint/no-namespace": "off"
+        "@typescript-eslint/no-namespace": "off",
+        "no-throw-literal": "off",
+        "@typescript-eslint/only-throw-error": "off"
     }
 }
 

@@ -8,7 +8,7 @@
 import { unauthenticatedAction } from "~/lib/auth/core"
 import { z } from "zod"
 import { resetPassword } from "~/lib/auth/email/password"
-import { Error } from "~/meta"
+import { Exception } from "~/meta"
 
 export const resetPasswordAction = unauthenticatedAction
     .createServerAction()
@@ -17,8 +17,8 @@ export const resetPasswordAction = unauthenticatedAction
             email: z.string().email()
         })
     )
-    .experimental_shapeError(async ({ err: error }) => {
-        if (error instanceof Error) return error
+    .experimental_shapeError(({ err: error }) => {
+        if (error instanceof Exception) return error.serialize()
         else throw error
     })
     .handler(async ({ input }) => {

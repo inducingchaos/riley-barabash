@@ -4,26 +4,38 @@
 
 import "server-only"
 
-import { eq } from "drizzle-orm"
-import { DataError } from "~/errors"
+import { Exception } from "~/meta"
 import { type Database } from "~/server/data"
-import { accounts } from "~/server/data/schemas"
-import type { Account, AccountOptions } from "~/types/auth"
+import { accounts, type Account, type CreatableAccount, type IdentifiableAccount } from "~/server/data/schemas"
+import { buildWhereClause } from "~/utils/db/schema/build-where-clause"
 import { getAccount } from "."
 
-export async function createAccount({ using: values, in: db }: { using: AccountOptions; in: Database }): Promise<Account> {
+export async function createAccount({ using: values, in: db }: { using: CreatableAccount; in: Database }): Promise<Account> {
     return await db.transaction(async tx => {
-        const account = await getAccount({ where: { userId: values.userId, type: values.type }, from: tx })
+        const account = await getAccount({
+            where: { userId: values.userId, type: values.type } satisfies IdentifiableAccount,
+            from: tx
+        })
         if (account)
-            throw new DataError({
-                name: "RESOURCE_ALREADY_EXISTS",
-                message: `Account with type '${values.type}' already exists for user ${values.userId}.`
+            throw new Exception({
+                in: "data",
+                for: "duplicate-identifier",
+                with: {
+                    internal: {
+                        label: "Failed to Create Account",
+                        message: "An account with the provided values already exists in the database."
+                    }
+                },
+                and: {
+                    existing: account,
+                    provided: values
+                }
             })
 
         await tx.insert(accounts).values(values)
 
         return (await tx.query.accounts.findFirst({
-            where: eq(accounts.userId, values.userId)
+            where: buildWhereClause({ with: values, using: accounts })
         }))!
     })
 }

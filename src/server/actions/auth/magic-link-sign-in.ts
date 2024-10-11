@@ -3,7 +3,7 @@
 import { unauthenticatedAction } from "~/lib/auth/core"
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { Error } from "~/meta"
+import { Exception } from "~/meta"
 import { sendMagicLink } from "~/lib/auth/email/magic-link"
 
 export const signInWithMagicLinkAction = unauthenticatedAction
@@ -13,8 +13,9 @@ export const signInWithMagicLinkAction = unauthenticatedAction
             email: z.string().email()
         })
     )
-    .experimental_shapeError(async error => {
-        if (error instanceof Error) return error
+    .experimental_shapeError(({ err: error }) => {
+        if (error instanceof Exception) return error.serialize()
+        else throw error
     })
     .handler(async ({ input }) => {
         // Rate limit here

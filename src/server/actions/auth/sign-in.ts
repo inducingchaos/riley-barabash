@@ -9,7 +9,7 @@ import { unauthenticatedAction } from "~/lib/auth/core"
 import { setSession } from "~/lib/auth/core"
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { Error } from "~/meta"
+import { Exception } from "~/meta"
 import { signInWithPassword } from "~/lib/auth/email"
 
 export const signInAction = unauthenticatedAction
@@ -20,10 +20,9 @@ export const signInAction = unauthenticatedAction
             password: z.string().min(8)
         })
     )
-    .experimental_shapeError(error => {
-        if (error instanceof Error) {
-            return error
-        }
+    .experimental_shapeError(({ err: error }) => {
+        if (error instanceof Exception) return error.serialize()
+        else throw error
     })
     .handler(async ({ input }) => {
         // TODO [P1]: Add rate-limiting.

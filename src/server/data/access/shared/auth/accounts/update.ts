@@ -2,11 +2,10 @@
  *
  */
 
-import { eq } from "drizzle-orm"
-import { DataError } from "~/errors"
+import { Exception } from "~/meta"
 import { type Database } from "~/server/data"
-import { accounts } from "~/server/data/schemas"
-import type { Account, AccountOptions } from "~/types/auth"
+import { accounts, type Account, type QueryableAccount, type UpdatableAccount } from "~/server/data/schemas"
+import { buildWhereClause } from "~/utils/db/schema/build-where-clause"
 import { getAccount } from "."
 
 export async function updateAccount({
@@ -14,22 +13,32 @@ export async function updateAccount({
     using: values,
     in: db
 }: {
-    where: Partial<Account>
-    using: Partial<AccountOptions>
+    where: QueryableAccount
+    using: UpdatableAccount
     in: Database
 }): Promise<Account> {
     return await db.transaction(async tx => {
         const account = await getAccount({ where: query, from: tx })
         if (!account)
-            throw new DataError({
-                name: "RESOURCE_NOT_FOUND",
-                message: "The account could not be found.",
-                cause: {
-                    query
+            throw new Exception({
+                in: "data",
+                for: "resource-not-found",
+                with: {
+                    internal: {
+                        label: "Failed to Update Account",
+                        message: "The query for the account to update did not return any results."
+                    }
+                },
+                and: {
+                    query,
+                    values
                 }
             })
 
-        await tx.update(accounts).set(values).where(eq(accounts.id, account.id))
-        return (await tx.query.accounts.findFirst({ where: eq(accounts.id, account.id) }))!
+        await tx
+            .update(accounts)
+            .set(values)
+            .where(buildWhereClause({ with: query, using: accounts }))
+        return (await tx.query.accounts.findFirst({ where: buildWhereClause({ with: values, using: accounts }) }))!
     })
 }

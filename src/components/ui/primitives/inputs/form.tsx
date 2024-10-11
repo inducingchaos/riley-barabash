@@ -24,14 +24,15 @@ import {
     type FieldValues
 } from "react-hook-form"
 import { Label } from "~/components/ui/primitives/display"
+import { Exception } from "~/meta"
 import { cn } from "~/utils/ui"
 
 const Form = FormProvider
 
-interface FormFieldContextValue<
+type FormFieldContextValue<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
-> {
+> = {
     name: TName
 }
 
@@ -58,7 +59,16 @@ const useFormField = () => {
     const fieldState = getFieldState(fieldContext.name, formState)
 
     if (!fieldContext) {
-        throw new Error("useFormField should be used within <FormField>")
+        throw new Exception({
+            in: "framework",
+            for: "hook-outside-provider",
+            with: {
+                internal: {
+                    label: "Invalid Form Field Hook Usage",
+                    message: "`useFormField` must be used within a `FormField` component."
+                }
+            }
+        })
     }
 
     const { id } = itemContext
@@ -73,7 +83,7 @@ const useFormField = () => {
     }
 }
 
-interface FormItemContextValue {
+type FormItemContextValue = {
     id: string
 }
 

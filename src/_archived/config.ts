@@ -40,7 +40,7 @@
 //         const currentVariant: Variant | undefined = variants.find(variant => variant.id === currentVariantId)
 
 //         if (!currentVariant) {
-//             throw new Error(`Current config variant "${currentVariantId}" not found.`)
+//             throw new Exception(`Current config variant "${currentVariantId}" not found.`)
 //         }
 
 //         //  Find the default variant, and throw an error if it does not exist.
@@ -48,7 +48,7 @@
 //         const defaultVariant: Variant | undefined = variants.find(variant => variant.id === defaultVariantId)
 
 //         if (!defaultVariant) {
-//             throw new Error(`Default config variant "${defaultVariantId}" not found.`)
+//             throw new Exception(`Default config variant "${defaultVariantId}" not found.`)
 //         }
 
 //         //  Process each variant.

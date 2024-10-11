@@ -1,10 +1,10 @@
 "use server"
 
-import { setSession, unauthenticatedAction } from "~/lib/auth/core"
 import { redirect } from "next/navigation"
 import { z } from "zod"
+import { setSession, unauthenticatedAction } from "~/lib/auth/core"
 import { signUp } from "~/lib/auth/email/password"
-import { serializeError, Error } from "~/meta"
+import { Exception } from "~/meta"
 
 export const signUpAction = unauthenticatedAction
     .createServerAction()
@@ -15,8 +15,8 @@ export const signUpAction = unauthenticatedAction
             password: z.string().min(8)
         })
     )
-    .experimental_shapeError(async ({ err: error }) => {
-        if (error instanceof Error) return serializeError(error)
+    .experimental_shapeError(({ err: error }) => {
+        if (error instanceof Exception) return error.serialize()
         else throw error
     })
     .handler(async ({ input }) => {

@@ -3,7 +3,7 @@
  */
 
 import { AUTH_TOKEN_TTL } from "~/constants/temp"
-import { DataError } from "~/errors"
+import { Exception } from "~/meta"
 import { type Database } from "~/server/data"
 import { tokens } from "~/server/data/schemas/shared/auth/tokens"
 import type { Token, TokenOptions } from "~/types/auth"
@@ -21,12 +21,18 @@ export async function createToken({
     return await db.transaction(async tx => {
         const token = await getToken({ where: values, from: tx })
         if (token)
-            throw new DataError({
-                name: "RESOURCE_ALREADY_EXISTS",
-                message: "A token with the provided values already exists.",
-                cause: {
-                    provided: values,
-                    existing: token
+            throw new Exception({
+                in: "data",
+                for: "duplicate-identifier",
+                with: {
+                    internal: {
+                        label: "Failed to Create Token",
+                        message: "A token with the provided values already exists in the database."
+                    }
+                },
+                and: {
+                    existing: token,
+                    provided: values
                 }
             })
 

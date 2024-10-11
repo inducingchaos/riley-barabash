@@ -4,25 +4,43 @@
 
 import "server-only"
 
-import { eq } from "drizzle-orm"
+import { Exception } from "~/meta"
 import { type Database } from "~/server/data"
-import { users } from "~/server/data/schemas"
-import type { User, UserID } from "~/types/auth"
+import { users, type User, type UserOptions, type UsersProhibitedColumn } from "~/server/data/schemas"
+import { buildWhereClause } from "~/utils/db/schema/build-where-clause"
+import { getUser } from "."
 
 export async function updateUser({
-    with: id,
+    where: query,
     using: values,
     in: db
 }: {
-    with: UserID
-    using: Omit<Partial<User>, "id" | "createdAt" | "updatedAt">
+    where: Partial<User>
+    using: Omit<UserOptions, UsersProhibitedColumn>
     in: Database
 }): Promise<User> {
     return await db.transaction(async tx => {
-        if (!(await tx.query.users.findFirst({ where: eq(users.id, id) }))) throw new Error("User doesn't exist")
+        const user = await getUser({ where: query, from: tx })
+        if (!user)
+            throw new Exception({
+                in: "data",
+                for: "resource-not-found",
+                with: {
+                    internal: {
+                        label: "Failed to Update User",
+                        message: "The query for the user to update did not return any results."
+                    }
+                },
+                and: {
+                    query
+                }
+            })
 
-        await tx.update(users).set(values).where(eq(users.id, id))
+        await tx
+            .update(users)
+            .set(values)
+            .where(buildWhereClause({ with: query, using: users }))
 
-        return (await tx.query.users.findFirst({ where: eq(users.id, id) }))!
+        return (await tx.query.users.findFirst({ where: buildWhereClause({ with: values, using: users }) }))!
     })
 }

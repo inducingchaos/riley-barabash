@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og"
+import { Exception } from "~/meta"
 
 // Image metadata
 export const size = {
@@ -18,7 +19,17 @@ export default async function Icon() {
     const font1 = await fetch(new URL("https://rileybarabash.com/fonts/px-grotesk-bold.otf"))
 
     if (!font1.ok) {
-        throw new Error("Failed to fetch the font file")
+        throw new Exception({
+            in: "network",
+            for: Exception.idFromNetworkStatusCode({ using: font1.status }),
+            with: {
+                internal: {
+                    label: "Failed to Load Icon Font",
+                    message: "Couldn't fetch the font for the Value-Only page icon."
+                }
+            },
+            and: { request: font1 }
+        })
     }
 
     const fontData1 = await font1.arrayBuffer()

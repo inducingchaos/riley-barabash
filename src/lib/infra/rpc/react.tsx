@@ -11,6 +11,7 @@ import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server"
 import { useState } from "react"
 import SuperJSON from "superjson"
 import { application } from "~/config"
+import { Exception } from "~/meta"
 import { type AppRouter } from "~/server/api/routers"
 import { onServer } from "~/utils/conditions"
 import { createQueryClient } from "./helpers/query-client"
@@ -53,7 +54,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }): JSX.Ele
             links: [
                 loggerLink({
                     enabled: op =>
-                        application.environment === "development" || (op.direction === "down" && op.result instanceof Error)
+                        application.environment === "development" || (op.direction === "down" && op.result instanceof Exception)
                 }),
 
                 unstable_httpBatchStreamLink({

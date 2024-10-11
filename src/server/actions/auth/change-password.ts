@@ -8,7 +8,7 @@
 import { z } from "zod"
 import { unauthenticatedAction } from "~/lib/auth/core"
 import { changePassword } from "~/lib/auth/email/password"
-import { Error, serializeError } from "~/meta"
+import { Exception } from "~/meta"
 
 export const changePasswordAction = unauthenticatedAction
     .createServerAction()
@@ -19,7 +19,7 @@ export const changePasswordAction = unauthenticatedAction
         })
     )
     .experimental_shapeError(({ err: error }) => {
-        if (error instanceof Error) return serializeError(error)
+        if (error instanceof Exception) return error.serialize()
         else throw error
     })
     .handler(async ({ input: { token, password } }) => {
