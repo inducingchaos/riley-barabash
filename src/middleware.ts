@@ -6,6 +6,10 @@ import { type NextRequest, NextResponse } from "next/server"
 import { redirectUrls, rewriteDomainsToPath } from "~/lib/infra/middleware/helpers"
 import { validateRequest } from "~/lib/auth/core"
 
+export const config = {
+    unstable_allowDynamic: ["**/node_modules/lodash*/**/*.js"]
+}
+
 export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
     /* Routing. */
 
