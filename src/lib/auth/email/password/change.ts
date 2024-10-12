@@ -3,12 +3,11 @@
  */
 
 import { deleteSessions } from "~/server/data/access/shared/auth/sessions/delete"
-
-import { AuthError } from "~/errors"
 import { db } from "~/server/data"
 import { deleteToken, getAccount, getToken, updateAccount } from "~/server/data/access/shared/auth"
-import type { Account } from "~/types/auth"
 import { encodePassword } from "~/utils/auth"
+import type { Account } from "~/server/data/schemas"
+import { Exception } from "~/meta"
 
 export async function changePassword({
     using: { token: tokenValue, password }
@@ -17,13 +16,22 @@ export async function changePassword({
 }): Promise<Account> {
     const token = await getToken({ where: { value: tokenValue }, from: db })
     if (!token)
-        throw new AuthError({
-            name: "INVALID_CREDENTIALS",
-            message: `Token with value '${tokenValue}' not found.`
+        throw new Exception({
+            in: "auth",
+            of: "invalid-credentials",
+            with: {
+                internal: {
+                    label: "Cannot Change Password",
+                    message: "The provided token is invalid."
+                }
+            },
+            and: {
+                token: tokenValue
+            }
         })
 
     return await db.transaction(async tx => {
-        await deleteToken({ where: { id: token.id }, in: tx })
+        await deleteToken({ where: { id: token.id }, from: tx })
 
         const securePassword = await encodePassword({ using: { password } })
 

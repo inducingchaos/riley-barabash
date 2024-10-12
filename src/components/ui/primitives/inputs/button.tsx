@@ -40,12 +40,13 @@ export type ButtonVariant = VariantProps<typeof buttonVariants>["variant"]
 export type ButtonSize = VariantProps<typeof buttonVariants>["size"]
 export type ButtonVariants = VariantProps<typeof buttonVariants>
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+export type ButtonProps = {
     /**
      * Renders the button as a 'Slot' component from Radix UI. This applies the styles and props of the button to its children without having to wrap them in a button element (e.g., for when you want to use `Link` for server-side navigation).
      */
     asChild?: boolean
-}
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+    VariantProps<typeof buttonVariants>
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant, size, asChild = false, ...props }, ref) => {

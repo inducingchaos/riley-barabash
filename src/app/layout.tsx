@@ -15,17 +15,17 @@ import { TRPCReactProvider } from "~/lib/infra/rpc/react"
 import "~/styles/globals.css"
 
 const pxGrotesk = localFont({
-    src: "../../public/fonts/px-grotesk-regular.otf",
+    src: "../../public/shared/fonts/px-grotesk-regular.otf",
     variable: "--font-px-grotesk"
 })
 
 const pxGroteskMono = localFont({
-    src: "../../public/fonts/px-grotesk-mono-regular.otf",
+    src: "../../public/shared/fonts/px-grotesk-mono-regular.otf",
     variable: "--font-px-grotesk-mono"
 })
 
 const pxGroteskScreen = localFont({
-    src: "../../public/fonts/px-grotesk-screen.otf",
+    src: "../../public/shared/fonts/px-grotesk-screen.otf",
     variable: "--font-px-grotesk-screen"
 })
 
@@ -37,7 +37,7 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: `${project.info.name} | ${project.info.tagline}`,
     description: project.info.description,
-    icons: [{ rel: "icon", url: "entities/riley-barabash/brand/pfp.jpg" }],
+    icons: [{ rel: "icon", url: "/riley-barabash/brand/pfp.jpg" }],
     keywords: ""
 }
 

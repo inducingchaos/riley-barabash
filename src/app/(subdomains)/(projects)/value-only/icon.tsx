@@ -21,7 +21,7 @@ export default async function Icon() {
     if (!font1.ok) {
         throw new Exception({
             in: "network",
-            for: Exception.idFromNetworkStatusCode({ using: font1.status }),
+            of: Exception.idFromNetworkStatusCode({ using: font1.status }),
             with: {
                 internal: {
                     label: "Failed to Load Icon Font",

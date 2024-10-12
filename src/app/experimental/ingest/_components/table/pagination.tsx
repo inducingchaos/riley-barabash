@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon, DoubleArrowRigh
 import { type Table } from "@tanstack/react-table"
 import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/primitives/inputs"
 
-interface DataTablePaginationProps<TData> {
+type DataTablePaginationProps<TData> = {
     table: Table<TData>
 }
 

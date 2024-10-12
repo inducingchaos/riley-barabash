@@ -4,9 +4,11 @@
 
 import { relations } from "drizzle-orm"
 import { int, timestamp, varchar, unique } from "drizzle-orm/mysql-core"
-import { tokenTypes } from "~/types/auth"
 import { users } from "."
 import { createSharedMysqlTable } from "../helpers"
+import type { CreateSchemaTypes } from "~/utils/db/schema/types"
+
+export const tokenTypes = ["password-reset", "email-verification", "magic-link"] as const
 
 export const tokens = createSharedMysqlTable(
     "tokens",
@@ -26,4 +28,25 @@ export const tokensRelations = relations(tokens, ({ one }) => ({
     user: one(users, { fields: [tokens.userId], references: [users.id] })
 }))
 
+export const uniqueTokenColumns = ["userId", "type"] as const
+export const prohibitedTokenColumns = ["id"] as const
+export const restrictedTokenColumns = ["id", "userId", "type"] as const
+
 export const tokensDependencies = ["users"] as const
+
+export type TokenSchemaTypes = CreateSchemaTypes<
+    typeof tokens,
+    typeof uniqueTokenColumns,
+    typeof prohibitedTokenColumns,
+    typeof restrictedTokenColumns
+>
+
+export type Token = TokenSchemaTypes["Readable"]
+export type TokenType = Token["type"]
+
+export type QueryableToken = TokenSchemaTypes["Queryable"]
+export type IdentifiableToken = TokenSchemaTypes["Identifiable"]
+
+export type WritableToken = TokenSchemaTypes["Writable"]
+export type CreatableToken = TokenSchemaTypes["Creatable"]
+export type UpdatableToken = TokenSchemaTypes["Updatable"]

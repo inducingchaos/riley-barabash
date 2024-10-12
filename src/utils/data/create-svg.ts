@@ -8,14 +8,14 @@ import { useTheme } from "next-themes"
 export type SVGAspectRatio = "none" | "xMidYMid meet"
 export type SVGTheme = "light" | "dark" | "auto"
 
-export interface SVGProps extends React.HTMLAttributes<SVGElement> {
+export type SVGProps = {
     width?: number
     height?: number
     preserveAspectRatio?: SVGAspectRatio
     theme?: SVGTheme
     squareBounds?: boolean
     viewBox?: string
-}
+} & React.HTMLAttributes<SVGElement>
 
 export type SVG = (props: SVGProps) => JSX.Element
 

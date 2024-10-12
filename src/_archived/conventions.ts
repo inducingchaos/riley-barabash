@@ -43,7 +43,7 @@
  *
  * }
  */
-interface ExampleParams {
+type ExampleParams = {
     /**
      * The description of the parameter.
      */

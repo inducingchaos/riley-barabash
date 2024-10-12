@@ -10,12 +10,12 @@
  */
 
 import merge from "lodash/merge"
-import { ConfigError } from "~/errors"
 import type { Environment } from "~/types"
 import development from "./development"
 import preview from "./preview"
 import production from "./production"
 import shared from "./shared"
+import { Exception } from "~/meta"
 
 const parsedConfig = {
     shared: shared.schema.parse(shared.config),
@@ -41,9 +41,15 @@ const mergedConfig = {
 }
 
 if (!process.env.NEXT_PUBLIC_ENVIRONMENT)
-    throw new ConfigError({
-        name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
-        message: "You forgot to configure the `ENVIRONMENT` environment variable."
+    throw new Exception({
+        in: "config",
+        of: "missing-environment-variable",
+        with: {
+            internal: {
+                label: "Missing Environment Variable",
+                message: "You forgot to configure the `NEXT_PUBLIC_ENVIRONMENT` environment variable."
+            }
+        }
     })
 
 const environment = process.env.NEXT_PUBLIC_ENVIRONMENT as Environment

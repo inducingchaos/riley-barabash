@@ -1,23 +1,32 @@
 import { application, project } from "~/config"
-import { AuthError } from "~/errors"
 import { resend } from "~/lib/providers/comms"
+import { Exception } from "~/meta"
 import { db } from "~/server/data"
 import { createAccount, createProfile, createToken, createUser, getUser } from "~/server/data/access/shared/auth"
-import type { User } from "~/types/auth"
+import type { User } from "~/server/data/schemas"
 import { encodePassword } from "~/utils/auth"
 import { createSenderIdentity } from "~/utils/comms/email"
 import { dependantOperations } from "~/utils/db/integrity"
 
 export async function signUp({ using: values }: { using: { name: string; email: string; password: string } }): Promise<User> {
     return await db.transaction(async tx => {
-        let user = await getUser({ where: { email: values.email }, from: db })
+        let user = await getUser({ where: { email: values.email }, from: tx })
         if (user)
-            throw new AuthError({
-                name: "EMAIL_IN_USE",
-                message: `The email '${values.email}' is already in use.`,
-                cause: {
-                    provided: values,
-                    existing: user
+            throw new Exception({
+                in: "auth",
+                of: "invalid-credentials",
+                with: {
+                    internal: {
+                        label: "Cannot Sign Up",
+                        message: "An user with the provided email already exists."
+                    },
+                    external: {
+                        label: "Email Already In Use",
+                        message: "An account for the provided email already exists."
+                    }
+                },
+                and: {
+                    email: values.email
                 }
             })
 
@@ -36,7 +45,14 @@ export async function signUp({ using: values }: { using: { name: string; email: 
                 }),
                 profiles: await createProfile({ using: { userId: user.id }, in: tx }),
                 sessions: null,
-                tokens: await createToken({ using: { userId: user.id, type: "email-verification" }, in: tx })
+                tokens: await createToken({
+                    using: {
+                        userId: user.id,
+                        type: "email-verification",
+                        expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24)
+                    },
+                    in: tx
+                })
             }
         })
 

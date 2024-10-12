@@ -2,11 +2,11 @@
  *
  */
 
-import { ConfigError } from "~/errors"
 import type { Project as ProjectType } from "~/types"
 import kyzn from "./kyzn"
 import rileyBarabash from "./riley-barabash"
 import valueOnly from "./value-only"
+import { Exception } from "~/meta"
 
 const parsedConfig = {
     kyzn: kyzn.schema.parse(kyzn.config),
@@ -21,9 +21,15 @@ const transformedConfig = {
 }
 
 if (!process.env.NEXT_PUBLIC_PROJECT)
-    throw new ConfigError({
-        name: "ENVIRONMENT_VARIABLE_NOT_FOUND",
-        message: "You forgot to configure the `PROJECT` environment variable."
+    throw new Exception({
+        in: "config",
+        of: "missing-environment-variable",
+        with: {
+            internal: {
+                label: "Missing Project Environment Variable",
+                message: "You forgot to configure the `NEXT_PUBLIC_PROJECT` environment variable."
+            }
+        }
     })
 
 const currentProject = process.env.NEXT_PUBLIC_PROJECT as ProjectType

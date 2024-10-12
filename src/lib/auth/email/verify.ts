@@ -1,17 +1,33 @@
 /**
- * 
+ *
  */
 
-export async function verifyEmail({ using: { token } }: { using: { token: string } }) {
-    const tokenEntry = await getVerifyEmailToken(token)
+import { Exception } from "~/meta"
+import { db } from "~/server/data"
+import { deleteToken, getToken, updateAccount } from "~/server/data/access/shared/auth"
 
-    if (!tokenEntry) {
-        throw new AuthenticationError()
-    }
+export async function verifyEmail({ using: { token: tokenValue } }: { using: { token: string } }) {
+    return await db.transaction(async tx => {
+        const token = await getToken({ where: { value: tokenValue, type: "email-verification" }, from: tx })
 
-    const userId = tokenEntry.userId
+        if (!token)
+            throw new Exception({
+                in: "auth",
+                of: "invalid-credentials",
+                with: {
+                    internal: {
+                        label: "Cannot Verify Email",
+                        message: "The provided token does not exist."
+                    },
+                    external: {
+                        label: "Unable to Verify Email",
+                        message: "The token you provided is invalid."
+                    }
+                }
+            })
 
-    await updateUser(userId, { emailVerified: new Date() })
-    await deleteVerifyEmailToken(token)
-    return userId
+        await updateAccount({ where: { userId: token.userId, type: "email" }, using: { verifiedAt: new Date() }, in: tx })
+        await deleteToken({ where: { value: tokenValue, type: "email-verification" }, from: tx })
+        return token.userId
+    })
 }

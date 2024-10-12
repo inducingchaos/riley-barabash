@@ -18,7 +18,7 @@ export async function sendEmail(email: string, subject: string, body: ReactNode)
     if (error) {
         throw new Exception({
             in: "comms",
-            for: "email-send-failed",
+            of: "send-failed",
             with: {
                 internal: {
                     label: "Failed to Send Email",

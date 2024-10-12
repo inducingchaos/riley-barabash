@@ -61,7 +61,7 @@ const useFormField = () => {
     if (!fieldContext) {
         throw new Exception({
             in: "framework",
-            for: "hook-outside-provider",
+            of: "hook-outside-provider",
             with: {
                 internal: {
                     label: "Invalid Form Field Hook Usage",

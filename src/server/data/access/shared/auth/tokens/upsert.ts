@@ -5,10 +5,8 @@
 import { eq } from "drizzle-orm"
 import { AUTH_TOKEN_TTL } from "~/constants/temp"
 import { type Database } from "~/server/data"
-import { tokens } from "~/server/data/schemas/shared"
-import type { Token, TokenOptions } from "~/types/auth"
+import { tokens, type CreatableToken, type QueryableToken, type Token } from "~/server/data/schemas"
 import { generateRandomToken } from "~/utils/auth"
-import type { MakeOptional } from "~/utils/types"
 import { createToken, getToken } from "."
 
 export async function upsertToken({
@@ -16,8 +14,8 @@ export async function upsertToken({
     using: values,
     in: db
 }: {
-    where: Partial<Token>
-    using: MakeOptional<Omit<TokenOptions, "id">, "expiresAt">
+    where: QueryableToken
+    using: CreatableToken
     in: Database
 }): Promise<Token> {
     values.value ??= await generateRandomToken()

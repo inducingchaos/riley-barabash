@@ -4,7 +4,8 @@
 
 import { createAccount, createProfile, upsertUser } from "~/server/data/access/shared/auth"
 import { db } from "~/server/data"
-import type { GoogleUser, User } from "~/types/auth"
+import type { GoogleUser } from "~/types/auth"
+import type { User } from "~/server/data/schemas"
 
 export async function signInWithGoogle({ using: googleUser }: { using: GoogleUser }): Promise<User> {
     const user = await upsertUser({

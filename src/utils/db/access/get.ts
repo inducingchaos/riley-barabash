@@ -4,8 +4,7 @@
 
 import "server-only"
 
-import { and, eq } from "drizzle-orm"
-import type { MySqlColumn, MySqlTable } from "drizzle-orm/mysql-core"
+import type { MySqlTable } from "drizzle-orm/mysql-core"
 import { type Database } from "~/server/data"
 import { buildWhereClause } from "../schema/build-where-clause"
 
@@ -30,7 +29,7 @@ export function initializeGetDataFunction<
         const result = await db
             .select()
             .from(schema)
-            .where(buildWhereClause({ with: query, using: schema }))
+            .where(buildWhereClause({ using: query, for: schema }))
 
         return (selectMany ? result : result[0]) as SelectMany extends true ? Data[] : Data | undefined
     }

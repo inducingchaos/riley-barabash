@@ -1,4 +1,9 @@
-import { verifyEmailUseCase } from "~/buse-cases/users"
+/**
+ *
+ */
+
+import { application } from "~/config"
+import { verifyEmail } from "~/lib/auth/email/verify"
 
 export const dynamic = "force-dynamic"
 
@@ -16,12 +21,12 @@ export async function GET(request: Request): Promise<Response> {
             })
         }
 
-        await verifyEmailUseCase(token)
+        await verifyEmail({ using: { token } })
 
         return new Response(null, {
             status: 302,
             headers: {
-                Location: "/verify-success"
+                Location: `${application.routing.paths.callbacks.auth.verification.email}?success=true`
             }
         })
     } catch (err) {

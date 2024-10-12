@@ -25,7 +25,7 @@ export default async function Landing(): Promise<JSX.Element> {
                         <div className="flex flex-col items-center justify-center gap-6">
                             <div className="relative h-24 w-24">
                                 <Image
-                                    src="/entities/riley-barabash/brand/pfp.jpg"
+                                    src="/riley-barabash/brand/pfp.jpg"
                                     alt="Profile Picture"
                                     fill
                                     className="rounded-xl object-cover"

@@ -47,7 +47,10 @@ export const schema = z.object({
             callbacks: z.object({
                 auth: z.object({
                     signIn: z.string(),
-                    signOut: z.string()
+                    signOut: z.string(),
+                    verification: z.object({
+                        email: z.string()
+                    })
                 })
             })
         })

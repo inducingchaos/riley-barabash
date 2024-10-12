@@ -10,7 +10,9 @@ import type { CreateSchemaTypes } from "~/utils/db/schema/types"
 
 export const users = createSharedMysqlTable("users", {
     id: int("id").autoincrement().primaryKey(),
-    name: varchar("name", { length: 255 }).notNull(),
+    name: varchar("name", { length: 255 }),
+
+    //  Move email to accounts.
     email: varchar("email", { length: 255 }).unique().notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow()
@@ -28,8 +30,6 @@ export const usersDependencies = [] as const
 export const uniqueUserColumns = ["id", "email"] as const
 export const prohibitedUserColumns = ["id", "createdAt", "updatedAt"] as const
 export const restrictedUserColumns = ["id", "createdAt", "updatedAt"] as const
-
-export const accountsDependencies = ["users"] as const
 
 export type UserSchemaTypes = CreateSchemaTypes<
     typeof users,

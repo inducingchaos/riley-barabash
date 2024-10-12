@@ -26,6 +26,7 @@ import { H3, Muted } from "~/components/ui/primitives/typography"
 import { application } from "~/config"
 import { useToast } from "~/hooks/ui"
 import { signUpAction } from "~/server/actions/auth"
+import { Exception } from "~/meta"
 
 const formSchema = z
     .object({
@@ -55,10 +56,11 @@ export default function SignUp(): JSX.Element {
 
     const { execute: signUp, isPending } = useServerAction(signUpAction, {
         onError({ err: error }) {
+            const exception = new Exception(error)
+
             toast({
-                //  Fix.
-                title: "Couldn't create account.",
-                description: "The email provided is already in use.",
+                title: exception.applyDefaults().info?.external?.label,
+                description: exception.applyDefaults().info?.external?.message,
                 variant: "destructive"
             })
         },

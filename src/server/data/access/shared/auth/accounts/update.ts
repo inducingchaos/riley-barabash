@@ -22,7 +22,7 @@ export async function updateAccount({
         if (!account)
             throw new Exception({
                 in: "data",
-                for: "resource-not-found",
+                of: "resource-not-found",
                 with: {
                     internal: {
                         label: "Failed to Update Account",
@@ -38,7 +38,7 @@ export async function updateAccount({
         await tx
             .update(accounts)
             .set(values)
-            .where(buildWhereClause({ with: query, using: accounts }))
-        return (await tx.query.accounts.findFirst({ where: buildWhereClause({ with: values, using: accounts }) }))!
+            .where(buildWhereClause({ using: query, for: accounts }))
+        return (await tx.query.accounts.findFirst({ where: buildWhereClause({ using: values, for: accounts }) }))!
     })
 }

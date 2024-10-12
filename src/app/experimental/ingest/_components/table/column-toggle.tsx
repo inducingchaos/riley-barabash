@@ -16,7 +16,7 @@ import {
     DropdownMenuSeparator
 } from "~/components/ui/primitives/inputs"
 
-interface DataTableViewOptionsProps<TData> {
+type DataTableViewOptionsProps<TData> = {
     table: Table<TData>
 }
 

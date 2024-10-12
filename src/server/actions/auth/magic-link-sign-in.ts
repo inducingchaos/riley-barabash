@@ -19,7 +19,7 @@ export const signInWithMagicLinkAction = unauthenticatedAction
     })
     .handler(async ({ input }) => {
         // Rate limit here
-        await sendMagicLink({ using: { email: input.email } })
+        await sendMagicLink({ to: { email: input.email } })
 
         redirect("/sign-in/verification")
     })

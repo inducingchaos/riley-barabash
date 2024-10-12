@@ -10,15 +10,15 @@ export type ExceptionDomain = keyof ExceptionID
 
 export type ExceptionOptions<Domain extends ExceptionDomain, ID extends ExceptionID[Domain], Metadata extends object> = {
     in: Domain
-    for: ID
-    with: {
-        internal?: {
-            label?: string
-            message?: string
+    of: ID
+    with?: {
+        internal: {
+            label: string
+            message: string
         }
         external?: {
-            label?: string
-            message?: string
+            label: string
+            message: string
         }
     }
     and?: Metadata
@@ -27,14 +27,14 @@ export type ExceptionOptions<Domain extends ExceptionDomain, ID extends Exceptio
 export type SerializedException = {
     domain: string
     id: string
-    info: {
-        internal?: {
-            label?: string
-            message?: string
+    info?: {
+        internal: {
+            label: string
+            message: string
         }
         external?: {
-            label?: string
-            message?: string
+            label: string
+            message: string
         }
     }
     metadata: object
@@ -47,18 +47,34 @@ export class Exception<
 > {
     domain: string
     id: string
-    info: {
-        internal?: {
-            label?: string
-            message?: string
+    info?: {
+        internal: {
+            label: string
+            message: string
         }
         external?: {
-            label?: string
-            message?: string
+            label: string
+            message: string
         }
     }
     metadata?: object
+
     trace?: string
+
+    static default: Exception = new Exception({
+        in: "application",
+        of: "unknown",
+        with: {
+            internal: {
+                label: "Internal Error",
+                message: "An internal error occurred."
+            },
+            external: {
+                label: "Something Went Wrong",
+                message: "Please try again later or contact support."
+            }
+        }
+    })
 
     constructor(options: ExceptionOptions<Domain, ID, Metadata> | SerializedException) {
         if (Exception.isSerializedException(options)) {
@@ -67,7 +83,7 @@ export class Exception<
             this.info = options.info
             this.metadata = options.metadata
         } else {
-            const { in: domain, for: id, with: info, and: metadata } = options
+            const { in: domain, of: id, with: info, and: metadata } = options
 
             this.domain = domain
             this.id = id
@@ -76,6 +92,13 @@ export class Exception<
         }
 
         this.trace = new Error().stack
+    }
+
+    applyDefaults(): this {
+        if (!this.info) this.info = Exception.default.info
+        if (this.info && !this.info.external) this.info.external = Exception.default.info?.external
+
+        return this
     }
 
     serialize(): SerializedException {
@@ -119,8 +142,8 @@ export class Exception<
         return NextResponse.json(
             {
                 error: `${status}_${exception.id.toUpperCase().replace("-", "_")}`,
-                message: `${exception.info.external?.label ?? exception.info.internal?.label}: ${
-                    exception.info.external?.message ?? exception.info.internal?.message
+                message: `${exception.info?.external?.label ?? exception.info?.internal.label}: ${
+                    exception.info?.external?.message ?? exception.info?.internal.message
                 }`
             },
             {

@@ -18,6 +18,7 @@ import { H3, Muted } from "~/components/ui/primitives/typography"
 import { application } from "~/config"
 import { useToast } from "~/hooks/ui"
 import { signInAction } from "~/server/actions/auth"
+import { Exception } from "~/meta"
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email address."),
@@ -30,9 +31,11 @@ export default function SignIn(): JSX.Element {
 
     const { execute: signIn, isPending } = useServerAction(signInAction, {
         onError({ err: error }) {
+            const exception = new Exception(error)
+
             toast({
-                title: "Something went wrong.",
-                description: error.message,
+                title: exception.applyDefaults().info?.external?.label,
+                description: exception.applyDefaults().info?.external?.message,
                 variant: "destructive"
             })
         },

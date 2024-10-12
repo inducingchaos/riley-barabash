@@ -2,7 +2,7 @@
  *
  */
 
-export interface CreateURLParams {
+export type CreateURLParams = {
     database: string
     host: string
     username: string

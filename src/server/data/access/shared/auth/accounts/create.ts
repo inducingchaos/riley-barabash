@@ -19,7 +19,7 @@ export async function createAccount({ using: values, in: db }: { using: Creatabl
         if (account)
             throw new Exception({
                 in: "data",
-                for: "duplicate-identifier",
+                of: "duplicate-identifier",
                 with: {
                     internal: {
                         label: "Failed to Create Account",
@@ -35,7 +35,7 @@ export async function createAccount({ using: values, in: db }: { using: Creatabl
         await tx.insert(accounts).values(values)
 
         return (await tx.query.accounts.findFirst({
-            where: buildWhereClause({ with: values, using: accounts })
+            where: buildWhereClause({ using: values, for: accounts })
         }))!
     })
 }

@@ -5,7 +5,7 @@
 
 import { and, eq } from "drizzle-orm"
 import { z } from "zod"
-import { APIError } from "~/errors"
+import { Exception } from "~/meta"
 import { createTRPCRouter, publicProcedure } from "~/server/api/init/rpc"
 import { neurons, neuronsToTags, tags } from "~/server/data/schemas/kyzn"
 
@@ -27,9 +27,9 @@ export const neuronsRouter = createTRPCRouter({
             const user = testUserObject
 
             if (!user)
-                throw new APIError({
-                    name: "UNAUTHORIZED",
-                    message: "The user is not authorized to create a neuron."
+                throw new Exception({
+                    in: "data",
+                    of: "resource-not-found"
                 })
 
             const { id: neuronId } = (
@@ -76,9 +76,9 @@ export const neuronsRouter = createTRPCRouter({
             const user = testUserObject
 
             if (!user)
-                throw new APIError({
-                    name: "UNAUTHORIZED",
-                    message: "The user is not authorized to retrieve neurons."
+                throw new Exception({
+                    in: "data",
+                    of: "resource-not-found"
                 })
 
             return await ctx.db.query.neurons.findMany({
@@ -117,9 +117,9 @@ export const neuronsRouter = createTRPCRouter({
             const user = testUserObject
 
             if (!user)
-                throw new APIError({
-                    name: "UNAUTHORIZED",
-                    message: "The user is not authorized to delete neurons."
+                throw new Exception({
+                    in: "auth",
+                    of: "unauthorized"
                 })
 
             await ctx.db.delete(neurons).where(and(eq(neurons.id, input.id), eq(neurons.userId, user.id)))

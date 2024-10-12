@@ -20,13 +20,11 @@ export const profilesRelations = relations(profiles, ({ one }) => ({
     user: one(users, { fields: [profiles.userId], references: [users.id] })
 }))
 
-export const profilesDependencies = ["users", "other"] as const
+export const profilesDependencies = ["users"] as const
 
 export const uniqueProfileColumns = ["id", "username"] as const
 export const prohibitedProfileColumns = ["id"] as const
 export const restrictedProfileColumns = ["id", "userId"] as const
-
-export const accountsDependencies = ["users"] as const
 
 export type ProfileSchemaTypes = CreateSchemaTypes<
     typeof profiles,

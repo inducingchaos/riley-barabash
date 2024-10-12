@@ -8,14 +8,14 @@ import { resend } from "~/lib/providers/comms"
 import { db } from "~/server/data"
 import { createSenderIdentity } from "~/utils/comms/email"
 
-export async function sendMagicLink({ to: recipient }: { to: { name: string; email: string } }) {
+export async function sendMagicLink({ to: recipient }: { to: { email: string } }) {
     await db.transaction(async tx => {
         let user = await getUser({ where: { email: recipient.email }, from: tx })
         if (!user) user = await createUser({ using: recipient, in: tx })
 
         const token = await upsertToken({
             where: { userId: user.id },
-            using: { type: "magic-link", userId: user.id },
+            using: { type: "magic-link", userId: user.id, expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24) },
             in: tx
         })
 

@@ -34,9 +34,11 @@ const config = {
                     termsOfService: "/terms"
                 }
             },
+
             api: {
                 infra: "/api/infra",
                 trpc: "/api/infra/rpc",
+
                 auth: {
                     oauth: {
                         apple: "/api/auth/apple",
@@ -48,7 +50,10 @@ const config = {
             callbacks: {
                 auth: {
                     signIn: "/",
-                    signOut: "/"
+                    signOut: "/",
+                    verification: {
+                        email: "/verification/email"
+                    }
                 }
             }
         }

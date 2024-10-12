@@ -7,7 +7,7 @@
 
 import { unauthenticatedAction } from "~/lib/auth/core"
 import { z } from "zod"
-import { resetPassword } from "~/lib/auth/email/password"
+import { sendRecoveryLink } from "~/lib/auth/email/password"
 import { Exception } from "~/meta"
 
 export const resetPasswordAction = unauthenticatedAction
@@ -24,5 +24,5 @@ export const resetPasswordAction = unauthenticatedAction
     .handler(async ({ input }) => {
         //  TODO [P1]: Rate-limit here.
 
-        await resetPassword({ using: { email: input.email } })
+        await sendRecoveryLink({ to: { email: input.email } })
     })

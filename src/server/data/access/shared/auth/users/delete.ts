@@ -6,8 +6,7 @@ import "server-only"
 
 import { eq } from "drizzle-orm"
 import type { Database } from "~/server/data"
-import { accounts, profiles, sessions, tokens, users } from "~/server/data/schemas"
-import type { UserID } from "~/types/auth"
+import { accounts, profiles, sessions, tokens, users, type UserID } from "~/server/data/schemas"
 import { dependantOperations } from "~/utils/db/integrity"
 
 export async function deleteUser({ for: id, from: db }: { for: UserID; from: Database }): Promise<void> {

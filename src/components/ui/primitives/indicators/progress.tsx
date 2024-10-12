@@ -10,17 +10,17 @@ import { cn } from "~/utils/ui"
 
 type ProgressOptionsBase = Omit<ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>, "value" | "children">
 
-interface StandardProgressOptions extends ProgressOptionsBase {
+type StandardProgressOptions = {
     customInternals?: false
     value: number
     children?: never
-}
+} & ProgressOptionsBase
 
-interface CustomProgressOptions extends ProgressOptionsBase {
+type CustomProgressOptions = {
     customInternals: true
     value?: never
     children: ReactNode
-}
+} & ProgressOptionsBase
 
 type ProgressOptions = StandardProgressOptions | CustomProgressOptions
 
@@ -45,9 +45,9 @@ const Progress = forwardRef<ElementRef<typeof ProgressPrimitive.Root>, ProgressO
 
 Progress.displayName = ProgressPrimitive.Root.displayName
 
-interface ProgressIndicatorOptions extends ComponentPropsWithoutRef<typeof ProgressPrimitive.Indicator> {
+type ProgressIndicatorOptions = {
     value: number
-}
+} & ComponentPropsWithoutRef<typeof ProgressPrimitive.Indicator>
 
 const ProgressIndicator = forwardRef<ElementRef<typeof ProgressPrimitive.Indicator>, ProgressIndicatorOptions>(
     ({ className, value, ...props }, ref) => (

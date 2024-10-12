@@ -13,6 +13,7 @@ import { useServerAction } from "zsa-react"
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "~/components/ui/primitives/inputs"
 import { H3, Muted } from "~/components/ui/primitives/typography"
 import { useToast } from "~/hooks/ui"
+import { Exception } from "~/meta"
 import { changePasswordAction, resetPasswordAction } from "~/server/actions/auth"
 
 const recoveryFormSchema = z.object({
@@ -39,9 +40,11 @@ export default function ResetPassword() {
         isSuccess: isRecoverySuccess
     } = useServerAction(resetPasswordAction, {
         onError({ err: error }) {
+            const exception = new Exception(error)
+
             toast({
-                title: "Something went wrong.",
-                description: error.message,
+                title: exception.applyDefaults().info?.external?.label,
+                description: exception.applyDefaults().info?.external?.message,
                 variant: "destructive"
             })
         }
@@ -111,7 +114,9 @@ export default function ResetPassword() {
                                     <Muted className="px-8">{"A recovery link has been sent to your email."}</Muted>
                                 )
                             ) : resetError ? (
-                                <Muted className="px-8">{resetError.message}</Muted>
+                                <Muted className="px-8">
+                                    {new Exception(resetError).applyDefaults().info?.external?.message}
+                                </Muted>
                             ) : !isResetSuccess ? (
                                 <Muted className="px-8">{"Enter your new password below to update your account."}</Muted>
                             ) : (

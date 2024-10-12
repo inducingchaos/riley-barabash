@@ -4,10 +4,10 @@
 
 import type { MessageInstance } from "twilio/lib/rest/api/v2010/account/message"
 import { application } from "~/config"
-import { SMSError } from "~/errors"
-import { twilio } from "~/lib/providers"
+import { twilio } from "~/lib/providers/comms"
+import { Exception } from "~/meta"
 
-export interface SendMessageParams {
+export type SendMessageParams = {
     /**
      * The message to send.
      */
@@ -60,10 +60,18 @@ export async function sendMessage({
 
         return messages
     } catch (error) {
-        throw new SMSError({
-            name: "MESSAGE_CREATION_FAILED",
-            message: `Failed to send "${content}" to '${recipients.toString()}' from '${sender}'.`,
-            cause: error
+        throw new Exception({
+            in: "comms",
+            of: "send-failed",
+            with: {
+                internal: {
+                    label: "Failed to Send SMS",
+                    message: "Something went wrong sending the SMS."
+                }
+            },
+            and: {
+                error
+            }
         })
     }
 }

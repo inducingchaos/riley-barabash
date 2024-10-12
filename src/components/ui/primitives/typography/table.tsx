@@ -4,7 +4,7 @@
 
 import { cn } from "~/utils/ui"
 
-interface TableColumns {
+type TableColumns = {
     /**
      * The title of a column.
      */
@@ -16,7 +16,7 @@ interface TableColumns {
     key: string
 }
 
-interface TableProps {
+type TableProps = {
     /**
      * The columns of the table.
      */

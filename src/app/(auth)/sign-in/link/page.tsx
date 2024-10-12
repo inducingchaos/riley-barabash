@@ -14,6 +14,7 @@ import { Spinner } from "~/components/svgs/icons"
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "~/components/ui/primitives/inputs"
 import { H3, Muted } from "~/components/ui/primitives/typography"
 import { useToast } from "~/hooks/ui"
+import { Exception } from "~/meta"
 import { signInWithMagicLinkAction } from "~/server/actions/auth"
 
 const formSchema = z.object({
@@ -37,9 +38,11 @@ export default function SignInWithLink(): JSX.Element {
         isSuccess
     } = useServerAction(signInWithMagicLinkAction, {
         onError({ err: error }) {
+            const exception = new Exception(error)
+
             toast({
-                title: "Something went wrong.",
-                description: error.message,
+                title: exception.applyDefaults().info?.external?.label,
+                description: exception.applyDefaults().info?.external?.message,
                 variant: "destructive"
             })
         }

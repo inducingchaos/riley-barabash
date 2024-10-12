@@ -14,10 +14,10 @@ import {
 } from "~/components/ui/primitives/inputs"
 import { cn } from "~/utils/ui"
 
-interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
+type DataTableColumnHeaderProps<TData, TValue> = {
     column: Column<TData, TValue>
     title: string
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
 export function DataTableColumnHeader<TData, TValue>({ column, title, className }: DataTableColumnHeaderProps<TData, TValue>) {
     if (!column.getCanSort()) {

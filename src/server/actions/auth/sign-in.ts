@@ -10,7 +10,7 @@ import { setSession } from "~/lib/auth/core"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 import { Exception } from "~/meta"
-import { signInWithPassword } from "~/lib/auth/email"
+import { signInWithPassword } from "~/lib/auth/email/password"
 
 export const signInAction = unauthenticatedAction
     .createServerAction()

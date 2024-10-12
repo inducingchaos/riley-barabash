@@ -3,7 +3,7 @@
  */
 
 import { z } from "zod"
-import { resend } from "~/lib/providers"
+import { resend } from "~/lib/providers/comms"
 import { createTRPCRouter, publicProcedure } from "~/server/api/init/rpc"
 
 export const messagesRouter = createTRPCRouter({

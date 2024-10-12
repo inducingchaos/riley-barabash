@@ -4,18 +4,30 @@
 
 import { application, project } from "~/config"
 import { getUser, upsertToken } from "~/server/data/access/shared/auth"
-import { AuthError } from "~/errors"
 import { resend } from "~/lib/providers/comms"
 import { db } from "~/server/data"
 import { createSenderIdentity } from "~/utils/comms/email"
+import { Exception } from "~/meta"
 
-export async function resetPassword({ using: { email } }: { using: { email: string } }) {
+export async function sendRecoveryLink({ to: { email } }: { to: { email: string } }) {
     const user = await getUser({ where: { email }, from: db })
-
     if (!user)
-        throw new AuthError({
-            name: "INVALID_CREDENTIALS",
-            message: `User with email '${email}' not found.`
+        throw new Exception({
+            in: "auth",
+            of: "invalid-credentials",
+            with: {
+                internal: {
+                    label: "Account Recovery Error",
+                    message: "No users associated with the provided email were found in the database."
+                },
+                external: {
+                    label: "Cannot Recover User",
+                    message: "An account for the provided email does not exist."
+                }
+            },
+            and: {
+                email
+            }
         })
 
     const token = await upsertToken({

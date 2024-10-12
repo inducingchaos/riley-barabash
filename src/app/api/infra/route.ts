@@ -4,19 +4,22 @@
  */
 
 import { NextResponse, type NextRequest } from "next/server"
-import { APIError } from "~/errors"
-import { createResponse } from "~/utils/api/errors"
+import { Exception } from "~/meta"
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
     const requestId: string | null = request.nextUrl.searchParams.get("id")
 
     if (!requestId) {
-        return createResponse(
-            new APIError({
-                name: "INVALID_REQUEST",
-                message: "Missing infrastructure request ID."
-            })
-        )
+        new Exception({
+            in: "network",
+            of: "bad-request",
+            with: {
+                internal: {
+                    label: "Missing Request ID",
+                    message: "An infra request ID was not provided."
+                }
+            }
+        })
     }
 
     switch (requestId) {
@@ -24,11 +27,20 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             return NextResponse.json({ message: "test-response" })
 
         default:
-            return createResponse(
-                new APIError({
-                    name: "INVALID_REQUEST",
-                    message: `The request ID '${requestId}' is not a valid identifier.`
+            return Exception.toNetworkResponse({
+                using: new Exception({
+                    in: "network",
+                    of: "bad-request",
+                    with: {
+                        internal: {
+                            label: "Invalid Request ID",
+                            message: "The infra request ID provided is invalid."
+                        }
+                    },
+                    and: {
+                        id: requestId
+                    }
                 })
-            )
+            })
     }
 }
