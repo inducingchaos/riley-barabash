@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { LucideLink } from "lucide-react"
 import Link from "next/link"
 import { redirect, useSearchParams } from "next/navigation"
-import { useForm } from "react-hook-form"
+import { useForm, type UseFormReturn } from "react-hook-form"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
 import { Apple, Google, Spinner } from "~/components/svgs/icons"
@@ -19,6 +19,7 @@ import { application } from "~/config"
 import { useToast } from "~/hooks/ui"
 import { signInAction } from "~/server/actions/auth"
 import { Exception } from "~/meta"
+import { Suspense } from "react"
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email address."),
@@ -80,66 +81,9 @@ export default function SignIn(): JSX.Element {
                             </Muted>
                         </div>
 
-                        <Form {...form}>
-                            <form
-                                onSubmit={form.handleSubmit(onSubmit)}
-                                className="flex flex-col items-center justify-center gap-3"
-                            >
-                                <FormField
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem className="w-full">
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Email"
-                                                    autoComplete="email"
-                                                    disabled={isPending}
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="password"
-                                    render={({ field }) => (
-                                        <FormItem className="w-full">
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Password"
-                                                    type="password"
-                                                    autoComplete="current-password"
-                                                    disabled={isPending}
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <Button className="w-full" type="submit" disabled={isPending}>
-                                    {isPending ? (
-                                        <div className="flex items-center justify-center gap-0.5">
-                                            <Spinner className="mr-2 h-4 w-4 animate-spin" />
-                                            {"Submitting..."}
-                                        </div>
-                                    ) : (
-                                        <>{"Submit"}</>
-                                    )}
-                                </Button>
-                                <Button asChild variant="link" className="w-full">
-                                    <Link href="/sign-in/link">
-                                        <LucideLink className="mr-2 h-4 w-4" />
-                                        {"Sign in with Link"}
-                                    </Link>
-                                </Button>
-                            </form>
-                        </Form>
+                        <Suspense fallback={<SignInForm form={form} isPending={isPending} disabled />}>
+                            <SignInForm form={form} onSubmit={onSubmit} isPending={isPending} />
+                        </Suspense>
 
                         <div className="flex w-full items-center justify-center">
                             <Separator />
@@ -172,5 +116,78 @@ export default function SignIn(): JSX.Element {
                 </section>
             </div>
         </main>
+    )
+}
+
+const SignInForm = ({
+    form,
+    onSubmit,
+    isPending,
+    disabled = false
+}: {
+    form: UseFormReturn<z.infer<typeof formSchema>>
+    onSubmit?: (data: z.infer<typeof formSchema>) => Promise<void>
+    isPending: boolean
+    disabled?: boolean
+}): JSX.Element => {
+    const isDisabled: boolean = isPending || disabled
+
+    return (
+        <Form {...form}>
+            <form
+                onSubmit={onSubmit && form.handleSubmit(onSubmit)}
+                className="flex flex-col items-center justify-center gap-3"
+            >
+                <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                        <FormItem className="w-full">
+                            <FormControl>
+                                <Input placeholder="Email" autoComplete="email" disabled={isDisabled} {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                        <FormItem className="w-full">
+                            <FormControl>
+                                <Input
+                                    placeholder="Password"
+                                    type="password"
+                                    autoComplete="current-password"
+                                    disabled={isDisabled}
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <Button className="w-full" type="submit" disabled={isDisabled}>
+                    {isPending ? (
+                        <div className="flex items-center justify-center gap-0.5">
+                            <Spinner className="mr-2 h-4 w-4 animate-spin" />
+                            {"Submitting..."}
+                        </div>
+                    ) : (
+                        <>{"Submit"}</>
+                    )}
+                </Button>
+
+                <Button asChild variant="link" className="w-full">
+                    <Link href="/sign-in/link">
+                        <LucideLink className="mr-2 h-4 w-4" />
+                        {"Sign in with Link"}
+                    </Link>
+                </Button>
+            </form>
+        </Form>
     )
 }

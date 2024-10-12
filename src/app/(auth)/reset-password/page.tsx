@@ -7,7 +7,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { useForm } from "react-hook-form"
+import { Suspense } from "react"
+import { useForm, type UseFormReturn } from "react-hook-form"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "~/components/ui/primitives/inputs"
@@ -156,51 +157,18 @@ export default function ResetPassword() {
                         )}
 
                         {token && !isResetSuccess && !resetError && (
-                            <Form {...resetForm}>
-                                <form onSubmit={resetForm.handleSubmit(onResetSubmit)} className="flex w-96 flex-col gap-3">
-                                    <FormField
-                                        control={resetForm.control}
-                                        name="password"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="New Password"
-                                                        type="password"
-                                                        autoComplete="password"
-                                                        disabled={isResetPending}
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
+                            <Suspense
+                                fallback={
+                                    <ResetPasswordForm
+                                        form={resetForm}
+                                        onSubmit={onResetSubmit}
+                                        isPending={isResetPending}
+                                        disabled
                                     />
-
-                                    <FormField
-                                        control={resetForm.control}
-                                        name="passwordConfirmation"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="Confirm Password"
-                                                        type="password"
-                                                        autoComplete="password"
-                                                        disabled={isResetPending}
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <Button disabled={isResetPending} className="w-full" type="submit">
-                                        {"Update Password"}
-                                    </Button>
-                                </form>
-                            </Form>
+                                }
+                            >
+                                <ResetPasswordForm form={resetForm} onSubmit={onResetSubmit} isPending={isResetPending} />
+                            </Suspense>
                         )}
 
                         <Button variant="link" asChild>
@@ -212,5 +180,67 @@ export default function ResetPassword() {
                 </section>
             </div>
         </main>
+    )
+}
+
+const ResetPasswordForm = ({
+    form,
+    onSubmit,
+    isPending,
+    disabled = false
+}: {
+    form: UseFormReturn<z.infer<typeof resetFormSchema>>
+    onSubmit: (data: z.infer<typeof resetFormSchema>) => Promise<void>
+    isPending: boolean
+    disabled?: boolean
+}): JSX.Element => {
+    const isDisabled = isPending || disabled
+
+    return (
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-96 flex-col gap-3">
+                <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input
+                                    placeholder="New Password"
+                                    type="password"
+                                    autoComplete="password"
+                                    disabled={isDisabled}
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="passwordConfirmation"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormControl>
+                                <Input
+                                    placeholder="Confirm Password"
+                                    type="password"
+                                    autoComplete="password"
+                                    disabled={isDisabled}
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <Button disabled={isDisabled} className="w-full" type="submit">
+                    {"Update Password"}
+                </Button>
+            </form>
+        </Form>
     )
 }
