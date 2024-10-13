@@ -6,7 +6,7 @@ import { relations } from "drizzle-orm"
 import { int, varchar } from "drizzle-orm/mysql-core"
 import { users } from "."
 import { createSharedMysqlTable } from "../helpers"
-import type { CreateSchemaTypes } from "~/utils/db/schema/types"
+import type { CreateDataTypes } from "~/utils/db/schema/types"
 
 export const profiles = createSharedMysqlTable("profiles", {
     id: int("id").autoincrement().primaryKey(),
@@ -26,7 +26,7 @@ export const uniqueProfileColumns = ["id", "username"] as const
 export const prohibitedProfileColumns = ["id"] as const
 export const restrictedProfileColumns = ["id", "userId"] as const
 
-export type ProfileSchemaTypes = CreateSchemaTypes<
+export type ProfileSchemaTypes = CreateDataTypes<
     typeof profiles,
     typeof uniqueProfileColumns,
     typeof prohibitedProfileColumns,

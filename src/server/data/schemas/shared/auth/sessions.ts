@@ -6,7 +6,7 @@ import { relations } from "drizzle-orm"
 import { int, timestamp, varchar } from "drizzle-orm/mysql-core"
 import { users } from "."
 import { createSharedMysqlTable } from "../helpers"
-import type { CreateSchemaTypes } from "~/utils/db/schema/types"
+import type { CreateDataTypes } from "~/utils/db/schema/types"
 
 export const sessions = createSharedMysqlTable("session", {
     id: varchar("id", { length: 255 }).primaryKey(),
@@ -24,7 +24,7 @@ export const uniqueSessionColumns = ["id"] as const
 export const prohibitedSessionColumns = ["id"] as const
 export const restrictedSessionColumns = ["id", "userId"] as const
 
-export type SessionSchemaTypes = CreateSchemaTypes<
+export type SessionSchemaTypes = CreateDataTypes<
     typeof sessions,
     typeof uniqueSessionColumns,
     typeof prohibitedSessionColumns,

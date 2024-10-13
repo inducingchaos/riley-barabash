@@ -6,7 +6,7 @@ import { relations } from "drizzle-orm"
 import { int, timestamp, varchar, unique } from "drizzle-orm/mysql-core"
 import { users } from "."
 import { createSharedMysqlTable } from "../helpers"
-import type { CreateSchemaTypes } from "~/utils/db/schema/types"
+import type { CreateDataTypes } from "~/utils/db/schema/types"
 
 export const tokenTypes = ["password-reset", "email-verification", "magic-link"] as const
 
@@ -34,7 +34,7 @@ export const restrictedTokenColumns = ["id", "userId", "type"] as const
 
 export const tokensDependencies = ["users"] as const
 
-export type TokenSchemaTypes = CreateSchemaTypes<
+export type TokenSchemaTypes = CreateDataTypes<
     typeof tokens,
     typeof uniqueTokenColumns,
     typeof prohibitedTokenColumns,

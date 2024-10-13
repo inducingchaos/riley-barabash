@@ -4,7 +4,7 @@
 
 import { relations } from "drizzle-orm"
 import { int, timestamp, unique, varchar } from "drizzle-orm/mysql-core"
-import type { CreateSchemaTypes } from "~/utils/db/schema/types"
+import type { CreateDataTypes } from "~/utils/db/schema/types"
 import { users } from "."
 import { createSharedMysqlTable } from "../helpers"
 
@@ -34,19 +34,19 @@ export const restrictedAccountColumns = ["id", "userId", "type"] as const
 
 export const accountsDependencies = ["users"] as const
 
-export type AccountSchemaTypes = CreateSchemaTypes<
+export type AccountDataTypes = CreateDataTypes<
     typeof accounts,
     typeof uniqueAccountColumns,
     typeof prohibitedAccountColumns,
     typeof restrictedAccountColumns
 >
 
-export type Account = AccountSchemaTypes["Readable"]
+export type Account = AccountDataTypes["Readable"]
 export type AccountType = Account["type"]
 
-export type QueryableAccount = AccountSchemaTypes["Queryable"]
-export type IdentifiableAccount = AccountSchemaTypes["Identifiable"]
+export type QueryableAccount = AccountDataTypes["Queryable"]
+export type IdentifiableAccount = AccountDataTypes["Identifiable"]
 
-export type WritableAccount = AccountSchemaTypes["Writable"]
-export type CreatableAccount = AccountSchemaTypes["Creatable"]
-export type UpdatableAccount = AccountSchemaTypes["Updatable"]
+export type WritableAccount = AccountDataTypes["Writable"]
+export type CreatableAccount = AccountDataTypes["Creatable"]
+export type UpdatableAccount = AccountDataTypes["Updatable"]

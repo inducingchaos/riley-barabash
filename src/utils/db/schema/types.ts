@@ -5,28 +5,26 @@
 import type { MySqlTable } from "drizzle-orm/mysql-core"
 import type { ArrayToUnion } from "~/utils/types"
 
-export type ReadableSchema<Schema extends MySqlTable> = Schema["$inferSelect"]
-export type WritableSchema<Schema extends MySqlTable> = Schema["$inferInsert"]
-export type QueryableSchema<Schema extends object> = Partial<Schema>
-export type CreatableSchema<Schema extends object, ProhibitedColumn extends keyof Schema> = Omit<Schema, ProhibitedColumn>
-export type UpdatableSchema<Schema extends object, RestrictedColumn extends keyof Schema> = Partial<
-    Omit<Schema, RestrictedColumn>
->
-export type IdentifiableSchema<QueryableSchema extends object, UniqueColumn extends keyof QueryableSchema> = Pick<
-    QueryableSchema,
+export type ReadableData<Schema extends MySqlTable> = Schema["$inferSelect"]
+export type WritableData<Schema extends MySqlTable> = Schema["$inferInsert"]
+export type QueryableData<Data extends object> = Partial<Data>
+export type CreatableData<Data extends object, ProhibitedColumn extends keyof Data> = Omit<Data, ProhibitedColumn>
+export type UpdatableData<Data extends object, RestrictedColumn extends keyof Data> = Partial<Omit<Data, RestrictedColumn>>
+export type IdentifiableData<QueryableData extends object, UniqueColumn extends keyof QueryableData> = Pick<
+    QueryableData,
     UniqueColumn
 >
 
-export type CreateSchemaTypes<
+export type CreateDataTypes<
     Schema extends MySqlTable,
-    UniqueColumns extends readonly (string & keyof ReadableSchema<Schema>)[],
-    ProhibitedColumns extends readonly (string & keyof ReadableSchema<Schema>)[],
-    RestrictedColumns extends readonly (string & keyof ReadableSchema<Schema>)[]
+    UniqueColumns extends readonly (string & keyof ReadableData<Schema>)[],
+    ProhibitedColumns extends readonly (string & keyof ReadableData<Schema>)[],
+    RestrictedColumns extends readonly (string & keyof ReadableData<Schema>)[]
 > = {
-    Readable: ReadableSchema<Schema>
-    Queryable: QueryableSchema<ReadableSchema<Schema>>
-    Identifiable: IdentifiableSchema<QueryableSchema<ReadableSchema<Schema>>, ArrayToUnion<UniqueColumns>>
-    Writable: WritableSchema<Schema>
-    Creatable: CreatableSchema<WritableSchema<Schema>, ArrayToUnion<ProhibitedColumns>>
-    Updatable: UpdatableSchema<WritableSchema<Schema>, ArrayToUnion<RestrictedColumns>>
+    Readable: ReadableData<Schema>
+    Queryable: QueryableData<ReadableData<Schema>>
+    Identifiable: IdentifiableData<QueryableData<ReadableData<Schema>>, ArrayToUnion<UniqueColumns>>
+    Writable: WritableData<Schema>
+    Creatable: CreatableData<WritableData<Schema>, ArrayToUnion<ProhibitedColumns>>
+    Updatable: UpdatableData<WritableData<Schema>, ArrayToUnion<RestrictedColumns>>
 }
