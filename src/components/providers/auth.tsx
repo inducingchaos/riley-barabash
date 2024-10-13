@@ -4,35 +4,37 @@
 
 // "use client"
 
-// export function AuthProvider({ children }: { children: React.ReactNode }): JSX.Element {
-//     return <>{children}</>
+// import { createContext, useContext } from "react"
+// import { Exception } from "~/meta"
+// import type { Session, User } from "~/server/data/schemas"
+
+// export type AuthContext = {
+//     user: User | null
+//     session: Session | null
+//     isAuthenticated: boolean
 // }
 
-// "use client"
+// const authContext = createContext<AuthContext | undefined>(undefined)
 
-// import { createContext, useContext } from "react"
-// import { type User } from "lucia"
+// export function AuthProvider({ children, context }: { children: React.ReactNode; context: AuthContext }): JSX.Element {
+//     context.isAuthenticated = !!context.user?.id
 
-// type TAuthContext = {
-//     user: User | null
-//     isAuthenticated: boolean
-// } | null
-
-// const authContext = createContext<TAuthContext>(null)
+//     return <authContext.Provider value={context}>{children}</authContext.Provider>
+// }
 
 // export const useAuth = () => {
 //     const context = useContext(authContext)
-//     if (!context) throw new Exception("useAuth must be used within an AuthProvider")
+//     if (!context)
+//         throw new Exception({
+//             in: "framework",
+//             of: "hook-outside-provider",
+//             with: {
+//                 internal: {
+//                     label: "Auth Context Not Found",
+//                     message: "`useAuth` must be used within an `AuthProvider`."
+//                 }
+//             }
+//         })
 
 //     return context
-// }
-
-// export const AuthProvider = ({ children, user }: { children: React.ReactNode; user: User | null }) => {
-//     const isAuthenticated = Boolean(user?.id)
-//     const values = {
-//         user,
-//         isAuthenticated
-//     }
-
-//     return <authContext.Provider value={values}>{children}</authContext.Provider>
 // }
