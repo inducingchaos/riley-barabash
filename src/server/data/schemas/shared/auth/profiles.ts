@@ -23,21 +23,21 @@ export const profilesRelations = relations(profiles, ({ one }) => ({
 export const profilesDependencies = ["users"] as const
 
 export const uniqueProfileColumns = ["id", "username"] as const
+export const profileIndexes = [...uniqueProfileColumns.map(column => [column])] as const
 export const prohibitedProfileColumns = ["id"] as const
 export const restrictedProfileColumns = ["id", "userId"] as const
 
-export type ProfileSchemaTypes = CreateDataTypes<
+export type ProfileDataTypes = CreateDataTypes<
     typeof profiles,
     typeof uniqueProfileColumns,
     typeof prohibitedProfileColumns,
     typeof restrictedProfileColumns
 >
 
-export type Profile = ProfileSchemaTypes["Readable"]
+export type Profile = ProfileDataTypes["Readable"]
+export type QueryableProfile = ProfileDataTypes["Queryable"]
+export type IdentifiableProfile = ProfileDataTypes["Identifiable"]
 
-export type QueryableProfile = ProfileSchemaTypes["Queryable"]
-export type IdentifiableProfile = ProfileSchemaTypes["Identifiable"]
-
-export type WritableProfile = ProfileSchemaTypes["Writable"]
-export type CreatableProfile = ProfileSchemaTypes["Creatable"]
-export type UpdatableProfile = ProfileSchemaTypes["Updatable"]
+export type WritableProfile = ProfileDataTypes["Writable"]
+export type CreatableProfile = ProfileDataTypes["Creatable"]
+export type UpdatableProfile = ProfileDataTypes["Updatable"]

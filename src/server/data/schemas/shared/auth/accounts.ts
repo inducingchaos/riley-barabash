@@ -14,7 +14,7 @@ export const accounts = createSharedMysqlTable(
     "accounts",
     {
         id: int("id").autoincrement().notNull(),
-        userId: int("user_id").unique().notNull(),
+        userId: int("user_id").notNull(),
         type: varchar("type", { length: 255, enum: accountTypes }).notNull(),
         providerId: varchar("provider_id", { length: 255 }).notNull(),
         verifiedAt: timestamp("verified_at")
@@ -28,11 +28,12 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
     user: one(users, { fields: [accounts.userId], references: [users.id] })
 }))
 
-export const uniqueAccountColumns = ["userId", "type"] as const
+export const accountsDependencies = ["users"] as const
+
+export const uniqueAccountColumns = ["id"] as const
+export const accountIndexes = [...uniqueAccountColumns.map(column => [column]), ["userId", "type"]] as const
 export const prohibitedAccountColumns = ["id"] as const
 export const restrictedAccountColumns = ["id", "userId", "type"] as const
-
-export const accountsDependencies = ["users"] as const
 
 export type AccountDataTypes = CreateDataTypes<
     typeof accounts,
@@ -43,7 +44,6 @@ export type AccountDataTypes = CreateDataTypes<
 
 export type Account = AccountDataTypes["Readable"]
 export type AccountType = Account["type"]
-
 export type QueryableAccount = AccountDataTypes["Queryable"]
 export type IdentifiableAccount = AccountDataTypes["Identifiable"]
 

@@ -28,25 +28,25 @@ export const tokensRelations = relations(tokens, ({ one }) => ({
     user: one(users, { fields: [tokens.userId], references: [users.id] })
 }))
 
-export const uniqueTokenColumns = ["userId", "type"] as const
+export const tokensDependencies = ["users"] as const
+
+export const uniqueTokenColumns = ["id"] as const
+export const tokenIndexes = [...uniqueTokenColumns.map(column => [column]), ["userId", "type"]] as const
 export const prohibitedTokenColumns = ["id"] as const
 export const restrictedTokenColumns = ["id", "userId", "type"] as const
 
-export const tokensDependencies = ["users"] as const
-
-export type TokenSchemaTypes = CreateDataTypes<
+export type TokenDataTypes = CreateDataTypes<
     typeof tokens,
     typeof uniqueTokenColumns,
     typeof prohibitedTokenColumns,
     typeof restrictedTokenColumns
 >
 
-export type Token = TokenSchemaTypes["Readable"]
+export type Token = TokenDataTypes["Readable"]
 export type TokenType = Token["type"]
+export type QueryableToken = TokenDataTypes["Queryable"]
+export type IdentifiableToken = TokenDataTypes["Identifiable"]
 
-export type QueryableToken = TokenSchemaTypes["Queryable"]
-export type IdentifiableToken = TokenSchemaTypes["Identifiable"]
-
-export type WritableToken = TokenSchemaTypes["Writable"]
-export type CreatableToken = TokenSchemaTypes["Creatable"]
-export type UpdatableToken = TokenSchemaTypes["Updatable"]
+export type WritableToken = TokenDataTypes["Writable"]
+export type CreatableToken = TokenDataTypes["Creatable"]
+export type UpdatableToken = TokenDataTypes["Updatable"]

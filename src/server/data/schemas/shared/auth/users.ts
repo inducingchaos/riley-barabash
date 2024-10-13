@@ -28,22 +28,22 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const usersDependencies = [] as const
 
 export const uniqueUserColumns = ["id", "email"] as const
+export const userIndexes = [...uniqueUserColumns.map(column => [column])] as const
 export const prohibitedUserColumns = ["id", "createdAt", "updatedAt"] as const
 export const restrictedUserColumns = ["id", "createdAt", "updatedAt"] as const
 
-export type UserSchemaTypes = CreateDataTypes<
+export type UserDataTypes = CreateDataTypes<
     typeof users,
     typeof uniqueUserColumns,
     typeof prohibitedUserColumns,
     typeof restrictedUserColumns
 >
 
-export type User = UserSchemaTypes["Readable"]
+export type User = UserDataTypes["Readable"]
 export type UserID = User["id"]
+export type QueryableUser = UserDataTypes["Queryable"]
+export type IdentifiableUser = UserDataTypes["Identifiable"]
 
-export type QueryableUser = UserSchemaTypes["Queryable"]
-export type IdentifiableUser = UserSchemaTypes["Identifiable"]
-
-export type WritableUser = UserSchemaTypes["Writable"]
-export type CreatableUser = UserSchemaTypes["Creatable"]
-export type UpdatableUser = UserSchemaTypes["Updatable"]
+export type WritableUser = UserDataTypes["Writable"]
+export type CreatableUser = UserDataTypes["Creatable"]
+export type UpdatableUser = UserDataTypes["Updatable"]

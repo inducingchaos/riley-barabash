@@ -5,6 +5,7 @@
 import "server-only"
 
 import type { MySqlTable } from "drizzle-orm/mysql-core"
+import { Exception } from "~/meta"
 import { type Database } from "~/server/data"
 import { buildWhereClause } from "../schema/build-where-clause"
 
@@ -26,11 +27,45 @@ export function initializeGetDataFunction<
     from: Database
 }) => Promise<SelectMany extends true ? Data[] : Data | undefined> {
     return async ({ where: query, from: db }) => {
-        const result = await db
-            .select()
-            .from(schema)
-            .where(buildWhereClause({ using: query, for: schema }))
+        try {
+            const data = await db
+                .select()
+                .from(schema)
+                .where(buildWhereClause({ using: query, for: schema }))
 
-        return (selectMany ? result : result[0]) as SelectMany extends true ? Data[] : Data | undefined
+            if (selectMany === false && data.length > 1)
+                throw new Exception({
+                    in: "logic",
+                    of: "incorrect-implementation",
+                    with: {
+                        internal: {
+                            label: "Multiple Results for Single Query",
+                            message: "Expected a single result, but received multiple."
+                        }
+                    },
+                    and: {
+                        query,
+                        data
+                    }
+                })
+
+            return (selectMany ? data : data[0]) as SelectMany extends true ? Data[] : Data | undefined
+        } catch (error) {
+            if (error instanceof Exception) throw error
+            throw new Exception({
+                in: "data",
+                of: "unknown",
+                with: {
+                    internal: {
+                        label: "Failed to Retrieve Data",
+                        message: "An unknown error occurred while retrieving data."
+                    }
+                },
+                and: {
+                    error,
+                    query
+                }
+            })
+        }
     }
 }

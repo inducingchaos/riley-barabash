@@ -62,7 +62,7 @@ export class Exception<
     trace?: string
 
     static default: Exception = new Exception({
-        in: "application",
+        in: "logic",
         of: "unknown",
         with: {
             internal: {
