@@ -8,7 +8,8 @@ import { decodeParams, type DecodeParamsResult } from "~/lib/comms/sms/decode-pa
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
     const requestUrl = new URL(req.url)
-    const messageParams: DecodeParamsResult = await decodeParams({ req })
+    const isForwarded = req.headers.get("Content-Type") === "application/json"
+    const messageParams = isForwarded ? ((await req.json()) as DecodeParamsResult) : await decodeParams({ req })
 
     if (
         requestUrl.hostname.endsWith("rileybarabash.com") ||
@@ -16,12 +17,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
             messageParams.Body.toLowerCase().startsWith("/dev") &&
             messageParams.From.endsWith("0221"))
     ) {
-        const clonedReq = req.clone()
-
         const response = await fetch("https://39nkpp9k-221.usw2.devtunnels.ms" + requestUrl.pathname, {
-            method: clonedReq.method,
-            headers: clonedReq.headers,
-            body: clonedReq.body
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(messageParams)
         })
 
         return new NextResponse(response.body, {
