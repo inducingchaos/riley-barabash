@@ -34,5 +34,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     // const response: string | null = await coordinateResponse(messageParams)
 
-    return composeResponse({ content: `${requestUrl.port ? "[dev] " : ""}Received: ${messageParams.Body}` })
+    return composeResponse({
+        content: `${requestUrl.port ? "[dev] " : ""}Received: ${messageParams.Body} YO so I can make live changes now?`
+    })
 }
