@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og"
-import { application } from "~/config"
 import { Exception } from "~/meta"
 
 // Image metadata
@@ -17,7 +16,7 @@ export default async function Icon() {
     //     res.arrayBuffer()
     // )
 
-    const font1 = await fetch(new URL(`${application.routing.urls.base}/shared/fonts/px-grotesk-bold.otf`))
+    const font1 = await fetch(new URL("https://value-only.com/shared/fonts/px-grotesk-bold.otf"))
 
     if (!font1.ok) {
         throw new Exception({
