@@ -15,8 +15,19 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         (requestUrl.hostname.endsWith("value-only.com") &&
             messageParams.Body.toLowerCase().startsWith("/dev") &&
             messageParams.From.endsWith("0221"))
-    )
-        return NextResponse.rewrite(new URL(requestUrl.pathname, "https://39nkpp9k-221.usw2.devtunnels.ms"))
+    ) {
+        const response = await fetch("https://39nkpp9k-221.usw2.devtunnels.ms" + requestUrl.pathname, {
+            method: req.method,
+            headers: req.headers,
+            body: req.body
+        })
+
+        return new NextResponse(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: response.headers
+        })
+    }
 
     // const response: string | null = await coordinateResponse(messageParams)
 
