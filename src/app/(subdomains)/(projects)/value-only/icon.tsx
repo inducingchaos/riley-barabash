@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og"
-import { Exception } from "~/meta"
 
 // Image metadata
 export const size = {
@@ -16,23 +15,23 @@ export default async function Icon() {
     //     res.arrayBuffer()
     // )
 
-    const font1 = await fetch(new URL("https://value-only.com/shared/fonts/px-grotesk-bold.otf"))
+    // const font1 = await fetch(new URL(`${application.routing.urls.base}/shared/fonts/px-grotesk-bold.otf`))
 
-    if (!font1.ok) {
-        throw new Exception({
-            in: "network",
-            of: Exception.idFromNetworkStatusCode({ using: font1.status }),
-            with: {
-                internal: {
-                    label: "Failed to Load Icon Font",
-                    message: "Couldn't fetch the font for the Value-Only page icon."
-                }
-            },
-            and: { request: font1 }
-        })
-    }
+    // if (!font1.ok) {
+    //     throw new Exception({
+    //         in: "network",
+    //         of: Exception.idFromNetworkStatusCode({ using: font1.status }),
+    //         with: {
+    //             internal: {
+    //                 label: "Failed to Load Icon Font",
+    //                 message: "Couldn't fetch the font for the Value-Only page icon."
+    //             }
+    //         },
+    //         and: { request: font1 }
+    //     })
+    // }
 
-    const fontData1 = await font1.arrayBuffer()
+    // const fontData1 = await font1.arrayBuffer()
 
     return new ImageResponse(
         (
@@ -58,14 +57,14 @@ export default async function Icon() {
         {
             // For convenience, we can re-use the exported icons size metadata
             // config to also set the ImageResponse's width and height.
-            ...size,
-            fonts: [
-                {
-                    name: "Px Grotesk",
-                    data: fontData1,
-                    style: "normal"
-                }
-            ]
+            ...size
+            // fonts: [
+            //     {
+            //         name: "Px Grotesk",
+            //         data: fontData1,
+            //         style: "normal"
+            //     }
+            // ]
         }
     )
 }
