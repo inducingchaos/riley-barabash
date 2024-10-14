@@ -16,10 +16,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
             messageParams.Body.toLowerCase().startsWith("/dev") &&
             messageParams.From.endsWith("0221"))
     ) {
+        const clonedReq = req.clone()
+
         const response = await fetch("https://39nkpp9k-221.usw2.devtunnels.ms" + requestUrl.pathname, {
-            method: req.method,
-            headers: req.headers,
-            body: req.body
+            method: clonedReq.method,
+            headers: clonedReq.headers,
+            body: clonedReq.body
         })
 
         return new NextResponse(response.body, {
