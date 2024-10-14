@@ -11,9 +11,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const messageParams: DecodeParamsResult = await decodeParams({ req })
 
     if (
-        requestUrl.hostname.endsWith("rileybarabash.com") &&
-        messageParams.Body.toLowerCase().startsWith("/dev") &&
-        messageParams.From.endsWith("0221")
+        requestUrl.hostname.endsWith("rileybarabash.com") ||
+        (requestUrl.hostname.endsWith("value-only.com") &&
+            messageParams.Body.toLowerCase().startsWith("/dev") &&
+            messageParams.From.endsWith("0221"))
     )
         return NextResponse.rewrite(new URL(requestUrl.pathname, "https://39nkpp9k-221.usw2.devtunnels.ms"))
 
