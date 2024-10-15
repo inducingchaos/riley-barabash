@@ -1,6 +1,5 @@
 /**
- * @remarks
- * - Could probably just use Framer Motion or Tailwind animations in the future. Using inline styles would mean injecting the keyframes into the DOM, and suffering hydration issues - we want to avoid that. If it can't be done easily with TW, just use Framer Motion.
+ *
  */
 
 "use client"
@@ -21,7 +20,7 @@ export function DelayedRedirectProgress({ redirectUrl }: { redirectUrl?: string 
         /**
          * Applies a delay to the state update to avoid flickering.
          *
-         * @remarks If we set the state immediately, the progress bar will inconsistently animate without a transition - this could be due to stale state being used, or a state update before the CSS transition (or the child components) are recognized.
+         * @remarks If we set the state immediately, the progress bar will inconsistently animate without a transition - this could be due to stale state being used, or a state update before the CSS transition (or the child components) are recognized. As an alternative, use Framer Motion or create a hardcoded tailwind animation to ensure consistent behavior.
          */
         const delayedStateUpdate = setTimeout(() => setIsComplete(true), 125)
         return () => clearTimeout(delayedStateUpdate)
