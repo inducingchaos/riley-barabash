@@ -13,25 +13,26 @@ import { Button } from "~/components/ui/primitives/inputs"
 
 export function DelayedRedirectProgress({ redirectUrl }: { redirectUrl?: string }): JSX.Element {
     const router = useRouter()
-    const searchParams: ReadonlyURLSearchParams = useSearchParams()
+    const searchParams = useSearchParams()
     const resolvedRedirectUrl: string = redirectUrl ?? searchParams.get("redirect-url") ?? "/"
     const [isComplete, setIsComplete] = useState<boolean>(false)
 
     useEffect(() => {
-        setIsComplete(false)
-        const setState = setTimeout(() => setIsComplete(true), 0)
-        return () => clearTimeout(setState)
+        /**
+         * Applies a delay to the state update to avoid flickering.
+         *
+         * @remarks If we set the state immediately, the progress bar will inconsistently animate without a transition - this could be due to stale state being used, or a state update before the CSS transition (or the child components) are recognized.
+         */
+        const delayedStateUpdate = setTimeout(() => setIsComplete(true), 125)
+        return () => clearTimeout(delayedStateUpdate)
     }, [])
 
-    const handleTransitionEnd = () => {
-        setIsComplete(false)
-        router.push(resolvedRedirectUrl)
-    }
+    const handleTransitionEnd = () => router.push(resolvedRedirectUrl)
 
     return (
         <Progress customInternals>
             <ProgressIndicator
-                className="transition-all duration-5000 ease-in-out-expo"
+                className="duration-5000 ease-in-out-expo"
                 value={isComplete ? 100 : 0}
                 onTransitionEnd={handleTransitionEnd}
             />
