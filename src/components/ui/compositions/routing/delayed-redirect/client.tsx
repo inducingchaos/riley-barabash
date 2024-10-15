@@ -22,14 +22,12 @@ export function DelayedRedirectProgress({ redirectUrl }: { redirectUrl?: string 
         return () => clearTimeout(setState)
     }, [])
 
-    const handleTransitionEnd = () => {
-        router.push(resolvedRedirectUrl)
-    }
+    const handleTransitionEnd = () => router.push(resolvedRedirectUrl)
 
     return (
         <Progress customInternals>
             <ProgressIndicator
-                className="duration-5000 ease-in-out-expo"
+                className="transition-all duration-5000 ease-in-out-expo"
                 value={isComplete ? 100 : 0}
                 onTransitionEnd={handleTransitionEnd}
             />
