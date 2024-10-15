@@ -18,11 +18,15 @@ export function DelayedRedirectProgress({ redirectUrl }: { redirectUrl?: string 
     const [isComplete, setIsComplete] = useState<boolean>(false)
 
     useEffect(() => {
+        setIsComplete(false)
         const setState = setTimeout(() => setIsComplete(true), 0)
         return () => clearTimeout(setState)
     }, [])
 
-    const handleTransitionEnd = () => router.push(resolvedRedirectUrl)
+    const handleTransitionEnd = () => {
+        setIsComplete(false)
+        router.push(resolvedRedirectUrl)
+    }
 
     return (
         <Progress customInternals>
