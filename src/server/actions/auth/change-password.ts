@@ -6,7 +6,7 @@
 "use server"
 
 import { z } from "zod"
-import { unauthenticatedAction } from "~/lib/auth/core"
+import { unauthenticatedAction } from "~/lib/auth/utils"
 import { changePassword } from "~/lib/auth/email/password"
 import { Exception } from "~/meta"
 

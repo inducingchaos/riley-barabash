@@ -1,6 +1,6 @@
 "use server"
 
-import { unauthenticatedAction } from "~/lib/auth/core"
+import { unauthenticatedAction } from "~/lib/auth/utils"
 import { redirect } from "next/navigation"
 import { z } from "zod"
 import { Exception } from "~/meta"

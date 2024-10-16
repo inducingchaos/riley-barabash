@@ -8,7 +8,7 @@ import { schema, type Config } from "./schema"
 const config = {
     info: {
         name: "Kyzn",
-        tagline: "Your *real* second brain.",
+        tagline: "Content at the speed of thought.",
         description:
             "We are the integration layer for your neurons. Store & organize data, compose content like a pro, and apply your knowledge with built-in systems."
     },

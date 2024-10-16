@@ -2,7 +2,7 @@
  *
  */
 
-import { setSession } from "~/lib/auth/core"
+import { setSession } from "~/lib/auth/utils"
 import { signInWithMagicLink } from "~/lib/auth/email/magic-link/sign-in"
 import { Exception } from "~/meta"
 

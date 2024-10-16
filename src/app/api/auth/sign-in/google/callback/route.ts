@@ -1,11 +1,16 @@
+/**
+ *
+ */
+
 import { cookies } from "next/headers"
 import { OAuth2RequestError } from "arctic"
 import { google } from "~/lib/providers/auth"
 import type { GoogleUser } from "~/types/auth"
 import { createAccount, getAccount, upsertUser } from "~/server/data/access/shared/auth"
 import { db } from "~/server/data"
-import { setSession } from "~/lib/auth/core"
+import { setSession } from "~/lib/auth/utils"
 import { application } from "~/config"
+import { NextResponse } from "next/server"
 
 export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url)
@@ -33,35 +38,25 @@ export async function GET(request: Request): Promise<Response> {
 
         if (existingAccount) {
             await setSession({ using: { userId: existingAccount.userId } })
-            return new Response(null, {
-                status: 302,
-                headers: {
-                    Location: "/"
-                }
-            })
+            return NextResponse.redirect(application.routing.paths.callbacks.auth.signIn, { status: 303 })
         }
 
-        const user = await upsertUser({ where: { email: googleUser.email }, using: { name: googleUser.name, email: googleUser.email }, in: db })
+        const user = await upsertUser({
+            where: { email: googleUser.email },
+            using: { name: googleUser.name, email: googleUser.email },
+            in: db
+        })
         await createAccount({ using: { userId: user.id, type: "google", providerId: googleUser.sub }, in: db })
 
         await setSession({ using: { userId: user.id } })
-        return new Response(null, {
-            status: 302,
-            headers: {
-                Location: application.routing.paths.callbacks.auth.signIn
-            }
-        })
+        return NextResponse.redirect(application.routing.paths.callbacks.auth.signIn, { status: 303 })
     } catch (e) {
         // the specific error message depends on the provider
         if (e instanceof OAuth2RequestError) {
             // invalid code
-            return new Response(null, {
-                status: 400
-            })
+            return NextResponse.redirect(application.routing.paths.callbacks.auth.signIn, { status: 400 })
         }
         console.log(e)
-        return new Response(null, {
-            status: 500
-        })
+        return NextResponse.redirect(application.routing.paths.callbacks.auth.signIn, { status: 500 })
     }
 }

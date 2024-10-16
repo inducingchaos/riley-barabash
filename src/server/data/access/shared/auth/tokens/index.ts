@@ -26,3 +26,4 @@ export const createToken = initializeCreateDataFunction({
 
 export * from "./delete"
 export * from "./upsert"
+export * from "./update"

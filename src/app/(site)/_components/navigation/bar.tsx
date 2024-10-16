@@ -4,7 +4,7 @@
 
 import Link from "next/link"
 import { Button } from "~/components/ui/primitives/inputs"
-import { getCurrentUser } from "~/lib/auth/core"
+import { getCurrentUser } from "~/lib/auth/utils"
 
 const links = [
     { label: "Entities", url: "/entities" },

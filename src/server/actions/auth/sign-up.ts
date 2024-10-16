@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { setSession, unauthenticatedAction } from "~/lib/auth/core"
+import { setSession, unauthenticatedAction } from "~/lib/auth/utils"
 import { signUp } from "~/lib/auth/email/password"
 import { Exception } from "~/meta"
 

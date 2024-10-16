@@ -1,27 +1,30 @@
 import { google } from "~/lib/providers/auth"
 import { cookies } from "next/headers"
 import { generateCodeVerifier, generateState } from "arctic"
+import { NextResponse } from "next/server"
 
-export async function GET(): Promise<Response> {
+export async function GET(): Promise<NextResponse> {
     const state = generateState()
     const codeVerifier = generateCodeVerifier()
     const url = await google.createAuthorizationURL(state, codeVerifier, {
-        scopes: ["profile", "email"]
+        scopes: ["profile", "email", "openid"]
     })
 
     cookies().set("google_oauth_state", state, {
-        secure: true,
+        secure: process.env.ENVIRONMENT === "production",
         path: "/",
         httpOnly: true,
-        maxAge: 60 * 10
+        maxAge: 60 * 10,
+        sameSite: "lax"
     })
 
     cookies().set("google_code_verifier", codeVerifier, {
-        secure: true,
+        secure: process.env.ENVIRONMENT === "production",
         path: "/",
         httpOnly: true,
-        maxAge: 60 * 10
+        maxAge: 60 * 10,
+        sameSite: "lax"
     })
 
-    return Response.redirect(url)
+    return NextResponse.redirect(url)
 }

@@ -5,7 +5,7 @@
 
 "use server"
 
-import { unauthenticatedAction } from "~/lib/auth/core"
+import { unauthenticatedAction } from "~/lib/auth/utils"
 import { z } from "zod"
 import { sendRecoveryLink } from "~/lib/auth/email/password"
 import { Exception } from "~/meta"

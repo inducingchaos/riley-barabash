@@ -42,7 +42,7 @@ const config = {
                 auth: {
                     oauth: {
                         apple: "/api/auth/apple",
-                        google: "/api/auth/google"
+                        google: "/api/auth/sign-in/google"
                     }
                 }
             },
