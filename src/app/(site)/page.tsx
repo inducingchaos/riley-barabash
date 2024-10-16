@@ -41,8 +41,8 @@ export default async function Landing(): Promise<JSX.Element> {
                                 </Button>
                             </div>
                         </div>
-                        <Test />
                     </section>
+                    <Test />
 
                     <Separator className="my-8" />
 

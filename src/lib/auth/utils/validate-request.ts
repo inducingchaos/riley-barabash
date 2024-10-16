@@ -11,7 +11,7 @@ import {
     type SessionValidationResult
 } from "./new-lucia"
 
-export const validateRequest = cache(async (): Promise<SessionValidationResult> => {
+export const validateRequest = async (): Promise<SessionValidationResult> => {
     const token = cookies().get("session")?.value ?? null
     if (!token) return { user: null, session: null }
 
@@ -34,4 +34,4 @@ export const validateRequest = cache(async (): Promise<SessionValidationResult> 
     } catch {}
 
     return result
-})
+}

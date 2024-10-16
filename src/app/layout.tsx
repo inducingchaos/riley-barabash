@@ -43,22 +43,22 @@ const pxGrotesk = localFont({
             weight: "400",
             style: "normal"
         },
-        {
-            path: "../../public/shared/typefaces/px-grotesk-trial/regular-italic.otf",
-            weight: "400",
-            style: "italic"
-        },
+        // {
+        //     path: "../../public/shared/typefaces/px-grotesk-trial/regular-italic.otf",
+        //     weight: "400",
+        //     style: "italic"
+        // },
 
         {
             path: "../../public/shared/typefaces/px-grotesk/bold.otf",
             weight: "700",
             style: "normal"
         },
-        {
-            path: "../../public/shared/typefaces/px-grotesk-trial/bold-italic.otf",
-            weight: "700",
-            style: "italic"
-        },
+        // {
+        //     path: "../../public/shared/typefaces/px-grotesk-trial/bold-italic.otf",
+        //     weight: "700",
+        //     style: "italic"
+        // },
 
         {
             path: "../../public/shared/typefaces/px-grotesk-trial/black.otf",
@@ -91,23 +91,23 @@ const pxGroteskMono = localFont({
             path: "../../public/shared/typefaces/px-grotesk-mono/regular.otf",
             weight: "400",
             style: "normal"
-        },
-        {
-            path: "../../public/shared/typefaces/px-grotesk-mono-trial/regular-italic.otf",
-            weight: "400",
-            style: "italic"
-        },
-
-        {
-            path: "../../public/shared/typefaces/px-grotesk-mono-trial/bold.otf",
-            weight: "700",
-            style: "normal"
-        },
-        {
-            path: "../../public/shared/typefaces/px-grotesk-mono-trial/bold-italic.otf",
-            weight: "700",
-            style: "italic"
         }
+        // {
+        //     path: "../../public/shared/typefaces/px-grotesk-mono-trial/regular-italic.otf",
+        //     weight: "400",
+        //     style: "italic"
+        // },
+
+        // {
+        //     path: "../../public/shared/typefaces/px-grotesk-mono-trial/bold.otf",
+        //     weight: "700",
+        //     style: "normal"
+        // },
+        // {
+        //     path: "../../public/shared/typefaces/px-grotesk-mono-trial/bold-italic.otf",
+        //     weight: "700",
+        //     style: "italic"
+        // }
     ],
     variable: "--font-px-grotesk-mono"
 })

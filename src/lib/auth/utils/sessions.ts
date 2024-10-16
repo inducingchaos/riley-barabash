@@ -4,12 +4,11 @@
 
 import { sha256 } from "@oslojs/crypto/sha2"
 import { encodeHexLowerCase } from "@oslojs/encoding"
-import { eq } from "drizzle-orm"
-import { db } from "~/server/data"
-import { tokens, type Token, type User } from "~/server/data/schemas"
 import { cookies } from "next/headers"
-import { createToken, deleteToken, getToken, updateToken } from "~/server/data/access/shared/auth"
 import { SESSION_EXPIRY } from "~/constants/temp"
+import { db } from "~/server/data"
+import { createToken, deleteToken, getToken, updateToken } from "~/server/data/access/shared/auth"
+import { type Token } from "~/server/data/schemas"
 
 export async function createSession({
     using: { userId, token: tokenValue }
