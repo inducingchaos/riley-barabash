@@ -32,7 +32,7 @@ export default async function Landing(): Promise<JSX.Element> {
                                     className="rounded-xl object-cover"
                                 />
                             </div>
-                            <H1>{"My name is Riley."}</H1>
+                            <h1 className="text-5xl font-bold">{"My name is Riley."}</h1>
                             <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>
                             <Muted>{"Check out my projects:"}</Muted>
                             <div className="flex flex-row gap-2">
