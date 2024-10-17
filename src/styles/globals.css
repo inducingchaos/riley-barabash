@@ -4,9 +4,72 @@
 
 @layer base {
     :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
+        /* Source. */
+
+        --white: 0 0% 100%;
+        --off-white: 0 0% 93.75%;
+        --way-off-white: 0 0% 87.5%;
+        --gray: 0 0% 50%;
+        --black: 0 0% 0%;
+        --off-black: 0 0% 6.25%;
+        --way-off-black: 0 0% 25%;
+
+        --khaki: 45 25% 88%;
+        --khaki-dark: 45 12.5% 25%;
+
+        /* Normalization. */
+
+        --main: var(--way-off-black);
+        --main-upper-sixteenth: var(--main) / 93.75%;
+        --main-upper-eighth: var(--main) / 87.5%;
+        --main-upper-quarter: var(--main) / 75%;
+        --main-half: var(--main) / 50%;
+        --main-quarter: var(--main) / 25%;
+        --main-eighth: var(--main) / 12.5%;
+        --main-sixteenth: var(--main) / 6.25%;
+
+        --neutral: var(--gray);
+        --neutral-upper-sixteenth: var(--neutral) / 93.75%;
+        --neutral-upper-eighth: var(--neutral) / 87.5%;
+        --neutral-upper-quarter: var(--neutral) / 75%;
+        --neutral-half: var(--neutral) / 50%;
+        --neutral-quarter: var(--neutral) / 25%;
+        --neutral-eighth: var(--neutral) / 12.5%;
+        --neutral-sixteenth: var(--neutral) / 6.25%;
+
+        --inverse: var(--white);
+        --inverse-upper-sixteenth: var(--inverse) / 93.75%;
+        --inverse-upper-eighth: var(--inverse) / 87.5%;
+        --inverse-upper-quarter: var(--inverse) / 75%;
+        --inverse-half: var(--inverse) / 50%;
+        --inverse-quarter: var(--inverse) / 25%;
+        --inverse-eighth: var(--inverse) / 12.5%;
+        --inverse-sixteenth: var(--inverse) / 6.25%;
+
+        --accent: var(--khaki);
+        --accent-upper-sixteenth: var(--accent) / 93.75%;
+        --accent-upper-eighth: var(--accent) / 87.5%;
+        --accent-upper-quarter: var(--accent) / 75%;
+        --accent-half: var(--accent) / 50%;
+        --accent-quarter: var(--accent) / 25%;
+        --accent-eighth: var(--accent) / 12.5%;
+        --accent-sixteenth: var(--accent) / 6.25%;
+
+        /* Implementation. */
+
+        --background: var(--inverse);
+        --background-secondary: var(--off-white);
+
+        --text: var(--main);
+        --text-secondary: var(--off-black);
+        --text-tertiary: var(--way-off-black);
+
+        --border: var(--main-eighth);
+        --border-width: 0.5rem;
+
+        --corner-radius: 0.5rem;
+
+        /* --card: 0 0% 100%;
         --card-foreground: 0 0% 3.9%;
         --popover: 0 0% 100%;
         --popover-foreground: 0 0% 3.9%;
@@ -20,21 +83,20 @@
         --accent-foreground: 0 0% 9%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
         --input: 0 0% 89.8%;
         --ring: 0 0% 3.9%;
         --chart-1: 12 76% 61%;
         --chart-2: 173 58% 39%;
         --chart-3: 197 37% 24%;
         --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
+        --chart-5: 27 87% 67%; */
     }
     .dark {
-        /* --background: 0 0% 6.25%; */
-        --background: 0 0% 0%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
+        --main: var(--white);
+        --inverse: var(--off-black);
+        --accent: var(--khaki-dark);
+
+        /* --card: 0 0% 3.9%;
         --card-foreground: 0 0% 98%;
         --popover: 0 0% 0%;
         --popover-foreground: 0 0% 98%;
@@ -48,14 +110,13 @@
         --accent-foreground: 0 0% 98%;
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 100% / 12.5%;
         --input: 0 0% 100% / 12.5%;
         --ring: 0 0% 83.1%;
         --chart-1: 220 70% 50%;
         --chart-2: 160 60% 45%;
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
+        --chart-5: 340 75% 55%; */
     }
 }
 
@@ -64,6 +125,6 @@
         @apply border-border;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply text-text bg-background;
     }
 }

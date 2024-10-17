@@ -3,8 +3,8 @@
  */
 
 import { type Config } from "tailwindcss"
-import { fontFamily } from "tailwindcss/defaultTheme"
 import animate from "tailwindcss-animate"
+import { fontFamily } from "tailwindcss/defaultTheme"
 
 export default {
     darkMode: ["class"],
@@ -14,7 +14,7 @@ export default {
             fontFamily: {
                 sans: ["var(--font-px-grotesk)", ...fontFamily.sans],
                 mono: ["var(--font-px-grotesk-mono)", ...fontFamily.mono],
-                screen: ["var(--font-px-grotesk-screen)", ...fontFamily.serif],
+                serif: ["var(--font-hoefler-text)", ...fontFamily.serif],
                 inter: ["var(--font-inter)", ...fontFamily.sans]
             },
             transitionTimingFunction: {
@@ -24,52 +24,101 @@ export default {
             transitionDuration: {
                 "5000": "5000ms"
             },
-            borderRadius: {
-                lg: "var(--radius)",
-                md: "calc(var(--radius) - 2px)",
-                sm: "calc(var(--radius) - 4px)"
-            },
+            // borderRadius: {
+            //     lg: "var(--border-radius)",
+            //     md: "calc(var(--border-radius) - 2px)",
+            //     sm: "calc(var(--border-radius) - 4px)"
+            // },
             colors: {
-                background: "hsl(var(--background))",
-                foreground: "hsl(var(--foreground))",
-                card: {
-                    DEFAULT: "hsl(var(--card))",
-                    foreground: "hsl(var(--card-foreground))"
+                main: {
+                    DEFAULT: "hsl(var(--main))",
+                    "upper-sixteenth": "hsl(var(--main-upper-sixteenth))",
+                    "upper-eighth": "hsl(var(--main-upper-eighth))",
+                    "upper-quarter": "hsl(var(--main-upper-quarter))",
+                    half: "hsl(var(--main-half))",
+                    quarter: "hsl(var(--main-quarter))",
+                    eighth: "hsl(var(--main-eighth))",
+                    sixteenth: "hsl(var(--main-sixteenth))"
                 },
-                popover: {
-                    DEFAULT: "hsl(var(--popover))",
-                    foreground: "hsl(var(--popover-foreground))"
+                inverse: {
+                    DEFAULT: "hsl(var(--inverse))",
+                    "upper-sixteenth": "hsl(var(--inverse-upper-sixteenth))",
+                    "upper-eighth": "hsl(var(--inverse-upper-eighth))",
+                    "upper-quarter": "hsl(var(--inverse-upper-quarter))",
+                    half: "hsl(var(--inverse-half))",
+                    quarter: "hsl(var(--inverse-quarter))",
+                    eighth: "hsl(var(--inverse-eighth))",
+                    sixteenth: "hsl(var(--inverse-sixteenth))"
                 },
-                primary: {
-                    DEFAULT: "hsl(var(--primary))",
-                    foreground: "hsl(var(--primary-foreground))"
-                },
-                secondary: {
-                    DEFAULT: "hsl(var(--secondary))",
-                    foreground: "hsl(var(--secondary-foreground))"
-                },
-                muted: {
-                    DEFAULT: "hsl(var(--muted))",
-                    foreground: "hsl(var(--muted-foreground))"
+                neutral: {
+                    DEFAULT: "hsl(var(--neutral))",
+                    "upper-sixteenth": "hsl(var(--neutral-upper-sixteenth))",
+                    "upper-eighth": "hsl(var(--neutral-upper-eighth))",
+                    "upper-quarter": "hsl(var(--neutral-upper-quarter))",
+                    half: "hsl(var(--neutral-half))",
+                    quarter: "hsl(var(--neutral-quarter))",
+                    eighth: "hsl(var(--neutral-eighth))",
+                    sixteenth: "hsl(var(--neutral-sixteenth))"
                 },
                 accent: {
                     DEFAULT: "hsl(var(--accent))",
-                    foreground: "hsl(var(--accent-foreground))"
+                    "upper-sixteenth": "hsl(var(--accent-upper-sixteenth))",
+                    "upper-eighth": "hsl(var(--accent-upper-eighth))",
+                    "upper-quarter": "hsl(var(--accent-upper-quarter))",
+                    half: "hsl(var(--accent-half))",
+                    quarter: "hsl(var(--accent-quarter))",
+                    eighth: "hsl(var(--accent-eighth))",
+                    sixteenth: "hsl(var(--accent-sixteenth))"
                 },
-                destructive: {
-                    DEFAULT: "hsl(var(--destructive))",
-                    foreground: "hsl(var(--destructive-foreground))"
+
+                background: {
+                    DEFAULT: "hsl(var(--background))",
+                    secondary: "hsl(var(--background-secondary))"
                 },
-                border: "hsl(var(--border))",
-                input: "hsl(var(--input))",
-                ring: "hsl(var(--ring))",
-                chart: {
-                    "1": "hsl(var(--chart-1))",
-                    "2": "hsl(var(--chart-2))",
-                    "3": "hsl(var(--chart-3))",
-                    "4": "hsl(var(--chart-4))",
-                    "5": "hsl(var(--chart-5))"
-                }
+                text: {
+                    DEFAULT: "hsl(var(--text))",
+                    secondary: "hsl(var(--text-secondary))",
+                    tertiary: "hsl(var(--text-tertiary))"
+                },
+                border: "hsl(var(--border))"
+
+                // card: {
+                //     DEFAULT: "hsl(var(--card))",
+                //     foreground: "hsl(var(--card-foreground))"
+                // },
+                // popover: {
+                //     DEFAULT: "hsl(var(--popover))",
+                //     foreground: "hsl(var(--popover-foreground))"
+                // },
+                // primary: {
+                //     DEFAULT: "hsl(var(--primary))",
+                //     foreground: "hsl(var(--primary-foreground))"
+                // },
+                // secondary: {
+                //     DEFAULT: "hsl(var(--secondary))",
+                //     foreground: "hsl(var(--secondary-foreground))"
+                // },
+                // muted: {
+                //     DEFAULT: "hsl(var(--muted))",
+                //     foreground: "hsl(var(--muted-foreground))"
+                // },
+                // accent: {
+                //     DEFAULT: "hsl(var(--accent))",
+                //     foreground: "hsl(var(--accent-foreground))"
+                // },
+                // destructive: {
+                //     DEFAULT: "hsl(var(--destructive))",
+                //     foreground: "hsl(var(--destructive-foreground))"
+                // },
+                // input: "hsl(var(--input))",
+                // ring: "hsl(var(--ring))",
+                // chart: {
+                //     "1": "hsl(var(--chart-1))",
+                //     "2": "hsl(var(--chart-2))",
+                //     "3": "hsl(var(--chart-3))",
+                //     "4": "hsl(var(--chart-4))",
+                //     "5": "hsl(var(--chart-5))"
+                // }
             },
             keyframes: {
                 "caret-blink": {

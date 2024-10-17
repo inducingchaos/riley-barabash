@@ -8,9 +8,9 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
     // title: `${project.info.name} | ${project.info.tagline}`,
-    title: "Altered: Systems for Creative Scale",
+    title: "Altered | Systems for Creative Scale",
     // description: project.info.description,
-    icons: [{ rel: "icon", url: "/entities/live-altered/design/brand/pfp-square.png" }],
+    icons: [{ rel: "icon", url: "/entities/live-altered/design/brand/icon/dark.png" }],
     keywords: ""
 }
 

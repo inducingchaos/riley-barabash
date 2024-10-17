@@ -25,7 +25,7 @@ const navigationMenuData: NavigationMenuData[] = [
         children: [
             { title: "Start", href: "/#start", description: "Begin your journey with Altered" },
             { title: "Ingest", href: "/#ingest", description: "Learn about data ingestion in Altered" },
-            { title: "Datasets", href: "/#datasets", description: "Understand datasets in Altered" },
+            { title: "Datasets", href: "/#datasets", description: "Store & integrate every type of data." },
             { title: "Focus", href: "/#focus", description: "Discover the focus feature in Altered" },
             { title: "Intelligence", href: "/#intelligence", description: "Explore AI capabilities in Altered" },
             { title: "Systems", href: "/#systems", description: "Learn about Altered's system architecture" }
@@ -45,11 +45,11 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="flex w-full flex-row items-center justify-between border-2 bg-background/75 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur-md">
+            <div className="flex w-full flex-row items-center justify-between border-2 bg-background/75 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur-md dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="rounded-md border bg-background px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
+                    <p className="rounded-md border bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}
@@ -73,8 +73,12 @@ export function Header(): JSX.Element {
                             </Button>
                         </form>
                     ) : (
-                        <Button asChild variant="outline" className="rounded-none border-2 font-mono shadow-none">
-                            <Link href="/sign-in" className="h-auto">
+                        <Button
+                            asChild
+                            variant="outline"
+                            className="rounded-none border-2 font-mono shadow-none hover:border-accent"
+                        >
+                            <Link href="/#waitlist" className="h-auto">
                                 {"join the waitlist"}
                             </Link>
                         </Button>
@@ -96,7 +100,7 @@ export function NavigationMenuDemo() {
                             <NavigationMenuContent>
                                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                                     {category.children?.map(item => (
-                                        <ListItem key={item.title} title={item.title} href={item.href}>
+                                        <ListItem key={item.title} title={item.title + "."} href={item.href}>
                                             {item.description}
                                         </ListItem>
                                     ))}
@@ -125,7 +129,7 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                 <a
                     ref={ref}
                     className={cn(
-                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        "block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                         className
                     )}
                     {...props}

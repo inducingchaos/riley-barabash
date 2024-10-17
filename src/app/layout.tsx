@@ -112,15 +112,31 @@ const pxGroteskMono = localFont({
     variable: "--font-px-grotesk-mono"
 })
 
-const pxGroteskScreen = localFont({
+const hoeflerText = localFont({
     src: [
         {
-            path: "../../public/shared/typefaces/px-grotesk-screen/regular.otf",
+            path: "../../public/shared/typefaces/hoefler-text/regular.ttf",
             weight: "400",
             style: "normal"
+        },
+        {
+            path: "../../public/shared/typefaces/hoefler-text/regular-italic.ttf",
+            weight: "400",
+            style: "italic"
+        },
+
+        {
+            path: "../../public/shared/typefaces/hoefler-text/black.ttf",
+            weight: "900",
+            style: "normal"
+        },
+        {
+            path: "../../public/shared/typefaces/hoefler-text/black-italic.ttf",
+            weight: "900",
+            style: "italic"
         }
     ],
-    variable: "--font-px-grotesk-screen"
+    variable: "--font-hoefler-text"
 })
 
 const inter = Inter({
@@ -143,7 +159,7 @@ export default async function RootLayout({ children }: { children: ReactNode }):
             <html
                 lang="en"
                 suppressHydrationWarning
-                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${pxGroteskScreen.variable} ${inter.variable} tracking-tight antialiased [&_.font-mono]:tracking-tighter`}
+                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${hoeflerText.variable} ${inter.variable} [&_.font-mono]:tracking-tighter [&_.font-sans]:tracking-tight`}
             >
                 <body>
                     {/* Theming. */}
