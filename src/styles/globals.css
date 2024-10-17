@@ -17,6 +17,8 @@
         --khaki: 45 25% 88%;
         --khaki-dark: 45 12.5% 25%;
 
+        --ease-out-expo: cubic-bezier(0.125, 1, 0.25, 1);
+        --ease-in-out-expo: cubic-bezier(0.875, 0, 0.125, 1);
         /* Normalization. */
 
         --main: var(--way-off-black);
@@ -65,7 +67,7 @@
         --text-tertiary: var(--way-off-black);
 
         --border: var(--main-eighth);
-        --border-width: 0.5rem;
+        --border-width: 0.125rem;
 
         --corner-radius: 0.5rem;
 

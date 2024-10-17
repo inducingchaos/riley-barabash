@@ -36,8 +36,12 @@ export default async function Landing(): Promise<JSX.Element> {
                             <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>
                             <Muted>{"Check out my projects:"}</Muted>
                             <div className="flex flex-row gap-2">
-                                <Button variant="outline" asChild>
+                                {/* <Button variant="outline" asChild>
                                     <Link href="/value-only">{"Value-Only"}</Link>
+                                </Button> */}
+
+                                <Button variant="outline" asChild className="rounded-none border-2 font-mono shadow-none">
+                                    <Link href="/altered">{"Altered"}</Link>
                                 </Button>
                             </div>
                         </div>

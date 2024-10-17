@@ -45,11 +45,11 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="flex w-full flex-row items-center justify-between border-2 bg-background/75 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur-md dark:shadow-none">
+            <div className="bg-inverse-upper-quarter flex w-full flex-row items-center justify-between border-2 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="rounded-md border bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
+                    <p className="border-1 rounded-md bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}

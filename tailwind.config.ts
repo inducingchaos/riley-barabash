@@ -10,6 +10,11 @@ export default {
     darkMode: ["class"],
     content: ["./src/**/*.tsx"],
     theme: {
+        backdropBlur: {
+            DEFAULT: "16px",
+            thin: "8px",
+            thick: "32px"
+        },
         extend: {
             fontFamily: {
                 sans: ["var(--font-px-grotesk)", ...fontFamily.sans],
@@ -18,8 +23,8 @@ export default {
                 inter: ["var(--font-inter)", ...fontFamily.sans]
             },
             transitionTimingFunction: {
-                "out-expo": "cubic-bezier(0.125, 1.0, 0.25, 1.0)",
-                "in-out-expo": "cubic-bezier(0.875, 0.0, 0.125, 1.0)"
+                "out-expo": "var(--ease-out-expo)",
+                "in-out-expo": "var(--ease-in-out-expo)"
             },
             transitionDuration: {
                 "5000": "5000ms"
@@ -120,6 +125,10 @@ export default {
                 //     "5": "hsl(var(--chart-5))"
                 // }
             },
+            borderWidth: {
+                DEFAULT: "var(--border-width)",
+                1: "0.0625em"
+            },
             keyframes: {
                 "caret-blink": {
                     "0%,70%,100%": { opacity: "1" },
@@ -129,10 +138,20 @@ export default {
                     "100%": {
                         transform: "translateX(100%)"
                     }
+                },
+                enter: {
+                    "0%": { transform: "scale(0.875)", opacity: "0" },
+                    "100%": { transform: "scale(1)", opacity: "1" }
+                },
+                exit: {
+                    "0%": { transform: "scale(1)", opacity: "1" },
+                    "100%": { transform: "scale(0.875)", opacity: "0" }
                 }
             },
             animation: {
-                "caret-blink": "caret-blink 1.25s ease-out infinite"
+                "caret-blink": "caret-blink 1.25s ease-out infinite",
+                "in-custom": "enter 0.25s var(--ease-out-expo)",
+                "out-custom": "exit 0.25s var(--ease-out-expo)"
             }
         }
     },
