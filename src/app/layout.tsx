@@ -159,7 +159,7 @@ export default async function RootLayout({ children }: { children: ReactNode }):
             <html
                 lang="en"
                 suppressHydrationWarning
-                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${hoeflerText.variable} ${inter.variable} [&_.font-mono]:tracking-tighter [&_.font-sans]:tracking-tight`}
+                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${hoeflerText.variable} ${inter.variable} [.font-mono]:tracking-tighter tracking-normal`}
             >
                 <body>
                     {/* Theming. */}

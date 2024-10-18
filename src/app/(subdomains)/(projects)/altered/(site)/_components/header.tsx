@@ -45,7 +45,7 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="flex w-full flex-row items-center justify-between border-2 bg-inverse-upper-quarter before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
+            <div className="bg-main-inverted-upper-quarter flex w-full flex-row items-center justify-between border-2 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
@@ -57,7 +57,7 @@ export function Header(): JSX.Element {
                 <NavigationMenuDemo />
 
                 {"isLocalhost" && (
-                    <Button asChild variant="secondary" className="font-mono">
+                    <Button asChild variant="default" className="font-mono">
                         <Link href="altered/start">{"go to app"}</Link>
                     </Button>
                 )}
@@ -128,7 +128,7 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                 <a
                     ref={ref}
                     className={cn(
-                        "hover:text-accent-foreground focus:text-accent-foreground block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-accent focus:bg-accent",
+                        "hover:text-accent-foreground focus:text-accent-foreground rounded-none block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent focus:bg-accent",
                         className
                     )}
                     {...props}

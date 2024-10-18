@@ -31,25 +31,25 @@
         --main-eighth: var(--main) / 12.5%;
         --main-sixteenth: var(--main) / 6.25%;
 
-        --neutral: var(--gray);
-        --neutral-upper-sixteenth: var(--neutral) / 93.75%;
-        --neutral-upper-eighth: var(--neutral) / 87.5%;
-        --neutral-upper-quarter: var(--neutral) / 75%;
-        --neutral-half: var(--neutral) / 50%;
-        --neutral-three-eighths: var(--neutral) / 37.5%;
-        --neutral-quarter: var(--neutral) / 25%;
-        --neutral-eighth: var(--neutral) / 12.5%;
-        --neutral-sixteenth: var(--neutral) / 6.25%;
+        --main-inverted: var(--white);
+        --main-inverted-upper-sixteenth: var(--main-inverted) / 93.75%;
+        --main-inverted-upper-eighth: var(--main-inverted) / 87.5%;
+        --main-inverted-upper-quarter: var(--main-inverted) / 75%;
+        --main-inverted-half: var(--main-inverted) / 50%;
+        --main-inverted-three-eighths: var(--main-inverted) / 37.5%;
+        --main-inverted-quarter: var(--main-inverted) / 25%;
+        --main-inverted-eighth: var(--main-inverted) / 12.5%;
+        --main-inverted-sixteenth: var(--main-inverted) / 6.25%;
 
-        --inverse: var(--white);
-        --inverse-upper-sixteenth: var(--inverse) / 93.75%;
-        --inverse-upper-eighth: var(--inverse) / 87.5%;
-        --inverse-upper-quarter: var(--inverse) / 75%;
-        --inverse-half: var(--inverse) / 50%;
-        --inverse-three-eighths: var(--inverse) / 37.5%;
-        --inverse-quarter: var(--inverse) / 25%;
-        --inverse-eighth: var(--inverse) / 12.5%;
-        --inverse-sixteenth: var(--inverse) / 6.25%;
+        --main-neutral: var(--gray);
+        --main-neutral-upper-sixteenth: var(--main-neutral) / 93.75%;
+        --main-neutral-upper-eighth: var(--main-neutral) / 87.5%;
+        --main-neutral-upper-quarter: var(--main-neutral) / 75%;
+        --main-neutral-half: var(--main-neutral) / 50%;
+        --main-neutral-three-eighths: var(--main-neutral) / 37.5%;
+        --main-neutral-quarter: var(--main-neutral) / 25%;
+        --main-neutral-eighth: var(--main-neutral) / 12.5%;
+        --main-neutral-sixteenth: var(--main-neutral) / 6.25%;
 
         --accent: var(--khaki);
         --accent-upper-sixteenth: var(--accent) / 93.75%;
@@ -60,6 +60,16 @@
         --accent-quarter: var(--accent) / 25%;
         --accent-eighth: var(--accent) / 12.5%;
         --accent-sixteenth: var(--accent) / 6.25%;
+
+        --accent-inverted: var(--khaki-dark);
+        --accent-inverted-upper-sixteenth: var(--accent-inverted) / 93.75%;
+        --accent-inverted-upper-eighth: var(--accent-inverted) / 87.5%;
+        --accent-inverted-upper-quarter: var(--accent-inverted) / 75%;
+        --accent-inverted-half: var(--accent-inverted) / 50%;
+        --accent-inverted-three-eighths: var(--accent-inverted) / 37.5%;
+        --accent-inverted-quarter: var(--accent-inverted) / 25%;
+        --accent-inverted-eighth: var(--accent-inverted) / 12.5%;
+        --accent-inverted-sixteenth: var(--accent-inverted) / 6.25%;
 
         /* Implementation. */
 
@@ -98,8 +108,9 @@
     }
     .dark {
         --main: var(--white);
-        --inverse: var(--off-black);
+        --main-inverted: var(--off-black);
         --accent: var(--khaki-dark);
+        --accent-inverted: var(--khaki);
 
         /* --card: 0 0% 3.9%;
         --card-foreground: 0 0% 98%;

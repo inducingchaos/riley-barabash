@@ -63,22 +63,22 @@ export function Menu(): JSX.Element {
             >
                 <div className="flex items-center justify-center gap-0 p-2">
                     <MenuIcon
-                        href="/start"
+                        href="focus"
                         isBlurred={isBlurred}
                         path="M15 6h2v2h-2V6zm-2 4V8h2v2h-2zm-2 2v-2h2v2h-2zm-2 2v-2h2v2H9zm-2 2v-2h2v2H7zm-2 0h2v2H5v-2zm-2-2h2v2H3v-2zm0 0H1v-2h2v2zm8 2h2v2h-2v-2zm4-2v2h-2v-2h2zm2-2v2h-2v-2h2zm2-2v2h-2v-2h2zm2-2h-2v2h2V8zm0 0h2V6h-2v2z"
                     />
                     <MenuIcon
-                        href="/start"
+                        href="chat"
                         isBlurred={isBlurred}
                         path="M4 2h18v16H6v2H4v-2h2v-2h14V4H4v18H2V2h2zm5 7H7v2h2V9zm2 0h2v2h-2V9zm6 0h-2v2h2V9z"
                         isActive
                     />
                     <MenuIcon
-                        href="/start"
+                        href="ingest"
                         isBlurred={isBlurred}
                         path="M3 3h18v18H3V3zm16 16V5H5v14h14zm-6-8h4v2h-4v4h-2v-4H7v-2h4V7h2v4z"
                     />
-                    <MenuIcon href="/start" isBlurred={isBlurred} path="M4 4h8v2h10v14H2V4h2zm16 4H10V6H4v12h16V8z" />
+                    <MenuIcon href="data" isBlurred={isBlurred} path="M4 4h8v2h10v14H2V4h2zm16 4H10V6H4v12h16V8z" />
                     <MenuIcon
                         href="/altered"
                         isBlurred={isBlurred}
