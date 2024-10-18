@@ -3,8 +3,9 @@
  */
 
 import { H1 } from "~/components/ui/primitives/typography"
-import { DataTable, NeuronForm, getColumns, type Neuron } from "./_components"
 import { api } from "~/lib/infra/rpc/server"
+import { NeuronForm, type Neuron } from "./_components"
+import { TextAreaTest } from "./_components/text-area-test"
 
 async function getData(): Promise<Neuron[]> {
     const neurons = (await api.kyzn.neurons.all()).map(n => {
@@ -37,6 +38,7 @@ async function getData(): Promise<Neuron[]> {
 }
 
 export default async function Ingest(): Promise<JSX.Element> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const data = await getData()
 
     return (
@@ -47,6 +49,7 @@ export default async function Ingest(): Promise<JSX.Element> {
                         <H1>Ingest.</H1>
 
                         <NeuronForm />
+                        <TextAreaTest />
 
                         {/* <DataTable data={data} /> */}
                     </section>
