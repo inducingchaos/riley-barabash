@@ -55,7 +55,7 @@ export function Menu(): JSX.Element {
             onMouseLeave={() => setIsHovered(false)}
         >
             <div
-                className={`flex w-full flex-row items-center justify-between border-2 bg-inverse-upper-quarter backdrop-blur ${
+                className={`bg-alternate-upper-quarter flex w-full flex-row items-center justify-between border backdrop-blur ${
                     isBlurred
                         ? "border-main-sixteenth transition-colors duration-1000 ease-out-expo"
                         : "border-main-eighth transition-colors duration-250 ease-out-expo"

@@ -11,7 +11,7 @@ export default function Landing(): JSX.Element {
                         <div className="flex w-full">
                             <div className="flex flex-col">
                                 <p className="w-2/3 text-8xl font-bold">
-                                    Systems for <span className="text-[hsl(var(--khaki))]">{"creation."}</span>
+                                    Systems for <span className="text-accent-neutral">{"creation."}</span>
                                 </p>
                             </div>
                             <div className="flex w-1/3 items-center justify-center">

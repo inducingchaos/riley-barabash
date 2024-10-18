@@ -45,11 +45,11 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="bg-main-inverted-upper-quarter flex w-full flex-row items-center justify-between border-2 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
+            <div className="bg-alternate-upper-quarter flex w-full flex-row items-center justify-between border before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="rounded-2 border-1 bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
+                    <p className="bg-accent-alternate px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}
@@ -75,7 +75,7 @@ export function Header(): JSX.Element {
                         <Button
                             asChild
                             variant="outline"
-                            className="rounded-none border-2 font-mono shadow-none hover:border-accent"
+                            className="rounded-none border font-mono shadow-none hover:border-accent"
                         >
                             <Link href="/#waitlist" className="h-auto">
                                 {"join the waitlist"}
