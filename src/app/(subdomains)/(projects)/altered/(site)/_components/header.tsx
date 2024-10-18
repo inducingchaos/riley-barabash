@@ -49,7 +49,7 @@ export function Header(): JSX.Element {
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="rounded-+4 border-1 bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
+                    <p className="rounded-2 border-1 bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}

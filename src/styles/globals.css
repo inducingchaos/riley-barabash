@@ -4,85 +4,97 @@
 
 @layer base {
     :root {
-        /* Source. */
+        /* Definitions. */
 
-        --white: 0 0% 100%;
-        --off-white: 0 0% 93.75%;
-        --way-off-white: 0 0% 87.5%;
-        --gray: 0 0% 50%;
-        --black: 0 0% 0%;
-        --off-black: 0 0% 6.25%;
-        --way-off-black: 0 0% 25%;
+        --color-white: 0 0% 100%;
+        --color-off-white: 0 0% 93.75%;
+        --color-way-off-white: 0 0% 87.5%;
 
-        --khaki: 45 25% 88%;
-        --khaki-dark: 45 12.5% 25%;
+        --color-black: 0 0% 0%;
+        --color-off-black: 0 0% 6.25%;
+        --color-way-off-black: 0 0% 25%;
+
+        --color-gray: 0 0% 50%;
+
+        --color-khaki: 45 12.5% 50%;
+        --color-khaki-light: 45 50% 87.5%;
+        --color-khaki-dark: 45 12.5% 25%;
 
         --ease-out-expo: cubic-bezier(0.125, 1, 0.25, 1);
         --ease-in-out-expo: cubic-bezier(0.875, 0, 0.125, 1);
-        /* Normalization. */
 
-        --main: var(--way-off-black);
-        --main-upper-sixteenth: var(--main) / 93.75%;
-        --main-upper-eighth: var(--main) / 87.5%;
-        --main-upper-quarter: var(--main) / 75%;
-        --main-half: var(--main) / 50%;
-        --main-three-eighths: var(--main) / 37.5%;
-        --main-quarter: var(--main) / 25%;
-        --main-eighth: var(--main) / 12.5%;
-        --main-sixteenth: var(--main) / 6.25%;
+        /* Settings. */
 
-        --main-inverted: var(--white);
-        --main-inverted-upper-sixteenth: var(--main-inverted) / 93.75%;
-        --main-inverted-upper-eighth: var(--main-inverted) / 87.5%;
-        --main-inverted-upper-quarter: var(--main-inverted) / 75%;
-        --main-inverted-half: var(--main-inverted) / 50%;
-        --main-inverted-three-eighths: var(--main-inverted) / 37.5%;
-        --main-inverted-quarter: var(--main-inverted) / 25%;
-        --main-inverted-eighth: var(--main-inverted) / 12.5%;
-        --main-inverted-sixteenth: var(--main-inverted) / 6.25%;
+        --color-main: var(--color-way-off-black);
+        --color-neutral: var(--color-gray);
+        --color-alternate: var(--color-white);
 
-        --main-neutral: var(--gray);
-        --main-neutral-upper-sixteenth: var(--main-neutral) / 93.75%;
-        --main-neutral-upper-eighth: var(--main-neutral) / 87.5%;
-        --main-neutral-upper-quarter: var(--main-neutral) / 75%;
-        --main-neutral-half: var(--main-neutral) / 50%;
-        --main-neutral-three-eighths: var(--main-neutral) / 37.5%;
-        --main-neutral-quarter: var(--main-neutral) / 25%;
-        --main-neutral-eighth: var(--main-neutral) / 12.5%;
-        --main-neutral-sixteenth: var(--main-neutral) / 6.25%;
+        --color-accent: var(--color-khaki-light);
+        --color-accent-neutral: var(--color-khaki);
+        --color-accent-alternate: var(--color-khaki-dark);
 
-        --accent: var(--khaki);
-        --accent-upper-sixteenth: var(--accent) / 93.75%;
-        --accent-upper-eighth: var(--accent) / 87.5%;
-        --accent-upper-quarter: var(--accent) / 75%;
-        --accent-half: var(--accent) / 50%;
-        --accent-three-eighths: var(--accent) / 37.5%;
-        --accent-quarter: var(--accent) / 25%;
-        --accent-eighth: var(--accent) / 12.5%;
-        --accent-sixteenth: var(--accent) / 6.25%;
-
-        --accent-inverted: var(--khaki-dark);
-        --accent-inverted-upper-sixteenth: var(--accent-inverted) / 93.75%;
-        --accent-inverted-upper-eighth: var(--accent-inverted) / 87.5%;
-        --accent-inverted-upper-quarter: var(--accent-inverted) / 75%;
-        --accent-inverted-half: var(--accent-inverted) / 50%;
-        --accent-inverted-three-eighths: var(--accent-inverted) / 37.5%;
-        --accent-inverted-quarter: var(--accent-inverted) / 25%;
-        --accent-inverted-eighth: var(--accent-inverted) / 12.5%;
-        --accent-inverted-sixteenth: var(--accent-inverted) / 6.25%;
-
-        /* Implementation. */
-
-        --background: var(--inverse);
-        --background-secondary: var(--off-white);
-
-        --text: var(--main);
-        --text-secondary: var(--off-black);
-        --text-tertiary: var(--way-off-black);
-
-        --border: var(--main-eighth);
         --border-width: 0.125rem;
+        --border-width-force: 0.0625rem;
         --border-radius: 0rem;
+        --border-radius-force: 0.25rem;
+
+        --ease-out: var(--ease-out-expo);
+        --ease-in-out: var(--ease-in-out-expo);
+
+        /* Variations. */
+
+        --color-main-upper-sixteenth: var(--color-main) / 93.75%;
+        --color-main-upper-eighth: var(--color-main) / 87.5%;
+        --color-main-upper-quarter: var(--color-main) / 75%;
+        --color-main-half: var(--color-main) / 50%;
+        --color-main-three-eighths: var(--color-main) / 37.5%;
+        --color-main-quarter: var(--color-main) / 25%;
+        --color-main-eighth: var(--color-main) / 12.5%;
+        --color-main-sixteenth: var(--color-main) / 6.25%;
+        --color-neutral-upper-sixteenth: var(--color-neutral) / 93.75%;
+        --color-neutral-upper-eighth: var(--color-neutral) / 87.5%;
+        --color-neutral-upper-quarter: var(--color-neutral) / 75%;
+        --color-neutral-half: var(--color-neutral) / 50%;
+        --color-neutral-three-eighths: var(--color-neutral) / 37.5%;
+        --color-neutral-quarter: var(--color-neutral) / 25%;
+        --color-neutral-eighth: var(--color-neutral) / 12.5%;
+        --color-neutral-sixteenth: var(--color-neutral) / 6.25%;
+        --color-alternate-upper-sixteenth: var(--color-alternate) / 93.75%;
+        --color-alternate-upper-eighth: var(--color-alternate) / 87.5%;
+        --color-alternate-upper-quarter: var(--color-alternate) / 75%;
+        --color-alternate-half: var(--color-alternate) / 50%;
+        --color-alternate-three-eighths: var(--color-alternate) / 37.5%;
+        --color-alternate-quarter: var(--color-alternate) / 25%;
+        --color-alternate-eighth: var(--color-alternate) / 12.5%;
+        --color-alternate-sixteenth: var(--color-alternate) / 6.25%;
+
+        --color-accent-upper-sixteenth: var(--color-accent) / 93.75%;
+        --color-accent-upper-eighth: var(--color-accent) / 87.5%;
+        --color-accent-upper-quarter: var(--color-accent) / 75%;
+        --color-accent-half: var(--color-accent) / 50%;
+        --color-accent-three-eighths: var(--color-accent) / 37.5%;
+        --color-accent-quarter: var(--color-accent) / 25%;
+        --color-accent-eighth: var(--color-accent) / 12.5%;
+        --color-accent-sixteenth: var(--color-accent) / 6.25%;
+        --color-accent-neutral-upper-sixteenth: var(--color-accent-neutral) / 93.75%;
+        --color-accent-neutral-upper-eighth: var(--color-accent-neutral) / 87.5%;
+        --color-accent-neutral-upper-quarter: var(--color-accent-neutral) / 75%;
+        --color-accent-neutral-half: var(--color-accent-neutral) / 50%;
+        --color-accent-neutral-three-eighths: var(--color-accent-neutral) / 37.5%;
+        --color-accent-neutral-quarter: var(--color-accent-neutral) / 25%;
+        --color-accent-neutral-eighth: var(--color-accent-neutral) / 12.5%;
+        --color-accent-neutral-sixteenth: var(--color-accent-neutral) / 6.25%;
+        --color-accent-alternate: var(--color-khaki-dark);
+        --color-accent-alternate-upper-sixteenth: var(--color-accent-alternate) / 93.75%;
+        --color-accent-alternate-upper-eighth: var(--color-accent-alternate) / 87.5%;
+        --color-accent-alternate-upper-quarter: var(--color-accent-alternate) / 75%;
+        --color-accent-alternate-half: var(--color-accent-alternate) / 50%;
+        --color-accent-alternate-three-eighths: var(--color-accent-alternate) / 37.5%;
+        --color-accent-alternate-quarter: var(--color-accent-alternate) / 25%;
+        --color-accent-alternate-eighth: var(--color-accent-alternate) / 12.5%;
+        --color-accent-alternate-sixteenth: var(--color-accent-alternate) / 6.25%;
+
+        /* Deprecated. */
 
         /* --card: 0 0% 100%;
         --card-foreground: 0 0% 3.9%;
@@ -107,10 +119,14 @@
         --chart-5: 27 87% 67%; */
     }
     .dark {
+        /* Overrides. */
+
         --main: var(--white);
-        --main-inverted: var(--off-black);
+        --alternate: var(--off-black);
         --accent: var(--khaki-dark);
-        --accent-inverted: var(--khaki);
+        --accent-alternate: var(--khaki-light);
+
+        /* Deprecated. */
 
         /* --card: 0 0% 3.9%;
         --card-foreground: 0 0% 98%;
@@ -138,9 +154,9 @@
 
 @layer base {
     * {
-        @apply border-border;
+        @apply border-main-eighth;
     }
     body {
-        @apply bg-background text-text;
+        @apply bg-alternate text-main;
     }
 }
