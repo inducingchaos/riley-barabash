@@ -4,6 +4,7 @@
 
 import type { ReactNode } from "react"
 import type { Metadata } from "next"
+import { Menu } from "../(site)/_components/menu"
 
 export const metadata: Metadata = {
     // title: `${project.info.name} | ${project.info.tagline}`,
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
     return (
         <div className="flex flex-col items-center justify-center p-4">
-            {/* <Header /> */}
+            <Menu />
             {children}
         </div>
     )

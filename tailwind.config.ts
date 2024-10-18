@@ -15,6 +15,45 @@ export default {
             thin: "8px",
             thick: "32px"
         },
+        borderRadius: {
+            DEFAULT: "var(--border-radius)",
+            "+2": "calc(var(--border-radius) + 0.125rem)",
+            "+3": "calc(var(--border-radius) + 0.1875rem)",
+            "+4": "calc(var(--border-radius) + 0.25rem)",
+            "+6": "calc(var(--border-radius) + 0.375rem)",
+            "+8": "calc(var(--border-radius) + 0.5rem)",
+            "+12": "calc(var(--border-radius) + 0.75rem)",
+            "+16": "calc(var(--border-radius) + 1rem)",
+            "+24": "calc(var(--border-radius) + 1.5rem)",
+            "+32": "calc(var(--border-radius) + 2rem)",
+            "-2": "calc(var(--border-radius) - 0.125rem)",
+            "-3": "calc(var(--border-radius) - 0.1875rem)",
+            "-4": "calc(var(--border-radius) - 0.25rem)",
+            "-6": "calc(var(--border-radius) - 0.375rem)",
+            "-8": "calc(var(--border-radius) - 0.5rem)",
+            "-12": "calc(var(--border-radius) - 0.75rem)",
+            "-16": "calc(var(--border-radius) - 1rem)",
+            "-24": "calc(var(--border-radius) - 1.5rem)",
+            "-32": "calc(var(--border-radius) - 2rem)",
+            "*2": "calc(var(--border-radius) * 2)",
+            "*3": "calc(var(--border-radius) * 3)",
+            "*4": "calc(var(--border-radius) * 4)",
+            "*6": "calc(var(--border-radius) * 6)",
+            "*8": "calc(var(--border-radius) * 8)",
+            "*12": "calc(var(--border-radius) * 12)",
+            "*16": "calc(var(--border-radius) * 16)",
+            "*24": "calc(var(--border-radius) * 24)",
+            "*32": "calc(var(--border-radius) * 32)",
+            "/2": "calc(var(--border-radius) / 2)",
+            "/3": "calc(var(--border-radius) / 3)",
+            "/4": "calc(var(--border-radius) / 4)",
+            "/6": "calc(var(--border-radius) / 6)",
+            "/8": "calc(var(--border-radius) / 8)",
+            "/12": "calc(var(--border-radius) / 12)",
+            "/16": "calc(var(--border-radius) / 16)",
+            "/24": "calc(var(--border-radius) / 24)",
+            "/32": "calc(var(--border-radius) / 32)"
+        },
         extend: {
             fontFamily: {
                 sans: ["var(--font-px-grotesk)", ...fontFamily.sans],
@@ -27,13 +66,11 @@ export default {
                 "in-out-expo": "var(--ease-in-out-expo)"
             },
             transitionDuration: {
+                "125": "125ms",
+                "250": "250ms",
                 "5000": "5000ms"
             },
-            // borderRadius: {
-            //     lg: "var(--border-radius)",
-            //     md: "calc(var(--border-radius) - 2px)",
-            //     sm: "calc(var(--border-radius) - 4px)"
-            // },
+
             colors: {
                 main: {
                     DEFAULT: "hsl(var(--main))",
@@ -41,6 +78,7 @@ export default {
                     "upper-eighth": "hsl(var(--main-upper-eighth))",
                     "upper-quarter": "hsl(var(--main-upper-quarter))",
                     half: "hsl(var(--main-half))",
+                    "3/8": "hsl(var(--main-three-eighths))",
                     quarter: "hsl(var(--main-quarter))",
                     eighth: "hsl(var(--main-eighth))",
                     sixteenth: "hsl(var(--main-sixteenth))"
@@ -51,6 +89,7 @@ export default {
                     "upper-eighth": "hsl(var(--inverse-upper-eighth))",
                     "upper-quarter": "hsl(var(--inverse-upper-quarter))",
                     half: "hsl(var(--inverse-half))",
+                    "3/8": "hsl(var(--inverse-three-eighths))",
                     quarter: "hsl(var(--inverse-quarter))",
                     eighth: "hsl(var(--inverse-eighth))",
                     sixteenth: "hsl(var(--inverse-sixteenth))"
@@ -61,6 +100,7 @@ export default {
                     "upper-eighth": "hsl(var(--neutral-upper-eighth))",
                     "upper-quarter": "hsl(var(--neutral-upper-quarter))",
                     half: "hsl(var(--neutral-half))",
+                    "3/8": "hsl(var(--neutral-three-eighths))",
                     quarter: "hsl(var(--neutral-quarter))",
                     eighth: "hsl(var(--neutral-eighth))",
                     sixteenth: "hsl(var(--neutral-sixteenth))"
@@ -71,6 +111,7 @@ export default {
                     "upper-eighth": "hsl(var(--accent-upper-eighth))",
                     "upper-quarter": "hsl(var(--accent-upper-quarter))",
                     half: "hsl(var(--accent-half))",
+                    "3/8": "hsl(var(--accent-three-eighths))",
                     quarter: "hsl(var(--accent-quarter))",
                     eighth: "hsl(var(--accent-eighth))",
                     sixteenth: "hsl(var(--accent-sixteenth))"

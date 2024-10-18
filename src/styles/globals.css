@@ -26,6 +26,7 @@
         --main-upper-eighth: var(--main) / 87.5%;
         --main-upper-quarter: var(--main) / 75%;
         --main-half: var(--main) / 50%;
+        --main-three-eighths: var(--main) / 37.5%;
         --main-quarter: var(--main) / 25%;
         --main-eighth: var(--main) / 12.5%;
         --main-sixteenth: var(--main) / 6.25%;
@@ -35,6 +36,7 @@
         --neutral-upper-eighth: var(--neutral) / 87.5%;
         --neutral-upper-quarter: var(--neutral) / 75%;
         --neutral-half: var(--neutral) / 50%;
+        --neutral-three-eighths: var(--neutral) / 37.5%;
         --neutral-quarter: var(--neutral) / 25%;
         --neutral-eighth: var(--neutral) / 12.5%;
         --neutral-sixteenth: var(--neutral) / 6.25%;
@@ -44,6 +46,7 @@
         --inverse-upper-eighth: var(--inverse) / 87.5%;
         --inverse-upper-quarter: var(--inverse) / 75%;
         --inverse-half: var(--inverse) / 50%;
+        --inverse-three-eighths: var(--inverse) / 37.5%;
         --inverse-quarter: var(--inverse) / 25%;
         --inverse-eighth: var(--inverse) / 12.5%;
         --inverse-sixteenth: var(--inverse) / 6.25%;
@@ -53,6 +56,7 @@
         --accent-upper-eighth: var(--accent) / 87.5%;
         --accent-upper-quarter: var(--accent) / 75%;
         --accent-half: var(--accent) / 50%;
+        --accent-three-eighths: var(--accent) / 37.5%;
         --accent-quarter: var(--accent) / 25%;
         --accent-eighth: var(--accent) / 12.5%;
         --accent-sixteenth: var(--accent) / 6.25%;
@@ -68,8 +72,7 @@
 
         --border: var(--main-eighth);
         --border-width: 0.125rem;
-
-        --corner-radius: 0.5rem;
+        --border-radius: 0rem;
 
         /* --card: 0 0% 100%;
         --card-foreground: 0 0% 3.9%;
@@ -127,6 +130,6 @@
         @apply border-border;
     }
     body {
-        @apply text-text bg-background;
+        @apply bg-background text-text;
     }
 }

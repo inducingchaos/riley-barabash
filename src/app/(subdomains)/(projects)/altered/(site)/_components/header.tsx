@@ -45,23 +45,22 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="bg-inverse-upper-quarter flex w-full flex-row items-center justify-between border-2 before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
+            <div className="flex w-full flex-row items-center justify-between border-2 bg-inverse-upper-quarter before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="border-1 rounded-md bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
+                    <p className="rounded-+4 border-1 bg-accent px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}
 
-                {/* <nav className="flex flex-row items-center justify-center gap-2">
-                    {links.map(item => (
-                        <Button key={item.url} asChild variant="link" className="font-mono">
-                        <Link href={item.url}>{item.text}</Link>
-                        </Button>
-                        ))}
-                        </nav> */}
                 <NavigationMenuDemo />
+
+                {"isLocalhost" && (
+                    <Button asChild variant="secondary" className="font-mono">
+                        <Link href="altered/start">{"go to app"}</Link>
+                    </Button>
+                )}
 
                 {/* Sign in/out button. */}
 
@@ -129,13 +128,13 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                 <a
                     ref={ref}
                     className={cn(
-                        "block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        "hover:text-accent-foreground focus:text-accent-foreground block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-accent focus:bg-accent",
                         className
                     )}
                     {...props}
                 >
                     <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+                    <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">{children}</p>
                 </a>
             </NavigationMenuLink>
         </li>
