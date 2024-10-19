@@ -20,7 +20,7 @@ export default function Page(): JSX.Element {
                     ].map(color => (
                         <div key={color.name} className="flex flex-col items-center">
                             <span className="mb-2">{color.name}</span>
-                            <div className="flex h-48 w-20 flex-col gap-8">
+                            <div className="h-48 rounded-1.5 w-20 flex flex-col gap-8">
                                 <div className="flex-1" style={{ backgroundColor: `hsl(var(${color.light}))` }}></div>
                                 <div className="flex-1" style={{ backgroundColor: `hsl(var(${color.base}))` }}></div>
                                 <div className="flex-1" style={{ backgroundColor: `hsl(var(${color.dark}))` }}></div>

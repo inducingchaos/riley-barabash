@@ -8,17 +8,26 @@ import * as React from "react"
 import { cn } from "~/utils/ui"
 
 export const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-1.5 text-14 font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-main-sixteenth disabled:pointer-events-none disabled:opacity-50",
 
     {
         variants: {
-            variant: {
-                default: "bg-main text-alternate hover:bg-main-upper-quarter",
-                destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-                outline: "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
+            style: {
+                normal: "bg-main text-alternate hover:bg-main-upper-quarter",
                 secondary: "bg-accent text-main hover:bg-accent-upper-quarter",
+                outline: "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
                 ghost: "hover:bg-accent hover:text-accent-foreground",
                 link: "text-primary underline-offset-4 hover:underline"
+            },
+
+            color: {
+                main: "bg-text text-background hover:bg-text-upper-quarter",
+                warning: "bg-warning text-warning-foreground hover:bg-warning-upper-quarter",
+                danger: "bg-danger text-danger-foreground hover:bg-danger-upper-quarter",
+                success: "bg-success text-success-foreground hover:bg-success-upper-quarter",
+                info: "bg-info text-info-foreground hover:bg-info-upper-quarter",
+                accent: "bg-accent text-text hover:bg-accent-upper-quarter"
+                // Add more color options as needed
             },
 
             size: {
@@ -26,29 +35,23 @@ export const buttonVariants = cva(
                 sm: "h-8 rounded px-3 text-xs",
                 lg: "h-10 rounded px-8",
                 icon: "h-9 w-9"
-            },
-
-            color: {
-                main: "bg-text text-background hover:bg-text-upper-quarter",
-                accent: "bg-accent text-text hover:bg-accent-upper-quarter"
-                // Add more color options as needed
             }
         },
 
         defaultVariants: {
-            variant: "default",
+            intent: "default",
             size: "default",
             color: "main"
         },
 
         compoundVariants: [
             {
-                variant: "outline",
+                intent: "outline",
                 color: "main",
                 class: "border-primary text-primary hover:bg-primary/10"
             },
             {
-                variant: "outline",
+                intent: "outline",
                 color: "accent",
                 class: "border-accent text-accent hover:bg-accent/10"
             }
@@ -57,7 +60,7 @@ export const buttonVariants = cva(
     }
 )
 
-export type ButtonVariant = VariantProps<typeof buttonVariants>["variant"]
+export type ButtonIntent = VariantProps<typeof buttonVariants>["intent"]
 export type ButtonColor = VariantProps<typeof buttonVariants>["color"]
 export type ButtonSize = VariantProps<typeof buttonVariants>["size"]
 export type ButtonVariants = VariantProps<typeof buttonVariants>
@@ -71,10 +74,10 @@ export type ButtonProps = {
     VariantProps<typeof buttonVariants>
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, color, asChild = false, ...props }, ref) => {
+    ({ className, intent, size, color, asChild = false, ...props }, ref) => {
         const DynamicButton = asChild ? Slot : "button"
 
-        return <DynamicButton className={cn(buttonVariants({ variant, size, color, className }))} ref={ref} {...props} />
+        return <DynamicButton className={cn(buttonVariants({ intent, size, color, className }))} ref={ref} {...props} />
     }
 )
 

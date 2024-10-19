@@ -4,22 +4,29 @@
 
 import type { ThemeConfig } from "tailwindcss/types/config"
 
-type Variant = string | [string, string]
-
-const createColorVariants = ({ using: { name, variants } }: { using: { name: string; variants: readonly Variant[] } }) =>
+const createOpacityVariants = ({
+    using: { name: colorName, variants: opacityVariants }
+}: {
+    using: { name: string; variants: Record<string, number> }
+}) =>
     Object.fromEntries(
-        variants.map(variant => {
-            const isString = typeof variant === "string"
-
-            const key = isString ? variant : variant[0]
-            const value = isString ? variant : variant[1]
-
-            return [key, `hsl(var(--color-${name}${key === "DEFAULT" ? "" : `-${value}`}))`]
-        })
+        Object.entries(opacityVariants).map(([variantName, opacity]) => [
+            variantName,
+            `hsl(var(--color-${colorName}) / ${opacity}%)`
+        ])
     )
 
-const createColors = ({ using: { names, variants } }: { using: { names: readonly string[]; variants: readonly Variant[] } }) =>
-    Object.fromEntries(names.map(name => [name, createColorVariants({ using: { name, variants } })]))
+const createColorsWithOpacityVariants = ({
+    using: { names: colorNames, variants: opacityVariants }
+}: {
+    using: { names: readonly string[]; variants: Record<string, number> }
+}) =>
+    Object.fromEntries(
+        colorNames.map(colorName => [
+            colorName,
+            createOpacityVariants({ using: { name: colorName, variants: opacityVariants } })
+        ])
+    )
 
 const names = [
     "main",
@@ -36,20 +43,21 @@ const names = [
     "accent-alternate"
 ] as const
 
-const variants = [
-    "DEFAULT",
-    "upper-sixteenth",
-    "upper-eighth",
-    "upper-quarter",
-    "half",
-    ["3/8", "three-eighths"],
-    "quarter",
-    "eighth",
-    "sixteenth"
-] as const satisfies Variant[]
+const opacityVariants = {
+    DEFAULT: 100,
+    "upper-sixteenth": 93.75,
+    "upper-eighth": 87.5,
+    "upper-quarter": 75,
+    half: 50,
+    "3/8": 37.5,
+    quarter: 25,
+    eighth: 12.5,
+    sixteenth: 6.25,
+    "thirty-second": 3.125
+} as const satisfies Record<string, number>
 
 export const colors = {
-    ...createColors({ using: { names, variants } })
+    ...createColorsWithOpacityVariants({ using: { names, variants: opacityVariants } })
 
     // card: {
     //     DEFAULT: "hsl(var(--card))",
