@@ -16,7 +16,7 @@ export type StackOptions = {
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "children">
 
 export function Stack({
-    as: _elementType = "div",
+    type: _elementType = "div",
     orientation = "horizontal",
     expand = false,
     children,

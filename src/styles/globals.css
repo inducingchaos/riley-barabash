@@ -16,6 +16,22 @@
 
         --color-gray: 0 0% 50%;
 
+        --color-amber: 39 100% 50%;
+        /* --color-amber-light: 39 100% 75%;
+        --color-amber-dark: 39 50% 12.5%; */
+
+        --color-red: 15 100% 50%;
+        /* --color-red-light: 15 100% 75%;
+        --color-red-dark: 15 50% 12.5%; */
+
+        --color-green: 105 100% 50%;
+        /* --color-green-light: 105 100% 75%;
+        --color-green-dark: 105 50% 12.5%; */
+
+        --color-blue: 210 100% 50%;
+        /* --color-blue-light: 210 100% 75%;
+        --color-blue-dark: 210 50% 12.5%; */
+
         --color-khaki: 45 12.5% 50%;
         --color-khaki-light: 45 50% 87.5%;
         --color-khaki-dark: 45 12.5% 25%;
@@ -28,6 +44,11 @@
         --color-main: var(--color-way-off-black);
         --color-neutral: var(--color-gray);
         --color-alternate: var(--color-white);
+
+        --color-warning: var(--color-red);
+        --color-danger: var(--color-red);
+        --color-success: var(--color-green);
+        --color-info: var(--color-blue);
 
         --color-accent: var(--color-khaki-dark);
         --color-accent-neutral: var(--color-khaki);
@@ -67,6 +88,42 @@
         --color-alternate-quarter: var(--color-alternate) / 25%;
         --color-alternate-eighth: var(--color-alternate) / 12.5%;
         --color-alternate-sixteenth: var(--color-alternate) / 6.25%;
+
+        --color-warning-upper-sixteenth: var(--color-warning) / 93.75%;
+        --color-warning-upper-eighth: var(--color-warning) / 87.5%;
+        --color-warning-upper-quarter: var(--color-warning) / 75%;
+        --color-warning-half: var(--color-warning) / 50%;
+        --color-warning-three-eighths: var(--color-warning) / 37.5%;
+        --color-warning-quarter: var(--color-warning) / 25%;
+        --color-warning-eighth: var(--color-warning) / 12.5%;
+        --color-warning-sixteenth: var(--color-warning) / 6.25%;
+
+        --color-danger-upper-sixteenth: var(--color-danger) / 93.75%;
+        --color-danger-upper-eighth: var(--color-danger) / 87.5%;
+        --color-danger-upper-quarter: var(--color-danger) / 75%;
+        --color-danger-half: var(--color-danger) / 50%;
+        --color-danger-three-eighths: var(--color-danger) / 37.5%;
+        --color-danger-quarter: var(--color-danger) / 25%;
+        --color-danger-eighth: var(--color-danger) / 12.5%;
+        --color-danger-sixteenth: var(--color-danger) / 6.25%;
+
+        --color-success-upper-sixteenth: var(--color-success) / 93.75%;
+        --color-success-upper-eighth: var(--color-success) / 87.5%;
+        --color-success-upper-quarter: var(--color-success) / 75%;
+        --color-success-half: var(--color-success) / 50%;
+        --color-success-three-eighths: var(--color-success) / 37.5%;
+        --color-success-quarter: var(--color-success) / 25%;
+        --color-success-eighth: var(--color-success) / 12.5%;
+        --color-success-sixteenth: var(--color-success) / 6.25%;
+
+        --color-info-upper-sixteenth: var(--color-info) / 93.75%;
+        --color-info-upper-eighth: var(--color-info) / 87.5%;
+        --color-info-upper-quarter: var(--color-info) / 75%;
+        --color-info-half: var(--color-info) / 50%;
+        --color-info-three-eighths: var(--color-info) / 37.5%;
+        --color-info-quarter: var(--color-info) / 25%;
+        --color-info-eighth: var(--color-info) / 12.5%;
+        --color-info-sixteenth: var(--color-info) / 6.25%;
 
         --color-accent-upper-sixteenth: var(--color-accent) / 93.75%;
         --color-accent-upper-eighth: var(--color-accent) / 87.5%;

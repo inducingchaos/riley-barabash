@@ -5,7 +5,7 @@
 import { type Config } from "tailwindcss"
 import animate from "tailwindcss-animate"
 import { fontFamily } from "tailwindcss/defaultTheme"
-import { borderRadius, borderWidth, colors } from "./src/config/external/tailwind"
+import { borderRadius, borderWidth, colors, fontSize } from "./src/config/external/tailwind"
 
 export default {
     darkMode: ["class"],
@@ -18,6 +18,7 @@ export default {
             serif: ["var(--font-hoefler-text)", ...fontFamily.serif],
             inter: ["var(--font-inter)", ...fontFamily.sans]
         },
+        fontSize,
 
         borderWidth,
         borderRadius,

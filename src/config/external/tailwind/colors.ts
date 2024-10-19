@@ -4,74 +4,52 @@
 
 import type { ThemeConfig } from "tailwindcss/types/config"
 
-export const colors = {
-    main: {
-        DEFAULT: "hsl(var(--color-main))",
-        "upper-sixteenth": "hsl(var(--color-main-upper-sixteenth))",
-        "upper-eighth": "hsl(var(--color-main-upper-eighth))",
-        "upper-quarter": "hsl(var(--color-main-upper-quarter))",
-        half: "hsl(var(--color-main-half))",
-        "3/8": "hsl(var(--color-main-three-eighths))",
-        quarter: "hsl(var(--color-main-quarter))",
-        eighth: "hsl(var(--color-main-eighth))",
-        sixteenth: "hsl(var(--color-main-sixteenth))"
-    },
-    neutral: {
-        DEFAULT: "hsl(var(--color-neutral))",
-        "upper-sixteenth": "hsl(var(--color-neutral-upper-sixteenth))",
-        "upper-eighth": "hsl(var(--color-neutral-upper-eighth))",
-        "upper-quarter": "hsl(var(--color-neutral-upper-quarter))",
-        half: "hsl(var(--color-neutral-half))",
-        "3/8": "hsl(var(--color-neutral-three-eighths))",
-        quarter: "hsl(var(--color-neutral-quarter))",
-        eighth: "hsl(var(--color-neutral-eighth))",
-        sixteenth: "hsl(var(--color-neutral-sixteenth))"
-    },
-    alternate: {
-        DEFAULT: "hsl(var(--color-alternate))",
-        "upper-sixteenth": "hsl(var(--color-alternate-upper-sixteenth))",
-        "upper-eighth": "hsl(var(--color-alternate-upper-eighth))",
-        "upper-quarter": "hsl(var(--color-alternate-upper-quarter))",
-        half: "hsl(var(--color-alternate-half))",
-        "3/8": "hsl(var(--color-alternate-three-eighths))",
-        quarter: "hsl(var(--color-alternate-quarter))",
-        eighth: "hsl(var(--color-alternate-eighth))",
-        sixteenth: "hsl(var(--color-alternate-sixteenth))"
-    },
+type Variant = string | [string, string]
 
-    accent: {
-        DEFAULT: "hsl(var(--color-accent))",
-        "upper-sixteenth": "hsl(var(--color-accent-upper-sixteenth))",
-        "upper-eighth": "hsl(var(--color-accent-upper-eighth))",
-        "upper-quarter": "hsl(var(--color-accent-upper-quarter))",
-        half: "hsl(var(--color-accent-half))",
-        "3/8": "hsl(var(--color-accent-three-eighths))",
-        quarter: "hsl(var(--color-accent-quarter))",
-        eighth: "hsl(var(--color-accent-eighth))",
-        sixteenth: "hsl(var(--color-accent-sixteenth))"
-    },
-    "accent-neutral": {
-        DEFAULT: "hsl(var(--color-accent-neutral))",
-        "upper-sixteenth": "hsl(var(--color-accent-neutral-upper-sixteenth))",
-        "upper-eighth": "hsl(var(--color-accent-neutral-upper-eighth))",
-        "upper-quarter": "hsl(var(--color-accent-neutral-upper-quarter))",
-        half: "hsl(var(--color-accent-neutral-half))",
-        "3/8": "hsl(var(--color-accent-neutral-three-eighths))",
-        quarter: "hsl(var(--color-accent-neutral-quarter))",
-        eighth: "hsl(var(--color-accent-neutral-eighth))",
-        sixteenth: "hsl(var(--color-accent-neutral-sixteenth))"
-    },
-    "accent-alternate": {
-        DEFAULT: "hsl(var(--color-accent-alternate))",
-        "upper-sixteenth": "hsl(var(--color-accent-alternate-upper-sixteenth))",
-        "upper-eighth": "hsl(var(--color-accent-alternate-upper-eighth))",
-        "upper-quarter": "hsl(var(--color-accent-alternate-upper-quarter))",
-        half: "hsl(var(--color-accent-alternate-half))",
-        "3/8": "hsl(var(--color-accent-alternate-three-eighths))",
-        quarter: "hsl(var(--color-accent-alternate-quarter))",
-        eighth: "hsl(var(--color-accent-alternate-eighth))",
-        sixteenth: "hsl(var(--color-accent-alternate-sixteenth))"
-    }
+const createColorVariants = ({ using: { name, variants } }: { using: { name: string; variants: readonly Variant[] } }) =>
+    Object.fromEntries(
+        variants.map(variant => {
+            const isString = typeof variant === "string"
+
+            const key = isString ? variant : variant[0]
+            const value = isString ? variant : variant[1]
+
+            return [key, `hsl(var(--color-${name}${key === "DEFAULT" ? "" : `-${value}`}))`]
+        })
+    )
+
+const createColors = ({ using: { names, variants } }: { using: { names: readonly string[]; variants: readonly Variant[] } }) =>
+    Object.fromEntries(names.map(name => [name, createColorVariants({ using: { name, variants } })]))
+
+const names = [
+    "main",
+    "neutral",
+    "alternate",
+
+    "warning",
+    "danger",
+    "success",
+    "info",
+
+    "accent",
+    "accent-neutral",
+    "accent-alternate"
+] as const
+
+const variants = [
+    "DEFAULT",
+    "upper-sixteenth",
+    "upper-eighth",
+    "upper-quarter",
+    "half",
+    ["3/8", "three-eighths"],
+    "quarter",
+    "eighth",
+    "sixteenth"
+] as const satisfies Variant[]
+
+export const colors = {
+    ...createColors({ using: { names, variants } })
 
     // card: {
     //     DEFAULT: "hsl(var(--card))",
