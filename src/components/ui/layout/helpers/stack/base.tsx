@@ -6,13 +6,22 @@ import type { ReactNode } from "react"
 import { cn } from "~/utils/ui"
 
 export type StackOptions = {
+    label?: string
+    as?: string
+    size?: number
     orientation: "horizontal" | "vertical"
     expand: boolean
     children: ReactNode
     className?: string
 } & HTMLDivElement
 
-export function Stack({ orientation = "horizontal", expand = false, children, className }: StackOptions) {
+export function Stack({
+    as: _elementType = "div",
+    orientation = "horizontal",
+    expand = false,
+    children,
+    className
+}: StackOptions) {
     return (
         <div
             className={cn(
