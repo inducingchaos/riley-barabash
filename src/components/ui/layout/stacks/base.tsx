@@ -7,20 +7,21 @@ import { cn } from "~/utils/ui"
 
 export type StackOptions = {
     label?: string
-    as?: string
+    type?: string
     size?: number
-    orientation: "horizontal" | "vertical"
-    expand: boolean
+    orientation?: "horizontal" | "vertical"
+    expand?: boolean
     children: ReactNode
     className?: string
-} & HTMLDivElement
+} & Omit<React.HTMLAttributes<HTMLDivElement>, "children">
 
 export function Stack({
     as: _elementType = "div",
     orientation = "horizontal",
     expand = false,
     children,
-    className
+    className,
+    ...options
 }: StackOptions) {
     return (
         <div
@@ -30,6 +31,7 @@ export function Stack({
                 expand ? (orientation === "horizontal" ? "w-full" : "h-full") : undefined,
                 className
             )}
+            {...options}
         >
             {children}
         </div>

@@ -2,16 +2,17 @@
  *
  */
 
-import type { ReactNode } from "react"
+import { XStack, YStack, type StackOptions } from "~/components/ui/layout/stacks"
+import { cn } from "~/utils/ui"
 
-export function Starter({ children }: { children?: ReactNode }): JSX.Element {
+export function Starter({ children, className, ...options }: StackOptions): JSX.Element {
     return (
-        <main className="flex flex-col items-center justify-center">
-            <div className="container">
-                <section className="flex min-h-screen flex-col items-center justify-center">
+        <YStack label="Starter" type="main">
+            <XStack label="Container" className="container">
+                <YStack label="Content" type="section" className={cn("min-h-screen", className)} {...options}>
                     {children ?? <p>Hello, world!</p>}
-                </section>
-            </div>
-        </main>
+                </YStack>
+            </XStack>
+        </YStack>
     )
 }
