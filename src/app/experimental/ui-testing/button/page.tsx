@@ -41,13 +41,13 @@ export default function Page(): JSX.Element {
 
     // Custom sorting function
     const sortedVariations = buttonVariations.sort((a, b) => {
-        // Sort by style first
-        if (a.style !== b.style) {
-            return styles.indexOf(a.style) - styles.indexOf(b.style)
-        }
-        // Then by color (main first)
+        // Sort by color first (main first)
         if (a.color !== b.color) {
             return a.color === "main" ? -1 : b.color === "main" ? 1 : colors.indexOf(a.color) - colors.indexOf(b.color)
+        }
+        // Then by style
+        if (a.style !== b.style) {
+            return styles.indexOf(a.style) - styles.indexOf(b.style)
         }
         // Then by intensity (normal first)
         if (a.intensity !== b.intensity) {

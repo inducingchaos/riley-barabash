@@ -25,10 +25,10 @@ const twMerge = extendTailwindMerge({
             borderRadius: Object.keys(borderRadius)
         },
         classGroups: {
-            "font-family": Object.keys(fontFamily),
-            "font-size": Object.keys(fontSize),
+            "font-family": [{ font: Object.keys(fontFamily) }],
+            "font-size": [{ text: Object.keys(fontSize) }],
 
-            "backdrop-blur": Object.keys(backdropBlur)
+            "backdrop-blur": [{ "backdrop-blur": Object.keys(backdropBlur) }]
         }
     },
     extend: {
@@ -36,13 +36,13 @@ const twMerge = extendTailwindMerge({
             colors: Object.keys(colors)
         },
         classGroups: {
-            w: Object.keys(width),
-            h: Object.keys(height),
+            w: [{ w: Object.keys(width) }],
+            h: [{ h: Object.keys(height) }],
 
-            duration: Object.keys(transitionDuration),
-            ease: Object.keys(transitionTimingFunction),
+            duration: [{ duration: Object.keys(transitionDuration) }],
+            ease: [{ ease: Object.keys(transitionTimingFunction) }],
 
-            animate: Object.keys(animation)
+            animate: [{ animate: Object.keys(animation) }]
         }
     }
 })

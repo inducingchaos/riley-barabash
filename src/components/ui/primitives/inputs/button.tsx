@@ -8,7 +8,7 @@ import * as React from "react"
 import { cn } from "~/utils/ui"
 
 export const buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-1.5 text-14 font-medium transition-colors ease-out duration-250 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-main-thirty-second disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-14 font-medium ring-offset-alternate ease-out duration-250 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-upper-eighth focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
     {
         variants: {
             style: {
@@ -49,8 +49,32 @@ export const buttonVariants = cva(
                 style: "normal",
                 color: "main",
                 intensity: "normal",
-                class: "bg-main text-alternate text-14 hover:bg-main-upper-quarter"
+                className: "bg-main text-alternate hover:bg-main-upper-quarter"
+            },
+            {
+                style: "normal",
+                color: "main",
+                intensity: "dimmed",
+                className: "bg-main-eighth hover:bg-main-3/32"
+            },
+            {
+                style: "outline",
+                color: "main",
+                intensity: "normal",
+                className: "border-main bg-main-sixteenth hover:bg-main-thirty-second hover:border-main-upper-quarter"
+            },
+            {
+                style: "outline",
+                color: "main",
+                intensity: "dimmed",
+                className: "hover:bg-main-sixteenth"
             }
+            // {
+            //     style: "normal",
+            //     color: "main",
+            //     intensity: "dimmed",
+            //     className: "bg-main-eighth text-main hover:bg-main-sixteenth"
+            // }
 
             // {
             //     style: "outline",

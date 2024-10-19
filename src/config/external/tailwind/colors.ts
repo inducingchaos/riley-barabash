@@ -51,7 +51,9 @@ const opacityVariants = {
     half: 50,
     "3/8": 37.5,
     quarter: 25,
+    "3/16": 18.75,
     eighth: 12.5,
+    "3/32": 9.375,
     sixteenth: 6.25,
     "thirty-second": 3.125
 } as const satisfies Record<string, number>
