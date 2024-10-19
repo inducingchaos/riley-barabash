@@ -2,32 +2,67 @@
  *
  */
 
+import React from "react"
 import { Starter } from "~/components/ui/compositions/templates"
 import { Button } from "~/components/ui/primitives/inputs"
 
+const styles = ["normal", "outline", "ghost", "link"] as const
+const colors = ["main", "warning", "danger", "success", "info", "accent"] as const
+const intensities = ["normal", "dimmed"] as const
+const contrasts = ["normal", "high"] as const
+
+type ButtonVariation = {
+    style: (typeof styles)[number]
+    color: (typeof colors)[number]
+    intensity: (typeof intensities)[number]
+    contrast: (typeof contrasts)[number]
+}
+
+const ButtonRow: React.FC<ButtonVariation> = ({ style, color, intensity, contrast }) => (
+    <div className="mb-4 flex items-center justify-between gap-8">
+        <div className="text-sm">
+            <p>Style: {style}</p>
+            <p>Color: {color}</p>
+            <p>Intensity: {intensity}</p>
+            <p>Contrast: {contrast}</p>
+        </div>
+        <Button style={style} color={color} intensity={intensity} contrast={contrast}>
+            Button
+        </Button>
+    </div>
+)
+
 export default function Page(): JSX.Element {
+    const buttonVariations: ButtonVariation[] = styles.flatMap(style =>
+        colors.flatMap(color =>
+            intensities.flatMap(intensity => contrasts.map(contrast => ({ style, color, intensity, contrast })))
+        )
+    )
+
+    // Custom sorting function
+    const sortedVariations = buttonVariations.sort((a, b) => {
+        // Sort by style first
+        if (a.style !== b.style) {
+            return styles.indexOf(a.style) - styles.indexOf(b.style)
+        }
+        // Then by color (main first)
+        if (a.color !== b.color) {
+            return a.color === "main" ? -1 : b.color === "main" ? 1 : colors.indexOf(a.color) - colors.indexOf(b.color)
+        }
+        // Then by intensity (normal first)
+        if (a.intensity !== b.intensity) {
+            return a.intensity === "normal" ? -1 : 1
+        }
+        // Finally by contrast (normal first)
+        return a.contrast === "normal" ? -1 : 1
+    })
+
     return (
         <Starter>
-            <Button variant="destructive">Click me</Button>
-            <div className="mt-8 flex flex-col gap-4">
-                <h2 className="text-xl font-semibold">CSS Variable Color Demonstration</h2>
-                <div className="grid grid-cols-3 gap-4">
-                    {[
-                        { name: "Amber", light: "--color-amber-light", dark: "--color-amber-dark", base: "--color-amber" },
-                        { name: "Red", light: "--color-red-light", dark: "--color-red-dark", base: "--color-red" },
-                        { name: "Green", light: "--color-green-light", dark: "--color-green-dark", base: "--color-green" },
-                        { name: "Blue", light: "--color-blue-light", dark: "--color-blue-dark", base: "--color-blue" }
-                    ].map(color => (
-                        <div key={color.name} className="flex flex-col items-center">
-                            <span className="mb-2">{color.name}</span>
-                            <div className="h-48 rounded-1.5 w-20 flex flex-col gap-8">
-                                <div className="flex-1" style={{ backgroundColor: `hsl(var(${color.light}))` }}></div>
-                                <div className="flex-1" style={{ backgroundColor: `hsl(var(${color.base}))` }}></div>
-                                <div className="flex-1" style={{ backgroundColor: `hsl(var(${color.dark}))` }}></div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+            <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center py-64">
+                {sortedVariations.map((variation, index) => (
+                    <ButtonRow key={index} {...variation} />
+                ))}
             </div>
         </Starter>
     )
