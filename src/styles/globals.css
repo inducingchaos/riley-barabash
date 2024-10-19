@@ -16,19 +16,19 @@
 
         --color-gray: 0 0% 50%;
 
-        --color-amber: 39 100% 50%;
+        --color-amber: 37.5 100% 50%;
         /* --color-amber-light: 39 100% 75%;
         --color-amber-dark: 39 50% 12.5%; */
 
-        --color-red: 15 100% 50%;
+        --color-red: 7.5 100% 50%;
         /* --color-red-light: 15 100% 75%;
         --color-red-dark: 15 50% 12.5%; */
 
-        --color-green: 105 100% 50%;
+        --color-green: 112.5 100% 50%;
         /* --color-green-light: 105 100% 75%;
         --color-green-dark: 105 50% 12.5%; */
 
-        --color-blue: 210 100% 50%;
+        --color-blue: 202.5 100% 50%;
         /* --color-blue-light: 210 100% 75%;
         --color-blue-dark: 210 50% 12.5%; */
 
@@ -45,7 +45,7 @@
         --color-neutral: var(--color-gray);
         --color-alternate: var(--color-white);
 
-        --color-warning: var(--color-red);
+        --color-warning: var(--color-amber);
         --color-danger: var(--color-red);
         --color-success: var(--color-green);
         --color-info: var(--color-blue);

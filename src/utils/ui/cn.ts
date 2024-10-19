@@ -1,5 +1,5 @@
 /**
- *
+ * @see [Default TWMerge Config](https://github.com/dcastil/tailwind-merge/blob/v2.3.0/src/lib/default-config.ts)
  */
 
 import { clsx, type ClassValue } from "clsx"
@@ -14,6 +14,7 @@ import {
     fontSize,
     height,
     transitionDuration,
+    transitionProperty,
     transitionTimingFunction,
     width
 } from "~/config/external/tailwind"
@@ -38,6 +39,8 @@ const twMerge = extendTailwindMerge({
         classGroups: {
             w: [{ w: Object.keys(width) }],
             h: [{ h: Object.keys(height) }],
+
+            transition: [{ transition: Object.keys(transitionProperty) }],
 
             duration: [{ duration: Object.keys(transitionDuration) }],
             ease: [{ ease: Object.keys(transitionTimingFunction) }],

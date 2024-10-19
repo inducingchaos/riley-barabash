@@ -55,7 +55,8 @@ const opacityVariants = {
     eighth: 12.5,
     "3/32": 9.375,
     sixteenth: 6.25,
-    "thirty-second": 3.125
+    "thirty-second": 3.125,
+    zero: 0
 } as const satisfies Record<string, number>
 
 export const colors = {

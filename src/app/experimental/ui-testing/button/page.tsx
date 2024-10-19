@@ -33,9 +33,9 @@ const ButtonRow: React.FC<ButtonVariation> = ({ style, color, intensity, contras
 )
 
 export default function Page(): JSX.Element {
-    const buttonVariations: ButtonVariation[] = styles.flatMap(style =>
-        colors.flatMap(color =>
-            intensities.flatMap(intensity => contrasts.map(contrast => ({ style, color, intensity, contrast })))
+    const buttonVariations: ButtonVariation[] = colors.flatMap(color =>
+        contrasts.flatMap(contrast =>
+            styles.flatMap(style => intensities.map(intensity => ({ color, contrast, style, intensity })))
         )
     )
 
@@ -45,16 +45,16 @@ export default function Page(): JSX.Element {
         if (a.color !== b.color) {
             return a.color === "main" ? -1 : b.color === "main" ? 1 : colors.indexOf(a.color) - colors.indexOf(b.color)
         }
+        // Then by contrast (normal first)
+        if (a.contrast !== b.contrast) {
+            return a.contrast === "normal" ? -1 : 1
+        }
         // Then by style
         if (a.style !== b.style) {
             return styles.indexOf(a.style) - styles.indexOf(b.style)
         }
-        // Then by intensity (normal first)
-        if (a.intensity !== b.intensity) {
-            return a.intensity === "normal" ? -1 : 1
-        }
-        // Finally by contrast (normal first)
-        return a.contrast === "normal" ? -1 : 1
+        // Finally by intensity (normal first)
+        return a.intensity === "normal" ? -1 : 1
     })
 
     return (

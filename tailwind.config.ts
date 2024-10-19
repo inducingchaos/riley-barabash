@@ -15,6 +15,7 @@ import {
     height,
     keyframes,
     transitionDuration,
+    transitionProperty,
     transitionTimingFunction,
     width
 } from "./src/config/external/tailwind"
@@ -35,6 +36,8 @@ export default {
             width,
             height,
 
+            transitionProperty,
+
             colors,
 
             transitionDuration,
@@ -47,4 +50,3 @@ export default {
 
     plugins: [animate]
 } satisfies Config
-    
