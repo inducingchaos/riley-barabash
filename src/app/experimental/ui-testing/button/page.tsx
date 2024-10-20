@@ -27,6 +27,16 @@ const ButtonGrid: React.FC<{ variations: ButtonVariation[] }> = ({ variations })
     </div>
 )
 
+// const CustomButtonGrid: React.FC<{ variations: ButtonVariation[] }> = ({ variations }) => (
+//     <div className="grid grid-cols-8 gap-2">
+//         {variations.map((variation, index) => (
+//             <Button key={index} {...variation} shape="display">
+//                 {variation.color}
+//             </Button>
+//         ))}
+//     </div>
+// )
+
 export default function Page(): JSX.Element {
     const buttonVariations: ButtonVariation[] = colors.flatMap(color =>
         styles.flatMap(style => intensities.map(intensity => ({ color, style, intensity })))
@@ -48,8 +58,9 @@ export default function Page(): JSX.Element {
 
     return (
         <Starter>
-            <div className="max-w-8xl mx-auto w-full py-16">
+            <div className="flex flex-col gap-16">
                 <ButtonGrid variations={sortedVariations} />
+                {/* <CustomButtonGrid variations={sortedVariations} /> */}
             </div>
         </Starter>
     )

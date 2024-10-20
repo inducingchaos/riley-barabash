@@ -57,7 +57,7 @@ export function Header(): JSX.Element {
                 <NavigationMenuDemo />
 
                 {"isLocalhost" && (
-                    <Button asChild style="normal" color="accent" className="font-mono">
+                    <Button asChild color="accent" className="font-mono">
                         <Link href="altered/start">{"go to app"}</Link>
                     </Button>
                 )}
@@ -67,16 +67,12 @@ export function Header(): JSX.Element {
                 <div className="flex flex-row items-center justify-center p-4">
                     {!"user" ? (
                         <form action="/api/sign-out" method="POST">
-                            <Button type="submit" variant="destructive" className="flex h-auto p-0">
+                            <Button type="submit" color="danger" className="flex h-auto p-0">
                                 {"Sign Out"}
                             </Button>
                         </form>
                     ) : (
-                        <Button
-                            asChild
-                            variant="outline"
-                            className="rounded-none border font-mono shadow-none hover:border-accent"
-                        >
+                        <Button asChild style="outline" className="font-mono">
                             <Link href="/#waitlist" className="h-auto">
                                 {"join the waitlist"}
                             </Link>

@@ -29,7 +29,8 @@ const transformer = cva(
             },
 
             shape: {
-                standard: "h-9 px-4 py-2",
+                standard: "px-4 py-2",
+
                 compact: "h-8 rounded px-3 text-xs",
                 display: "h-10 rounded px-8",
                 square: "h-9 w-9"
