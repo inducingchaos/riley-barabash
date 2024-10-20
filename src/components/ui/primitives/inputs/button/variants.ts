@@ -343,6 +343,6 @@ const transformer = cva(
 
 export type VariantOptions = VariantProps<typeof transformer>
 
-export function createButtonVariant({ using: options }: { using: VariantOptions }) {
+export function createButtonVariant({ using: options }: { using: VariantOptions }): string {
     return transformer(options)
 }
