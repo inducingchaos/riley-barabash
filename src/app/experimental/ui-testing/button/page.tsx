@@ -5,38 +5,31 @@
 import React from "react"
 import { Starter } from "~/components/ui/compositions/templates"
 import { Button } from "~/components/ui/primitives/inputs"
+import { type VariantOptions } from "~/components/ui/primitives/inputs/button/variants"
 
-const styles = ["normal", "outline", "ghost", "link"] as const
+const styles = ["fill", "outline", "ghost", "link"] as const
 const colors = ["main", "warning", "danger", "success", "info", "accent"] as const
-const intensities = ["normal", "dimmed"] as const
-const contrasts = ["normal", "high"] as const
+const intensities = ["full", "reduced"] as const
 
 type ButtonVariation = {
-    style: (typeof styles)[number]
-    color: (typeof colors)[number]
-    intensity: (typeof intensities)[number]
-    contrast: (typeof contrasts)[number]
+    style: NonNullable<VariantOptions["style"]>
+    color: NonNullable<VariantOptions["color"]>
+    intensity: NonNullable<VariantOptions["intensity"]>
 }
 
-const ButtonRow: React.FC<ButtonVariation> = ({ style, color, intensity, contrast }) => (
-    <div className="mb-4 flex items-center justify-between gap-8">
-        <div className="text-sm">
-            <p>Style: {style}</p>
-            <p>Color: {color}</p>
-            <p>Intensity: {intensity}</p>
-            <p>Contrast: {contrast}</p>
-        </div>
-        <Button style={style} color={color} intensity={intensity} contrast={contrast}>
-            Button
-        </Button>
+const ButtonGrid: React.FC<{ variations: ButtonVariation[] }> = ({ variations }) => (
+    <div className="grid grid-cols-8 gap-2">
+        {variations.map((variation, index) => (
+            <Button key={index} {...variation}>
+                {variation.color}
+            </Button>
+        ))}
     </div>
 )
 
 export default function Page(): JSX.Element {
     const buttonVariations: ButtonVariation[] = colors.flatMap(color =>
-        contrasts.flatMap(contrast =>
-            styles.flatMap(style => intensities.map(intensity => ({ color, contrast, style, intensity })))
-        )
+        styles.flatMap(style => intensities.map(intensity => ({ color, style, intensity })))
     )
 
     // Custom sorting function
@@ -45,24 +38,18 @@ export default function Page(): JSX.Element {
         if (a.color !== b.color) {
             return a.color === "main" ? -1 : b.color === "main" ? 1 : colors.indexOf(a.color) - colors.indexOf(b.color)
         }
-        // Then by contrast (normal first)
-        if (a.contrast !== b.contrast) {
-            return a.contrast === "normal" ? -1 : 1
-        }
         // Then by style
         if (a.style !== b.style) {
             return styles.indexOf(a.style) - styles.indexOf(b.style)
         }
-        // Finally by intensity (normal first)
-        return a.intensity === "normal" ? -1 : 1
+        // Finally by intensity (full first)
+        return a.intensity === "full" ? -1 : 1
     })
 
     return (
         <Starter>
-            <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center py-64">
-                {sortedVariations.map((variation, index) => (
-                    <ButtonRow key={index} {...variation} />
-                ))}
+            <div className="max-w-8xl mx-auto w-full py-16">
+                <ButtonGrid variations={sortedVariations} />
             </div>
         </Starter>
     )

@@ -45,11 +45,11 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="bg-alternate-upper-quarter flex w-full flex-row items-center justify-between border before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
+            <div className="flex w-full flex-row items-center justify-between border bg-alternate-upper-quarter before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="bg-accent-alternate px-2 py-0.5 font-mono text-xs font-bold">{"preflight"}</p>
+                    <p className="text-xs bg-accent-alternate px-2 py-0.5 font-mono font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}
@@ -57,7 +57,7 @@ export function Header(): JSX.Element {
                 <NavigationMenuDemo />
 
                 {"isLocalhost" && (
-                    <Button asChild variant="default" className="font-mono">
+                    <Button asChild style="normal" color="accent" className="font-mono">
                         <Link href="altered/start">{"go to app"}</Link>
                     </Button>
                 )}
@@ -134,7 +134,7 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                     {...props}
                 >
                     <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">{children}</p>
+                    <p className="text-muted-foreground text-sm line-clamp-2 leading-snug">{children}</p>
                 </a>
             </NavigationMenuLink>
         </li>
