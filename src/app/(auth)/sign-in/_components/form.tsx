@@ -109,7 +109,7 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
                         )}
                     </Button>
 
-                    <Button asChild variant="link" className="w-full">
+                    <Button asChild style="link" className="w-full">
                         <Link href="/sign-in/link">
                             <LucideLink className="mr-2 h-4 w-4" />
                             {"Sign in with Link"}
@@ -127,14 +127,14 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
             <div className="flex flex-col items-center justify-center gap-2">
                 <div className="flex w-full flex-row items-center justify-center gap-2">
                     <form action={application.routing.paths.api.auth.oauth.apple} method="POST" className="w-full">
-                        <Button className="w-full" type="submit" variant="outline" disabled={isPending}>
+                        <Button className="w-full" type="submit" style="outline" disabled={isPending}>
                             <Apple className="mr-2 h-4 w-4" />
                             {"Apple"}
                         </Button>
                     </form>
 
                     <form action={application.routing.paths.api.auth.oauth.google} method="POST" className="w-full">
-                        <Button className="w-full" type="submit" variant="outline" disabled={isPending}>
+                        <Button className="w-full" type="submit" style="outline" disabled={isPending}>
                             <Google className="mr-2 h-4 w-4" />
                             {"Google"}
                         </Button>

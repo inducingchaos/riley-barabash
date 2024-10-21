@@ -147,7 +147,7 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: `${project.info.name} | ${project.info.tagline}`,
     description: project.info.description,
-    icons: [{ rel: "icon", url: "/riley-barabash/brand/pfp.jpg" }],
+    icons: [{ rel: "icon", url: "/riley-barabash/content/brand/pfp.jpg" }],
     keywords: ""
 }
 

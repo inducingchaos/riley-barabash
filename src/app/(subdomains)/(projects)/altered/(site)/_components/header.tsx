@@ -49,7 +49,7 @@ export function Header(): JSX.Element {
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
-                    <p className="text-xs bg-accent-alternate px-2 py-0.5 font-mono font-bold">{"preflight"}</p>
+                    <p className="bg-accent-alternate px-2 py-0.5 font-mono text-12 font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}
@@ -124,13 +124,13 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                 <a
                     ref={ref}
                     className={cn(
-                        "hover:text-accent-foreground focus:text-accent-foreground rounded-none block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-accent focus:bg-accent",
+                        "block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-main-eighth focus:bg-accent-alternate",
                         className
                     )}
                     {...props}
                 >
-                    <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="text-muted-foreground text-sm line-clamp-2 leading-snug">{children}</p>
+                    <div className="text-14 font-medium leading-none">{title}</div>
+                    <p className="line-clamp-2 text-14 leading-snug text-main-upper-quarter">{children}</p>
                 </a>
             </NavigationMenuLink>
         </li>

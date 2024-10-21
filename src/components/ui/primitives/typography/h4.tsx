@@ -10,7 +10,7 @@ export function H4({
     ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        <h4 className={cn("scroll-m-20 text-xl font-semibold tracking-tight", className)} {...props}>
+        <h4 className={cn("scroll-m-20 text-20 font-semibold tracking-tight", className)} {...props}>
             {children}
         </h4>
     )

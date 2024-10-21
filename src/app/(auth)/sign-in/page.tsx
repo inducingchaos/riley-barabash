@@ -24,7 +24,7 @@ export default function SignIn({ searchParams }: { searchParams: Record<string, 
 
                                 <Link
                                     href={application.routing.paths.pages.auth.signUp}
-                                    className="underline underline-offset-4 hover:text-primary"
+                                    className="hover:text-primary underline underline-offset-4"
                                 >
                                     {"create one here."}
                                 </Link>
@@ -35,12 +35,12 @@ export default function SignIn({ searchParams }: { searchParams: Record<string, 
 
                         {callbackUrl && (
                             <div className="mt-4 text-center">
-                                <p className="text-sm text-muted-foreground">Callback URL:</p>
+                                <p className="text-muted-foreground text-14">Callback URL:</p>
                                 <InlineCode>{callbackUrl}</InlineCode>
                             </div>
                         )}
 
-                        <Button asChild variant="link">
+                        <Button asChild style="link">
                             <Link href="/reset-password">Forgot Password?</Link>
                         </Button>
                     </div>

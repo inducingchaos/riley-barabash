@@ -8,7 +8,7 @@ export default function Landing(): JSX.Element {
             <main className="flex flex-col items-center justify-center">
                 <div className="container">
                     <section className="flex min-h-screen flex-col items-center justify-center">
-                        <p className="text-8xl font-bold tracking-tight">{"Feed is for horse."}</p>
+                        <p className="text-96 font-bold tracking-tight">{"Feed is for horse."}</p>
                     </section>
                 </div>
             </main>

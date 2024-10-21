@@ -107,7 +107,7 @@ export default function SignInWithLink(): JSX.Element {
                             </Form>
                         )}
 
-                        <Button asChild variant="link">
+                        <Button asChild style="link">
                             {!isSuccess ? (
                                 <Link href="/sign-in">
                                     <KeyRound className="mr-2 h-4 w-4" />

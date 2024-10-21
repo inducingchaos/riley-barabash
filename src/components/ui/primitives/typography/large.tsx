@@ -10,7 +10,7 @@ export function Large({
     ...props
 }: React.HTMLAttributes<HTMLDivElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        <div className={cn("text-lg font-semibold", className)} {...props}>
+        <div className={cn("text-18 font-semibold", className)} {...props}>
             {children}
         </div>
     )

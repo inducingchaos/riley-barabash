@@ -45,7 +45,7 @@ export default function Test(): JSX.Element {
                             {/* Email test? */}
 
                             <Button
-                                variant="destructive"
+                                color="danger"
                                 disabled={emailIsSending}
                                 onClick={() =>
                                     sendEmail({
@@ -61,7 +61,7 @@ export default function Test(): JSX.Element {
 
                             {/* Go back. */}
 
-                            <Button variant="outline" asChild>
+                            <Button style="outline" asChild>
                                 <Link href="/">{"Go back"}</Link>
                             </Button>
 
@@ -71,19 +71,19 @@ export default function Test(): JSX.Element {
 
                             {/* Dataset. */}
 
-                            <Button variant="outline" asChild>
+                            <Button style="outline" asChild>
                                 <Link href="/experimental/dataset">{"Dataset"}</Link>
                             </Button>
 
                             {/* Do. */}
 
-                            <Button variant="outline" asChild>
+                            <Button style="outline" asChild>
                                 <Link href="/experimental/do">{"Do"}</Link>
                             </Button>
 
                             {/* Ingest. */}
 
-                            <Button variant="outline" asChild>
+                            <Button style="outline" asChild>
                                 <Link href="/experimental/ingest">{"Ingest"}</Link>
                             </Button>
                         </div>

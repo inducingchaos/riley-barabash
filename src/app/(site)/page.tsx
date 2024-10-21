@@ -26,21 +26,21 @@ export default async function Landing(): Promise<JSX.Element> {
                         <div className="flex flex-col items-center justify-center gap-6">
                             <div className="relative h-24 w-24">
                                 <Image
-                                    src="/riley-barabash/brand/pfp.jpg"
+                                    src="/riley-barabash/content/brand/pfp.jpg"
                                     alt="Profile Picture"
                                     fill
                                     className="rounded-xl object-cover"
                                 />
                             </div>
-                            <h1 className="text-5xl font-bold">{"My name is Riley."}</h1>
+                            <h1 className="text-48 font-bold">{"My name is Riley."}</h1>
                             <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>
                             <Muted>{"Check out my projects:"}</Muted>
                             <div className="flex flex-row gap-2">
-                                {/* <Button variant="outline" asChild>
+                                {/* <Button style="outline" asChild>
                                     <Link href="/value-only">{"Value-Only"}</Link>
                                 </Button> */}
 
-                                <Button variant="outline" asChild className="rounded-none border-2 font-mono shadow-none">
+                                <Button style="outline" asChild className="font-mono">
                                     <Link href="/altered">{"Altered"}</Link>
                                 </Button>
                             </div>

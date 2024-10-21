@@ -6,7 +6,7 @@ import { forwardRef, type HTMLAttributes } from "react"
 import { cn } from "~/utils/ui"
 
 const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("rounded-xl border bg-card text-card-foreground shadow", className)} {...props} />
+    <div ref={ref} className={cn("rounded-xl bg-card text-card-foreground border shadow", className)} {...props} />
 ))
 
 Card.displayName = "Card"
@@ -24,7 +24,7 @@ const CardTitle = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLHeadingEle
 CardTitle.displayName = "CardTitle"
 
 const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
-    ({ className, ...props }, ref) => <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+    ({ className, ...props }, ref) => <p ref={ref} className={cn("text-muted-foreground text-14", className)} {...props} />
 )
 
 CardDescription.displayName = "CardDescription"

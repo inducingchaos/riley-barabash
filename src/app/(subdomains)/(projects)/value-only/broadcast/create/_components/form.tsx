@@ -98,7 +98,7 @@ export function BroadcastForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="rounded-none border-2 shadow-none" variant="outline" disabled={isLoading}>
+                    <Button type="submit" className="rounded-none border-2 shadow-none" style="outline" disabled={isLoading}>
                         {isLoading ? "Creating..." : "Create"}
                     </Button>
                 </form>

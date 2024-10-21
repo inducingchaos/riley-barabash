@@ -10,7 +10,7 @@ export function Small({
     ...props
 }: React.HTMLAttributes<HTMLDivElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        <small className={cn("text-sm font-medium leading-none", className)} {...props}>
+        <small className={cn("text-14 font-medium leading-none", className)} {...props}>
             {children}
         </small>
     )

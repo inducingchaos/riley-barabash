@@ -7,7 +7,7 @@ import { cn } from "~/utils/ui"
 
 const Table = forwardRef<HTMLTableElement, HTMLAttributes<HTMLTableElement>>(({ className, ...props }, ref) => (
     <div className="relative w-full overflow-auto">
-        <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
+        <table ref={ref} className={cn("w-full caption-bottom text-14", className)} {...props} />
     </div>
 ))
 
@@ -33,7 +33,7 @@ TableBody.displayName = "TableBody"
 
 const TableFooter = forwardRef<HTMLTableSectionElement, HTMLAttributes<HTMLTableSectionElement>>(
     ({ className, ...props }, ref) => (
-        <tfoot ref={ref} className={cn("border-t bg-muted/50 font-medium [&>tr]:last:border-b-0", className)} {...props} />
+        <tfoot ref={ref} className={cn("bg-muted/50 [&>tr]:last:border-b-0 border-t font-medium", className)} {...props} />
     )
 )
 
@@ -46,7 +46,7 @@ TableFooter.displayName = "TableFooter"
 const TableRow = forwardRef<HTMLTableRowElement, HTMLAttributes<HTMLTableRowElement>>(({ className, ...props }, ref) => (
     <tr
         ref={ref}
-        className={cn("border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted", className)}
+        className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors", className)}
         {...props}
     />
 ))
@@ -57,7 +57,7 @@ const TableHead = forwardRef<HTMLTableCellElement, ThHTMLAttributes<HTMLTableCel
     <th
         ref={ref}
         className={cn(
-            "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+            "text-muted-foreground h-10 px-2 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
             className
         )}
         {...props}
@@ -89,7 +89,7 @@ TableCell.displayName = "TableCell"
 
 const TableCaption = forwardRef<HTMLTableCaptionElement, HTMLAttributes<HTMLTableCaptionElement>>(
     ({ className, ...props }, ref) => (
-        <caption ref={ref} className={cn("mt-4 text-sm text-muted-foreground", className)} {...props} />
+        <caption ref={ref} className={cn("text-muted-foreground mt-4 text-14", className)} {...props} />
     )
 )
 

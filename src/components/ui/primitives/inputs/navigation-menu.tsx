@@ -41,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const navigationMenuTriggerStyle = cva(
-    "group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 rounded-none"
+    "group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-14 font-medium transition-colors hover:bg-main-eighth focus:bg-main-eighth focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-main data-[state=open]:bg-main-eighth"
 )
 
 const NavigationMenuTrigger = forwardRef<
@@ -51,7 +51,7 @@ const NavigationMenuTrigger = forwardRef<
     <NavigationMenuPrimitive.Trigger ref={ref} className={cn(navigationMenuTriggerStyle(), "group", className)} {...props}>
         {children}{" "}
         <ChevronDownIcon
-            className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+            className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-300 group-data-[state=open]:rotate-180"
             aria-hidden="true"
         />
     </NavigationMenuPrimitive.Trigger>
@@ -84,7 +84,7 @@ const NavigationMenuViewport = forwardRef<
     <div className={cn("absolute left-0 top-full flex justify-center")}>
         <NavigationMenuPrimitive.Viewport
             className={cn(
-                "origin-top-center text-popover-foreground data-[state=closed]:animate-navigation-menu-exit data-[state=open]:animate-navigation-menu-enter relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border bg-inverse-upper-quarter backdrop-blur md:w-[var(--radix-navigation-menu-viewport-width)]",
+                "origin-top-center text-popover-foreground bg-inverse-upper-quarter relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border backdrop-blur data-[state=closed]:animate-navigation-menu-exit data-[state=open]:animate-navigation-menu-enter md:w-[var(--radix-navigation-menu-viewport-width)]",
 
                 className
             )}
@@ -108,7 +108,7 @@ const NavigationMenuIndicator = forwardRef<
         )}
         {...props}
     >
-        <div className="rounded-none relative top-[60%] h-2 w-2 rotate-45 bg-red-500 shadow-md" />
+        <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-none bg-red-500 shadow-md" />
     </NavigationMenuPrimitive.Indicator>
 ))
 

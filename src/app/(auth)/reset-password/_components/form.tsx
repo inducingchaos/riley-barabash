@@ -189,7 +189,7 @@ export function PasswordResetForm({ token }: { token: string | undefined }): JSX
                 </Form>
             )}
 
-            <Button variant="link" asChild>
+            <Button style="link" asChild>
                 <Link href="/sign-in">
                     {(!token && !isRecoverySuccess) || (token && !isResetSuccess) ? "Go Back" : "Sign In"}
                 </Link>

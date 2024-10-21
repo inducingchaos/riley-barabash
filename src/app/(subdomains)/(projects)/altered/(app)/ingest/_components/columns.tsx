@@ -45,7 +45,7 @@ function generateDynamicColumns(data: Neuron[]): ColumnDef<Neuron>[] {
                                 value
                             )
                         ) : (
-                            <div className="h-0.5 w-2 bg-border"></div>
+                            <div className="bg-border h-0.5 w-2"></div>
                         )
                     }
                 })
@@ -89,7 +89,7 @@ export const getColumns = (data: Neuron[]): ColumnDef<Neuron>[] => [
             const id = row.getValue("id")
             return (
                 <div className="text-right font-bold">
-                    {!!id ? <div>{id as string}</div> : <div className="h-0.5 w-2 bg-border" />}
+                    {!!id ? <div>{id as string}</div> : <div className="bg-border h-0.5 w-2" />}
                 </div>
             )
         }
@@ -99,7 +99,7 @@ export const getColumns = (data: Neuron[]): ColumnDef<Neuron>[] => [
         header: ({ column }) => {
             return (
                 <Button
-                    variant="ghost"
+                    style="ghost"
                     className="font-mono tracking-tighter"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
@@ -110,7 +110,7 @@ export const getColumns = (data: Neuron[]): ColumnDef<Neuron>[] => [
         },
         cell: ({ row }) => {
             const content = row.getValue("content")
-            return content ? content : <div className="h-0.5 w-2 bg-border"></div>
+            return content ? content : <div className="bg-border h-0.5 w-2"></div>
         }
     },
     ...generateDynamicColumns(data),
@@ -121,7 +121,7 @@ export const getColumns = (data: Neuron[]): ColumnDef<Neuron>[] => [
             const tags = row.original.tags
             return (
                 <div className="font-mono tracking-tighter">
-                    {tags.length > 0 ? tags.join(", ") : <div className="h-0.5 w-2 bg-border"></div>}
+                    {tags.length > 0 ? tags.join(", ") : <div className="bg-border h-0.5 w-2"></div>}
                 </div>
             )
         }
@@ -134,7 +134,7 @@ export const getColumns = (data: Neuron[]): ColumnDef<Neuron>[] => [
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
+                        <Button style="ghost" className="h-8 w-8 p-0">
                             <span className="sr-only">Open menu</span>
                             <MoreHorizontal className="h-4 w-4" />
                         </Button>

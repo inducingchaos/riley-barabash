@@ -73,13 +73,13 @@ export function DataTable<TData extends Neuron>({ data }: DataTableProps<TData>)
                         placeholder="Filter content..."
                         value={(table.getColumn("content")?.getFilterValue() as string) ?? ""}
                         onChange={event => table.getColumn("content")?.setFilterValue(event.target.value)}
-                        className="rounded-none max-w-sm border-2 shadow-none"
+                        className="max-w-sm rounded-none border-2 shadow-none"
                     />
                     <DataTableViewOptions table={table} />
 
                     {/* <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="outline" className="ml-auto">
+                            <Button style="outline" className="ml-auto">
                                 Columns
                             </Button>
                         </DropdownMenuTrigger>
@@ -149,14 +149,14 @@ export function DataTable<TData extends Neuron>({ data }: DataTableProps<TData>)
                 </div>
             </div>
             {/* <div className="flex items-center justify-end space-x-2 py-4">
-                <Button variant="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+                <Button style="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
                     Previous
                 </Button>
-                <Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+                <Button style="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
                     Next
                 </Button>
             </div>
-            <div className="flex-1 text-sm text-muted-foreground">
+            <div className="flex-1 text-14 text-muted-foreground">
                 {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.
             </div> */}
         </div>

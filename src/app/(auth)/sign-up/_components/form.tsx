@@ -159,7 +159,7 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
                     )}
                 </Button>
 
-                <Button asChild variant="link">
+                <Button asChild style="link">
                     <Link href="/sign-in">
                         <Lock className="mr-2 h-4 w-4" />
                         {"Go to Sign In"}
