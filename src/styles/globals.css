@@ -68,3 +68,7 @@
         @apply bg-alternate text-main;
     }
 }
+
+* {
+    min-width: 0;
+}
