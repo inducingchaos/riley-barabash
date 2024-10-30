@@ -3,7 +3,6 @@
  */
 
 import { cookies } from "next/headers"
-import { cache } from "react"
 import {
     deleteSessionTokenCookie,
     setSessionTokenCookie,
@@ -12,7 +11,8 @@ import {
 } from "./new-lucia"
 
 export const validateRequest = async (): Promise<SessionValidationResult> => {
-    const token = cookies().get("session")?.value ?? null
+    const cookieStore = await cookies()
+    const token = cookieStore.get("session")?.value ?? null
     if (!token) return { user: null, session: null }
 
     const result = await validateSessionToken(token)

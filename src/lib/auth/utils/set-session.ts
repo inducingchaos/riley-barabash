@@ -18,5 +18,6 @@ export async function setSession({ using: { userId } }: { using: { userId: UserI
 
     const sessionCookie = lucia.createSessionCookie(token)
 
-    cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
+    const cookieStore = await cookies()
+    cookieStore.set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
 }

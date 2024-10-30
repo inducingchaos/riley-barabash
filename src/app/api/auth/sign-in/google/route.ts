@@ -4,13 +4,15 @@ import { generateCodeVerifier, generateState } from "arctic"
 import { NextResponse } from "next/server"
 
 export async function GET(): Promise<NextResponse> {
+    const cookieStore = await cookies()
+
     const state = generateState()
     const codeVerifier = generateCodeVerifier()
     const url = await google.createAuthorizationURL(state, codeVerifier, {
         scopes: ["profile", "email", "openid"]
     })
 
-    cookies().set("google_oauth_state", state, {
+    cookieStore.set("google_oauth_state", state, {
         secure: process.env.ENVIRONMENT === "production",
         path: "/",
         httpOnly: true,
@@ -18,7 +20,7 @@ export async function GET(): Promise<NextResponse> {
         sameSite: "lax"
     })
 
-    cookies().set("google_code_verifier", codeVerifier, {
+    cookieStore.set("google_code_verifier", codeVerifier, {
         secure: process.env.ENVIRONMENT === "production",
         path: "/",
         httpOnly: true,

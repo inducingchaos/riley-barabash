@@ -13,11 +13,13 @@ import { application } from "~/config"
 import { NextResponse } from "next/server"
 
 export async function GET(request: Request): Promise<Response> {
+    const cookieStore = await cookies()
+
     const url = new URL(request.url)
     const code = url.searchParams.get("code")
     const state = url.searchParams.get("state")
-    const storedState = cookies().get("google_oauth_state")?.value ?? null
-    const codeVerifier = cookies().get("google_code_verifier")?.value ?? null
+    const storedState = cookieStore.get("google_oauth_state")?.value ?? null
+    const codeVerifier = cookieStore.get("google_code_verifier")?.value ?? null
 
     if (!code || !state || !storedState || state !== storedState || !codeVerifier) {
         return new Response(null, {
