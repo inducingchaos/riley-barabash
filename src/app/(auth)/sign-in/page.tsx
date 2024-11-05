@@ -7,9 +7,11 @@ import { SignInForm } from "./_components"
 import { H3, InlineCode, Muted } from "~/components/ui/primitives/typography"
 import Link from "next/link"
 import { Button } from "~/components/ui/primitives/inputs"
+import type { SearchParams } from "next/dist/server/request/search-params"
 
-export default function SignIn({ searchParams }: { searchParams: Record<string, string | string[]> }): JSX.Element {
-    const callbackUrl = typeof searchParams["callback-url"] === "string" ? searchParams["callback-url"] : undefined
+export default async function SignIn({ searchParams }: { searchParams: Promise<SearchParams> }): Promise<JSX.Element> {
+    const params = await searchParams
+    const callbackUrl = typeof params["callback-url"] === "string" ? params["callback-url"] : undefined
 
     return (
         <main className="flex flex-col items-center justify-center">

@@ -8,7 +8,7 @@ import { Separator } from "@radix-ui/react-separator"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "~/components/ui/primitives/inputs"
-import { H1, InlineCode, Muted } from "~/components/ui/primitives/typography"
+import { InlineCode, Muted } from "~/components/ui/primitives/typography"
 import Test from "./_components/test"
 
 export default async function Landing(): Promise<JSX.Element> {

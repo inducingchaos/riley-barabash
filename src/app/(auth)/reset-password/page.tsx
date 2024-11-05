@@ -2,10 +2,12 @@
  *
  */
 
+import type { SearchParams } from "next/dist/server/request/search-params"
 import { PasswordResetForm } from "./_components"
 
-export default function ResetPassword({ searchParams }: { searchParams: Record<string, string | string[]> }): JSX.Element {
-    const token = typeof searchParams.token === "string" ? searchParams.token : undefined
+export default async function ResetPassword({ searchParams }: { searchParams: Promise<SearchParams> }): Promise<JSX.Element> {
+    const params = await searchParams
+    const token = typeof params.token === "string" ? params.token : undefined
 
     return (
         <main className="flex flex-col items-center justify-center">
