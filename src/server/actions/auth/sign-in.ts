@@ -5,12 +5,10 @@
 
 "use server"
 
-import { unauthenticatedAction } from "~/lib/auth/utils"
-import { setSession } from "~/lib/auth/utils"
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { Exception } from "~/meta"
 import { signInWithPassword } from "~/lib/auth/email/password"
+import { setSession, unauthenticatedAction } from "~/lib/auth/utils"
 
 export const signInAction = unauthenticatedAction
     .createServerAction()
@@ -20,10 +18,6 @@ export const signInAction = unauthenticatedAction
             password: z.string().min(8)
         })
     )
-    .experimental_shapeError(({ err: error }) => {
-        if (error instanceof Exception) return error.serialize()
-        else throw error
-    })
     .handler(async ({ input }) => {
         // TODO [P1]: Add rate-limiting.
 

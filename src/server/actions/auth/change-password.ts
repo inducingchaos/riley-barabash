@@ -18,10 +18,6 @@ export const changePasswordAction = unauthenticatedAction
             password: z.string().min(8)
         })
     )
-    .experimental_shapeError(({ err: error }) => {
-        if (error instanceof Exception) return error.serialize()
-        else throw error
-    })
     .handler(async ({ input: { token, password } }) => {
         //  Add rate-limiting here.
 

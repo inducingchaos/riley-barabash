@@ -2,9 +2,8 @@
 
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { setSession, unauthenticatedAction } from "~/lib/auth/utils"
 import { signUp } from "~/lib/auth/email/password"
-import { Exception } from "~/meta"
+import { setSession, unauthenticatedAction } from "~/lib/auth/utils"
 
 export const signUpAction = unauthenticatedAction
     .createServerAction()
@@ -15,10 +14,6 @@ export const signUpAction = unauthenticatedAction
             password: z.string().min(8)
         })
     )
-    .experimental_shapeError(({ err: error }) => {
-        if (error instanceof Exception) return error.serialize()
-        else throw error
-    })
     .handler(async ({ input }) => {
         //  Rate-limit.
 

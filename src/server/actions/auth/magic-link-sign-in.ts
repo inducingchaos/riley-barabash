@@ -1,10 +1,9 @@
 "use server"
 
-import { unauthenticatedAction } from "~/lib/auth/utils"
 import { redirect } from "next/navigation"
 import { z } from "zod"
-import { Exception } from "~/meta"
 import { sendMagicLink } from "~/lib/auth/email/magic-link"
+import { unauthenticatedAction } from "~/lib/auth/utils"
 
 export const signInWithMagicLinkAction = unauthenticatedAction
     .createServerAction()
@@ -13,10 +12,6 @@ export const signInWithMagicLinkAction = unauthenticatedAction
             email: z.string().email()
         })
     )
-    .experimental_shapeError(({ err: error }) => {
-        if (error instanceof Exception) return error.serialize()
-        else throw error
-    })
     .handler(async ({ input }) => {
         // Rate limit here
         await sendMagicLink({ to: { email: input.email } })
