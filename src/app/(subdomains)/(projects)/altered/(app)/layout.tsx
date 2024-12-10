@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     // title: `${project.info.name} | ${project.info.tagline}`,
     title: "Altered | Systems for Creative Scale",
     // description: project.info.description,
-    icons: [{ rel: "icon", url: "/entities/live-altered/design/brand/icon/dark.png" }],
+    icons: [{ rel: "icon", url: "/altered/design/brand/icon/dark.png" }],
     keywords: ""
 }
 

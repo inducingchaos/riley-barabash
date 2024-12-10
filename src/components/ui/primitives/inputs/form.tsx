@@ -112,19 +112,22 @@ const FormLabel = forwardRef<ElementRef<typeof LabelPrimitive.Root>, ComponentPr
 
 FormLabel.displayName = "FormLabel"
 
-const FormControl = forwardRef<ElementRef<typeof Slot>, ComponentPropsWithoutRef<typeof Slot>>(({ ...props }, ref) => {
-    const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+const FormControl = forwardRef<ElementRef<typeof Slot>, ComponentPropsWithoutRef<typeof Slot>>(
+    ({ className, ...props }, ref) => {
+        const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
-    return (
-        <Slot
-            ref={ref}
-            id={formItemId}
-            aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
-            aria-invalid={!!error}
-            {...props}
-        />
-    )
-})
+        return (
+            <Slot
+                ref={ref}
+                id={formItemId}
+                aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
+                aria-invalid={!!error}
+                className={cn(error && "border-danger", className)}
+                {...props}
+            />
+        )
+    }
+)
 
 FormControl.displayName = "FormControl"
 
@@ -133,7 +136,7 @@ const FormDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLPara
         const { formDescriptionId } = useFormField()
 
         return (
-            <p ref={ref} id={formDescriptionId} className={cn("text-[0.8rem] text-muted-foreground", className)} {...props} />
+            <p ref={ref} id={formDescriptionId} className={cn("text-muted-foreground text-[0.8rem]", className)} {...props} />
         )
     }
 )
@@ -150,7 +153,7 @@ const FormMessage = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagrap
         }
 
         return (
-            <p ref={ref} id={formMessageId} className={cn("text-[0.8rem] font-medium text-destructive", className)} {...props}>
+            <p ref={ref} id={formMessageId} className={cn("text-12 font-medium text-danger", className)} {...props}>
                 {body}
             </p>
         )

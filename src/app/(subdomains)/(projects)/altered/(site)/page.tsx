@@ -10,7 +10,7 @@ export default function Landing(): JSX.Element {
                     <section className="flex min-h-screen flex-col items-center justify-center">
                         <div className="flex w-full">
                             <div className="flex flex-col">
-                                <p className="text-96 w-2/3 font-bold">
+                                <p className="w-2/3 text-96 font-bold">
                                     {"Creative systems for the "}
                                     <span className="text-accent-neutral">{"obsessed."}</span>
                                 </p>

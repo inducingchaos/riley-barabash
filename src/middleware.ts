@@ -67,6 +67,10 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
                 to: "kyzn.app"
             },
             {
+                from: ["rileybarabash.com/altered*", "*.altered.app*"],
+                to: "altered.app"
+            },
+            {
                 from: ["rileybarabash.com/solopreneurkit*", "solopreneurkit.rileybarabash.com*", "*.s--k.it*"],
                 to: "s--k.it"
             },
@@ -106,6 +110,10 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
             {
                 from: ["kyzn.app", "kyzn.rileybarabash.com"],
                 to: "/kyzn"
+            },
+            {
+                from: ["altered.app", "altered.rileybarabash.com"],
+                to: "/altered"
             },
             {
                 from: "s--k.it",
