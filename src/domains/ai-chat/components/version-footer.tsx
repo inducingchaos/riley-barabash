@@ -49,8 +49,8 @@ export const VersionFooter = ({ block, handleVersionChange, documents, currentVe
                         setIsMutating(true)
 
                         void mutate(
-                            `/api/document?id=${block.documentId}`,
-                            await fetch(`/api/document?id=${block.documentId}`, {
+                            `/experimental/ai-chat/api/document?id=${block.documentId}`,
+                            await fetch(`/experimental/ai-chat/api/document?id=${block.documentId}`, {
                                 method: "PATCH",
                                 body: JSON.stringify({
                                     timestamp: getDocumentTimestampByIndex(documents, currentVersionIndex)

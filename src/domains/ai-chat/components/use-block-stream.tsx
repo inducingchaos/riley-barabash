@@ -28,7 +28,7 @@ export function useBlockStream({
     useEffect(() => {
         if (optimisticSuggestions && optimisticSuggestions.length > 0) {
             const [optimisticSuggestion] = optimisticSuggestions
-            const url = `/api/suggestions?documentId=${optimisticSuggestion?.documentId}`
+            const url = `/experimental/ai-chat/api/suggestions?documentId=${optimisticSuggestion?.documentId}`
             void mutate(url, optimisticSuggestions, false)
         }
     }, [optimisticSuggestions, mutate])
@@ -95,6 +95,6 @@ export function useBlockStream({
                     return draftBlock
             }
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [streamingData, setBlock])
 }

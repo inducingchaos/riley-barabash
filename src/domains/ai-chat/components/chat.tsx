@@ -47,6 +47,7 @@ export function Chat({
         id,
         body: { id, modelId: selectedModelId },
         initialMessages,
+        api: "/experimental/ai-chat/api/chat",
         onFinish: () => {
             void mutate("/experimental/ai-chat/api/history")
         }
@@ -68,7 +69,7 @@ export function Chat({
         }
     })
 
-    const { data: votes } = useSWR<Array<Vote>>(`/api/vote?chatId=${id}`, fetcher)
+    const { data: votes } = useSWR<Array<Vote>>(`/experimental/ai-chat/api/vote?chatId=${id}`, fetcher)
 
     const [attachments, setAttachments] = useState<Array<Attachment>>([])
 

@@ -76,10 +76,15 @@ function PureBlock({
         data: documents,
         isLoading: isDocumentsFetching,
         mutate: mutateDocuments
-    } = useSWR<Array<Document>>(block && block.status !== "streaming" ? `/api/document?id=${block.documentId}` : null, fetcher)
+    } = useSWR<Array<Document>>(
+        block && block.status !== "streaming" ? `/experimental/ai-chat/api/document?id=${block.documentId}` : null,
+        fetcher
+    )
 
     const { data: suggestions } = useSWR<Array<Suggestion>>(
-        documents && block && block.status !== "streaming" ? `/api/suggestions?documentId=${block.documentId}` : null,
+        documents && block && block.status !== "streaming"
+            ? `/experimental/ai-chat/api/suggestions?documentId=${block.documentId}`
+            : null,
         fetcher,
         {
             dedupingInterval: 5000
@@ -117,7 +122,7 @@ function PureBlock({
             if (!block) return
 
             void mutate<Array<Document>>(
-                `/api/document?id=${block.documentId}`,
+                `/experimental/ai-chat/api/document?id=${block.documentId}`,
                 async currentDocuments => {
                     if (!currentDocuments) return undefined
 
@@ -129,7 +134,7 @@ function PureBlock({
                     }
 
                     if (currentDocument.content !== updatedContent) {
-                        await fetch(`/api/document?id=${block.documentId}`, {
+                        await fetch(`/experimental/ai-chat/api/document?id=${block.documentId}`, {
                             method: "POST",
                             body: JSON.stringify({
                                 title: block.title,

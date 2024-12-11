@@ -71,7 +71,7 @@ export function MessageActions({
                                     loading: "Upvoting Response...",
                                     success: () => {
                                         void mutate<Array<Vote>>(
-                                            `/api/vote?chatId=${chatId}`,
+                                            `/experimental/ai-chat/api/vote?chatId=${chatId}`,
                                             currentVotes => {
                                                 if (!currentVotes) return []
 
@@ -127,7 +127,7 @@ export function MessageActions({
                                     loading: "Downvoting Response...",
                                     success: () => {
                                         void mutate<Array<Vote>>(
-                                            `/api/vote?chatId=${chatId}`,
+                                            `/experimental/ai-chat/api/vote?chatId=${chatId}`,
                                             currentVotes => {
                                                 if (!currentVotes) return []
 
