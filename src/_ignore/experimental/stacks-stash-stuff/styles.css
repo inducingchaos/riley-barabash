@@ -1,0 +1,79 @@
+
+/* STACK */
+
+/* The base debug styles for the `Stack` component. */
+
+.stack-debug {
+    background-color: var(--stack-debug-secondary-color);
+    border: var(--stack-debug-border-width) solid var(--stack-debug-primary-color);
+}
+
+/* The base debug styles for the `Stack` component and its label. */
+
+.stack-debug,
+.stack-debug-label {
+    transition-property: color, background-color, border-color, opacity;
+    transition-duration: var(--stack-debug-focus-transition-duration);
+    transition-timing-function: var(--stack-debug-transition-timing-function);
+}
+
+/* Creates a 'focus' effect. Changes the debug styles of every `Stack` except the one being hovered. */
+
+*:hover .stack-debug:not(:hover:not(:has(:hover > *))) {
+    border-color: var(--stack-debug-secondary-color);
+    background-color: transparent;
+}
+
+/* Applies debug styles to the `Stack` when nothing on the page is being hovered. */
+
+.stack-debug:not(:hover:not(:has(:hover > *))) {
+    border-color: var(--stack-debug-secondary-color);
+    background-color: transparent;
+}
+
+/* The hide animation for the `Stack` debug label. */
+
+@keyframes stack-debug-label-hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* The base styles for the `Stack` debug label. */
+
+.stack-debug-label {
+    background-color: var(--stack-debug-primary-color);
+    pointer-events: none;
+
+    animation-name: stack-debug-label-hide;
+    animation-duration: var(--stack-debug-label-hide-transition-duration);
+    animation-delay: var(--stack-debug-label-hide-transition-delay);
+    animation-timing-function: var(--stack-debug-timing-function);
+    animation-fill-mode: both;
+}
+
+/* Mirrors the 'focus' effect from the `Stack` component. Changes the style of every `Stack` debug label except the label of the `Stack` being hovered. Could be implemented as a "persistent" label option. */
+
+/* *:hover .stack-debug:not(:hover:not(:has(:hover > *))) > .stack-debug-label {
+    color: var(--stack-debug-secondary-color);
+    background-color: transparent;
+
+    border-top: var(--stack-debug-border-width) solid var(--stack-debug-secondary-color);
+    border-right: var(--stack-debug-border-width) solid var(--stack-debug-secondary-color);
+
+    opacity: 1 !important;
+} */
+
+/* Applies styles to the `Stack` debug label when nothing on the page is being hovered. */
+
+.stack-debug:not(:hover:not(:has(:hover > *))) > .stack-debug-label {
+    color: transparent;
+    background-color: transparent;
+
+    opacity: 0;
+
+    animation: unset;
+}
