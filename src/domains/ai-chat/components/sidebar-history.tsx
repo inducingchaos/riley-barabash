@@ -77,7 +77,7 @@ const PureChatItem = ({
     return (
         <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive}>
-                <Link href={`/chat/${chat.id}`} onClick={() => setOpenMobile(false)}>
+                <Link href={`/experimental/ai-chat/chat/${chat.id}`} onClick={() => setOpenMobile(false)}>
                     <span>{chat.title}</span>
                 </Link>
             </SidebarMenuButton>
@@ -155,7 +155,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
         data: history,
         isLoading,
         mutate
-    } = useSWR<Array<Chat>>(user ? "/api/history" : null, fetcher, {
+    } = useSWR<Array<Chat>>(user ? "/experimental/ai-chat/api/history" : null, fetcher, {
         fallbackData: []
     })
 
@@ -167,7 +167,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
     const [showDeleteDialog, setShowDeleteDialog] = useState(false)
     const router = useRouter()
     const handleDelete = async () => {
-        const deletePromise = fetch(`/api/chat?id=${deleteId}`, {
+        const deletePromise = fetch(`/experimental/ai-chat/api/chat?id=${deleteId}`, {
             method: "DELETE"
         })
 

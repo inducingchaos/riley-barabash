@@ -25,7 +25,7 @@ export async function POST(request: Request) {
      */
     const session = {
         user: {
-            id: "0221"
+            id: "06b0daf6-e69a-406c-ae46-cc22d46b073c"
         }
     }
 

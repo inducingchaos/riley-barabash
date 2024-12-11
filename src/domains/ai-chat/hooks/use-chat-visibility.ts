@@ -9,7 +9,7 @@ import useSWR, { useSWRConfig } from "swr"
 export function useChatVisibility({ chatId, initialVisibility }: { chatId: string; initialVisibility: VisibilityType }) {
     const { mutate, cache } = useSWRConfig()
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const history: Array<Chat> = cache.get("/api/history")?.data
+    const history: Array<Chat> = cache.get("/experimental/ai-chat/api/history")?.data
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { data: localVisibility, mutate: setLocalVisibility } = useSWR(`${chatId}-visibility`, null, {
@@ -29,7 +29,7 @@ export function useChatVisibility({ chatId, initialVisibility }: { chatId: strin
         void setLocalVisibility(updatedVisibilityType)
 
         void mutate<Array<Chat>>(
-            "/api/history",
+            "/experimental/ai-chat/api/history",
             history => {
                 return history
                     ? history.map(chat => {

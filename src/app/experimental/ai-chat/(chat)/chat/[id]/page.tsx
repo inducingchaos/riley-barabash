@@ -12,6 +12,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     const { id } = params
     const chat = await getChatById({ id })
 
+    console.log("checkpoint 1")
+
     if (!chat) {
         notFound()
     }
@@ -23,14 +25,18 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
      */
     const session = {
         user: {
-            id: "0221"
+            id: "06b0daf6-e69a-406c-ae46-cc22d46b073c"
         }
     }
 
     if (chat.visibility === "private") {
+        console.log("checkpoint 2")
+
         if (!session?.user) {
             return notFound()
         }
+
+        console.log("checkpoint 3")
 
         if (session.user.id !== chat.userId) {
             return notFound()
@@ -40,6 +46,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     const messagesFromDb = await getMessagesByChatId({
         id
     })
+
+    console.log("checkpoint 4")
 
     const cookieStore = await cookies()
     const modelIdFromCookie = cookieStore.get("model-id")?.value

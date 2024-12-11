@@ -57,7 +57,7 @@ export function MessageActions({
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                                 const messageId = getMessageIdFromAnnotations(message)
 
-                                const upvote = fetch("/api/vote", {
+                                const upvote = fetch("/experimental/ai-chat/api/vote", {
                                     method: "PATCH",
                                     body: JSON.stringify({
                                         chatId,
@@ -113,7 +113,7 @@ export function MessageActions({
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                                 const messageId = getMessageIdFromAnnotations(message)
 
-                                const downvote = fetch("/api/vote", {
+                                const downvote = fetch("/experimental/ai-chat/api/vote", {
                                     method: "PATCH",
                                     body: JSON.stringify({
                                         chatId,

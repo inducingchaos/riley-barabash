@@ -90,7 +90,7 @@ function PureMultimodalInput({
     const [uploadQueue, setUploadQueue] = useState<Array<string>>([])
 
     const submitForm = useCallback(() => {
-        window.history.replaceState({}, "", `/chat/${chatId}`)
+        window.history.replaceState({}, "", `/experimental/ai-chat/chat/${chatId}`)
 
         handleSubmit(undefined, {
             experimental_attachments: attachments
@@ -109,7 +109,7 @@ function PureMultimodalInput({
         formData.append("file", file)
 
         try {
-            const response = await fetch("/api/files/upload", {
+            const response = await fetch("/experimental/ai-chat/api/files/upload", {
                 method: "POST",
                 body: formData
             })

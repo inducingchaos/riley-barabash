@@ -48,7 +48,7 @@ export function Chat({
         body: { id, modelId: selectedModelId },
         initialMessages,
         onFinish: () => {
-            void mutate("/api/history")
+            void mutate("/experimental/ai-chat/api/history")
         }
     })
 

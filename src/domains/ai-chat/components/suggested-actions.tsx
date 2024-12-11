@@ -38,7 +38,7 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
                     <Button
                         style="ghost"
                         onClick={async () => {
-                            window.history.replaceState({}, "", `/chat/${chatId}`)
+                            window.history.replaceState({}, "", `/experimental/ai-chat/chat/${chatId}`)
 
                             void append({
                                 role: "user",
