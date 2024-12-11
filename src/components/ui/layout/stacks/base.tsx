@@ -11,7 +11,7 @@ export type StackOptions = {
     size?: number
     orientation?: "horizontal" | "vertical"
     expand?: boolean
-    children: ReactNode
+    children?: ReactNode
     className?: string
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "children">
 
