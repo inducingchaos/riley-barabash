@@ -13,9 +13,7 @@ export default async function ResetPassword({ searchParams }: { searchParams: Pr
         <main className="flex flex-col items-center justify-center">
             <div className="container">
                 <section className="flex h-screen flex-col items-center justify-center">
-                    <div className="flex w-96 flex-col justify-center gap-6">
-                        <PasswordResetForm token={token} />
-                    </div>
+                    <PasswordResetForm token={token} className="w-384px" />
                 </section>
             </div>
         </main>

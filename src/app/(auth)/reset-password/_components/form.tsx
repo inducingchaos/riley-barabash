@@ -1,11 +1,13 @@
 /**
- *
+ * @todo
+ * - [P3] Deconstruct into something more understandable, renaming to make the forgot/recovery and reset/change/update boundary more obvious. Make error messages more accurate. Go through code and create an audit checklist for things like proper input field attributes, etc.
  */
 
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
+import type { HTMLAttributes } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
@@ -14,6 +16,7 @@ import { H3, Muted } from "~/components/ui/primitives/typography"
 import { useToast } from "~/hooks/ui"
 import { Exception } from "~/meta"
 import { changePasswordAction, resetPasswordAction } from "~/server/actions/auth"
+import { cn } from "~/utils/ui"
 
 const recoveryFormSchema = z.object({
     email: z.string().email("Please enter a valid email address.")
@@ -29,7 +32,11 @@ const resetFormSchema = z
         path: ["passwordConfirmation"]
     })
 
-export function PasswordResetForm({ token }: { token: string | undefined }): JSX.Element {
+export function PasswordResetForm({
+    token,
+    className,
+    ...props
+}: { token: string | undefined } & HTMLAttributes<HTMLDivElement>): JSX.Element {
     const { toast } = useToast()
 
     const recoveryForm = useForm<z.infer<typeof recoveryFormSchema>>({
@@ -94,7 +101,7 @@ export function PasswordResetForm({ token }: { token: string | undefined }): JSX
     }
 
     return (
-        <>
+        <div className={cn("flex flex-col gap-6", className)} {...props}>
             <div className="flex flex-col gap-3 text-center">
                 <H3>{"Reset Password"}</H3>
 
@@ -115,7 +122,7 @@ export function PasswordResetForm({ token }: { token: string | undefined }): JSX
 
             {!token && !isRecoverySuccess && (
                 <Form {...recoveryForm}>
-                    <form onSubmit={recoveryForm.handleSubmit(onRecoverySubmit)} className="flex w-96 flex-col gap-3">
+                    <form onSubmit={recoveryForm.handleSubmit(onRecoverySubmit)} className="flex flex-col gap-3">
                         <FormField
                             control={recoveryForm.control}
                             name="email"
@@ -189,11 +196,11 @@ export function PasswordResetForm({ token }: { token: string | undefined }): JSX
                 </Form>
             )}
 
-            <Button style="link" asChild>
+            <Button style="link" asChild className="self-center">
                 <Link href="/sign-in">
                     {(!token && !isRecoverySuccess) || (token && !isResetSuccess) ? "Go Back" : "Sign In"}
                 </Link>
             </Button>
-        </>
+        </div>
     )
 }
