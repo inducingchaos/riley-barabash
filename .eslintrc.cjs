@@ -1,6 +1,8 @@
 /**
  * @todo
  * - [P4] Go through all ESLint options.
+ *
+ * @remarks Most recent update from the Vercel AI Chat repository.
  */
 
 /**
@@ -12,6 +14,10 @@ const config = {
     plugins: ["@typescript-eslint", "drizzle"],
     extends: [
         "next/core-web-vitals",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "prettier",
+        "plugin:tailwindcss/recommended",
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked"
     ],
@@ -31,8 +37,18 @@ const config = {
         "import/no-anonymous-default-export": ["off"],
         "@typescript-eslint/no-namespace": "off",
         "no-throw-literal": "off",
-        "@typescript-eslint/only-throw-error": "off"
+        "@typescript-eslint/only-throw-error": "off",
+        "tailwindcss/no-custom-classname": "off",
+        "tailwindcss/classnames-order": "off"
+    },
+    settings: {
+        "import/resolver": {
+            typescript: {
+                alwaysTryTypes: true
+            }
+        }
     }
+    // ignorePatterns: ["**/components/ui/**"]
 }
 
 module.exports = config

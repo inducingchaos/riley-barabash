@@ -5,6 +5,9 @@
 import type { NextConfig } from "next"
 
 export default {
+    experimental: {
+        ppr: true
+    },
     images: {
         // minimumCacheTTL: 31536000,
         remotePatterns: [
@@ -13,6 +16,9 @@ export default {
                 hostname: "*.googleusercontent.com",
                 port: "",
                 pathname: "**"
+            },
+            {
+                hostname: "avatar.vercel.sh"
             }
         ]
     }

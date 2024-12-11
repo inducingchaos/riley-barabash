@@ -33,7 +33,7 @@ const transformer = cva(
 
                 compact: "h-8 rounded px-3 text-12",
                 display: "h-10 rounded px-8",
-                square: "h-9 w-9"
+                square: "size-9"
             }
         },
         compoundVariants: [
@@ -343,6 +343,6 @@ const transformer = cva(
 
 export type VariantOptions = VariantProps<typeof transformer>
 
-export function createButtonVariant({ using: options }: { using: VariantOptions }): string {
+export function createButtonVariant({ using: options }: { using?: VariantOptions }): string {
     return transformer(options)
 }

@@ -72,3 +72,52 @@
 * {
     min-width: 0;
 }
+
+/* For AI Chat */
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.skeleton {
+    * {
+        pointer-events: none !important;
+    }
+
+    *[class^="text-"] {
+        color: transparent;
+        @apply animate-pulse select-none bg-main-upper-quarter;
+    }
+
+    .skeleton-bg {
+        @apply bg-main-upper-eighth;
+    }
+
+    .skeleton-div {
+        @apply animate-pulse bg-main-upper-quarter;
+    }
+}
+
+.ProseMirror {
+    outline: none;
+}
+
+.suggestion-highlight {
+    @apply bg-blue-200 hover:bg-blue-300 dark:bg-blue-500/40 dark:text-blue-50 dark:hover:bg-blue-400/50;
+}

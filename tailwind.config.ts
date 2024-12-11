@@ -22,7 +22,7 @@ import {
 
 export default {
     darkMode: ["class"],
-    content: ["./src/**/*.tsx"],
+    content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
 
     theme: {
         fontFamily,
