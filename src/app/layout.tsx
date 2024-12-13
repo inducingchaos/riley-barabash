@@ -16,7 +16,7 @@ import "~/styles/globals.css"
 export const metadata: Metadata = {
     title: `${project.info.name} | ${project.info.tagline}`,
     description: project.info.description,
-    icons: [{ rel: "icon", url: "/riley-barabash/media/brand/pfp.jpg" }],
+    icons: [{ rel: "icon", url: "/riley-barabash/profile-picture.jpg" }],
     keywords: ""
 }
 

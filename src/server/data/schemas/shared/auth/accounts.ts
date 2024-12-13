@@ -13,7 +13,7 @@ export const accountTypes = ["email", "password", "google"] as const
 export const accounts = createSharedMysqlTable(
     "accounts",
     {
-        id: int("id").autoincrement().notNull(),
+        id: int("id").autoincrement().primaryKey().notNull(),
         userId: int("user_id").notNull(),
         type: varchar("type", { length: 255, enum: accountTypes }).notNull(),
         providerId: varchar("provider_id", { length: 255 }).notNull(),
