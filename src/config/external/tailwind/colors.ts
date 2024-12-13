@@ -30,8 +30,10 @@ const createColorsWithOpacityVariants = ({
 
 const names = [
     "main",
+    "main-constant",
     "neutral",
     "alternate",
+    "alternate-constant",
 
     "warning",
     "danger",
@@ -39,8 +41,10 @@ const names = [
     "info",
 
     "accent",
+    "accent-constant",
     "accent-neutral",
-    "accent-alternate"
+    "accent-alternate",
+    "accent-alternate-constant"
 ] as const
 
 const opacityVariants = {

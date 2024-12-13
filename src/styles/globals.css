@@ -30,8 +30,10 @@
         /* Configuration. */
 
         --color-main: var(--color-way-off-black);
+        --color-main-constant: var(--color-way-off-black);
         --color-neutral: var(--color-gray);
         --color-alternate: var(--color-white);
+        --color-alternate-constant: var(--color-white);
 
         --color-warning: var(--color-amber);
         --color-danger: var(--color-red);
@@ -39,9 +41,10 @@
         --color-info: var(--color-blue);
 
         --color-accent: var(--color-khaki-dark);
+        --color-accent-constant: var(--color-khaki-dark);
         --color-accent-neutral: var(--color-khaki);
         --color-accent-alternate: var(--color-khaki-light);
-
+        --color-accent-alternate-constant: var(--color-khaki-light);
         --border-width: 0.125rem;
         --border-width-force: 0.0625rem;
         --border-radius: 0rem;

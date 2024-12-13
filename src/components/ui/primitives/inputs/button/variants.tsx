@@ -32,6 +32,7 @@ const transformer = cva(
                 standard: "px-4 py-2",
 
                 compact: "h-8 rounded px-3 text-12",
+                micro: "px-2 py-0.25 font-mono font-bold text-12",
                 display: "h-10 rounded px-8",
                 square: "size-9"
             }

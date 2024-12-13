@@ -7,6 +7,8 @@
 import { useEffect, useRef, useState } from "react"
 import { submitMessage } from "../actions"
 import { EssentialTextArea } from "~/_ignore/experimental/essential-text-area"
+import { Button } from "~/components/ui/primitives/inputs"
+import { cn } from "~/utils/ui"
 
 type Message = {
     id: string
@@ -44,12 +46,76 @@ export function TheMagicalComponent({
                 {JSON.stringify(messages)}
             </div> */}
 
-            <div className="flex-1 overflow-y-auto pb-20">
-                <ul className="space-y-2 p-4">
+            <div className="pb-16">
+                <ul className="flex w-full flex-col gap-4 p-4">
                     {messages.map(msg => (
-                        <li key={msg.id} className="p-3">
-                            <p className="break-words">{msg.content}</p>
-                            <span className="">{msg.createdAt}</span>
+                        <li
+                            key={msg.id}
+                            className={cn(
+                                "flex w-fit flex-col bg-main-thirty-second px-4 py-2",
+                                msg.content.toUpperCase().startsWith("I") ? "items-end self-end" : ""
+                            )}
+                        >
+                            <div className={cn("flex items-center gap-2")}>
+                                {msg.content.toUpperCase().startsWith("I") && (
+                                    <p className="shrink-0 bg-accent-alternate px-2 py-0.5 font-mono text-12 font-bold">
+                                        {"AI"}
+                                    </p>
+                                )}
+                                <p className="break-words">{msg.content}</p>
+                            </div>
+                            <div className={cn("flex items-center gap-2")}>
+                                <span className="">{msg.createdAt}</span>
+                                {(msg.createdAt.includes(" 8:") ||
+                                    msg.createdAt.includes(" 11:") ||
+                                    msg.createdAt.includes(":12")) && (
+                                    <p className="shrink-0 bg-info-upper-quarter px-2 py-0.5 font-mono text-12 font-bold">
+                                        {"rewrite"}
+                                    </p>
+                                )}
+                                {(msg.createdAt.includes(":53:") ||
+                                    msg.createdAt.includes(":35:") ||
+                                    msg.createdAt.includes(":18:")) && (
+                                    <p className="shrink-0 bg-success-upper-quarter px-2 py-0.5 font-mono text-12 font-bold">
+                                        {"saved"}
+                                    </p>
+                                )}
+                                {(msg.createdAt.includes(":53:") ||
+                                    msg.createdAt.includes(":35:") ||
+                                    msg.createdAt.includes(":18:")) && (
+                                    <Button
+                                        style="outline"
+                                        color="main"
+                                        intensity="reduced"
+                                        shape="micro"
+                                        // className="text-main"
+                                    >
+                                        {"edit"}
+                                    </Button>
+                                )}
+                                <Button
+                                    style="fill"
+                                    color="warning"
+                                    // need to add some other intensities like medium, high, max (.25...)
+                                    //  need to make the text white on colors, non changing (maybe with intensity)
+                                    intensity="reduced"
+                                    shape="micro"
+                                    className="text-alternate-constant bg-warning-half hover:bg-warning-quarter"
+                                >
+                                    {"archive"}
+                                </Button>
+                                <Button
+                                    style="fill"
+                                    color="danger"
+                                    // need to add some other intensities like medium, high, max (.25...)
+                                    //  need to make the text white on colors, non changing (maybe with intensity)
+                                    intensity="reduced"
+                                    shape="micro"
+                                    className="text-alternate-constant bg-danger-half"
+                                >
+                                    {"delete"}
+                                </Button>
+                            </div>
                         </li>
                     ))}
                 </ul>
@@ -85,13 +151,13 @@ export function TheMagicalComponent({
                                 borderWidth: 2
                             }}
                             onEnter="submit"
-                            className="w-full border px-4 py-2"
+                            className="w-full border bg-alternate-upper-quarter px-4 py-2 backdrop-blur"
                             placeholder="Your next thought..."
                         />
 
-                        <button type="submit" className="px-4 py-2">
+                        <Button type="submit" className="px-4 py-2">
                             Send
-                        </button>
+                        </Button>
                     </div>
                 </form>
             </div>
