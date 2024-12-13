@@ -1,4 +1,7 @@
 /**
+ * @todo
+ * - [P4] Consider adding a height prop to the text area.
+ *
  * @remarks We need layout references to calculate the initial styles of the text area.
  */
 
@@ -21,6 +24,7 @@ export default function TheBoxClient() {
                         paddingBottom: 8,
                         borderWidth: 2
                     }}
+                    onEnter="submit"
                     className="w-full border px-4 py-2"
                     placeholder="Your next thought..."
                 />
@@ -36,6 +40,7 @@ export default function TheBoxClient() {
 export function EssentialTextArea({
     rows: rowConfig,
     layoutReferences,
+    onEnter: enterAction,
     className,
     ...props
 }: {
@@ -46,6 +51,7 @@ export function EssentialTextArea({
         paddingBottom: number
         borderWidth: number
     }
+    onEnter?: "submit" | "break" | (() => void)
     className?: string
 } & Omit<React.ComponentProps<"textarea">, "rows">): JSX.Element {
     const defaultedRowConfig = {
@@ -131,13 +137,29 @@ export function EssentialTextArea({
         <>
             <textarea
                 ref={ref}
-                onChange={adjustLayout}
+                onChange={e => {
+                    adjustLayout()
+                    props.onChange?.(e)
+                }}
                 className={cn(
                     "scrollbar-hide w-full resize-none overflow-hidden bg-transparent transition-colors placeholder:text-main-half focus:outline-none disabled:cursor-not-allowed disabled:opacity-50",
                     className
                 )}
                 style={{
                     height: initialHeight()
+                }}
+                onKeyDown={event => {
+                    if (event.key === "Enter" && !event.shiftKey) {
+                        if (enterAction === "break") return
+
+                        event.preventDefault()
+
+                        if (typeof enterAction === "function") return enterAction()
+
+                        event.currentTarget.form?.requestSubmit()
+                    }
+
+                    props.onKeyDown?.(event)
                 }}
                 {...props}
             />
