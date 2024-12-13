@@ -6,6 +6,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { submitMessage } from "../actions"
+import { EssentialTextArea } from "~/_ignore/experimental/essential-text-area"
 
 type Message = {
     id: string
@@ -71,14 +72,23 @@ export function TheMagicalComponent({
                     className="fixed inset-x-0 bottom-0 p-4"
                 >
                     <div className="flex gap-2">
-                        <input
-                            type="text"
+                        <EssentialTextArea
                             name="message"
                             value={message}
                             onChange={e => setMessage(e.target.value)}
-                            placeholder="Type a message..."
-                            className="flex-1 border p-2 focus:outline-none"
+                            // className="flex-1 border p-2 focus:outline-none"
+                            rows={{ min: 1, max: 4 }}
+                            layoutReferences={{
+                                lineHeight: 24,
+                                paddingTop: 8,
+                                paddingBottom: 8,
+                                borderWidth: 2
+                            }}
+                            onEnter="submit"
+                            className="w-full border px-4 py-2"
+                            placeholder="Your next thought..."
                         />
+
                         <button type="submit" className="px-4 py-2">
                             Send
                         </button>
