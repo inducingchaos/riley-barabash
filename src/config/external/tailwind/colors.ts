@@ -49,6 +49,7 @@ const names = [
 
 const opacityVariants = {
     DEFAULT: 100,
+    "upper-thirty-second": 96.875,
     "upper-sixteenth": 93.75,
     "upper-eighth": 87.5,
     "upper-quarter": 75,

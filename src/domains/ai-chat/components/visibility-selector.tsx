@@ -80,7 +80,7 @@ export function VisibilitySelector({
                                 <div className="text-12 text-muted-foreground">{visibility.description}</div>
                             )}
                         </div>
-                        <div className="text-primary dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
+                        <div className="-accent-constant dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
                             <CheckCircleFillIcon />
                         </div>
                     </DropdownMenuItem>
