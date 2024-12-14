@@ -1,8 +1,3 @@
-/**
- * @todo
- * - [P4] Double check animation classes.
- */
-
 "use client"
 
 import * as React from "react"

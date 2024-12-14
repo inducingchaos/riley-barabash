@@ -6,7 +6,7 @@ import type { NextConfig } from "next"
 
 export default {
     experimental: {
-        ppr: true
+        ppr: "incremental"
     },
     images: {
         // minimumCacheTTL: 31536000,

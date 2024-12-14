@@ -2,6 +2,7 @@
  *
  */
 
+import typography from "@tailwindcss/typography"
 import { type Config } from "tailwindcss"
 import animate from "tailwindcss-animate"
 import {
@@ -22,7 +23,7 @@ import {
 
 export default {
     darkMode: ["class"],
-    content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+    content: ["./src/{app,components,domains}/**/*.{js,ts,jsx,tsx,mdx}"],
 
     theme: {
         fontFamily,
@@ -48,5 +49,5 @@ export default {
         }
     },
 
-    plugins: [animate]
+    plugins: [animate, typography]
 } satisfies Config
