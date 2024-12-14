@@ -1,19 +1,44 @@
-filter "src/{app,components}/**/*.{jsx,tsx}"
+filter "src/{app,components,domains}/**/*.{jsx,tsx}"
 
-// shadcn/ui Replacements
+//  shadcn/ui Replacements
 
-// Tailwind Overrides: Font Size
+//  Tailwind Overrides: Font Size
 
-replace-regex "[\s"']text-xs[\s"']" with "text-12"
-replace-regex "[\s"']text-sm[\s"']" with "text-14"
-replace-regex "[\s"']text-base[\s"']" with "text-16"
-replace-regex "[\s"']text-lg[\s"']" with "text-18"
-replace-regex "[\s"']text-xl[\s"']" with "text-20"
-replace-regex "[\s"']text-2xl[\s"']" with "text-24"
-replace-regex "[\s"']text-3xl[\s"']" with "text-30"
-replace-regex "[\s"']text-4xl[\s"']" with "text-36"
-replace-regex "[\s"']text-5xl[\s"']" with "text-48"
-replace-regex "[\s"']text-6xl[\s"']" with "text-60"
-replace-regex "[\s"']text-7xl[\s"']" with "text-72"
-replace-regex "[\s"']text-8xl[\s"']" with "text-96"
-replace-regex "[\s"']text-9xl[\s"']" with "text-128"
+replace-regex "(?<=[\s"'])text-xs(?=[\s"'])"
+with "text-12"
+
+replace-regex "(?<=[\s"'])text-sm(?=[\s"'])"
+with "text-14"
+
+replace-regex "(?<=[\s"'])text-base(?=[\s"'])"
+with "text-16"
+
+replace-regex "(?<=[\s"'])text-lg(?=[\s"'])"
+with "text-18"
+
+replace-regex "(?<=[\s"'])text-xl(?=[\s"'])"
+with "text-20"
+
+replace-regex "(?<=[\s"'])text-2xl(?=[\s"'])"
+with "text-24"
+
+replace-regex "(?<=[\s"'])text-3xl(?=[\s"'])"
+with "text-30"
+
+replace-regex "(?<=[\s"'])text-4xl(?=[\s"'])"
+with "text-36"
+
+replace-regex "(?<=[\s"'])text-5xl(?=[\s"'])"
+with "text-48"
+
+replace-regex "(?<=[\s"'])text-6xl(?=[\s"'])"
+with "text-60"
+
+replace-regex "(?<=[\s"'])text-7xl(?=[\s"'])"
+with "text-72"
+
+replace-regex "(?<=[\s"'])text-8xl(?=[\s"'])"
+with "text-96"
+
+replace-regex "(?<=[\s"'])text-9xl(?=[\s"'])"
+with "text-128"

@@ -28,7 +28,7 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
             ) : (
                 <motion.div
                     key={suggestion.id}
-                    className="bg-background rounded-2xl text-sm absolute -right-12 z-50 flex w-56 flex-col gap-3 border p-3 shadow-xl md:-right-16"
+                    className="bg-background rounded-2xl text-14 absolute -right-12 z-50 flex w-56 flex-col gap-3 border p-3 shadow-xl md:-right-16"
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: -20 }}
@@ -42,7 +42,7 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
                         </div>
                         <button
                             type="button"
-                            className="text-xs cursor-pointer text-gray-500"
+                            className="text-12 cursor-pointer text-gray-500"
                             onClick={() => {
                                 setIsExpanded(false)
                             }}

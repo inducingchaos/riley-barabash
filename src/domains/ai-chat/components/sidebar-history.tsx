@@ -195,7 +195,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
         return (
             <SidebarGroup>
                 <SidebarGroupContent>
-                    <div className="text-sm flex w-full flex-row items-center justify-center gap-2 text-zinc-500">
+                    <div className="text-14 flex w-full flex-row items-center justify-center gap-2 text-zinc-500">
                         <div>Login to save and revisit previous chats!</div>
                     </div>
                 </SidebarGroupContent>
@@ -206,7 +206,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
     if (isLoading) {
         return (
             <SidebarGroup>
-                <div className="text-xs text-sidebar-foreground/50 px-2 py-1">Today</div>
+                <div className="text-12 text-sidebar-foreground/50 px-2 py-1">Today</div>
                 <SidebarGroupContent>
                     <div className="flex flex-col">
                         {[44, 32, 28, 64, 52].map(item => (
@@ -231,7 +231,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
         return (
             <SidebarGroup>
                 <SidebarGroupContent>
-                    <div className="text-sm flex w-full flex-row items-center justify-center gap-2 text-zinc-500">
+                    <div className="text-14 flex w-full flex-row items-center justify-center gap-2 text-zinc-500">
                         <div>Your conversations will appear here once you start chatting!</div>
                     </div>
                 </SidebarGroupContent>
@@ -285,7 +285,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
                                     <>
                                         {groupedChats.today.length > 0 && (
                                             <>
-                                                <div className="text-xs text-sidebar-foreground/50 px-2 py-1">Today</div>
+                                                <div className="text-12 text-sidebar-foreground/50 px-2 py-1">Today</div>
                                                 {groupedChats.today.map(chat => (
                                                     <ChatItem
                                                         key={chat.id}
@@ -303,7 +303,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
 
                                         {groupedChats.yesterday.length > 0 && (
                                             <>
-                                                <div className="text-xs text-sidebar-foreground/50 mt-6 px-2 py-1">
+                                                <div className="text-12 text-sidebar-foreground/50 mt-6 px-2 py-1">
                                                     Yesterday
                                                 </div>
                                                 {groupedChats.yesterday.map(chat => (
@@ -323,7 +323,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
 
                                         {groupedChats.lastWeek.length > 0 && (
                                             <>
-                                                <div className="text-xs text-sidebar-foreground/50 mt-6 px-2 py-1">
+                                                <div className="text-12 text-sidebar-foreground/50 mt-6 px-2 py-1">
                                                     Last 7 days
                                                 </div>
                                                 {groupedChats.lastWeek.map(chat => (
@@ -343,7 +343,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
 
                                         {groupedChats.lastMonth.length > 0 && (
                                             <>
-                                                <div className="text-xs text-sidebar-foreground/50 mt-6 px-2 py-1">
+                                                <div className="text-12 text-sidebar-foreground/50 mt-6 px-2 py-1">
                                                     Last 30 days
                                                 </div>
                                                 {groupedChats.lastMonth.map(chat => (
@@ -363,7 +363,7 @@ export function SidebarHistory({ user }: { user: { email: string } | undefined }
 
                                         {groupedChats.older.length > 0 && (
                                             <>
-                                                <div className="text-xs text-sidebar-foreground/50 mt-6 px-2 py-1">Older</div>
+                                                <div className="text-12 text-sidebar-foreground/50 mt-6 px-2 py-1">Older</div>
                                                 {groupedChats.older.map(chat => (
                                                     <ChatItem
                                                         key={chat.id}

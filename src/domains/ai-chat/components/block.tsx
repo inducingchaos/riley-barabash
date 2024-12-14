@@ -363,9 +363,9 @@ function PureBlock({
                             <div className="font-medium">{document?.title ?? block.title}</div>
 
                             {isContentDirty ? (
-                                <div className="text-sm text-muted-foreground">Saving changes...</div>
+                                <div className="text-14 text-muted-foreground">Saving changes...</div>
                             ) : document ? (
-                                <div className="text-sm text-muted-foreground">
+                                <div className="text-14 text-muted-foreground">
                                     {`Updated ${formatDistance(new Date(document.createdAt), new Date(), {
                                         addSuffix: true
                                     })}`}

@@ -31,7 +31,7 @@ export const PreviewAttachment = ({ attachment, isUploading = false }: { attachm
                     </div>
                 )}
             </div>
-            <div className="text-xs max-w-16 truncate text-zinc-500">{name}</div>
+            <div className="text-12 max-w-16 truncate text-zinc-500">{name}</div>
         </div>
     )
 }

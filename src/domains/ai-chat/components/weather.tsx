@@ -238,7 +238,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
                             }
                         )}
                     />
-                    <div className="text-4xl font-medium text-blue-50">
+                    <div className="text-36 font-medium text-blue-50">
                         {n(weatherAtLocation.current.temperature_2m)}
                         {weatherAtLocation.current_units.temperature_2m}
                     </div>
@@ -250,7 +250,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
             <div className="flex flex-row justify-between">
                 {displayTimes.map((time, index) => (
                     <div key={time} className="flex flex-col items-center gap-1">
-                        <div className="text-xs text-blue-100">{format(new Date(time), "ha")}</div>
+                        <div className="text-12 text-blue-100">{format(new Date(time), "ha")}</div>
                         <div
                             className={cx(
                                 "skeleton-div size-6 rounded-full",
@@ -262,7 +262,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
                                 }
                             )}
                         />
-                        <div className="text-sm text-blue-50">
+                        <div className="text-14 text-blue-50">
                             {n(displayTemperatures[index] ?? 0)}
                             {weatherAtLocation.hourly_units.temperature_2m}
                         </div>

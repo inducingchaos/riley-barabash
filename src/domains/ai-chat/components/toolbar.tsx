@@ -206,7 +206,7 @@ const ReadingLevelSelector = ({
                     <TooltipContent
                         side="left"
                         sideOffset={16}
-                        className="bg-foreground text-background text-sm rounded-2xl p-3 px-4"
+                        className="bg-foreground text-background text-14 rounded-2xl p-3 px-4"
                     >
                         {LEVELS[currentLevel]}
                     </TooltipContent>
