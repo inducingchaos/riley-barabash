@@ -54,9 +54,9 @@ export function ModelSelector({
                     >
                         <div className="flex flex-col items-start gap-1">
                             {model.label}
-                            {model.description && <div className="text-12 text-muted-foreground">{model.description}</div>}
+                            {model.description && <div className="text-muted-foreground text-12">{model.description}</div>}
                         </div>
-                        <div className="-accent-constant dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
+                        <div className="text-accent-constant dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
                             <CheckCircleFillIcon />
                         </div>
                     </DropdownMenuItem>

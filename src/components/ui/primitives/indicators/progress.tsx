@@ -28,14 +28,14 @@ const Progress = forwardRef<ElementRef<typeof ProgressPrimitive.Root>, ProgressO
     ({ className, value, customInternals, children, ...props }, ref) => (
         <ProgressPrimitive.Root
             ref={ref}
-            className={cn("relative h-2 w-full overflow-hidden rounded-full bg-primary/20", className)}
+            className={cn("bg-primary/20 relative h-2 w-full overflow-hidden rounded-full", className)}
             {...props}
         >
             {customInternals ? (
                 children
             ) : (
                 <ProgressPrimitive.Indicator
-                    className={cn("h-full w-full flex-1 -accent-constant transition-all")}
+                    className={cn("bg-accent-constant h-full w-full flex-1 transition-all")}
                     style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}
                 />
             )}
@@ -53,7 +53,7 @@ const ProgressIndicator = forwardRef<ElementRef<typeof ProgressPrimitive.Indicat
     ({ className, value, ...props }, ref) => (
         <ProgressPrimitive.Indicator
             ref={ref}
-            className={cn("h-full w-full flex-1 -accent-constant transition-all", className)}
+            className={cn("bg-accent-constant h-full w-full flex-1 transition-all", className)}
             style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}
             {...props}
         />

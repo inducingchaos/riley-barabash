@@ -23,7 +23,7 @@ const createColorsWithOpacityVariants = ({
 }) =>
     Object.fromEntries(
         colorNames.map(colorName => [
-            colorName,
+            `color-${colorName}`,
             createOpacityVariants({ using: { name: colorName, variants: opacityVariants } })
         ])
     )

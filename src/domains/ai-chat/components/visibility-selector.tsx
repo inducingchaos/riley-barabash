@@ -1,7 +1,13 @@
 "use client"
 
 import { type ReactNode, useMemo, useState } from "react"
-import { Button , DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "~/components/ui/primitives/inputs"
+import {
+    Button,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger
+} from "~/components/ui/primitives/inputs"
 import { cn } from "~/domains/ai-chat/lib/utils"
 
 import { CheckCircleFillIcon, ChevronDownIcon, GlobeIcon, LockIcon } from "./icons"
@@ -77,10 +83,10 @@ export function VisibilitySelector({
                         <div className="flex flex-col items-start gap-1">
                             {visibility.label}
                             {visibility.description && (
-                                <div className="text-12 text-muted-foreground">{visibility.description}</div>
+                                <div className="text-muted-foreground text-12">{visibility.description}</div>
                             )}
                         </div>
-                        <div className="-accent-constant dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
+                        <div className="text-accent-constant dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
                             <CheckCircleFillIcon />
                         </div>
                     </DropdownMenuItem>

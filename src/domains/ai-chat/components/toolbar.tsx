@@ -82,7 +82,7 @@ const Tool = ({
             <TooltipTrigger asChild>
                 <motion.div
                     className={cx("rounded-full p-3", {
-                        "-accent-constant !text-primary-foreground": selectedTool === type
+                        "bg-accent-constant !text-primary-foreground": selectedTool === type
                     })}
                     onHoverStart={() => {
                         setIsHovered(true)
@@ -168,7 +168,7 @@ const ReadingLevelSelector = ({
                     <TooltipTrigger asChild>
                         <motion.div
                             className={cx("bg-background absolute flex flex-row items-center rounded-full border p-3", {
-                                "-accent-constant text-primary-foreground": currentLevel !== 2,
+                                "bg-accent-constant text-primary-foreground": currentLevel !== 2,
                                 "bg-background text-foreground": currentLevel === 2
                             })}
                             style={{ y }}
@@ -206,7 +206,7 @@ const ReadingLevelSelector = ({
                     <TooltipContent
                         side="left"
                         sideOffset={16}
-                        className="bg-foreground text-background text-14 rounded-2xl p-3 px-4"
+                        className="bg-foreground text-background rounded-2xl p-3 px-4 text-14"
                     >
                         {LEVELS[currentLevel]}
                     </TooltipContent>
