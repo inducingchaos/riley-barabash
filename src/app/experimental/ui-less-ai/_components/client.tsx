@@ -52,7 +52,7 @@ export function TheMagicalComponent({
                         <li
                             key={msg.id}
                             className={cn(
-                                "flex w-fit flex-col bg-main-thirty-second px-4 py-2",
+                                "flex w-fit flex-col gap-1 bg-main-thirty-second px-6 py-3",
                                 msg.content.toUpperCase().startsWith("I") ? "items-end self-end" : ""
                             )}
                         >
@@ -94,24 +94,34 @@ export function TheMagicalComponent({
                                     </Button>
                                 )}
                                 <Button
-                                    style="fill"
-                                    color="warning"
-                                    // need to add some other intensities like medium, high, max (.25...)
-                                    //  need to make the text white on colors, non changing (maybe with intensity)
+                                    // style="fill"
+                                    // color="warning"
+                                    // // need to add some other intensities like medium, high, max (.25...)
+                                    // //  need to make the text white on colors, non changing (maybe with intensity)
+                                    // intensity="reduced"
+                                    // shape="micro"
+                                    // className="text-alternate-constant bg-warning-half hover:bg-warning-quarter"
+
+                                    style="outline"
+                                    color="main"
                                     intensity="reduced"
                                     shape="micro"
-                                    className="text-alternate-constant bg-warning-half hover:bg-warning-quarter"
                                 >
                                     {"archive"}
                                 </Button>
                                 <Button
-                                    style="fill"
-                                    color="danger"
-                                    // need to add some other intensities like medium, high, max (.25...)
-                                    //  need to make the text white on colors, non changing (maybe with intensity)
+                                    // style="fill"
+                                    // color="danger"
+                                    // // need to add some other intensities like medium, high, max (.25...)
+                                    // //  need to make the text white on colors, non changing (maybe with intensity)
+                                    // intensity="reduced"
+                                    // shape="micro"
+                                    // className="text-alternate-constant bg-danger-half"
+
+                                    style="outline"
+                                    color="main"
                                     intensity="reduced"
                                     shape="micro"
-                                    className="text-alternate-constant bg-danger-half"
                                 >
                                     {"delete"}
                                 </Button>

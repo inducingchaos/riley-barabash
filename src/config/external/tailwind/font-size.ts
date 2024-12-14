@@ -8,7 +8,7 @@ import type { ThemeConfig } from "tailwindcss/types/config"
 export const fontSize = {
     "12": defaultTheme.fontSize.xs,
     "14": defaultTheme.fontSize.sm,
-    base: defaultTheme.fontSize.base,
+    "16": defaultTheme.fontSize.base,
     "18": defaultTheme.fontSize.lg,
     "20": defaultTheme.fontSize.xl,
     "24": defaultTheme.fontSize["2xl"],

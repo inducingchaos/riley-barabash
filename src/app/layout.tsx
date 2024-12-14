@@ -1,5 +1,6 @@
 /**
- *
+ * @todo
+ * - [P1] Add a redirect protecting the 'experimental' directory & similar.
  */
 
 import { Analytics } from "@vercel/analytics/react"
