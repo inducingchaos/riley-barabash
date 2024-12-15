@@ -53,7 +53,7 @@ export function Table({ columns, data, className, ...props }: TableProps): JSX.E
         <div className={cn("my-6 w-full overflow-y-auto", className)} {...props}>
             <table className="w-full">
                 <thead>
-                    <tr className="m-0 border-t p-0 even:bg-muted">
+                    <tr className="m-0 border-t p-0 even:bg-main-sixteenth">
                         {columns.map((column, index) => (
                             <th
                                 key={index}
@@ -66,7 +66,7 @@ export function Table({ columns, data, className, ...props }: TableProps): JSX.E
                 </thead>
                 <tbody>
                     {data.map((row, rowIndex) => (
-                        <tr key={rowIndex} className="m-0 border-t p-0 even:bg-muted">
+                        <tr key={rowIndex} className="m-0 border-t p-0 even:bg-main-sixteenth">
                             {columns.map((column, colIndex) => (
                                 <td
                                     key={colIndex}

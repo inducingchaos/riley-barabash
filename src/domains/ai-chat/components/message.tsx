@@ -60,7 +60,7 @@ const PurePreviewMessage = ({
                 )}
             >
                 {message.role === "assistant" && (
-                    <div className="ring-border flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
+                    <div className="ring-main-eighth flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
                         <SparklesIcon size={14} />
                     </div>
                 )}
@@ -81,7 +81,7 @@ const PurePreviewMessage = ({
                                     <TooltipTrigger asChild>
                                         <Button
                                             style="ghost"
-                                            className="text-muted-foreground h-fit rounded-full px-2 opacity-0 group-hover/message:opacity-100"
+                                            className="text-main-half h-fit rounded-full px-2 opacity-0 group-hover/message:opacity-100"
                                             onClick={() => {
                                                 setMode("edit")
                                             }}
@@ -95,7 +95,7 @@ const PurePreviewMessage = ({
 
                             <div
                                 className={cn("flex flex-col gap-4", {
-                                    "bg-accent-constant text-primary-foreground rounded-xl px-3 py-2": message.role === "user"
+                                    "bg-accent-constant text-alternate-constant rounded-xl px-3 py-2": message.role === "user"
                                 })}
                             >
                                 <Markdown>{message.content}</Markdown>
@@ -242,16 +242,16 @@ export const ThinkingMessage = () => {
                 className={cx(
                     "rounded-xl flex w-full gap-4 group-data-[role=user]/message:ml-auto group-data-[role=user]/message:w-fit group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:px-3 group-data-[role=user]/message:py-2",
                     {
-                        "group-data-[role=user]/message:bg-muted": true
+                        "group-data-[role=user]/message:bg-main-sixteenth": true
                     }
                 )}
             >
-                <div className="ring-border flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
+                <div className="ring-main-eighth flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
                     <SparklesIcon size={14} />
                 </div>
 
                 <div className="flex w-full flex-col gap-2">
-                    <div className="text-muted-foreground flex flex-col gap-4">Thinking...</div>
+                    <div className="text-main-half flex flex-col gap-4">Thinking...</div>
                 </div>
             </div>
         </motion.div>

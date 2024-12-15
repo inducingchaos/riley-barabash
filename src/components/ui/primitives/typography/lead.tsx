@@ -13,7 +13,7 @@ export function Lead({
     ...props
 }: React.HTMLAttributes<HTMLParagraphElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        <p className={cn("text-muted-foreground text-20", className)} {...props}>
+        <p className={cn("text-main-half text-20", className)} {...props}>
             {children}
         </p>
     )

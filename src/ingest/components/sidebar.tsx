@@ -141,7 +141,7 @@ const Sidebar = React.forwardRef<
     if (collapsible === "none") {
         return (
             <div
-                className={cn("bg-sidebar text-sidebar-foreground flex h-full w-[--sidebar-width] flex-col", className)}
+                className={cn("bg-sidebar text-main flex h-full w-[--sidebar-width] flex-col", className)}
                 ref={ref}
                 {...props}
             >
@@ -156,7 +156,7 @@ const Sidebar = React.forwardRef<
                 <SheetContent
                     data-sidebar="sidebar"
                     data-mobile="true"
-                    className="bg-sidebar text-sidebar-foreground w-[--sidebar-width] p-0 [&>button]:hidden"
+                    className="bg-sidebar text-main w-[--sidebar-width] p-0 [&>button]:hidden"
                     style={
                         {
                             "--sidebar-width": SIDEBAR_WIDTH_MOBILE
@@ -173,7 +173,7 @@ const Sidebar = React.forwardRef<
     return (
         <div
             ref={ref}
-            className="text-sidebar-foreground group peer hidden md:block"
+            className="text-main group peer hidden md:block"
             data-state={state}
             data-collapsible={state === "collapsed" ? collapsible : ""}
             data-variant={variant}
@@ -206,7 +206,7 @@ const Sidebar = React.forwardRef<
             >
                 <div
                     data-sidebar="sidebar"
-                    className="bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border-sidebar-border flex size-full flex-col group-data-[variant=floating]:border group-data-[variant=floating]:shadow"
+                    className="bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border-main-eighth flex size-full flex-col group-data-[variant=floating]:border group-data-[variant=floating]:shadow"
                 >
                     {children}
                 </div>
@@ -253,7 +253,7 @@ const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<"bu
             onClick={toggleSidebar}
             title="Toggle Sidebar"
             className={cn(
-                "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
+                "hover:after:bg-main-eighth absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
                 "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
                 "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
                 "group-data-[collapsible=offcanvas]:hover:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full",
@@ -289,7 +289,7 @@ const SidebarInput = React.forwardRef<React.ElementRef<typeof Input>, React.Comp
                 ref={ref}
                 data-sidebar="input"
                 className={cn(
-                    "bg-alternate focus-visible:ring-sidebar-ring h-8 w-full shadow-none focus-visible:ring-2",
+                    "bg-alternate focus-visible:ring-accent-constant h-8 w-full shadow-none focus-visible:ring-2",
                     className
                 )}
                 {...props}
@@ -312,12 +312,7 @@ SidebarFooter.displayName = "SidebarFooter"
 const SidebarSeparator = React.forwardRef<React.ElementRef<typeof Separator>, React.ComponentProps<typeof Separator>>(
     ({ className, ...props }, ref) => {
         return (
-            <Separator
-                ref={ref}
-                data-sidebar="separator"
-                className={cn("bg-sidebar-border mx-2 w-auto", className)}
-                {...props}
-            />
+            <Separator ref={ref} data-sidebar="separator" className={cn("bg-main-eighth mx-2 w-auto", className)} {...props} />
         )
     }
 )
@@ -354,7 +349,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<
                 ref={ref}
                 data-sidebar="group-label"
                 className={cn(
-                    "rounded-md text-xs text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center px-2 font-medium outline-none transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+                    "rounded-md text-xs text-main-upper-quarter ring-accent-constant flex h-8 shrink-0 items-center px-2 font-medium outline-none transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
                     "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
                     className
                 )}
@@ -374,7 +369,7 @@ const SidebarGroupAction = React.forwardRef<HTMLButtonElement, React.ComponentPr
                 ref={ref}
                 data-sidebar="group-action"
                 className={cn(
-                    "rounded-md text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center p-0 outline-none transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+                    "rounded-md text-main ring-accent-constant hover:bg-main-sixteenth hover:text-main absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center p-0 outline-none transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
                     // Increases the hit area of the button on mobile.
                     "after:absolute after:-inset-2 after:md:hidden",
                     "group-data-[collapsible=icon]:hidden",
@@ -403,13 +398,13 @@ const SidebarMenuItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li
 SidebarMenuItem.displayName = "SidebarMenuItem"
 
 const sidebarMenuButtonVariants = cva(
-    "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+    "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-accent-constant transition-[width,height,padding] hover:bg-main-sixteenth hover:text-main focus-visible:ring-2 active:bg-main-sixteenth active:text-main disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-main-sixteenth data-[active=true]:font-medium data-[active=true]:text-main data-[state=open]:hover:bg-main-sixteenth data-[state=open]:hover:text-main group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
     {
         variants: {
             variant: {
-                default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+                default: "hover:bg-main-sixteenth hover:text-main",
                 outline:
-                    "bg-alternate shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]"
+                    "bg-alternate shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-main-sixteenth hover:text-main hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]"
             },
             size: {
                 default: "h-8 text-sm",
@@ -479,7 +474,7 @@ const SidebarMenuAction = React.forwardRef<
             ref={ref}
             data-sidebar="menu-action"
             className={cn(
-                "rounded-md text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center p-0 outline-none transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+                "rounded-md text-main ring-accent-constant hover:bg-main-sixteenth hover:text-main peer-hover/menu-button:text-main absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center p-0 outline-none transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
                 // Increases the hit area of the button on mobile.
                 "after:absolute after:-inset-2 after:md:hidden",
                 "peer-data-[size=sm]/menu-button:top-1",
@@ -487,7 +482,7 @@ const SidebarMenuAction = React.forwardRef<
                 "peer-data-[size=lg]/menu-button:top-2.5",
                 "group-data-[collapsible=icon]:hidden",
                 showOnHover &&
-                    "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
+                    "peer-data-[active=true]/menu-button:text-main group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
                 className
             )}
             {...props}
@@ -501,8 +496,8 @@ const SidebarMenuBadge = React.forwardRef<HTMLDivElement, React.ComponentProps<"
         ref={ref}
         data-sidebar="menu-badge"
         className={cn(
-            "rounded-md text-xs text-sidebar-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center px-1 font-medium tabular-nums",
-            "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
+            "rounded-md text-xs text-main pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center px-1 font-medium tabular-nums",
+            "peer-hover/menu-button:text-main peer-data-[active=true]/menu-button:text-main",
             "peer-data-[size=sm]/menu-button:top-1",
             "peer-data-[size=default]/menu-button:top-1.5",
             "peer-data-[size=lg]/menu-button:top-2.5",
@@ -552,7 +547,7 @@ const SidebarMenuSub = React.forwardRef<HTMLUListElement, React.ComponentProps<"
         ref={ref}
         data-sidebar="menu-sub"
         className={cn(
-            "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5",
+            "border-main-eighth mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5",
             "group-data-[collapsible=icon]:hidden",
             className
         )}
@@ -583,8 +578,8 @@ const SidebarMenuSubButton = React.forwardRef<
             data-size={size}
             data-active={isActive}
             className={cn(
-                "rounded-md text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden px-2 outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
-                "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
+                "rounded-md text-main ring-accent-constant hover:bg-main-sixteenth hover:text-main active:bg-main-sixteenth active:text-main [&>svg]:text-main flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden px-2 outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+                "data-[active=true]:bg-main-sixteenth data-[active=true]:text-main",
                 size === "sm" && "text-xs",
                 size === "md" && "text-sm",
                 "group-data-[collapsible=icon]:hidden",

@@ -28,7 +28,7 @@ const Progress = forwardRef<ElementRef<typeof ProgressPrimitive.Root>, ProgressO
     ({ className, value, customInternals, children, ...props }, ref) => (
         <ProgressPrimitive.Root
             ref={ref}
-            className={cn("bg-primary/20 relative h-2 w-full overflow-hidden rounded-full", className)}
+            className={cn("bg-accent-constant-quarter relative h-2 w-full overflow-hidden rounded-full", className)}
             {...props}
         >
             {customInternals ? (

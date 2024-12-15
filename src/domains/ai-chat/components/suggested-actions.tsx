@@ -48,7 +48,7 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
                         className="rounded-xl text-14 h-auto w-full flex-1 items-start justify-start gap-1 border px-4 py-3.5 text-left sm:flex-col"
                     >
                         <span className="font-medium">{suggestedAction.title}</span>
-                        <span className="text-muted-foreground">{suggestedAction.label}</span>
+                        <span className="text-main-half">{suggestedAction.label}</span>
                     </Button>
                 </motion.div>
             ))}

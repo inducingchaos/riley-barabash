@@ -84,7 +84,7 @@ const NavigationMenuViewport = forwardRef<
     <div className={cn("absolute left-0 top-full flex justify-center")}>
         <NavigationMenuPrimitive.Viewport
             className={cn(
-                "origin-top-center text-popover-foreground bg-inverse-upper-quarter relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border backdrop-blur data-[state=closed]:animate-navigation-menu-exit data-[state=open]:animate-navigation-menu-enter md:w-[var(--radix-navigation-menu-viewport-width)]",
+                "origin-top-center text-main bg-inverse-upper-quarter relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden border backdrop-blur data-[state=closed]:animate-navigation-menu-exit data-[state=open]:animate-navigation-menu-enter md:w-[var(--radix-navigation-menu-viewport-width)]",
 
                 className
             )}

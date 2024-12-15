@@ -14,7 +14,7 @@ import { cn } from "~/utils/ui"
 //         <CheckboxPrimitive.Root
 //             ref={ref}
 //             className={cn(
-//                 "peer h-4 w-4 shrink-0 rounded-sm border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
+//                 "peer h-4 w-4 shrink-0 rounded-sm border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-accent-constant data-[state=checked]:text-alternate-constant",
 //                 className
 //             )}
 //             {...props}
@@ -31,7 +31,7 @@ const Checkbox = forwardRef<ElementRef<typeof CheckboxPrimitive.Root>, Component
         <CheckboxPrimitive.Root
             ref={ref}
             className={cn(
-                "rounded-sm border-accent-constant focus-visible:ring-ring data-[state=checked]:bg-border data-[state=checked]:text-primary-foreground data-[state=indeterminate]:text-border peer h-4 w-4 shrink-0 border shadow focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
+                "rounded-sm border-accent-constant focus-visible:ring-accent-constant data-[state=checked]:bg-main-eighth data-[state=checked]:text-alternate-constant data-[state=indeterminate]:text-main-eighth peer h-4 w-4 shrink-0 border shadow focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
                 className
             )}
             {...props}
@@ -49,13 +49,13 @@ const Checkbox = forwardRef<ElementRef<typeof CheckboxPrimitive.Root>, Component
 //         <CheckboxPrimitive.Root
 //             ref={ref}
 //             className={cn(
-//                 "peer h-4 w-4 shrink-0 rounded-sm border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-border data-[state=checked]:text-primary-foreground",
+//                 "peer h-4 w-4 shrink-0 rounded-sm border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-main-eighth data-[state=checked]:text-alternate-constant",
 //                 className
 //             )}
 //             {...props}
 //         >
 //             <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center text-current")}>
-//                 <div className="h-2 w-2 rounded-sm data-[state=checked]:bg-border data-[state=indeterminate]:bg-border" />
+//                 <div className="h-2 w-2 rounded-sm data-[state=checked]:bg-main-eighth data-[state=indeterminate]:bg-main-eighth" />
 //             </CheckboxPrimitive.Indicator>
 //         </CheckboxPrimitive.Root>
 //     )

@@ -105,7 +105,7 @@ const FormLabel = forwardRef<ElementRef<typeof LabelPrimitive.Root>, ComponentPr
     ({ className, ...props }, ref) => {
         const { formItemId } = useFormField()
 
-        //  Removed cn(error && "text-destructive", className).
+        //  Removed cn(error && "text-danger", className).
         return <Label ref={ref} className={className} htmlFor={formItemId} {...props} />
     }
 )
@@ -136,7 +136,7 @@ const FormDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLPara
         const { formDescriptionId } = useFormField()
 
         return (
-            <p ref={ref} id={formDescriptionId} className={cn("text-muted-foreground text-[0.8rem]", className)} {...props} />
+            <p ref={ref} id={formDescriptionId} className={cn("text-main-half text-[0.8rem]", className)} {...props} />
         )
     }
 )

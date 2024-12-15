@@ -45,7 +45,7 @@ type NavigationMenuData = {
 export function Header(): JSX.Element {
     return (
         <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="flex w-full flex-row items-center justify-between border bg-alternate-upper-quarter before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
+            <div className="bg-alternate-upper-quarter flex w-full flex-row items-center justify-between border before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
                 <div className="flex items-center justify-center gap-3 p-6">
                     <AlteredLogo className="h-6" />
@@ -124,13 +124,13 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                 <a
                     ref={ref}
                     className={cn(
-                        "block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors hover:bg-main-eighth focus:bg-accent-alternate",
+                        "hover:bg-main-eighth focus:bg-accent-alternate block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors",
                         className
                     )}
                     {...props}
                 >
                     <div className="text-14 font-medium leading-none">{title}</div>
-                    <p className="line-clamp-2 text-14 leading-snug text-main-upper-quarter">{children}</p>
+                    <p className="text-main-upper-quarter line-clamp-2 text-14 leading-snug">{children}</p>
                 </a>
             </NavigationMenuLink>
         </li>

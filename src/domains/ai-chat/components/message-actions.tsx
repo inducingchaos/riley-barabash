@@ -34,7 +34,7 @@ export function MessageActions({
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            className="text-muted-foreground h-fit px-2 py-1"
+                            className="text-main-half h-fit px-2 py-1"
                             style="outline"
                             onClick={async () => {
                                 await copyToClipboard(message.content)
@@ -50,7 +50,7 @@ export function MessageActions({
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            className="text-muted-foreground !pointer-events-auto h-fit px-2 py-1"
+                            className="text-main-half !pointer-events-auto h-fit px-2 py-1"
                             disabled={vote?.isUpvoted}
                             style="outline"
                             onClick={async () => {
@@ -106,7 +106,7 @@ export function MessageActions({
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            className="text-muted-foreground !pointer-events-auto h-fit px-2 py-1"
+                            className="text-main-half !pointer-events-auto h-fit px-2 py-1"
                             style="outline"
                             disabled={vote && !vote.isUpvoted}
                             onClick={async () => {

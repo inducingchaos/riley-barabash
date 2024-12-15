@@ -7,7 +7,7 @@ export const PreviewAttachment = ({ attachment, isUploading = false }: { attachm
 
     return (
         <div className="flex flex-col gap-2">
-            <div className="bg-muted rounded-md relative flex aspect-video h-16 w-20 flex-col items-center justify-center">
+            <div className="bg-main-sixteenth rounded-md relative flex aspect-video h-16 w-20 flex-col items-center justify-center">
                 {contentType ? (
                     contentType.startsWith("image") ? (
                         // NOTE: it is recommended to use next/image for images

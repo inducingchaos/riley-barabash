@@ -26,7 +26,7 @@ export default async function SignIn({ searchParams }: { searchParams: Promise<S
 
                                 <Link
                                     href={application.routing.paths.pages.auth.signUp}
-                                    className="hover:text-primary underline underline-offset-4"
+                                    className="hover:text-accent-constant underline underline-offset-4"
                                 >
                                     {"create one here."}
                                 </Link>
@@ -37,7 +37,7 @@ export default async function SignIn({ searchParams }: { searchParams: Promise<S
 
                         {callbackUrl && (
                             <div className="mt-4 text-center">
-                                <p className="text-muted-foreground text-14">Callback URL:</p>
+                                <p className="text-main-half text-14">Callback URL:</p>
                                 <InlineCode>{callbackUrl}</InlineCode>
                             </div>
                         )}

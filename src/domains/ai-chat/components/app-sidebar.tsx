@@ -34,7 +34,7 @@ export function AppSidebar({ user }: { user: { email: string } | undefined }) {
                             }}
                             className="flex flex-row items-center gap-3"
                         >
-                            <span className="hover:bg-muted rounded-md cursor-pointer px-2 text-18 font-semibold">Chatbot</span>
+                            <span className="hover:bg-main-sixteenth rounded-md cursor-pointer px-2 text-18 font-semibold">Chatbot</span>
                         </Link>
                         <Tooltip>
                             <TooltipTrigger asChild>

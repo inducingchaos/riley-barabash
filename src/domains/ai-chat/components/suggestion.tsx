@@ -17,7 +17,7 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
         <AnimatePresence>
             {!isExpanded ? (
                 <motion.div
-                    className="text-muted-foreground absolute -right-8 cursor-pointer p-1"
+                    className="text-main-half absolute -right-8 cursor-pointer p-1"
                     onClick={() => {
                         setIsExpanded(true)
                     }}
@@ -37,7 +37,7 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
                 >
                     <div className="flex flex-row items-center justify-between">
                         <div className="flex flex-row items-center gap-2">
-                            <div className="bg-muted-foreground/25 size-4 rounded-full" />
+                            <div className="bg-main-eighth size-4 rounded-full" />
                             <div className="font-medium">Assistant</div>
                         </div>
                         <button

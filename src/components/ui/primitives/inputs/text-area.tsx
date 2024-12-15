@@ -37,7 +37,7 @@ const TextArea = forwardRef<TextAreaElement, TextAreaProps>(
         return (
             <textarea
                 className={cn(
-                    "rounded-md border-input placeholder:text-muted-foreground focus-visible:ring-ring flex w-full border bg-transparent px-3 py-2 text-14 focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
+                    "rounded-md border-main-sixteenth placeholder:text-main-half focus-visible:ring-accent-constant flex w-full border bg-transparent px-3 py-2 text-14 focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
                     className
                 )}
                 value={localValue}

@@ -30,7 +30,7 @@ export function ModelSelector({
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger
                 asChild
-                className={cn("data-[state=open]:text-accent-foreground w-fit data-[state=open]:bg-accent", className)}
+                className={cn("data-[state=open]:text-main data-[state=open]:bg-main-sixteenth w-fit", className)}
             >
                 <Button style="outline" className="md:h-[34px] md:px-2">
                     {selectedModel?.label}
@@ -54,9 +54,9 @@ export function ModelSelector({
                     >
                         <div className="flex flex-col items-start gap-1">
                             {model.label}
-                            {model.description && <div className="text-muted-foreground text-12">{model.description}</div>}
+                            {model.description && <div className="text-main-half text-12">{model.description}</div>}
                         </div>
-                        <div className="text-accent-constant dark:text-primary-foreground opacity-0 group-data-[active=true]/item:opacity-100">
+                        <div className="text-accent-constant dark:text-alternate-constant opacity-0 group-data-[active=true]/item:opacity-100">
                             <CheckCircleFillIcon />
                         </div>
                     </DropdownMenuItem>

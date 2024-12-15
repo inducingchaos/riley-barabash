@@ -71,7 +71,7 @@ function PureBlockActions({ block, handleVersionChange, currentVersionIndex, isC
                     <Button
                         style="outline"
                         className={cn("!pointer-events-auto h-fit p-2 dark:hover:bg-zinc-700", {
-                            "bg-muted": mode === "diff"
+                            "bg-main-sixteenth": mode === "diff"
                         })}
                         onClick={() => {
                             handleVersionChange("toggle")

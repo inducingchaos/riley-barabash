@@ -111,7 +111,7 @@ const Tool = ({
                     {selectedTool === type ? <ArrowUpIcon /> : icon}
                 </motion.div>
             </TooltipTrigger>
-            <TooltipContent side="left" sideOffset={16} className="bg-foreground text-alternate rounded-2xl p-3 px-4">
+            <TooltipContent side="left" sideOffset={16} className="bg-main text-alternate rounded-2xl p-3 px-4">
                 {description}
             </TooltipContent>
         </Tooltip>
@@ -159,7 +159,7 @@ const ReadingLevelSelector = ({
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.1 }}
                 >
-                    <div className="bg-muted-foreground/40 size-2 rounded-full" />
+                    <div className="bg-main-quarter size-2 rounded-full" />
                 </motion.div>
             ))}
 
@@ -168,8 +168,8 @@ const ReadingLevelSelector = ({
                     <TooltipTrigger asChild>
                         <motion.div
                             className={cx("bg-alternate absolute flex flex-row items-center rounded-full border p-3", {
-                                "bg-accent-constant text-primary-foreground": currentLevel !== 2,
-                                "bg-alternate text-foreground": currentLevel === 2
+                                "bg-accent-constant text-alternate-constant": currentLevel !== 2,
+                                "bg-alternate text-main": currentLevel === 2
                             })}
                             style={{ y }}
                             drag="y"
@@ -206,7 +206,7 @@ const ReadingLevelSelector = ({
                     <TooltipContent
                         side="left"
                         sideOffset={16}
-                        className="bg-foreground text-alternate rounded-2xl p-3 px-4 text-14"
+                        className="bg-main text-alternate rounded-2xl p-3 px-4 text-14"
                     >
                         {LEVELS[currentLevel]}
                     </TooltipContent>

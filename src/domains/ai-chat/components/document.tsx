@@ -55,7 +55,7 @@ function PureDocumentToolResult({ type, result, setBlock, isReadonly }: Document
                 })
             }}
         >
-            <div className="text-muted-foreground mt-1">
+            <div className="text-main-half mt-1">
                 {type === "create" ? (
                     <FileIcon />
                 ) : type === "update" ? (

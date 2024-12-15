@@ -221,14 +221,14 @@ function PureBlock({
 
     return (
         <motion.div
-            className="bg-muted fixed left-0 top-0 z-50 flex h-dvh w-dvw flex-row"
+            className="bg-main-sixteenth fixed left-0 top-0 z-50 flex h-dvh w-dvw flex-row"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.4 } }}
         >
             {!isMobile && (
                 <motion.div
-                    className="bg-muted dark:bg-alternate relative h-dvh w-[400px] shrink-0"
+                    className="bg-main-sixteenth dark:bg-alternate relative h-dvh w-[400px] shrink-0"
                     initial={{ opacity: 0, x: 10, scale: 1 }}
                     animate={{
                         opacity: 1,
@@ -284,7 +284,7 @@ function PureBlock({
                                 setAttachments={setAttachments}
                                 messages={messages}
                                 append={append}
-                                className="bg-alternate dark:bg-muted"
+                                className="bg-alternate dark:bg-main-sixteenth"
                                 setMessages={setMessages}
                             />
                         </form>
@@ -293,7 +293,7 @@ function PureBlock({
             )}
 
             <motion.div
-                className="dark:bg-muted bg-alternate fixed flex h-dvh flex-col overflow-y-scroll shadow-xl"
+                className="dark:bg-main-sixteenth bg-alternate fixed flex h-dvh flex-col overflow-y-scroll shadow-xl"
                 initial={
                     isMobile
                         ? {
@@ -363,15 +363,15 @@ function PureBlock({
                             <div className="font-medium">{document?.title ?? block.title}</div>
 
                             {isContentDirty ? (
-                                <div className="text-muted-foreground text-14">Saving changes...</div>
+                                <div className="text-main-half text-14">Saving changes...</div>
                             ) : document ? (
-                                <div className="text-muted-foreground text-14">
+                                <div className="text-main-half text-14">
                                     {`Updated ${formatDistance(new Date(document.createdAt), new Date(), {
                                         addSuffix: true
                                     })}`}
                                 </div>
                             ) : (
-                                <div className="bg-muted-foreground/20 rounded-md mt-2 h-3 w-32 animate-pulse" />
+                                <div className="bg-main-eighth rounded-md mt-2 h-3 w-32 animate-pulse" />
                             )}
                         </div>
                     </div>
@@ -385,7 +385,7 @@ function PureBlock({
                     />
                 </div>
 
-                <div className="dark:bg-muted bg-alternate prose h-full !max-w-full items-center overflow-y-scroll px-4 py-8 pb-40 dark:prose-invert md:p-20">
+                <div className="dark:bg-main-sixteenth bg-alternate prose h-full !max-w-full items-center overflow-y-scroll px-4 py-8 pb-40 dark:prose-invert md:p-20">
                     <div className="mx-auto flex max-w-[600px] flex-row">
                         {isDocumentsFetching && !block.content ? (
                             <DocumentSkeleton />

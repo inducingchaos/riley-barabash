@@ -37,8 +37,8 @@ const OTPSlot = forwardRef<ElementRef<"div">, ComponentPropsWithoutRef<"div"> & 
             <div
                 ref={ref}
                 className={cn(
-                    "border-input first:rounded-l-md last:rounded-r-md relative flex h-9 w-9 items-center justify-center border-y border-r text-14 shadow-sm transition-all first:border-l",
-                    isActive && "ring-ring z-10 ring-1",
+                    "border-main-sixteenth first:rounded-l-md last:rounded-r-md relative flex h-9 w-9 items-center justify-center border-y border-r text-14 shadow-sm transition-all first:border-l",
+                    isActive && "ring-accent-constant z-10 ring-1",
                     className
                 )}
                 {...props}
@@ -46,7 +46,7 @@ const OTPSlot = forwardRef<ElementRef<"div">, ComponentPropsWithoutRef<"div"> & 
                 {char}
                 {hasFakeCaret && (
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                        <div className="animate-caret-blink bg-foreground h-4 w-px duration-1000" />
+                        <div className="animate-caret-blink bg-main h-4 w-px duration-1000" />
                     </div>
                 )}
             </div>
