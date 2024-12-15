@@ -15,7 +15,7 @@ export async function Bar(): Promise<JSX.Element> {
     const user = await getCurrentUser()
 
     return (
-        <header className="bg-background fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between">
+        <header className="bg-alternate fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between">
             {/* Logo. */}
 
             <h1 className="text-nowrap px-6 py-4 text-24 font-bold tracking-tighter">{"RILEY BARABASH"}</h1>

@@ -111,7 +111,7 @@ const Tool = ({
                     {selectedTool === type ? <ArrowUpIcon /> : icon}
                 </motion.div>
             </TooltipTrigger>
-            <TooltipContent side="left" sideOffset={16} className="bg-foreground text-background rounded-2xl p-3 px-4">
+            <TooltipContent side="left" sideOffset={16} className="bg-foreground text-alternate rounded-2xl p-3 px-4">
                 {description}
             </TooltipContent>
         </Tooltip>
@@ -167,9 +167,9 @@ const ReadingLevelSelector = ({
                 <Tooltip open={!isAnimating}>
                     <TooltipTrigger asChild>
                         <motion.div
-                            className={cx("bg-background absolute flex flex-row items-center rounded-full border p-3", {
+                            className={cx("bg-alternate absolute flex flex-row items-center rounded-full border p-3", {
                                 "bg-accent-constant text-primary-foreground": currentLevel !== 2,
-                                "bg-background text-foreground": currentLevel === 2
+                                "bg-alternate text-foreground": currentLevel === 2
                             })}
                             style={{ y }}
                             drag="y"
@@ -206,7 +206,7 @@ const ReadingLevelSelector = ({
                     <TooltipContent
                         side="left"
                         sideOffset={16}
-                        className="bg-foreground text-background rounded-2xl p-3 px-4 text-14"
+                        className="bg-foreground text-alternate rounded-2xl p-3 px-4 text-14"
                     >
                         {LEVELS[currentLevel]}
                     </TooltipContent>
@@ -339,7 +339,7 @@ const PureToolbar = ({
     return (
         <TooltipProvider delayDuration={0}>
             <motion.div
-                className="bg-background absolute bottom-6 right-6 flex cursor-pointer flex-col justify-end rounded-full border p-1.5 shadow-lg"
+                className="bg-alternate absolute bottom-6 right-6 flex cursor-pointer flex-col justify-end rounded-full border p-1.5 shadow-lg"
                 initial={{ opacity: 0, y: -20, scale: 1 }}
                 animate={
                     isToolbarVisible

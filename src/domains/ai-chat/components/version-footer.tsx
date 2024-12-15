@@ -31,7 +31,7 @@ export const VersionFooter = ({ block, handleVersionChange, documents, currentVe
 
     return (
         <motion.div
-            className="bg-background absolute bottom-0 z-50 flex w-full flex-col justify-between gap-4 border-t p-4 lg:flex-row"
+            className="bg-alternate absolute bottom-0 z-50 flex w-full flex-col justify-between gap-4 border-t p-4 lg:flex-row"
             initial={{ y: isMobile ? 200 : 77 }}
             animate={{ y: 0 }}
             exit={{ y: isMobile ? 200 : 77 }}

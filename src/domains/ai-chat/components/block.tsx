@@ -228,7 +228,7 @@ function PureBlock({
         >
             {!isMobile && (
                 <motion.div
-                    className="bg-muted dark:bg-background relative h-dvh w-[400px] shrink-0"
+                    className="bg-muted dark:bg-alternate relative h-dvh w-[400px] shrink-0"
                     initial={{ opacity: 0, x: 10, scale: 1 }}
                     animate={{
                         opacity: 1,
@@ -284,7 +284,7 @@ function PureBlock({
                                 setAttachments={setAttachments}
                                 messages={messages}
                                 append={append}
-                                className="bg-background dark:bg-muted"
+                                className="bg-alternate dark:bg-muted"
                                 setMessages={setMessages}
                             />
                         </form>
@@ -293,7 +293,7 @@ function PureBlock({
             )}
 
             <motion.div
-                className="dark:bg-muted bg-background fixed flex h-dvh flex-col overflow-y-scroll shadow-xl"
+                className="dark:bg-muted bg-alternate fixed flex h-dvh flex-col overflow-y-scroll shadow-xl"
                 initial={
                     isMobile
                         ? {
@@ -363,9 +363,9 @@ function PureBlock({
                             <div className="font-medium">{document?.title ?? block.title}</div>
 
                             {isContentDirty ? (
-                                <div className="text-14 text-muted-foreground">Saving changes...</div>
+                                <div className="text-muted-foreground text-14">Saving changes...</div>
                             ) : document ? (
-                                <div className="text-14 text-muted-foreground">
+                                <div className="text-muted-foreground text-14">
                                     {`Updated ${formatDistance(new Date(document.createdAt), new Date(), {
                                         addSuffix: true
                                     })}`}
@@ -385,7 +385,7 @@ function PureBlock({
                     />
                 </div>
 
-                <div className="prose dark:prose-invert dark:bg-muted bg-background h-full !max-w-full items-center overflow-y-scroll px-4 py-8 pb-40 md:p-20">
+                <div className="dark:bg-muted bg-alternate prose h-full !max-w-full items-center overflow-y-scroll px-4 py-8 pb-40 dark:prose-invert md:p-20">
                     <div className="mx-auto flex max-w-[600px] flex-row">
                         {isDocumentsFetching && !block.content ? (
                             <DocumentSkeleton />

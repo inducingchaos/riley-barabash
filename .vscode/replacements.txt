@@ -5,110 +5,116 @@ filter "src/{app,components,domains,ingest}/**/*.{jsx,tsx}"
 //  Variables for our RegEx statements.
 
 colorPrefixes = "border|ring|bg|text|fill|stroke|outline|decoration|divide|shadow|accent|caret|from|via|to"
-colorClasses = "background|foreground|card|card-foreground|popover|popover-foreground|primary|primary-foreground|secondary|secondary-foreground|muted|muted-foreground|accent|accent-foreground|destructive|destructive-foreground|border|input|ring|chart-1|chart-2|chart-3|chart-4|chart-5|sidebar-background|sidebar-foreground|sidebar-primary|sidebar-primary-foreground|sidebar-accent|sidebar-accent-foreground|sidebar-border|sidebar-ring"
+oldColorTokens = "background|foreground|card|card-foreground|popover|popover-foreground|primary|primary-foreground|secondary|secondary-foreground|muted|muted-foreground|accent|accent-foreground|destructive|destructive-foreground|border|input|ring|chart-1|chart-2|chart-3|chart-4|chart-5|sidebar-background|sidebar-foreground|sidebar-primary|sidebar-primary-foreground|sidebar-accent|sidebar-accent-foreground|sidebar-border|sidebar-ring"
+newColorTokens = "alternate|main|accent-constant|alternate-constant|main-sixteenth|main-upper-eighth|main-half|danger|main-eighth|accent|accent-upper-quarter|accent-half|accent-quarter|accent-eighth"
 
-//  SHADCN/UI TAILWIND CLASS REPLACERS
+//  shadcn/ui Tailwind class replacers.
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-background(?=[\s"'])"
-// with "-color-alternate"
+replace-regex "([\s"':])(%{colorPrefixes})-background([\s"'])"
+with "$1$2-TMP_alternate$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-foreground(?=[\s"'])"
-// with "-color-main"
+replace-regex "([\s"':])(%{colorPrefixes})-foreground([\s"'])"
+with "$1$2-TMP_main$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-card(?=[\s"'])"
-// with "-color-alternate"
+replace-regex "([\s"':])(%{colorPrefixes})-card([\s"'])"
+with "$1$2-TMP_alternate$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-card-foreground(?=[\s"'])"
-// with "-color-main"
+replace-regex "([\s"':])(%{colorPrefixes})-card-foreground([\s"'])"
+with "$1$2-TMP_main$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-popover(?=[\s"'])"
-// with "-color-alternate"
+replace-regex "([\s"':])(%{colorPrefixes})-popover([\s"'])"
+with "$1$2-TMP_alternate$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-popover-foreground(?=[\s"'])"
-// with "-color-main"
+replace-regex "([\s"':])(%{colorPrefixes})-popover-foreground([\s"'])"
+with "$1$2-TMP_main$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-primary(?=[\s"'])"
-// with "-color-accent-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-primary([\s"'])"
+with "$1$2-TMP_accent-constant$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-primary-foreground(?=[\s"'])"
-// with "-color-alternate-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-primary-foreground([\s"'])"
+with "$1$2-TMP_alternate-constant$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-secondary(?=[\s"'])"
-// with "-color-main-sixteenth"
+replace-regex "([\s"':])(%{colorPrefixes})-secondary([\s"'])"
+with "$1$2-TMP_main-sixteenth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-secondary-foreground(?=[\s"'])"
-// with "-color-main-upper-eighth"
+replace-regex "([\s"':])(%{colorPrefixes})-secondary-foreground([\s"'])"
+with "$1$2-TMP_main-upper-eighth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-muted(?=[\s"'])"
-// with "-color-main-sixteenth"
+replace-regex "([\s"':])(%{colorPrefixes})-muted([\s"'])"
+with "$1$2-TMP_main-sixteenth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-muted-foreground(?=[\s"'])"
-// with "-color-main-half"
+replace-regex "([\s"':])(%{colorPrefixes})-muted-foreground([\s"'])"
+with "$1$2-TMP_main-half$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-accent(?=[\s"'])"
-// with "-color-main-sixteenth"
+replace-regex "([\s"':])(%{colorPrefixes})-accent([\s"'])"
+with "$1$2-TMP_main-sixteenth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-accent-foreground(?=[\s"'])"
-// with "-color-main"
+replace-regex "([\s"':])(%{colorPrefixes})-accent-foreground([\s"'])"
+with "$1$2-TMP_main$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-destructive(?=[\s"'])"
-// with "-color-danger"
+replace-regex "([\s"':])(%{colorPrefixes})-destructive([\s"'])"
+with "$1$2-TMP_danger$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-destructive-foreground(?=[\s"'])"
-// with "-color-alternate-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-destructive-foreground([\s"'])"
+with "$1$2-TMP_alternate-constant$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-border(?=[\s"'])"
-// with "-color-main-eighth"
+replace-regex "([\s"':])(%{colorPrefixes})-border([\s"'])"
+with "$1$2-TMP_main-eighth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-input(?=[\s"'])"
-// with "-color-main-sixteenth"
+replace-regex "([\s"':])(%{colorPrefixes})-input([\s"'])"
+with "$1$2-TMP_main-sixteenth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-ring(?=[\s"'])"
-// with "-color-accent-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-ring([\s"'])"
+with "$1$2-TMP_accent-constant$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-chart-1(?=[\s"'])"
-// with "-color-accent"
+replace-regex "([\s"':])(%{colorPrefixes})-chart-1([\s"'])"
+with "$1$2-TMP_accent$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-chart-2(?=[\s"'])"
-// with "-color-accent-upper-quarter"
+replace-regex "([\s"':])(%{colorPrefixes})-chart-2([\s"'])"
+with "$1$2-TMP_accent-upper-quarter$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-chart-3(?=[\s"'])"
-// with "-color-accent-half"
+replace-regex "([\s"':])(%{colorPrefixes})-chart-3([\s"'])"
+with "$1$2-TMP_accent-half$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-chart-4(?=[\s"'])"
-// with "-color-accent-quarter"
+replace-regex "([\s"':])(%{colorPrefixes})-chart-4([\s"'])"
+with "$1$2-TMP_accent-quarter$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-chart-5(?=[\s"'])"
-// with "-color-accent-eighth"
+replace-regex "([\s"':])(%{colorPrefixes})-chart-5([\s"'])"
+with "$1$2-TMP_accent-eighth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-background(?=[\s"'])"
-// with "-color-alternate"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-background([\s"'])"
+with "$1$2-TMP_alternate$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-foreground(?=[\s"'])"
-// with "-color-main"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-foreground([\s"'])"
+with "$1$2-TMP_main$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-primary(?=[\s"'])"
-// with "-color-accent-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-primary([\s"'])"
+with "$1$2-TMP_accent-constant$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-primary-foreground(?=[\s"'])"
-// with "-color-alternate-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-primary-foreground([\s"'])"
+with "$1$2-TMP_alternate-constant$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-accent(?=[\s"'])"
-// with "-color-main-sixteenth"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-accent([\s"'])"
+with "$1$2-TMP_main-sixteenth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-accent-foreground(?=[\s"'])"
-// with "-color-main"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-accent-foreground([\s"'])"
+with "$1$2-TMP_main$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-border(?=[\s"'])"
-// with "-color-main-eighth"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-border([\s"'])"
+with "$1$2-TMP_main-eighth$3"
 
-// replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-sidebar-ring(?=[\s"'])"
-// with "-color-accent-constant"
+replace-regex "([\s"':])(%{colorPrefixes})-sidebar-ring([\s"'])"
+with "$1$2-TMP_accent-constant$3"
+
+//  Remove the `TMP` tag from the replacements.
+
+replace-regex "([\s"':])(%{colorPrefixes})-TMP_(%{newColorTokens})([\s"'])"
+with "$1$2-$3$4"
 
 //  For any color classes with additional modifiers.
 
-replace-regex "(?<=[\s"'])(?:%{colorPrefixes})-(%{colorClasses})(?![\s"'])"
-with "-$1-FIXCN"
+replace-regex "([\s"':])(%{colorPrefixes})-(%{oldColorTokens})([^\s"'])"
+with "$1$2-$3-FIXCN$4"
 
 //  Tailwind Overrides: Font Size
 
