@@ -38,8 +38,9 @@ const config = {
         "@typescript-eslint/no-namespace": "off",
         "no-throw-literal": "off",
         "@typescript-eslint/only-throw-error": "off",
-        "tailwindcss/no-custom-classname": "off",
-        "tailwindcss/classnames-order": "off"
+        "tailwindcss/no-custom-classname": "error",
+        "tailwindcss/classnames-order": "warn",
+        "tailwindcss/no-contradicting-classname": "error"
     },
     settings: {
         "import/resolver": {
