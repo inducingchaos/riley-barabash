@@ -13,6 +13,7 @@ import {
     fontFamily,
     fontSize,
     height,
+    opacity,
     transitionDuration,
     transitionProperty,
     transitionTimingFunction,
@@ -23,7 +24,9 @@ const twMerge = extendTailwindMerge({
     override: {
         theme: {
             borderWidth: Object.keys(borderWidth),
-            borderRadius: Object.keys(borderRadius)
+            borderRadius: Object.keys(borderRadius),
+
+            opacity: Object.keys(opacity)
         },
         classGroups: {
             "font-family": [{ font: Object.keys(fontFamily) }],

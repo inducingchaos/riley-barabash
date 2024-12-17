@@ -15,6 +15,7 @@ import {
     fontSize,
     height,
     keyframes,
+    opacity,
     transitionDuration,
     transitionProperty,
     transitionTimingFunction,
@@ -31,6 +32,8 @@ export default {
 
         borderWidth,
         borderRadius,
+
+        opacity,
 
         backdropBlur,
         extend: {
