@@ -13,13 +13,11 @@ import {
     colors,
     fontFamily,
     fontSize,
-    height,
     keyframes,
     opacity,
+    spacing,
     transitionDuration,
-    transitionProperty,
-    transitionTimingFunction,
-    width
+    transitionTimingFunction
 } from "./src/config/external/tailwind"
 
 export default {
@@ -27,25 +25,21 @@ export default {
     content: ["./src/{app,components,domains}/**/*.{js,ts,jsx,tsx,mdx}"],
 
     theme: {
+        spacing,
+        opacity,
+
         fontFamily,
         fontSize,
 
         borderWidth,
         borderRadius,
 
-        opacity,
+        transitionDuration,
+        transitionTimingFunction,
 
         backdropBlur,
         extend: {
-            width,
-            height,
-
-            transitionProperty,
-
             colors,
-
-            transitionDuration,
-            transitionTimingFunction,
 
             animation,
             keyframes

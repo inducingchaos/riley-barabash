@@ -6,19 +6,19 @@ import defaultTheme from "tailwindcss/defaultTheme"
 import type { ThemeConfig } from "tailwindcss/types/config"
 
 export const fontSize = {
-    "12": defaultTheme.fontSize.xs,
-    "14": defaultTheme.fontSize.sm,
-    "16": defaultTheme.fontSize.base,
-    "18": defaultTheme.fontSize.lg,
-    "20": defaultTheme.fontSize.xl,
-    "24": defaultTheme.fontSize["2xl"],
-    "30": defaultTheme.fontSize["3xl"],
-    "32": "2rem",
-    "36": defaultTheme.fontSize["4xl"],
-    "48": defaultTheme.fontSize["5xl"],
-    "60": defaultTheme.fontSize["6xl"],
-    "64": "4rem",
-    "72": defaultTheme.fontSize["7xl"],
-    "96": defaultTheme.fontSize["8xl"],
-    "128": defaultTheme.fontSize["9xl"]
+    "12px": defaultTheme.fontSize.xs,
+    "14px": defaultTheme.fontSize.sm,
+    "16px": defaultTheme.fontSize.base,
+    "18px": defaultTheme.fontSize.lg,
+    "20px": defaultTheme.fontSize.xl,
+    "24px": defaultTheme.fontSize["2xl"],
+    "30px": defaultTheme.fontSize["3xl"],
+    "32px": "2rem",
+    "36px": defaultTheme.fontSize["4xl"],
+    "48px": defaultTheme.fontSize["5xl"],
+    "60px": defaultTheme.fontSize["6xl"],
+    "64px": "4rem",
+    "72px": defaultTheme.fontSize["7xl"],
+    "96px": defaultTheme.fontSize["8xl"],
+    "128px": defaultTheme.fontSize["9xl"]
 } satisfies ThemeConfig["fontSize"]

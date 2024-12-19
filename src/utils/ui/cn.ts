@@ -12,17 +12,17 @@ import {
     colors,
     fontFamily,
     fontSize,
-    height,
     opacity,
+    spacing,
     transitionDuration,
-    transitionProperty,
-    transitionTimingFunction,
-    width
+    transitionTimingFunction
 } from "~/config/external/tailwind"
 
 const twMerge = extendTailwindMerge({
     override: {
         theme: {
+            spacing: Object.keys(spacing),
+
             borderWidth: Object.keys(borderWidth),
             borderRadius: Object.keys(borderRadius),
 
@@ -40,11 +40,6 @@ const twMerge = extendTailwindMerge({
             colors: Object.keys(colors)
         },
         classGroups: {
-            w: [{ w: Object.keys(width) }],
-            h: [{ h: Object.keys(height) }],
-
-            transition: [{ transition: Object.keys(transitionProperty) }],
-
             duration: [{ duration: Object.keys(transitionDuration) }],
             ease: [{ ease: Object.keys(transitionTimingFunction) }],
 

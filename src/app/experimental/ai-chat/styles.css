@@ -1,0 +1,42 @@
+/* For AI Chat */
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.skeleton {
+    * {
+        pointer-events: none !important;
+    }
+
+    *[class^="text-"] {
+        color: transparent;
+        @apply bg-main-upper-quarter animate-pulse select-none;
+    }
+
+    .skeleton-bg {
+        @apply bg-main-upper-eighth;
+    }
+
+    .skeleton-div {
+        @apply bg-main-upper-quarter animate-pulse;
+    }
+}
+
+.ProseMirror {
+    outline: none;
+}
+
+.suggestion-highlight {
+    @apply dark:bg-blue-500/40 dark:hover:bg-blue-400/50 bg-blue-200 hover:bg-blue-300 dark:text-blue-50;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

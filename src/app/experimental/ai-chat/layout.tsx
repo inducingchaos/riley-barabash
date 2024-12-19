@@ -3,7 +3,7 @@ import { Toaster } from "sonner"
 
 import { ThemeProvider } from "~/domains/ai-chat/components/theme-provider"
 
-import "~/styles/globals.css"
+import "./styles.css"
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://chat.vercel.ai"),

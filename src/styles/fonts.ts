@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google"
+import { Geist, Geist_Mono, Inter } from "next/font/google"
 import localFont from "next/font/local"
 
 export const pxGrotesk = localFont({
@@ -134,4 +134,14 @@ export const saans = localFont({
 export const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter"
+})
+
+export const geist = Geist({
+    subsets: ["latin"],
+    variable: "--font-geist"
+})
+
+export const geistMono = Geist_Mono({
+    subsets: ["latin"],
+    variable: "--font-geist-mono"
 })

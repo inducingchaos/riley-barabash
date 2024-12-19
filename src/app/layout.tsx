@@ -11,7 +11,7 @@ import { ThemeProvider } from "~/components/providers"
 import { Toaster } from "~/components/ui/compositions/indicators"
 import { project } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
-import { hoeflerText, inter, pxGrotesk, pxGroteskMono, saans } from "~/styles/fonts"
+import { geist, geistMono, hoeflerText, inter, pxGrotesk, pxGroteskMono, saans } from "~/styles/fonts"
 import "~/styles/globals.css"
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: { children: ReactNode }):
             <html
                 lang="en"
                 suppressHydrationWarning
-                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${hoeflerText.variable} ${saans.variable} ${inter.variable} [.font-mono]:tracking-tighter tracking-normal`}
+                className={`${pxGrotesk.variable} ${pxGroteskMono.variable} ${hoeflerText.variable} ${saans.variable} ${inter.variable} ${geist.variable} ${geistMono.variable} [.font-mono]:tracking-tighter tracking-normal`}
             >
                 <body>
                     {/* Theming. */}

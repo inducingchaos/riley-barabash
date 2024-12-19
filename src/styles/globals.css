@@ -4,7 +4,7 @@
 
 @layer base {
     :root {
-        /* Definitions. */
+        /* Definition. */
 
         --color-white: 0 0% 100%;
         --color-off-white: 0 0% 93.75%;
@@ -24,6 +24,7 @@
         --color-khaki-light: 45 50% 87.5%;
         --color-khaki-dark: 45 12.5% 25%;
 
+        --ease-in-expo: cubic-bezier(0.75, 0, 0.875, 0);
         --ease-out-expo: cubic-bezier(0.125, 1, 0.25, 1);
         --ease-in-out-expo: cubic-bezier(0.875, 0, 0.125, 1);
 
@@ -45,11 +46,11 @@
         --color-accent-neutral: var(--color-khaki);
         --color-accent-alternate: var(--color-khaki-light);
         --color-accent-alternate-constant: var(--color-khaki-light);
-        --border-width: 0.125rem;
-        --border-width-force: 0.0625rem;
-        --border-radius: 0rem;
-        --border-radius-force: 0.25rem;
 
+        --border-width: 0.125rem;
+        --border-radius: 0rem;
+
+        --ease-in: var(--ease-in-expo);
         --ease-out: var(--ease-out-expo);
         --ease-in-out: var(--ease-in-out-expo);
     }
@@ -74,47 +75,4 @@
 
 * {
     min-width: 0;
-}
-
-/* For AI Chat */
-
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
-}
-
-.skeleton {
-    * {
-        pointer-events: none !important;
-    }
-
-    *[class^="text-"] {
-        color: transparent;
-        @apply animate-pulse select-none bg-main-upper-quarter;
-    }
-
-    .skeleton-bg {
-        @apply bg-main-upper-eighth;
-    }
-
-    .skeleton-div {
-        @apply animate-pulse bg-main-upper-quarter;
-    }
-}
-
-.ProseMirror {
-    outline: none;
-}
-
-.suggestion-highlight {
-    @apply bg-blue-200 hover:bg-blue-300 dark:bg-blue-500/40 dark:text-blue-50 dark:hover:bg-blue-400/50;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
