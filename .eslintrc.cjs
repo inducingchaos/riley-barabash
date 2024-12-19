@@ -47,6 +47,9 @@ const config = {
             typescript: {
                 alwaysTryTypes: true
             }
+        },
+        tailwindcss: {
+            callees: ["cn", "cva", "clsx"]
         }
     }
     // ignorePatterns: ["**/components/ui/**"]
