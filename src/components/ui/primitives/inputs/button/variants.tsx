@@ -3,46 +3,117 @@
  */
 
 import { cva, type VariantProps } from "class-variance-authority"
-import { ucn } from "~/utils/ui"
 
-// const DYNAMIC_generateCompoundVariants = "..."
+//  OTHER FILE
+
+type VariantKeys<T> = {
+    [K in keyof T]: keyof T[K]
+}
+
+type VariantOption<T> = {
+    [K in keyof T]: VariantKeys<T>[K]
+}
+
+type GeneratorReturn<T> = {
+    [K in VariantKeys<T>[keyof T]]?: {
+        [I in VariantKeys<T>[keyof T]]?: string
+    }
+}
+
+type CodegenOptions<T extends Record<string, Record<string, unknown>>> = {
+    variants: T
+    generator: (variant: VariantOption<T>) => GeneratorReturn<T>
+}
+
+const CODEGEN_cvaCompoundVariants = <T extends Record<string, Record<string, unknown>>>({}: CodegenOptions<T>) => undefined
+
+//
+//
+//
+//
+
+const variants = {
+    style: {
+        fill: null,
+        outline: null,
+        ghost: null,
+        link: "underline-offset-4 hover:underline"
+    },
+
+    color: {
+        main: null,
+        warning: null,
+        danger: null,
+        success: null,
+        info: null,
+        accent: null
+    },
+
+    intensity: {
+        full: null,
+        reduced: null
+    },
+
+    shape: {
+        standard: "px-16px py-8px",
+        compact: "h-32px rounded px-12px text-12px",
+        micro: "px-8px py-1px font-mono text-12px font-bold",
+        //  Was h-10.
+        display: "h-48px rounded px-32px",
+        //  was size-9.
+        square: "size-32px"
+    }
+}
+
+CODEGEN_cvaCompoundVariants({
+    variants,
+    generator: variant => {
+        const isAccent = variant.color === "accent" ? "-neutral" : ""
+
+        return {
+            fill: {
+                full: `bg-${variant.color}${isAccent} text-alternate hover:bg-${variant.color}${isAccent}/-quarter`,
+                reduced: `bg-${variant.color}${isAccent}/eighth text-${variant.color}${isAccent} hover:bg-${variant.color}${isAccent}/sixteenth`
+            },
+            outline: {
+                full: `border-${variant.color}${isAccent} text-${variant.color}${isAccent} hover:bg-${variant.color}${isAccent} hover:text-alternate`,
+                reduced: `border-${variant.color}${isAccent}/eighth text-${variant.color}${isAccent} hover:border-${variant.color}${isAccent}/zero hover:bg-${variant.color}${isAccent}/eighth`
+            },
+            ghost: {
+                full: `text-${variant.color}${isAccent} hover:bg-${variant.color}${isAccent} hover:text-alternate`,
+                reduced: `hover:bg-${variant.color}${isAccent}/eighth text-${variant.color}${isAccent}`
+            },
+            link: {
+                full: `text-${variant.color}${isAccent} hover:text-${variant.color}${isAccent}/-quarter`,
+                reduced: `text-${variant.color}${isAccent}/half hover:text-${variant.color}${isAccent}/3-8`
+            }
+        }
+    }
+})
 
 const createVariant = cva(
     "inline-flex items-center justify-center gap-8px whitespace-nowrap rounded border border-transparent text-14px font-medium ring-offset-alternate transition-colors duration-quarter ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main/-eighth focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-half [&_svg]:pointer-events-none [&_svg]:size-16px [&_svg]:shrink-0",
     {
-        variants: {
-            style: {
-                fill: null,
-                outline: null,
-                ghost: null,
-                link: "underline-offset-4 hover:underline"
-            },
-
-            color: {
-                main: null,
-                warning: null,
-                danger: null,
-                success: null,
-                info: null,
-                accent: null
-            },
-            intensity: {
-                full: null,
-                reduced: null
-            },
-
-            shape: {
-                standard: "px-16px py-8px",
-
-                compact: "h-32px rounded px-12px text-12px",
-                micro: "px-8px py-1px font-mono text-12px font-bold",
-                // was h-10
-                display: "h-48px rounded px-32px",
-                // was size-9
-                square: "size-32px"
-            }
+        variants,
+        defaultVariants: {
+            style: "fill",
+            color: "main",
+            intensity: "full",
+            shape: "standard"
         },
-        compoundVariants: [
+        compoundVariants: []
+    }
+)
+
+export type VariantOptions = VariantProps<typeof createVariant>
+
+export function createButtonVariant({ using: options }: { using?: VariantOptions }): string {
+    return createVariant(options)
+}
+
+/*
+
+compoundVariants: [
             {
                 style: "fill",
                 color: "main",
@@ -338,17 +409,5 @@ const createVariant = cva(
                 className: ucn("text-accent-neutral/half hover:text-accent-neutral/3-8")
             }
         ],
-        defaultVariants: {
-            style: "fill",
-            color: "main",
-            intensity: "full",
-            shape: "standard"
-        }
-    }
-)
 
-export type VariantOptions = VariantProps<typeof createVariant>
-
-export function createButtonVariant({ using: options }: { using?: VariantOptions }): string {
-    return createVariant(options)
-}
+        */
