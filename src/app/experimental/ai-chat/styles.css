@@ -1,11 +1,5 @@
 /* For AI Chat */
 
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
-}
-
 .skeleton {
     * {
         pointer-events: none !important;
@@ -13,15 +7,15 @@
 
     *[class^="text-"] {
         color: transparent;
-        @apply bg-main-upper-quarter animate-pulse select-none;
+        @apply animate-pulse select-none bg-main/-quarter;
     }
 
     .skeleton-bg {
-        @apply bg-main-upper-eighth;
+        @apply bg-main/-eighth;
     }
 
     .skeleton-div {
-        @apply bg-main-upper-quarter animate-pulse;
+        @apply animate-pulse bg-main/-quarter;
     }
 }
 
@@ -30,7 +24,7 @@
 }
 
 .suggestion-highlight {
-    @apply dark:bg-blue-500/40 dark:hover:bg-blue-400/50 bg-blue-200 hover:bg-blue-300 dark:text-blue-50;
+    @apply bg-blue-200 hover:bg-blue-300 dark:bg-blue-500/half dark:text-blue-50 dark:hover:bg-blue-400/half;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

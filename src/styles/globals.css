@@ -62,14 +62,19 @@
         --color-accent: var(--color-khaki-light);
         --color-accent-alternate: var(--color-khaki-dark);
     }
-}
 
-@layer base {
+    body {
+        @apply bg-alternate text-main;
+    }
+
     * {
         @apply border-main/eighth;
     }
-    body {
-        @apply bg-alternate text-main;
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
     }
 }
 

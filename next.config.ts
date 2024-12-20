@@ -8,6 +8,7 @@ export default {
     experimental: {
         ppr: "incremental"
     },
+
     images: {
         // minimumCacheTTL: 31536000,
         remotePatterns: [
@@ -22,9 +23,7 @@ export default {
             }
         ]
     }
-    // experimental: {
-    //     ppr: true
-    // },
+
     // typescript: {
     //     ignoreBuildErrors: true
     // },
