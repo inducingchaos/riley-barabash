@@ -114,7 +114,7 @@ with "$1$2-$3$4"
 //  For any color classes with additional modifiers.
 
 replace-regex "([\s"':])(%{colorPrefixes})-(%{oldColorTokens})([^\s"'])"
-with "$1$2-$3-FIXCN$4"
+with "$1$2-$3-FIX_CLASSNAME$4"
 
 //  Tailwind Overrides: Font Size
 
@@ -125,25 +125,25 @@ with "$1$2-$3-FIXCN$4"
 // with "text-14"
 
 // replace-regex "(?<=[\s"'])text-base(?=[\s"'])"
-// with "text-16"
+// with "text-16px"
 
 // replace-regex "(?<=[\s"'])text-lg(?=[\s"'])"
-// with "text-18"
+// with "text-18px"
 
 // replace-regex "(?<=[\s"'])text-xl(?=[\s"'])"
-// with "text-20"
+// with "text-20px"
 
 // replace-regex "(?<=[\s"'])text-2xl(?=[\s"'])"
 // with "text-24"
 
 // replace-regex "(?<=[\s"'])text-3xl(?=[\s"'])"
-// with "text-30"
+// with "text-30px"
 
 // replace-regex "(?<=[\s"'])text-4xl(?=[\s"'])"
-// with "text-36"
+// with "text-36px"
 
 // replace-regex "(?<=[\s"'])text-5xl(?=[\s"'])"
-// with "text-48"
+// with "text-48px"
 
 // replace-regex "(?<=[\s"'])text-6xl(?=[\s"'])"
 // with "text-60"
@@ -152,7 +152,7 @@ with "$1$2-$3-FIXCN$4"
 // with "text-72"
 
 // replace-regex "(?<=[\s"'])text-8xl(?=[\s"'])"
-// with "text-96"
+// with "text-96px"
 
 // replace-regex "(?<=[\s"'])text-9xl(?=[\s"'])"
 // with "text-128"

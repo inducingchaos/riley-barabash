@@ -101,28 +101,28 @@ export function PasswordResetForm({
     }
 
     return (
-        <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <div className="flex flex-col gap-3 text-center">
+        <div className={cn("flex flex-col gap-24px", className)} {...props}>
+            <div className="flex flex-col gap-12px text-center">
                 <H3>{"Reset Password"}</H3>
 
                 {!token ? (
                     !isRecoverySuccess ? (
-                        <Muted className="px-8">{"Enter your email below to receive a password recovery link."}</Muted>
+                        <Muted className="px-32px">{"Enter your email below to receive a password recovery link."}</Muted>
                     ) : (
-                        <Muted className="px-8">{"A recovery link has been sent to your email."}</Muted>
+                        <Muted className="px-32px">{"A recovery link has been sent to your email."}</Muted>
                     )
                 ) : resetError ? (
-                    <Muted className="px-8">{new Exception(resetError).applyDefaults().info?.external?.message}</Muted>
+                    <Muted className="px-32px">{new Exception(resetError).applyDefaults().info?.external?.message}</Muted>
                 ) : !isResetSuccess ? (
-                    <Muted className="px-8">{"Enter your new password below to update your account."}</Muted>
+                    <Muted className="px-32px">{"Enter your new password below to update your account."}</Muted>
                 ) : (
-                    <Muted className="px-8">{"Your password has been updated."}</Muted>
+                    <Muted className="px-32px">{"Your password has been updated."}</Muted>
                 )}
             </div>
 
             {!token && !isRecoverySuccess && (
                 <Form {...recoveryForm}>
-                    <form onSubmit={recoveryForm.handleSubmit(onRecoverySubmit)} className="flex flex-col gap-3">
+                    <form onSubmit={recoveryForm.handleSubmit(onRecoverySubmit)} className="flex flex-col gap-12px">
                         <FormField
                             control={recoveryForm.control}
                             name="email"
@@ -150,7 +150,7 @@ export function PasswordResetForm({
 
             {token && !isResetSuccess && !resetError && (
                 <Form {...resetForm}>
-                    <form onSubmit={resetForm.handleSubmit(onResetSubmit)} className="flex w-96 flex-col gap-3">
+                    <form onSubmit={resetForm.handleSubmit(onResetSubmit)} className="flex w-384px flex-col gap-12px">
                         <FormField
                             control={resetForm.control}
                             name="password"

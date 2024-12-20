@@ -6,8 +6,8 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { AlteredLogo } from "~/components/svgs/brand/altered"
-import { Button } from "~/components/ui/primitives/inputs"
+// import { AlteredLogo } from "~/components/svgs/brand/altered"
+// import { Button } from "~/components/ui/primitives/inputs"
 
 // const navigationMenuData: NavigationMenuData[] = [
 //     { title: "Overview", href: "/#overview" },
@@ -50,18 +50,18 @@ export function Menu(): JSX.Element {
 
     return (
         <header
-            className="fixed bottom-0 z-10 p-4"
+            className="fixed bottom-0px z-10 p-16px"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <div
-                className={`bg-alternate-upper-quarter flex w-full flex-row items-center justify-between border backdrop-blur ${
+                className={`flex w-full flex-row items-center justify-between border bg-alternate/-quarter backdrop-blur ${
                     isBlurred
-                        ? "border-main-sixteenth transition-colors duration-1000 ease-out-expo"
-                        : "border-main-eighth transition-colors duration-250 ease-out-expo"
+                        ? "border-main/sixteenth transition-colors duration-1s ease-out"
+                        : "border-main/eighth transition-colors duration-quarter ease-out"
                 }`}
             >
-                <div className="flex items-center justify-center gap-0 p-2">
+                <div className="flex items-center justify-center gap-0px p-8px">
                     <MenuIcon
                         href="focus"
                         isBlurred={isBlurred}
@@ -92,19 +92,19 @@ export function Menu(): JSX.Element {
 
 function MenuIcon({ href, isBlurred, path, isActive }: { href: string; isBlurred: boolean; path: string; isActive?: boolean }) {
     return (
-        <Link href={href} className="group p-2 text-text">
+        <Link href={href} className="group p-8px text-main">
             <svg
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                className={`w-6 ${
+                className={`w-24px ${
                     isBlurred
                         ? isActive
-                            ? "text-main-quarter transition-colors duration-1000 ease-out-expo"
-                            : "text-main-eighth transition-colors duration-1000 ease-out-expo"
+                            ? "text-main/quarter transition-colors duration-1s ease-out"
+                            : "text-main/eighth transition-colors duration-1s ease-out"
                         : isActive
-                          ? "text-main transition-colors duration-250 ease-out-expo group-hover:text-main-upper-quarter"
-                          : "text-main-half transition-colors duration-250 ease-out-expo group-hover:text-main-3/8"
+                          ? "text-main transition-colors duration-quarter ease-out group-hover:text-main/-quarter"
+                          : "text-main/half transition-colors duration-quarter ease-out group-hover:text-main/3-8"
                 }`}
             >
                 <path d={path} />

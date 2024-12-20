@@ -2,6 +2,7 @@
  *
  */
 
+import defaultTheme from "tailwindcss/defaultTheme"
 import type { ThemeConfig } from "tailwindcss/types/config"
 
 export const borderRadius = {
@@ -22,6 +23,7 @@ export const borderRadius = {
     "48x": "calc(var(--border-radius, initial) * 48)",
     "64x": "calc(var(--border-radius, initial) * 64)",
 
+    "0px": defaultTheme.borderRadius.none,
     "1px": "1px",
     "2px": "2px",
     "3px": "3px",
@@ -37,5 +39,6 @@ export const borderRadius = {
     "96px": "96px",
     "128px": "128px",
     "192px": "192px",
-    "256px": "256px"
+    "256px": "256px",
+    full: defaultTheme.borderRadius.full
 } satisfies ThemeConfig["borderRadius"]

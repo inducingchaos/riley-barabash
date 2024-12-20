@@ -14,13 +14,13 @@ import { cn } from "~/utils/ui"
 //         <CheckboxPrimitive.Root
 //             ref={ref}
 //             className={cn(
-//                 "peer h-4 w-4 shrink-0 rounded-sm border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-accent-constant data-[state=checked]:text-alternate-constant",
+//                 "peer h-16px w-16px shrink-0 rounded-2px border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-half data-[state=checked]:bg-accent-constant data-[state=checked]:text-alternate-constant",
 //                 className
 //             )}
 //             {...props}
 //         >
 //             <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center text-current")}>
-//                 <CheckIcon className="h-4 w-4" />
+//                 <CheckIcon className="h-16px w-16px" />
 //             </CheckboxPrimitive.Indicator>
 //         </CheckboxPrimitive.Root>
 //     )
@@ -31,14 +31,14 @@ const Checkbox = forwardRef<ElementRef<typeof CheckboxPrimitive.Root>, Component
         <CheckboxPrimitive.Root
             ref={ref}
             className={cn(
-                "rounded-sm border-accent-constant focus-visible:ring-accent-constant data-[state=checked]:bg-main-eighth data-[state=checked]:text-alternate-constant data-[state=indeterminate]:text-main-eighth peer h-4 w-4 shrink-0 border shadow focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50",
+                "peer size-16px shrink-0 rounded-2px border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-half data-[state=checked]:bg-main/eighth data-[state=checked]:text-alternate-constant data-[state=indeterminate]:text-main/eighth",
                 className
             )}
             {...props}
         >
             <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center text-current")}>
-                {/* <CheckIcon className="h-4 w-4" /> */}
-                <div className="h-1 w-1 bg-current" />
+                {/* <CheckIcon className="h-16px w-16px" /> */}
+                <div className="size-4px bg-current" />
             </CheckboxPrimitive.Indicator>
         </CheckboxPrimitive.Root>
     )
@@ -49,13 +49,13 @@ const Checkbox = forwardRef<ElementRef<typeof CheckboxPrimitive.Root>, Component
 //         <CheckboxPrimitive.Root
 //             ref={ref}
 //             className={cn(
-//                 "peer h-4 w-4 shrink-0 rounded-sm border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-main-eighth data-[state=checked]:text-alternate-constant",
+//                 "peer h-16px w-16px shrink-0 rounded-2px border border-accent-constant shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-constant disabled:cursor-not-allowed disabled:opacity-half data-[state=checked]:bg-main/eighth data-[state=checked]:text-alternate-constant",
 //                 className
 //             )}
 //             {...props}
 //         >
 //             <CheckboxPrimitive.Indicator className={cn("flex items-center justify-center text-current")}>
-//                 <div className="h-2 w-2 rounded-sm data-[state=checked]:bg-main-eighth data-[state=indeterminate]:bg-main-eighth" />
+//                 <div className="h-8px w-8px rounded-2px data-[state=checked]:bg-main/eighth data-[state=indeterminate]:bg-main/eighth" />
 //             </CheckboxPrimitive.Indicator>
 //         </CheckboxPrimitive.Root>
 //     )

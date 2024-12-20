@@ -17,16 +17,16 @@ export default async function SignIn({ searchParams }: { searchParams: Promise<S
         <main className="flex flex-col items-center justify-center">
             <div className="container">
                 <section className="flex h-screen flex-col items-center justify-center">
-                    <div className="flex w-96 flex-col justify-center gap-6">
-                        <div className="flex flex-col gap-3 text-center">
+                    <div className="flex w-384px flex-col justify-center gap-24px">
+                        <div className="flex flex-col gap-12px text-center">
                             <H3>{"Sign In"}</H3>
 
-                            <Muted className="px-8">
+                            <Muted className="px-32px">
                                 {"Sign in below to access your account. If this is your first time, you can "}
 
                                 <Link
                                     href={application.routing.paths.pages.auth.signUp}
-                                    className="hover:text-accent-constant underline underline-offset-4"
+                                    className="underline underline-offset-4 hover:text-accent-constant"
                                 >
                                     {"create one here."}
                                 </Link>
@@ -36,8 +36,8 @@ export default async function SignIn({ searchParams }: { searchParams: Promise<S
                         <SignInForm callbackUrl={callbackUrl} />
 
                         {callbackUrl && (
-                            <div className="mt-4 text-center">
-                                <p className="text-main-half text-14">Callback URL:</p>
+                            <div className="mt-16px text-center">
+                                <p className="text-14px text-main/half">Callback URL:</p>
                                 <InlineCode>{callbackUrl}</InlineCode>
                             </div>
                         )}

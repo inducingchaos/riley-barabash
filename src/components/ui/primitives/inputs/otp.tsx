@@ -13,7 +13,7 @@ const OTP = forwardRef<ElementRef<typeof OTPInput>, ComponentPropsWithoutRef<typ
     ({ className, containerClassName, ...props }, ref) => (
         <OTPInput
             ref={ref}
-            containerClassName={cn("flex items-center gap-2 has-[:disabled]:opacity-50", containerClassName)}
+            containerClassName={cn("flex items-center gap-8px has-[:disabled]:opacity-half", containerClassName)}
             className={cn("disabled:cursor-not-allowed", className)}
             {...props}
         />
@@ -36,17 +36,18 @@ const OTPSlot = forwardRef<ElementRef<"div">, ComponentPropsWithoutRef<"div"> & 
         return (
             <div
                 ref={ref}
+                // was w-9 h-9
                 className={cn(
-                    "border-main-sixteenth first:rounded-l-md last:rounded-r-md relative flex h-9 w-9 items-center justify-center border-y border-r text-14 shadow-sm transition-all first:border-l",
-                    isActive && "ring-accent-constant z-10 ring-1",
+                    "relative flex size-32px items-center justify-center border-y border-r border-main/sixteenth text-14px shadow-sm transition-all first:rounded-l-6px first:border-l last:rounded-r-6px",
+                    isActive && "z-10 ring-1 ring-accent-constant",
                     className
                 )}
                 {...props}
             >
                 {char}
                 {hasFakeCaret && (
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                        <div className="animate-caret-blink bg-main h-4 w-px duration-1000" />
+                    <div className="pointer-events-none absolute inset-0px flex items-center justify-center">
+                        <div className="h-16px w-1px animate-otp-caret-blink bg-main duration-1s" />
                     </div>
                 )}
             </div>

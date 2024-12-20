@@ -5,6 +5,7 @@
 import type { ThemeConfig } from "tailwindcss/types/config"
 
 export const transitionDuration = {
+    zero: "0ms",
     "thirty-second": "31.25ms",
     sixteenth: "62.5ms",
     eighth: "125ms",

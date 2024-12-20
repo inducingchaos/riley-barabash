@@ -12,7 +12,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "~/components/ui/primitives/inputs"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "~/domains/ai-chat/components/ui/sidebar"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "~/components/ui/layout/navigation"
 
 export function SidebarUserNav({ user }: { user: { email: string } }) {
     const { setTheme, theme } = useTheme()
@@ -22,7 +22,8 @@ export function SidebarUserNav({ user }: { user: { email: string } }) {
             <SidebarMenuItem>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <SidebarMenuButton className="data-[state=open]:bg-main-sixteenth bg-alternate data-[state=open]:text-main h-10">
+                        {/* was h-48px */}
+                        <SidebarMenuButton className="h-48px bg-alternate data-[state=open]:bg-main/sixteenth data-[state=open]:text-main">
                             <Image
                                 src={`https://avatar.vercel.sh/${user.email}`}
                                 alt={user.email ?? "User Avatar"}

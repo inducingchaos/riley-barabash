@@ -17,10 +17,13 @@ type ButtonVariation = {
     intensity: NonNullable<VariantOptions["intensity"]>
 }
 
-const ButtonGrid: React.FC<{ variations: ButtonVariation[] }> = ({ variations }) => (
-    <div className="grid grid-cols-8 gap-2">
+const ButtonGrid: React.FC<{
+    variations: ButtonVariation[]
+    custom?: { shape: "standard" | "compact" | "micro" | "display" | "square" | null | undefined }
+}> = ({ variations, custom }) => (
+    <div className="grid grid-cols-8 gap-8px">
         {variations.map((variation, index) => (
-            <Button key={index} {...variation}>
+            <Button key={index} {...variation} shape={custom?.shape}>
                 {variation.color}
             </Button>
         ))}
@@ -28,7 +31,7 @@ const ButtonGrid: React.FC<{ variations: ButtonVariation[] }> = ({ variations })
 )
 
 // const CustomButtonGrid: React.FC<{ variations: ButtonVariation[] }> = ({ variations }) => (
-//     <div className="grid grid-cols-8 gap-2">
+//     <div className="grid grid-cols-8 gap-8px">
 //         {variations.map((variation, index) => (
 //             <Button key={index} {...variation} shape="display">
 //                 {variation.color}
@@ -57,9 +60,14 @@ export default function Page(): JSX.Element {
     })
 
     return (
-        <Starter>
-            <div className="flex flex-col gap-16">
+        <Starter className="gap-32px">
+            <div className="flex flex-col gap-64px">
                 <ButtonGrid variations={sortedVariations} />
+                {/* <CustomButtonGrid variations={sortedVariations} /> */}
+            </div>
+
+            <div className="flex flex-col gap-64px">
+                <ButtonGrid variations={sortedVariations} custom={{ shape: "micro" }} />
                 {/* <CustomButtonGrid variations={sortedVariations} /> */}
             </div>
         </Starter>

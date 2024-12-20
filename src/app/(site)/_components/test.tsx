@@ -9,7 +9,7 @@ import { type ReactNode } from "react"
 
 export default function Test() {
     return (
-        <div className="flex flex-col gap-8 p-8">
+        <div className="flex flex-col gap-32px p-32px">
             {Array.from({ length: 100 }, (_, i) => (
                 <FadeUp key={i} delay={0.25}>
                     <p>

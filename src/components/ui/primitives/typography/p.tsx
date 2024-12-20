@@ -10,7 +10,7 @@ export function P({
     ...props
 }: React.HTMLAttributes<HTMLParagraphElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)} {...props}>
+        <p className={cn("leading-7 [&:not(:first-child)]:mt-24px", className)} {...props}>
             {children}
         </p>
     )

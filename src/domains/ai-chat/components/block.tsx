@@ -221,14 +221,14 @@ function PureBlock({
 
     return (
         <motion.div
-            className="bg-main-sixteenth fixed left-0 top-0 z-50 flex h-dvh w-dvw flex-row"
+            className="fixed left-0px top-0px z-50 flex h-dvh w-dvw flex-row bg-main/sixteenth"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.4 } }}
         >
             {!isMobile && (
                 <motion.div
-                    className="bg-main-sixteenth dark:bg-alternate relative h-dvh w-[400px] shrink-0"
+                    className="relative h-dvh w-[400px] shrink-0 bg-main/sixteenth dark:bg-alternate"
                     initial={{ opacity: 0, x: 10, scale: 1 }}
                     animate={{
                         opacity: 1,
@@ -251,7 +251,7 @@ function PureBlock({
                     <AnimatePresence>
                         {!isCurrentVersion && (
                             <motion.div
-                                className="absolute left-0 top-0 z-50 h-dvh w-[400px] bg-zinc-900/50"
+                                className="absolute left-0px top-0px z-50 h-dvh w-[400px] bg-main/half"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
@@ -259,7 +259,7 @@ function PureBlock({
                         )}
                     </AnimatePresence>
 
-                    <div className="flex h-full flex-col items-center justify-between gap-4">
+                    <div className="flex h-full flex-col items-center justify-between gap-16px">
                         <BlockMessages
                             chatId={chatId}
                             block={block}
@@ -272,7 +272,7 @@ function PureBlock({
                             isReadonly={isReadonly}
                         />
 
-                        <form className="relative flex w-full flex-row items-end gap-2 px-4 pb-4">
+                        <form className="relative flex w-full flex-row items-end gap-8px px-16px pb-16px">
                             <MultimodalInput
                                 chatId={chatId}
                                 input={input}
@@ -284,7 +284,7 @@ function PureBlock({
                                 setAttachments={setAttachments}
                                 messages={messages}
                                 append={append}
-                                className="bg-alternate dark:bg-main-sixteenth"
+                                className="bg-alternate dark:bg-main/sixteenth"
                                 setMessages={setMessages}
                             />
                         </form>
@@ -293,7 +293,7 @@ function PureBlock({
             )}
 
             <motion.div
-                className="dark:bg-main-sixteenth bg-alternate fixed flex h-dvh flex-col overflow-y-scroll shadow-xl"
+                className="fixed flex h-dvh flex-col overflow-y-scroll bg-alternate shadow-xl dark:bg-main/sixteenth"
                 initial={
                     isMobile
                         ? {
@@ -355,23 +355,23 @@ function PureBlock({
                     }
                 }}
             >
-                <div className="flex flex-row items-start justify-between p-2">
-                    <div className="flex flex-row items-start gap-4">
+                <div className="flex flex-row items-start justify-between p-8px">
+                    <div className="flex flex-row items-start gap-16px">
                         <BlockCloseButton setBlock={setBlock} />
 
                         <div className="flex flex-col">
                             <div className="font-medium">{document?.title ?? block.title}</div>
 
                             {isContentDirty ? (
-                                <div className="text-main-half text-14">Saving changes...</div>
+                                <div className="text-14px text-main/half">Saving changes...</div>
                             ) : document ? (
-                                <div className="text-main-half text-14">
+                                <div className="text-14px text-main/half">
                                     {`Updated ${formatDistance(new Date(document.createdAt), new Date(), {
                                         addSuffix: true
                                     })}`}
                                 </div>
                             ) : (
-                                <div className="bg-main-eighth rounded-md mt-2 h-3 w-32 animate-pulse" />
+                                <div className="mt-8px h-12px w-128px animate-pulse rounded-6px bg-main/eighth" />
                             )}
                         </div>
                     </div>
@@ -385,7 +385,8 @@ function PureBlock({
                     />
                 </div>
 
-                <div className="dark:bg-main-sixteenth bg-alternate prose h-full !max-w-full items-center overflow-y-scroll px-4 py-8 pb-40 dark:prose-invert md:p-20">
+                {/* was pb-192px, p-20. */}
+                <div className="prose h-full !max-w-full items-center overflow-y-scroll bg-alternate px-16px py-32px pb-192px dark:prose-invert dark:bg-main/sixteenth md:p-96px">
                     <div className="mx-auto flex max-w-[600px] flex-row">
                         {isDocumentsFetching && !block.content ? (
                             <DocumentSkeleton />
@@ -405,7 +406,7 @@ function PureBlock({
                             />
                         )}
 
-                        {suggestions ? <div className="h-dvh w-12 shrink-0 md:hidden" /> : null}
+                        {suggestions ? <div className="h-dvh w-48px shrink-0 md:hidden" /> : null}
 
                         <AnimatePresence>
                             {isCurrentVersion && (

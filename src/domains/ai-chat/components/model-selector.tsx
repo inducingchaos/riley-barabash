@@ -30,9 +30,9 @@ export function ModelSelector({
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger
                 asChild
-                className={cn("data-[state=open]:text-main data-[state=open]:bg-main-sixteenth w-fit", className)}
+                className={cn("w-fit data-[state=open]:bg-main/sixteenth data-[state=open]:text-main", className)}
             >
-                <Button style="outline" className="md:h-[34px] md:px-2">
+                <Button style="outline" className="md:h-[34px] md:px-8px">
                     {selectedModel?.label}
                     <ChevronDownIcon />
                 </Button>
@@ -49,14 +49,14 @@ export function ModelSelector({
                                 void saveModelId(model.id)
                             })
                         }}
-                        className="group/item flex flex-row items-center justify-between gap-4"
+                        className="group/item flex flex-row items-center justify-between gap-16px"
                         data-active={model.id === optimisticModelId}
                     >
-                        <div className="flex flex-col items-start gap-1">
+                        <div className="flex flex-col items-start gap-4px">
                             {model.label}
-                            {model.description && <div className="text-main-half text-12">{model.description}</div>}
+                            {model.description && <div className="text-12px text-main/half">{model.description}</div>}
                         </div>
-                        <div className="text-accent-constant dark:text-alternate-constant opacity-0 group-data-[active=true]/item:opacity-100">
+                        <div className="text-accent-constant opacity-zero group-data-[active=true]/item:opacity-full dark:text-alternate-constant">
                             <CheckCircleFillIcon />
                         </div>
                     </DropdownMenuItem>

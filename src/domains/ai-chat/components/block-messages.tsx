@@ -31,7 +31,11 @@ function PureBlockMessages({
     const [messagesContainerRef, messagesEndRef] = useScrollToBottom<HTMLDivElement>()
 
     return (
-        <div ref={messagesContainerRef} className="flex h-full flex-col items-center gap-4 overflow-y-scroll px-4 pt-20">
+        // was pt-20
+        <div
+            ref={messagesContainerRef}
+            className="flex h-full flex-col items-center gap-16px overflow-y-scroll px-16px pt-96px"
+        >
             {messages.map((message, index) => (
                 <PreviewMessage
                     chatId={chatId}
@@ -47,7 +51,7 @@ function PureBlockMessages({
                 />
             ))}
 
-            <div ref={messagesEndRef} className="min-h-[24px] min-w-[24px] shrink-0" />
+            <div ref={messagesEndRef} className="min-h-24px min-w-24px shrink-0" />
         </div>
     )
 }

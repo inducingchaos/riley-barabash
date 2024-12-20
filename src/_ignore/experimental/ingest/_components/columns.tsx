@@ -45,7 +45,7 @@
 //                                 value
 //                             )
 //                         ) : (
-//                             <div className="bg-border h-0.5 w-2"></div>
+//                             <div className="bg-border h-0.5 w-8px"></div>
 //                         )
 //                     }
 //                 })
@@ -60,9 +60,9 @@
 //     {
 //         id: "select",
 //         header: ({ table }) => (
-//             <div className="flex items-center justify-center px-2">
+//             <div className="flex items-center justify-center px-8px">
 //                 <Checkbox
-//                     className="rounded-none border-2 border-inherit shadow-none"
+//                     className="rounded-0px border-2x border-inherit shadow-none"
 //                     checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
 //                     onCheckedChange={value => table.toggleAllPageRowsSelected(!!value)}
 //                     aria-label="Select all"
@@ -70,9 +70,9 @@
 //             </div>
 //         ),
 //         cell: ({ row }) => (
-//             <div className="flex items-center justify-center px-2">
+//             <div className="flex items-center justify-center px-8px">
 //                 <Checkbox
-//                     className="rounded-none border-2 border-inherit shadow-none"
+//                     className="rounded-0px border-2x border-inherit shadow-none"
 //                     checked={row.getIsSelected()}
 //                     onCheckedChange={value => row.toggleSelected(!!value)}
 //                     aria-label="Select row"
@@ -89,7 +89,7 @@
 //             const id = row.getValue("id")
 //             return (
 //                 <div className="text-right font-bold">
-//                     {!!id ? <div>{id as string}</div> : <div className="bg-border h-0.5 w-2" />}
+//                     {!!id ? <div>{id as string}</div> : <div className="bg-border h-0.5 w-8px" />}
 //                 </div>
 //             )
 //         }
@@ -104,13 +104,13 @@
 //                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
 //                 >
 //                     content.
-//                     <ArrowUpDown className="ml-2 h-4 w-4" />
+//                     <ArrowUpDown className="ml-8px h-16px w-16px" />
 //                 </Button>
 //             )
 //         },
 //         cell: ({ row }) => {
 //             const content = row.getValue("content")
-//             return content ? content : <div className="bg-border h-0.5 w-2"></div>
+//             return content ? content : <div className="bg-border h-0.5 w-8px"></div>
 //         }
 //     },
 //     ...generateDynamicColumns(data),
@@ -121,7 +121,7 @@
 //             const tags = row.original.tags
 //             return (
 //                 <div className="font-mono tracking-tighter">
-//                     {tags.length > 0 ? tags.join(", ") : <div className="bg-border h-0.5 w-2"></div>}
+//                     {tags.length > 0 ? tags.join(", ") : <div className="bg-border h-0.5 w-8px"></div>}
 //                 </div>
 //             )
 //         }
@@ -134,9 +134,9 @@
 //             return (
 //                 <DropdownMenu>
 //                     <DropdownMenuTrigger asChild>
-//                         <Button style="ghost" className="h-8 w-8 p-0">
+//                         <Button style="ghost" className="h-32px w-8 p-0px">
 //                             <span className="sr-only">Open menu</span>
-//                             <MoreHorizontal className="h-4 w-4" />
+//                             <MoreHorizontal className="h-16px w-16px" />
 //                         </Button>
 //                     </DropdownMenuTrigger>
 //                     <DropdownMenuContent align="end">

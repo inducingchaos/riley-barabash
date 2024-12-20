@@ -43,20 +43,23 @@ type NavigationMenuData = {
 }
 
 export function Header(): JSX.Element {
+    const isLocalhost = true
+    const user = true
+
     return (
-        <header className="fixed left-0 right-0 top-0 z-10 p-4">
-            <div className="bg-alternate-upper-quarter flex w-full flex-row items-center justify-between border before:absolute before:inset-4 before:z-[-1] before:backdrop-blur dark:shadow-none">
+        <header className="fixed inset-x-0px top-0px z-10 p-16px">
+            <div className="flex w-full flex-row items-center justify-between border bg-alternate/-quarter before:absolute before:inset-16px before:z-[-1] before:backdrop-blur dark:shadow-none">
                 {/* Logo. */}
-                <div className="flex items-center justify-center gap-3 p-6">
-                    <AlteredLogo className="h-6" />
-                    <p className="bg-accent-alternate px-2 py-0.5 font-mono text-12 font-bold">{"preflight"}</p>
+                <div className="flex items-center justify-center gap-12px p-24px">
+                    <AlteredLogo className="h-24px" />
+                    <p className="bg-accent-alternate px-8px py-2px font-mono text-12px font-bold">{"preflight"}</p>
                 </div>
 
                 {/* Menu bar links. */}
 
                 <NavigationMenuDemo />
 
-                {"isLocalhost" && (
+                {isLocalhost && (
                     <Button asChild color="accent" className="font-mono">
                         <Link href="altered/start">{"go to app"}</Link>
                     </Button>
@@ -64,10 +67,10 @@ export function Header(): JSX.Element {
 
                 {/* Sign in/out button. */}
 
-                <div className="flex flex-row items-center justify-center p-4">
-                    {!"user" ? (
+                <div className="flex flex-row items-center justify-center p-16px">
+                    {!user ? (
                         <form action="/api/sign-out" method="POST">
-                            <Button type="submit" color="danger" className="flex h-auto p-0">
+                            <Button type="submit" color="danger" className="flex h-auto p-0px">
                                 {"Sign Out"}
                             </Button>
                         </form>
@@ -93,7 +96,7 @@ export function NavigationMenuDemo() {
                         <NavigationMenuItem key={category.title}>
                             <NavigationMenuTrigger className="font-mono">{category.title.toLowerCase()}</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                <ul className="grid w-[400px] gap-12px p-16px md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                                     {category.children?.map(item => (
                                         <ListItem key={item.title} title={item.title + "."} href={item.href}>
                                             {item.description}
@@ -124,13 +127,13 @@ const ListItem = forwardRef<ElementRef<"a">, ComponentPropsWithoutRef<"a">>(({ c
                 <a
                     ref={ref}
                     className={cn(
-                        "hover:bg-main-eighth focus:bg-accent-alternate block select-none space-y-1 p-3 leading-none no-underline outline-none transition-colors",
+                        "block select-none space-y-4px p-12px leading-none no-underline outline-none transition-colors hover:bg-main/eighth focus:bg-accent-alternate",
                         className
                     )}
                     {...props}
                 >
-                    <div className="text-14 font-medium leading-none">{title}</div>
-                    <p className="text-main-upper-quarter line-clamp-2 text-14 leading-snug">{children}</p>
+                    <div className="text-14px font-medium leading-none">{title}</div>
+                    <p className="line-clamp-2 text-14px leading-snug text-main/-quarter">{children}</p>
                 </a>
             </NavigationMenuLink>
         </li>

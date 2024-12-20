@@ -17,6 +17,7 @@ export const borderWidth = {
     "12x": "calc(var(--border-width) * 12)",
     "16x": "calc(var(--border-width) * 16)",
 
+    "0px": "0px",
     "0.25px": "0.25px",
     "0.5px": "0.5px",
     "0.75px": "0.75px",

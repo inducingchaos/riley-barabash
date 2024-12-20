@@ -5,7 +5,7 @@ import { Button } from "~/components/ui/primitives/inputs"
 import { cn } from "~/domains/ai-chat/lib/utils"
 import { type UIBlock } from "./block"
 import { CopyIcon, DeltaIcon, RedoIcon, UndoIcon } from "./icons"
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/primitives/indicators"
 
 type BlockActionsProps = {
     block: UIBlock
@@ -19,12 +19,12 @@ function PureBlockActions({ block, handleVersionChange, currentVersionIndex, isC
     const copyToClipboard = useCopyToClipboard()[1]
 
     return (
-        <div className="flex flex-row gap-1">
+        <div className="flex flex-row gap-4px">
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button
                         style="outline"
-                        className="h-fit p-2 dark:hover:bg-zinc-700"
+                        className="h-fit p-8px dark:hover:bg-zinc-700"
                         onClick={() => {
                             void copyToClipboard(block.content)
                             toast.success("Copied to clipboard!")
@@ -40,7 +40,7 @@ function PureBlockActions({ block, handleVersionChange, currentVersionIndex, isC
                 <TooltipTrigger asChild>
                     <Button
                         style="outline"
-                        className="!pointer-events-auto h-fit p-2 dark:hover:bg-zinc-700"
+                        className="!pointer-events-auto h-fit p-8px dark:hover:bg-zinc-700"
                         onClick={() => {
                             handleVersionChange("prev")
                         }}
@@ -55,7 +55,7 @@ function PureBlockActions({ block, handleVersionChange, currentVersionIndex, isC
                 <TooltipTrigger asChild>
                     <Button
                         style="outline"
-                        className="!pointer-events-auto h-fit p-2 dark:hover:bg-zinc-700"
+                        className="!pointer-events-auto h-fit p-8px dark:hover:bg-zinc-700"
                         onClick={() => {
                             handleVersionChange("next")
                         }}
@@ -70,8 +70,8 @@ function PureBlockActions({ block, handleVersionChange, currentVersionIndex, isC
                 <TooltipTrigger asChild>
                     <Button
                         style="outline"
-                        className={cn("!pointer-events-auto h-fit p-2 dark:hover:bg-zinc-700", {
-                            "bg-main-sixteenth": mode === "diff"
+                        className={cn("!pointer-events-auto h-fit p-8px dark:hover:bg-zinc-700", {
+                            "bg-main/sixteenth": mode === "diff"
                         })}
                         onClick={() => {
                             handleVersionChange("toggle")

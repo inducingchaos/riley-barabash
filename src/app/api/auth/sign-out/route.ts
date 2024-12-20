@@ -14,6 +14,6 @@ export async function POST(): Promise<Response> {
     }
 
     await invalidateSession(session.value)
-    deleteSessionTokenCookie()
+    await deleteSessionTokenCookie()
     redirect(application.routing.paths.callbacks.auth.signOut)
 }

@@ -49,7 +49,7 @@ const config = {
             }
         },
         tailwindcss: {
-            callees: ["cn", "cva", "clsx"]
+            callees: ["cn", "ucn", "clsx", "cva"]
         }
     }
     // ignorePatterns: ["**/components/ui/**"]

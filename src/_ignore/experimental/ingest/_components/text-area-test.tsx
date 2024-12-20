@@ -36,7 +36,7 @@ export function TextAreaTest() {
         toast({
             title: "You submitted the following values:",
             description: (
-                <pre className="rounded-md mt-2 w-[340px] bg-slate-950 p-4">
+                <pre className="mt-8px w-[340px] rounded-6px bg-slate-950 p-16px">
                     <code className="text-white">{JSON.stringify(data, null, 2)}</code>
                 </pre>
             )
@@ -45,7 +45,7 @@ export function TextAreaTest() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-2/3">
                 <FormField
                     control={form.control}
                     name="bio"

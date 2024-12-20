@@ -58,14 +58,16 @@ export default function SignInWithLink(): JSX.Element {
         <main className="flex flex-col items-center justify-center">
             <div className="container">
                 <section className="flex h-screen flex-col items-center justify-center">
-                    <div className="flex w-96 flex-col justify-center gap-6">
-                        <div className="flex flex-col gap-3 text-center">
+                    <div className="flex w-384px flex-col justify-center gap-24px">
+                        <div className="flex flex-col gap-12px text-center">
                             <H3>{"Sign in with Link"}</H3>
 
                             {!isSuccess ? (
-                                <Muted className="px-8">{"Enter your email below and we'll send you a link to sign in."}</Muted>
+                                <Muted className="px-32px">
+                                    {"Enter your email below and we'll send you a link to sign in."}
+                                </Muted>
                             ) : (
-                                <Muted className="px-8">{"A sign-in link was sent to your email."}</Muted>
+                                <Muted className="px-32px">{"A sign-in link was sent to your email."}</Muted>
                             )}
                         </div>
 
@@ -73,7 +75,7 @@ export default function SignInWithLink(): JSX.Element {
                             <Form {...form}>
                                 <form
                                     onSubmit={form.handleSubmit(onSubmit)}
-                                    className="flex flex-col items-center justify-center gap-3"
+                                    className="flex flex-col items-center justify-center gap-12px"
                                 >
                                     <FormField
                                         control={form.control}
@@ -95,8 +97,8 @@ export default function SignInWithLink(): JSX.Element {
 
                                     <Button className="w-full" type="submit" disabled={isPending}>
                                         {isPending ? (
-                                            <div className="flex items-center justify-center gap-0.5">
-                                                <Spinner className="mr-2 h-4 w-4 animate-spin" />
+                                            <div className="flex items-center justify-center gap-2px">
+                                                <Spinner className="mr-8px size-16px animate-spin" />
                                                 {"Submitting..."}
                                             </div>
                                         ) : (
@@ -110,7 +112,7 @@ export default function SignInWithLink(): JSX.Element {
                         <Button asChild style="link">
                             {!isSuccess ? (
                                 <Link href="/sign-in">
-                                    <KeyRound className="mr-2 h-4 w-4" />
+                                    <KeyRound className="mr-8px size-16px" />
                                     {"Use Password"}
                                 </Link>
                             ) : (

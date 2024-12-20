@@ -10,7 +10,7 @@ export function List({
     ...props
 }: React.HTMLAttributes<HTMLUListElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        <ul className={cn("my-6 ml-6 list-disc [&>li]:mt-2", className)} {...props}>
+        <ul className={cn("my-24px ml-24px list-disc [&>li]:mt-8px", className)} {...props}>
             {children}
         </ul>
     )

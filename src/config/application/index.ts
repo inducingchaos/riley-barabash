@@ -2,12 +2,14 @@
  * @remarks
  * - To set or override the current environment, adjust the `NEXT_PUBLIC_ENVIRONMENT` variable in the '.env' file. This value must be set everywhere the application is running.
  * - To access configuration values for a specific environment, use `application.<environment>`.
- *
- * @todo
- * - [P3] Create custom errors for Zod validation.
- * - [P4] Extract into an API that's easier to use - see "~/_archived/config.ts".
- * - [P4] Fix if still applicable: https://chatgpt.com/c/8456d4d1-34d8-4d23-89c1-054d9c23e23f.
- */
+*
+* @todo
+* - [P3] Create custom errors for Zod validation.
+* - [P4] Extract into an API that's easier to use - see "~/_archived/config.ts".
+* - [P4] Fix if still applicable: https://chatgpt.com/c/8456d4d1-34d8-4d23-89c1-054d9c23e23f.
+*/
+
+/* eslint-disable import/no-named-as-default-member */
 
 import merge from "lodash/merge"
 import type { Environment } from "~/types"

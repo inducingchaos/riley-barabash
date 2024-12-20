@@ -66,14 +66,14 @@
 
 //     return (
 //         <div>
-//             <div className="flex w-screen flex-col items-center justify-center p-8">
-//                 <div className="flex w-full items-center justify-between py-4">
-//                     <div className="h-1 w-8 border-2"></div>
+//             <div className="flex w-screen flex-col items-center justify-center p-32px">
+//                 <div className="flex w-full items-center justify-between py-16px">
+//                     <div className="h-4px w-8 border-2x"></div>
 //                     <Input
 //                         placeholder="Filter content..."
 //                         value={(table.getColumn("content")?.getFilterValue() as string) ?? ""}
 //                         onChange={event => table.getColumn("content")?.setFilterValue(event.target.value)}
-//                         className="max-w-sm rounded-none border-2 shadow-none"
+//                         className="max-w-sm rounded-0px border-2x shadow-none"
 //                     />
 //                     <DataTableViewOptions table={table} />
 
@@ -102,7 +102,7 @@
 //                         </DropdownMenuContent>
 //                     </DropdownMenu> */}
 //                 </div>
-//                 <div className="w-full border-2">
+//                 <div className="w-full border-2x">
 //                     <Table>
 //                         <TableHeader className="border-b-2">
 //                             {table.getHeaderGroups().map(headerGroup => (
@@ -136,7 +136,7 @@
 //                                 ))
 //                             ) : (
 //                                 <TableRow>
-//                                     <TableCell colSpan={columns.length} className="h-24 text-center">
+//                                     <TableCell colSpan={columns.length} className="h-96px text-center">
 //                                         No results.
 //                                     </TableCell>
 //                                 </TableRow>
@@ -148,7 +148,7 @@
 //                     <DataTablePagination table={table} />
 //                 </div>
 //             </div>
-//             {/* <div className="flex items-center justify-end space-x-2 py-4">
+//             {/* <div className="flex items-center justify-end space-x-8px py-16px">
 //                 <Button style="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
 //                     Previous
 //                 </Button>
@@ -156,7 +156,7 @@
 //                     Next
 //                 </Button>
 //             </div>
-//             <div className="flex-1 text-14 text-muted-foreground">
+//             <div className="flex-1 text-14px text-muted-foreground">
 //                 {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.
 //             </div> */}
 //         </div>

@@ -9,7 +9,7 @@ import type { UISuggestion } from "~/domains/ai-chat/lib/editor/suggestions"
 import { CrossIcon, MessageIcon } from "./icons"
 import { Button } from "~/components/ui/primitives/inputs"
 
-export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; onApply: () => void }) => {
+export const Suggestion = ({ suggestion, onApplyAction }: { suggestion: UISuggestion; onApplyAction: () => void }) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const { width: windowWidth } = useWindowSize()
 
@@ -17,7 +17,7 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
         <AnimatePresence>
             {!isExpanded ? (
                 <motion.div
-                    className="text-main-half absolute -right-8 cursor-pointer p-1"
+                    className="absolute -right-32px cursor-pointer p-4px text-main/half"
                     onClick={() => {
                         setIsExpanded(true)
                     }}
@@ -28,7 +28,8 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
             ) : (
                 <motion.div
                     key={suggestion.id}
-                    className="bg-alternate rounded-2xl absolute -right-12 z-50 flex w-56 flex-col gap-3 border p-3 text-14 shadow-xl md:-right-16"
+                    // was w-56
+                    className="absolute -right-48px z-50 flex w-256px flex-col gap-12px rounded-16px border bg-alternate p-12px text-14px shadow-xl md:-right-64px"
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: -20 }}
@@ -36,13 +37,13 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
                     whileHover={{ scale: 1.05 }}
                 >
                     <div className="flex flex-row items-center justify-between">
-                        <div className="flex flex-row items-center gap-2">
-                            <div className="bg-main-eighth size-4 rounded-full" />
+                        <div className="flex flex-row items-center gap-8px">
+                            <div className="size-16px rounded-full bg-main/eighth" />
                             <div className="font-medium">Assistant</div>
                         </div>
                         <button
                             type="button"
-                            className="cursor-pointer text-12 text-gray-500"
+                            className="cursor-pointer text-12px text-gray-500"
                             onClick={() => {
                                 setIsExpanded(false)
                             }}
@@ -51,7 +52,7 @@ export const Suggestion = ({ suggestion, onApply }: { suggestion: UISuggestion; 
                         </button>
                     </div>
                     <div>{suggestion.description}</div>
-                    <Button style="outline" className="w-fit rounded-full px-3 py-1.5" onClick={onApply}>
+                    <Button style="outline" className="w-fit rounded-full px-12px py-6px" onClick={onApplyAction}>
                         Apply
                     </Button>
                 </motion.div>

@@ -15,16 +15,16 @@ export async function Bar(): Promise<JSX.Element> {
     const user = await getCurrentUser()
 
     return (
-        <header className="bg-alternate fixed left-0 right-0 top-0 z-10 flex w-full flex-row items-center justify-between">
+        <header className="fixed inset-x-0px top-0px z-10 flex w-full flex-row items-center justify-between bg-alternate">
             {/* Logo. */}
 
-            <h1 className="text-nowrap px-6 py-4 text-24 font-bold tracking-tighter">{"RILEY BARABASH"}</h1>
+            <h1 className="text-nowrap px-24px py-16px text-24px font-bold tracking-tighter">{"RILEY BARABASH"}</h1>
 
             {/* Menu bar links. */}
 
-            <nav className="flex flex-row items-center justify-center gap-2">
+            <nav className="flex flex-row items-center justify-center gap-8px">
                 {links.map(item => (
-                    <Button key={item.url} asChild style="link" className="h-auto p-0">
+                    <Button key={item.url} asChild style="link" className="h-auto p-0px">
                         <Link href={item.url}>{item.label}</Link>
                     </Button>
                 ))}
@@ -32,10 +32,10 @@ export async function Bar(): Promise<JSX.Element> {
 
             {/* Sign in/out button. */}
 
-            <div className="flex flex-row items-center justify-center px-4 py-4">
+            <div className="flex flex-row items-center justify-center p-16px">
                 {user ? (
                     <form action="/api/sign-out" method="POST">
-                        <Button type="submit" style="ghost" className="flex h-auto p-0">
+                        <Button type="submit" style="ghost" className="flex h-auto p-0px">
                             {"Sign Out"}
                         </Button>
                     </form>

@@ -75,7 +75,7 @@ export function Chat({
 
     return (
         <>
-            <div className="bg-alternate flex h-dvh min-w-0 flex-col">
+            <div className="flex h-dvh min-w-0px flex-col bg-alternate">
                 <ChatHeader
                     chatId={id}
                     selectedModelId={selectedModelId}
@@ -95,7 +95,7 @@ export function Chat({
                     isReadonly={isReadonly}
                 />
 
-                <form className="bg-alternate mx-auto flex w-full gap-2 px-4 pb-4 md:max-w-3xl md:pb-6">
+                <form className="mx-auto flex w-full gap-8px bg-alternate px-16px pb-16px md:max-w-3xl md:pb-24px">
                     {!isReadonly && (
                         <MultimodalInput
                             chatId={id}

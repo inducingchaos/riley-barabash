@@ -8,7 +8,7 @@ import { getMessageIdFromAnnotations } from "~/domains/ai-chat/lib/utils"
 
 import { CopyIcon, ThumbDownIcon, ThumbUpIcon } from "./icons"
 import { Button } from "~/components/ui/primitives/inputs"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/primitives/indicators"
 
 export function MessageActions({
     chatId,
@@ -30,11 +30,11 @@ export function MessageActions({
 
     return (
         <TooltipProvider delayDuration={0}>
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-8px">
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            className="text-main-half h-fit px-2 py-1"
+                            className="h-fit px-8px py-4px text-main/half"
                             style="outline"
                             onClick={async () => {
                                 await copyToClipboard(message.content)
@@ -50,7 +50,7 @@ export function MessageActions({
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            className="text-main-half !pointer-events-auto h-fit px-2 py-1"
+                            className="!pointer-events-auto h-fit px-8px py-4px text-main/half"
                             disabled={vote?.isUpvoted}
                             style="outline"
                             onClick={async () => {
@@ -106,7 +106,7 @@ export function MessageActions({
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            className="text-main-half !pointer-events-auto h-fit px-2 py-1"
+                            className="!pointer-events-auto h-fit px-8px py-4px text-main/half"
                             style="outline"
                             disabled={vote && !vote.isUpvoted}
                             onClick={async () => {

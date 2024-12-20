@@ -31,7 +31,7 @@ export function DelayedRedirectProgress({ redirectUrl }: { redirectUrl?: string 
     return (
         <Progress customInternals>
             <ProgressIndicator
-                className="duration-5000 ease-in-out-expo"
+                className="duration-5s ease-in-out"
                 value={isComplete ? 100 : 0}
                 onTransitionEnd={handleTransitionEnd}
             />

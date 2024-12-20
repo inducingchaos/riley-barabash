@@ -45,7 +45,7 @@
 //         <>
 //             <main className="flex flex-col items-center justify-center">
 //                 <div className="container">
-//                     <section className="flex min-h-screen flex-col items-center justify-center gap-16 py-64">
+//                     <section className="flex min-h-screen flex-col items-center justify-center gap-64px py-256px">
 //                         <H1>Ingest.</H1>
 
 //                         <NeuronForm />

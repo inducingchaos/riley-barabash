@@ -377,7 +377,7 @@
 //     return (
 //         <Component
 //             className={cn(
-//                 "relative flex min-h-0 min-w-0",
+//                 "relative flex min-h-0px min-w-0px",
 //                 fill ? "h-full w-full flex-1" : "flex-initial",
 //                 shrink ? "flex-shrink" : "flex-shrink-0",
 //                 orientation === "horizontal" ? "flex-row" : "flex-col",

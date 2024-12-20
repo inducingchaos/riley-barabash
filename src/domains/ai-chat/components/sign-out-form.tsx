@@ -16,7 +16,7 @@ export const SignOutForm = () => {
                 console.log("signing out")
             }}
         >
-            <button type="submit" className="w-full px-1 py-0.5 text-left text-red-500">
+            <button type="submit" className="w-full px-4px py-2px text-left text-red-500">
                 Sign out
             </button>
         </Form>

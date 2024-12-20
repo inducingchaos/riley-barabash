@@ -11,7 +11,7 @@ function PureBlockCloseButton({ setBlock }: BlockCloseButtonProps) {
     return (
         <Button
             style="outline"
-            className="h-fit p-2 dark:hover:bg-zinc-700"
+            className="h-fit p-8px dark:hover:bg-zinc-700"
             onClick={() => {
                 setBlock(currentBlock => ({
                     ...currentBlock,

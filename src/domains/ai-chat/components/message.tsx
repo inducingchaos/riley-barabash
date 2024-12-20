@@ -17,7 +17,7 @@ import { Weather } from "./weather"
 import equal from "fast-deep-equal"
 import { cn } from "~/domains/ai-chat/lib/utils"
 import { Button } from "~/components/ui/primitives/inputs"
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/primitives/indicators"
 import { MessageEditor } from "./message-editor"
 
 const PurePreviewMessage = ({
@@ -45,14 +45,14 @@ const PurePreviewMessage = ({
 
     return (
         <motion.div
-            className="group/message mx-auto w-full max-w-3xl px-4"
+            className="group/message mx-auto w-full max-w-3xl px-16px"
             initial={{ y: 5, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             data-role={message.role}
         >
             <div
                 className={cn(
-                    "flex w-full gap-4 group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl",
+                    "flex w-full gap-16px group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl",
                     {
                         "w-full": mode === "edit",
                         "group-data-[role=user]/message:w-fit": mode !== "edit"
@@ -60,14 +60,14 @@ const PurePreviewMessage = ({
                 )}
             >
                 {message.role === "assistant" && (
-                    <div className="ring-main-eighth flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
+                    <div className="flex size-32px shrink-0 items-center justify-center rounded-full ring-1 ring-main/eighth">
                         <SparklesIcon size={14} />
                     </div>
                 )}
 
-                <div className="flex w-full flex-col gap-2">
+                <div className="flex w-full flex-col gap-8px">
                     {message.experimental_attachments && (
-                        <div className="flex flex-row justify-end gap-2">
+                        <div className="flex flex-row justify-end gap-8px">
                             {message.experimental_attachments.map(attachment => (
                                 <PreviewAttachment key={attachment.url} attachment={attachment} />
                             ))}
@@ -75,13 +75,13 @@ const PurePreviewMessage = ({
                     )}
 
                     {message.content && mode === "view" && (
-                        <div className="flex flex-row items-start gap-2">
+                        <div className="flex flex-row items-start gap-8px">
                             {message.role === "user" && !isReadonly && (
                                 <Tooltip>
                                     <TooltipTrigger asChild>
                                         <Button
                                             style="ghost"
-                                            className="text-main-half h-fit rounded-full px-2 opacity-0 group-hover/message:opacity-100"
+                                            className="h-fit rounded-full px-8px text-main/half opacity-zero group-hover/message:opacity-full"
                                             onClick={() => {
                                                 setMode("edit")
                                             }}
@@ -94,8 +94,9 @@ const PurePreviewMessage = ({
                             )}
 
                             <div
-                                className={cn("flex flex-col gap-4", {
-                                    "bg-accent-constant text-alternate-constant rounded-xl px-3 py-2": message.role === "user"
+                                className={cn("flex flex-col gap-16px", {
+                                    "rounded-12px bg-accent-constant px-12px py-8px text-alternate-constant":
+                                        message.role === "user"
                                 })}
                             >
                                 <Markdown>{message.content}</Markdown>
@@ -104,21 +105,21 @@ const PurePreviewMessage = ({
                     )}
 
                     {message.content && mode === "edit" && (
-                        <div className="flex flex-row items-start gap-2">
-                            <div className="size-8" />
+                        <div className="flex flex-row items-start gap-8px">
+                            <div className="size-32px" />
 
                             <MessageEditor
                                 key={message.id}
                                 message={message}
-                                setMode={setMode}
-                                setMessages={setMessages}
-                                reload={reload}
+                                setModeAction={setMode}
+                                setMessagesAction={setMessages}
+                                reloadAction={reload}
                             />
                         </div>
                     )}
 
                     {message.toolInvocations && message.toolInvocations.length > 0 && (
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-16px">
                             {message.toolInvocations.map(toolInvocation => {
                                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                                 const { toolName, toolCallId, state, args } = toolInvocation
@@ -233,25 +234,25 @@ export const ThinkingMessage = () => {
 
     return (
         <motion.div
-            className="group/message mx-auto w-full max-w-3xl px-4"
+            className="group/message mx-auto w-full max-w-3xl px-16px"
             initial={{ y: 5, opacity: 0 }}
             animate={{ y: 0, opacity: 1, transition: { delay: 1 } }}
             data-role={role}
         >
             <div
                 className={cx(
-                    "rounded-xl flex w-full gap-4 group-data-[role=user]/message:ml-auto group-data-[role=user]/message:w-fit group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:px-3 group-data-[role=user]/message:py-2",
+                    "flex w-full gap-16px rounded-12px group-data-[role=user]/message:ml-auto group-data-[role=user]/message:w-fit group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:px-12px group-data-[role=user]/message:py-8px",
                     {
-                        "group-data-[role=user]/message:bg-main-sixteenth": true
+                        "group-data-[role=user]/message:bg-main/sixteenth": true
                     }
                 )}
             >
-                <div className="ring-main-eighth flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
+                <div className="flex size-32px shrink-0 items-center justify-center rounded-full ring-1 ring-main/eighth">
                     <SparklesIcon size={14} />
                 </div>
 
-                <div className="flex w-full flex-col gap-2">
-                    <div className="text-main-half flex flex-col gap-4">Thinking...</div>
+                <div className="flex w-full flex-col gap-8px">
+                    <div className="flex flex-col gap-16px text-main/half">Thinking...</div>
                 </div>
             </div>
         </motion.div>

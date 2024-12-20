@@ -78,8 +78,8 @@
 //     return (
 //         <>
 //             <Form {...form}>
-//                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center justify-center gap-4">
-//                     <div className="flex flex-row gap-4">
+//                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center justify-center gap-16px">
+//                     <div className="flex flex-row gap-16px">
 //                         <FormField
 //                             control={form.control}
 //                             name="content"
@@ -88,7 +88,7 @@
 //                                     {/* <FormLabel>Content</FormLabel> */}
 //                                     <FormControl>
 //                                         <Input
-//                                             className="rounded-none w-96 border-2 shadow-none"
+//                                             className="rounded-0px w-384px border-2x shadow-none"
 //                                             placeholder="Your next thought..."
 //                                             disabled={isLoading}
 //                                             {...field}
@@ -99,7 +99,7 @@
 //                                 </FormItem>
 //                             )}
 //                         />
-//                         {/* <Button type="submit" className="rounded-none border-2" variant="outline" disabled={isLoading}>
+//                         {/* <Button type="submit" className="rounded-0px border-2x" variant="outline" disabled={isLoading}>
 //                             {isLoading ? "Creating..." : "Create"}
 //                         </Button> */}
 //                     </div>
@@ -111,7 +111,7 @@
 //                                 {/* <FormLabel>Tags</FormLabel> */}
 //                                 <FormControl>
 //                                     <Input
-//                                         className="rounded-none border-2 font-mono tracking-tighter shadow-none"
+//                                         className="rounded-0px border-2x font-mono tracking-tighter shadow-none"
 //                                         placeholder="tags"
 //                                         disabled={isLoading}
 //                                         {...field}

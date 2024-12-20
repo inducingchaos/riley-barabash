@@ -6,8 +6,9 @@ export const PreviewAttachment = ({ attachment, isUploading = false }: { attachm
     const { name, url, contentType } = attachment
 
     return (
-        <div className="flex flex-col gap-2">
-            <div className="bg-main-sixteenth rounded-md relative flex aspect-video h-16 w-20 flex-col items-center justify-center">
+        <div className="flex flex-col gap-8px">
+            {/* was w-96px */}
+            <div className="relative flex aspect-video h-64px w-96px flex-col items-center justify-center rounded-6px bg-main/sixteenth">
                 {contentType ? (
                     contentType.startsWith("image") ? (
                         // NOTE: it is recommended to use next/image for images
@@ -16,7 +17,7 @@ export const PreviewAttachment = ({ attachment, isUploading = false }: { attachm
                             key={url}
                             src={url}
                             alt={name ?? "An image attachment"}
-                            className="rounded-md size-full object-cover"
+                            className="size-full rounded-6px object-cover"
                         />
                     ) : (
                         <div className="" />
@@ -31,7 +32,7 @@ export const PreviewAttachment = ({ attachment, isUploading = false }: { attachm
                     </div>
                 )}
             </div>
-            <div className="text-12 max-w-16 truncate text-zinc-500">{name}</div>
+            <div className="max-w-64px truncate text-12px text-zinc-500">{name}</div>
         </div>
     )
 }

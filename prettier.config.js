@@ -12,5 +12,6 @@ export default {
     semi: false,
     singleQuote: false,
     tabWidth: 4,
-    trailingComma: "none"
+    trailingComma: "none",
+    tailwindFunctions: ["cva"]
 }

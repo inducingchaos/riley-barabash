@@ -88,5 +88,6 @@ export const DiffView = ({ oldContent, newContent }: DiffEditorProps) => {
         }
     }, [oldContent, newContent])
 
+    // eslint-disable-next-line tailwindcss/no-custom-classname
     return <div className="diff-editor" ref={editorRef} />
 }

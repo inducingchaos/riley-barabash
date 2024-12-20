@@ -216,7 +216,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
     return (
         <div
             className={cx(
-                "rounded-2xl skeleton-bg flex max-w-[500px] flex-col gap-4 p-4",
+                "skeleton-bg flex max-w-[500px] flex-col gap-16px rounded-16px p-16px",
                 {
                     "bg-blue-400": isDay
                 },
@@ -226,7 +226,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
             )}
         >
             <div className="flex flex-row items-center justify-between">
-                <div className="flex flex-row items-center gap-2">
+                <div className="flex flex-row items-center gap-8px">
                     <div
                         className={cx(
                             "skeleton-div size-10 rounded-full",
@@ -238,7 +238,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
                             }
                         )}
                     />
-                    <div className="text-36 font-medium text-blue-50">
+                    <div className="text-36px font-medium text-blue-50">
                         {n(weatherAtLocation.current.temperature_2m)}
                         {weatherAtLocation.current_units.temperature_2m}
                     </div>
@@ -249,8 +249,8 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
 
             <div className="flex flex-row justify-between">
                 {displayTimes.map((time, index) => (
-                    <div key={time} className="flex flex-col items-center gap-1">
-                        <div className="text-12 text-blue-100">{format(new Date(time), "ha")}</div>
+                    <div key={time} className="flex flex-col items-center gap-4px">
+                        <div className="text-12px text-blue-100">{format(new Date(time), "ha")}</div>
                         <div
                             className={cx(
                                 "skeleton-div size-6 rounded-full",
@@ -262,7 +262,7 @@ export function Weather({ weatherAtLocation = SAMPLE }: { weatherAtLocation?: We
                                 }
                             )}
                         />
-                        <div className="text-14 text-blue-50">
+                        <div className="text-14px text-blue-50">
                             {n(displayTemperatures[index] ?? 0)}
                             {weatherAtLocation.hourly_units.temperature_2m}
                         </div>

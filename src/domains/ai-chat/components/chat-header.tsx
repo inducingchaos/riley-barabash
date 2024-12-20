@@ -8,9 +8,9 @@ import { ModelSelector } from "~/domains/ai-chat/components/model-selector"
 import { SidebarToggle } from "~/domains/ai-chat/components/sidebar-toggle"
 import { Button } from "~/components/ui/primitives/inputs"
 import { PlusIcon, VercelIcon } from "./icons"
-import { useSidebar } from "./ui/sidebar"
+import { useSidebar } from "~/components/ui/layout/navigation"
 import { memo } from "react"
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
+import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/primitives/indicators"
 import { type VisibilityType, VisibilitySelector } from "./visibility-selector"
 
 function PureChatHeader({
@@ -30,7 +30,7 @@ function PureChatHeader({
     const { width: windowWidth } = useWindowSize()
 
     return (
-        <header className="bg-alternate sticky top-0 flex items-center gap-2 px-2 py-1.5 md:px-2">
+        <header className="sticky top-0px flex items-center gap-8px bg-alternate px-8px py-6px md:px-8px">
             <SidebarToggle />
 
             {(!open || windowWidth < 768) && (
@@ -38,7 +38,7 @@ function PureChatHeader({
                     <TooltipTrigger asChild>
                         <Button
                             style="outline"
-                            className="order-2 ml-auto px-2 md:order-1 md:ml-0 md:h-fit md:px-2"
+                            className="order-2 ml-auto px-8px md:order-1 md:ml-0px md:h-fit md:px-8px"
                             onClick={() => {
                                 router.push("/")
                                 router.refresh()
@@ -63,7 +63,7 @@ function PureChatHeader({
             )}
 
             <Button
-                className="order-4 hidden h-fit bg-zinc-900 px-2 py-1.5 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 md:ml-auto md:flex md:h-[34px]"
+                className="order-4 hidden h-fit bg-zinc-900 px-8px py-6px text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 md:ml-auto md:flex md:h-[34px]"
                 asChild
             >
                 <Link

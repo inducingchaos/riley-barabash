@@ -25,7 +25,7 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
     ]
 
     return (
-        <div className="grid w-full gap-2 sm:grid-cols-2">
+        <div className="grid w-full gap-8px sm:grid-cols-2">
             {suggestedActions.map((suggestedAction, index) => (
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -45,10 +45,11 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
                                 content: suggestedAction.action
                             })
                         }}
-                        className="rounded-xl text-14 h-auto w-full flex-1 items-start justify-start gap-1 border px-4 py-3.5 text-left sm:flex-col"
+                        // was py-3.5
+                        className="h-auto w-full flex-1 items-start justify-start gap-4px rounded-12px border p-16px text-left text-14px sm:flex-col"
                     >
                         <span className="font-medium">{suggestedAction.title}</span>
-                        <span className="text-main-half">{suggestedAction.label}</span>
+                        <span className="text-main/half">{suggestedAction.label}</span>
                     </Button>
                 </motion.div>
             ))}

@@ -78,7 +78,7 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center justify-center gap-3">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center justify-center gap-12px">
                 <FormField
                     control={form.control}
                     name="name"
@@ -150,8 +150,8 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
 
                 <Button className="w-full" type="submit" disabled={isPending}>
                     {isPending ? (
-                        <div className="flex items-center justify-center gap-0.5">
-                            <Spinner className="mr-2 h-4 w-4 animate-spin" />
+                        <div className="flex items-center justify-center gap-2px">
+                            <Spinner className="mr-8px size-16px animate-spin" />
                             {"Submitting..."}
                         </div>
                     ) : (
@@ -161,7 +161,7 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
 
                 <Button asChild style="link">
                     <Link href="/sign-in">
-                        <Lock className="mr-2 h-4 w-4" />
+                        <Lock className="mr-8px size-16px" />
                         {"Go to Sign In"}
                     </Link>
                 </Button>

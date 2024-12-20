@@ -58,10 +58,10 @@
 //                         // debug={{ options: { logs: true }, propagation: { options: true } }}
 //                         className=""
 //                     >
-//                         <Stack label="Header" fill={true} spacing="none" className="gap-4">
-//                             <Stack label="Logo" orientation="horizontal" alignment="center" className="gap-2">
-//                                 <span className="text-lg font-bold">kyzn.</span>
-//                                 <InlineCode className="border-gray-[250]] border px-1 font-mono">preflight</InlineCode>
+//                         <Stack label="Header" fill={true} spacing="none" className="gap-16px">
+//                             <Stack label="Logo" orientation="horizontal" alignment="center" className="gap-8px">
+//                                 <span className="text-18px font-bold">kyzn.</span>
+//                                 <InlineCode className="border-gray-[250]] border px-4px font-mono">preflight</InlineCode>
 //                             </Stack>
 //                             <H1>{"Riley Barabash"}</H1>
 //                             <H2>{"Full-Stack Developer & Designer"}</H2>
@@ -70,7 +70,7 @@
 //                                 fill={true}
 //                                 orientation="horizontal"
 //                                 alignment="center"
-//                                 className="gap-2"
+//                                 className="gap-8px"
 //                             >
 //                                 <InlineCode>{"X/IG: @inducingchaos"}</InlineCode>
 //                                 <Muted>{"Explore my digital playground"}</Muted>
@@ -84,7 +84,7 @@
 //                                 orientation="vertical"
 //                                 alignment="right"
 //                                 spacing="none"
-//                                 className="gap-4"
+//                                 className="gap-16px"
 //                             >
 //                                 <H3>{"Featured Projects"}</H3>
 //                                 <Stack
@@ -92,14 +92,14 @@
 //                                     fill={false}
 //                                     orientation="vertical"
 //                                     alignment="right"
-//                                     className="gap-2"
+//                                     className="gap-8px"
 //                                 >
 //                                     <Stack
 //                                         label="Top Row Projects"
 //                                         fill={true}
 //                                         alignment="center"
 //                                         orientation="horizontal"
-//                                         className="gap-2"
+//                                         className="gap-8px"
 //                                     >
 //                                         <Button variant="default" asChild>
 //                                             <Link href="/kyzn">{"Kyzn"}</Link>
@@ -108,7 +108,7 @@
 //                                             <Link href="/solopreneurkit">{"SolopreneurKit"}</Link>
 //                                         </Button>
 //                                     </Stack>
-//                                     <Stack label="Bottom Row Projects" fill={false} orientation="horizontal" className="gap-2">
+//                                     <Stack label="Bottom Row Projects" fill={false} orientation="horizontal" className="gap-8px">
 //                                         <Button variant="secondary" asChild>
 //                                             <Link href="/ledger">{"Ledger"}</Link>
 //                                         </Button>
@@ -123,14 +123,14 @@
 //                                 fill={false}
 //                                 orientation="vertical"
 //                                 spacing="none"
-//                                 className="gap-2"
+//                                 className="gap-8px"
 //                             >
 //                                 <H3>{"Experimental"}</H3>
-//                                 <Stack label="Experimental Buttons" fill={false} orientation="vertical" className="gap-2">
+//                                 <Stack label="Experimental Buttons" fill={false} orientation="vertical" className="gap-8px">
 //                                     <Button variant="destructive" asChild>
 //                                         <Link href="/experimental/test">{"Enter the Lab"}</Link>
 //                                     </Button>
-//                                     <Stack label="Alpha/Beta Buttons" fill={false} orientation="horizontal" className="gap-2">
+//                                     <Stack label="Alpha/Beta Buttons" fill={false} orientation="horizontal" className="gap-8px">
 //                                         <Button variant="outline" size="sm" asChild>
 //                                             <Link href="/experimental/alpha">{"Alpha"}</Link>
 //                                         </Button>
@@ -143,7 +143,7 @@
 //                         </Stack>
 
 //                         <Stack label="About and Quick Links" fill={false} orientation="horizontal" spacing="between">
-//                             <Stack label="About Me Section" fill={true} orientation="vertical" spacing="none" className="gap-4">
+//                             <Stack label="About Me Section" fill={true} orientation="vertical" spacing="none" className="gap-16px">
 //                                 <H3>{"About Me"}</H3>
 //                                 <P>{"Passionate about creating intuitive and powerful web applications."}</P>
 //                                 <Stack
@@ -151,7 +151,7 @@
 //                                     fill={false}
 //                                     orientation="horizontal"
 //                                     spacing="none"
-//                                     className="gap-2"
+//                                     className="gap-8px"
 //                                 >
 //                                     <Button variant="link" asChild>
 //                                         <Link href="/about">{"Learn More"}</Link>
@@ -166,10 +166,10 @@
 //                                 fill={false}
 //                                 orientation="vertical"
 //                                 spacing="none"
-//                                 className="gap-4"
+//                                 className="gap-16px"
 //                             >
 //                                 <H4>{"Quick Links"}</H4>
-//                                 <Stack label="Quick Link Buttons" fill={false} orientation="vertical" className="gap-2">
+//                                 <Stack label="Quick Link Buttons" fill={false} orientation="vertical" className="gap-8px">
 //                                     <Button variant="link" size="sm" asChild>
 //                                         <Link href="/blog">{"Blog"}</Link>
 //                                     </Button>
@@ -197,9 +197,9 @@
 //                         debug={true}
 //                         className=""
 //                     >
-//                         <Stack label="Copyright and Legal" fill={false} orientation="vertical" spacing="none" className="gap-2">
+//                         <Stack label="Copyright and Legal" fill={false} orientation="vertical" spacing="none" className="gap-8px">
 //                             <Muted>{"© 2024 Riley Barabash"}</Muted>
-//                             <Stack label="Legal Links" fill={false} orientation="horizontal" className="gap-2">
+//                             <Stack label="Legal Links" fill={false} orientation="horizontal" className="gap-8px">
 //                                 <Button variant="link" size="sm" asChild>
 //                                     <Link href="/privacy">{"Privacy"}</Link>
 //                                 </Button>
@@ -208,7 +208,7 @@
 //                                 </Button>
 //                             </Stack>
 //                         </Stack>
-//                         <Stack label="Social Links" fill={false} orientation="horizontal" spacing="none" className="gap-4">
+//                         <Stack label="Social Links" fill={false} orientation="horizontal" spacing="none" className="gap-16px">
 //                             <Button variant="outline" size="sm" asChild>
 //                                 <Link href="https://github.com/yourusername">{"GitHub"}</Link>
 //                             </Button>

@@ -15,12 +15,12 @@ import { Button } from "~/components/ui/primitives/inputs"
 
 type VersionFooterProps = {
     block: UIBlock
-    handleVersionChange: (type: "next" | "prev" | "toggle" | "latest") => void
+    handleVersionChangeAction: (type: "next" | "prev" | "toggle" | "latest") => void
     documents: Array<Document> | undefined
     currentVersionIndex: number
 }
 
-export const VersionFooter = ({ block, handleVersionChange, documents, currentVersionIndex }: VersionFooterProps) => {
+export const VersionFooter = ({ block, handleVersionChangeAction, documents, currentVersionIndex }: VersionFooterProps) => {
     const { width } = useWindowSize()
     const isMobile = width < 768
 
@@ -31,7 +31,7 @@ export const VersionFooter = ({ block, handleVersionChange, documents, currentVe
 
     return (
         <motion.div
-            className="bg-alternate absolute bottom-0 z-50 flex w-full flex-col justify-between gap-4 border-t p-4 lg:flex-row"
+            className="absolute bottom-0px z-50 flex w-full flex-col justify-between gap-16px border-t bg-alternate p-16px lg:flex-row"
             initial={{ y: isMobile ? 200 : 77 }}
             animate={{ y: 0 }}
             exit={{ y: isMobile ? 200 : 77 }}
@@ -39,10 +39,10 @@ export const VersionFooter = ({ block, handleVersionChange, documents, currentVe
         >
             <div>
                 <div>You are viewing a previous version</div>
-                <div className="text-main-half text-14">Restore this version to make edits</div>
+                <div className="text-14px text-main/half">Restore this version to make edits</div>
             </div>
 
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-16px">
                 <Button
                     disabled={isMutating}
                     onClick={async () => {
@@ -62,7 +62,7 @@ export const VersionFooter = ({ block, handleVersionChange, documents, currentVe
                                           ...documents.filter(document =>
                                               isAfter(
                                                   new Date(document.createdAt),
-                                                  new Date(getDocumentTimestampByIndex(documents, currentVersionIndex))
+                                                  new Date(getDocumentTimestampByIndex(documents, currentVersionIndex) ?? new Date())
                                               )
                                           )
                                       ]
@@ -81,7 +81,7 @@ export const VersionFooter = ({ block, handleVersionChange, documents, currentVe
                 <Button
                     style="outline"
                     onClick={() => {
-                        handleVersionChange("latest")
+                        handleVersionChangeAction("latest")
                     }}
                 >
                     Back to latest version

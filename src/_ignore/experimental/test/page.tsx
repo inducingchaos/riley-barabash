@@ -28,7 +28,7 @@ export default function Test(): JSX.Element {
                     <section className="flex min-h-screen flex-col items-center justify-center">
                         {/* Wrapper. */}
 
-                        <div className="flex flex-col items-center justify-center gap-4">
+                        <div className="flex flex-col items-center justify-center gap-16px">
                             {/* Change the theme. */}
 
                             <ThemeToggle />

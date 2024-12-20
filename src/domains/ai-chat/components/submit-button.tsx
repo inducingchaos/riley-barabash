@@ -19,7 +19,7 @@ export function SubmitButton({ children, isSuccessful }: { children: React.React
             {children}
 
             {(pending || isSuccessful) && (
-                <span className="absolute right-4 animate-spin">
+                <span className="absolute right-16px animate-spin">
                     <LoaderIcon />
                 </span>
             )}

@@ -29,7 +29,7 @@ function PureDocumentToolResult({ type, result, setBlock, isReadonly }: Document
     return (
         <button
             type="button"
-            className="bg-alternate rounded-xl flex w-fit cursor-pointer flex-row items-start gap-3 border px-3 py-2"
+            className="flex w-fit cursor-pointer flex-row items-start gap-12px rounded-12px border bg-alternate px-12px py-8px"
             onClick={event => {
                 if (isReadonly) {
                     toast.error("Viewing files in shared chats is currently not supported.")
@@ -55,7 +55,7 @@ function PureDocumentToolResult({ type, result, setBlock, isReadonly }: Document
                 })
             }}
         >
-            <div className="text-main-half mt-1">
+            <div className="mt-4px text-main/half">
                 {type === "create" ? (
                     <FileIcon />
                 ) : type === "update" ? (
@@ -82,7 +82,7 @@ function PureDocumentToolCall({ type, args, setBlock, isReadonly }: DocumentTool
     return (
         <button
             type="button"
-            className="cursor pointer rounded-xl flex w-fit flex-row items-start justify-between gap-3 border px-3 py-2"
+            className="flex w-fit cursor-pointer flex-row items-start justify-between gap-12px rounded-12px border px-12px py-8px"
             onClick={event => {
                 if (isReadonly) {
                     toast.error("Viewing files in shared chats is currently not supported.")
@@ -105,8 +105,8 @@ function PureDocumentToolCall({ type, args, setBlock, isReadonly }: DocumentTool
                 }))
             }}
         >
-            <div className="flex flex-row items-start gap-3">
-                <div className="mt-1 text-zinc-500">
+            <div className="flex flex-row items-start gap-12px">
+                <div className="mt-4px text-zinc-500">
                     {type === "create" ? (
                         <FileIcon />
                     ) : type === "update" ? (
@@ -119,7 +119,7 @@ function PureDocumentToolCall({ type, args, setBlock, isReadonly }: DocumentTool
                 <div className="text-left">{`${getActionText(type, "present")} ${args.title ? `"${args.title}"` : ""}`}</div>
             </div>
 
-            <div className="mt-1 animate-spin">{<LoaderIcon />}</div>
+            <div className="mt-4px animate-spin">{<LoaderIcon />}</div>
         </button>
     )
 }

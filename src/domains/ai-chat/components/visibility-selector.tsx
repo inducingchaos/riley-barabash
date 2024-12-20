@@ -60,9 +60,9 @@ export function VisibilitySelector({
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger
                 asChild
-                className={cn("w-fit data-[state=open]:bg-main-sixteenth data-[state=open]:text-main", className)}
+                className={cn("w-fit data-[state=open]:bg-main/sixteenth data-[state=open]:text-main", className)}
             >
-                <Button style="outline" className="hidden md:flex md:h-[34px] md:px-2">
+                <Button style="outline" className="hidden md:flex md:h-[34px] md:px-8px">
                     {selectedVisibility?.icon}
                     {selectedVisibility?.label}
                     <ChevronDownIcon />
@@ -77,14 +77,14 @@ export function VisibilitySelector({
                             setVisibilityType(visibility.id)
                             setOpen(false)
                         }}
-                        className="group/item flex flex-row items-center justify-between gap-4"
+                        className="group/item flex flex-row items-center justify-between gap-16px"
                         data-active={visibility.id === visibilityType}
                     >
-                        <div className="flex flex-col items-start gap-1">
+                        <div className="flex flex-col items-start gap-4px">
                             {visibility.label}
-                            {visibility.description && <div className="text-12 text-main-half">{visibility.description}</div>}
+                            {visibility.description && <div className="text-12px text-main/half">{visibility.description}</div>}
                         </div>
-                        <div className="text-accent-constant opacity-0 group-data-[active=true]/item:opacity-100 dark:text-alternate-constant">
+                        <div className="text-accent-constant opacity-zero group-data-[active=true]/item:opacity-full dark:text-alternate-constant">
                             <CheckCircleFillIcon />
                         </div>
                     </DropdownMenuItem>

@@ -46,37 +46,37 @@ export function TheMagicalComponent({
                 {JSON.stringify(messages)}
             </div> */}
 
-            <div className="pb-16">
-                <ul className="flex w-full flex-col gap-4 p-4">
+            <div className="pb-64px">
+                <ul className="flex w-full flex-col gap-16px p-16px">
                     {messages.map(msg => (
                         <li
                             key={msg.id}
                             className={cn(
-                                "bg-main-thirty-second flex w-fit flex-col gap-1 px-6 py-3",
+                                "flex w-fit flex-col gap-4px bg-main/thirty-second px-24px py-12px",
                                 msg.content.toUpperCase().startsWith("I") ? "items-end self-end" : ""
                             )}
                         >
-                            <div className={cn("flex items-center gap-2")}>
+                            <div className={cn("flex items-center gap-8px")}>
                                 {msg.content.toUpperCase().startsWith("I") && (
-                                    <p className="bg-accent-alternate shrink-0 px-2 py-0.5 font-mono text-12 font-bold">
+                                    <p className="shrink-0 bg-accent-alternate px-8px py-2px font-mono text-12px font-bold">
                                         {"AI"}
                                     </p>
                                 )}
                                 <p className="break-words">{msg.content}</p>
                             </div>
-                            <div className={cn("flex items-center gap-2")}>
+                            <div className={cn("flex items-center gap-8px")}>
                                 <span className="">{msg.createdAt}</span>
                                 {(msg.createdAt.includes(" 8:") ||
                                     msg.createdAt.includes(" 11:") ||
                                     msg.createdAt.includes(":12")) && (
-                                    <p className="bg-info-upper-quarter shrink-0 px-2 py-0.5 font-mono text-12 font-bold">
+                                    <p className="shrink-0 bg-info/-quarter px-8px py-2px font-mono text-12px font-bold">
                                         {"rewrite"}
                                     </p>
                                 )}
                                 {(msg.createdAt.includes(":53:") ||
                                     msg.createdAt.includes(":35:") ||
                                     msg.createdAt.includes(":18:")) && (
-                                    <p className="bg-success-upper-quarter shrink-0 px-2 py-0.5 font-mono text-12 font-bold">
+                                    <p className="shrink-0 bg-success/-quarter px-8px py-2px font-mono text-12px font-bold">
                                         {"saved"}
                                     </p>
                                 )}
@@ -132,8 +132,8 @@ export function TheMagicalComponent({
             </div>
 
             {/* test boundary */}
-            <div className="flex flex-col pb-32">
-                <p className="text-24 text-red-500" ref={messagesEndRef}>
+            <div className="flex flex-col pb-128px">
+                <p className="text-24px text-red-500" ref={messagesEndRef}>
                     {mostRecentMessage}
                 </p>
                 {/* Fixed input area at bottom */}
@@ -145,14 +145,14 @@ export function TheMagicalComponent({
                         console.log("refreshing")
                         // router.refresh()
                     }}
-                    className="fixed inset-x-0 bottom-0 p-4"
+                    className="fixed inset-x-0px bottom-0px p-16px"
                 >
-                    <div className="flex gap-2">
+                    <div className="flex gap-8px">
                         <EssentialTextArea
                             name="message"
                             value={message}
                             onChange={e => setMessage(e.target.value)}
-                            // className="flex-1 border p-2 focus:outline-none"
+                            // className="flex-1 border p-8px focus:outline-none"
                             rows={{ min: 1, max: 4 }}
                             layoutReferences={{
                                 lineHeight: 24,
@@ -161,11 +161,11 @@ export function TheMagicalComponent({
                                 borderWidth: 2
                             }}
                             onEnter="submit"
-                            className="bg-alternate-upper-quarter w-full border px-4 py-2 backdrop-blur"
+                            className="w-full border bg-alternate/-quarter px-16px py-8px backdrop-blur"
                             placeholder="Your next thought..."
                         />
 
-                        <Button type="submit" className="px-4 py-2">
+                        <Button type="submit" className="px-16px py-8px">
                             Send
                         </Button>
                     </div>

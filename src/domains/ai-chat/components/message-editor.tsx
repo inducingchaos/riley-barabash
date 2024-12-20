@@ -9,12 +9,12 @@ import { useUserMessageId } from "~/domains/ai-chat/hooks/use-user-message-id"
 
 export type MessageEditorProps = {
     message: Message
-    setMode: Dispatch<SetStateAction<"view" | "edit">>
-    setMessages: (messages: Message[] | ((messages: Message[]) => Message[])) => void
-    reload: (chatRequestOptions?: ChatRequestOptions) => Promise<string | null | undefined>
+    setModeAction: Dispatch<SetStateAction<"view" | "edit">>
+    setMessagesAction: (messages: Message[] | ((messages: Message[]) => Message[])) => void
+    reloadAction: (chatRequestOptions?: ChatRequestOptions) => Promise<string | null | undefined>
 }
 
-export function MessageEditor({ message, setMode, setMessages, reload }: MessageEditorProps) {
+export function MessageEditor({ message, setModeAction, setMessagesAction, reloadAction }: MessageEditorProps) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { userMessageIdFromServer } = useUserMessageId()
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
@@ -41,26 +41,26 @@ export function MessageEditor({ message, setMode, setMessages, reload }: Message
     }
 
     return (
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full flex-col gap-8px">
             <TextArea
                 ref={textareaRef}
-                className="rounded-xl w-full resize-none overflow-hidden bg-transparent !text-base outline-none"
+                className="w-full resize-none overflow-hidden rounded-12px bg-transparent !text-16px outline-none"
                 value={draftContent}
                 onChange={handleInput}
             />
 
-            <div className="flex flex-row justify-end gap-2">
+            <div className="flex flex-row justify-end gap-8px">
                 <Button
                     style="outline"
-                    className="h-fit px-3 py-2"
+                    className="h-fit px-12px py-8px"
                     onClick={() => {
-                        setMode("view")
+                        setModeAction("view")
                     }}
                 >
                     Cancel
                 </Button>
                 <Button
-                    className="h-fit px-3 py-2"
+                    className="h-fit px-12px py-8px"
                     disabled={isSubmitting}
                     onClick={async () => {
                         setIsSubmitting(true)
@@ -78,7 +78,7 @@ export function MessageEditor({ message, setMode, setMessages, reload }: Message
                             id: messageId
                         })
 
-                        setMessages(messages => {
+                        setMessagesAction(messages => {
                             const index = messages.findIndex(m => m.id === message.id)
 
                             if (index !== -1) {
@@ -93,8 +93,8 @@ export function MessageEditor({ message, setMode, setMessages, reload }: Message
                             return messages
                         })
 
-                        setMode("view")
-                        void reload()
+                        setModeAction("view")
+                        void reloadAction()
                     }}
                 >
                     {isSubmitting ? "Sending..." : "Send"}

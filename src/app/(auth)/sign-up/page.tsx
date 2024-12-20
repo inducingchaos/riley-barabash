@@ -14,11 +14,11 @@ export default async function SignUp({ searchParams }: { searchParams: Promise<S
         <main className="flex flex-col items-center justify-center">
             <div className="container">
                 <section className="flex h-screen flex-col items-center justify-center">
-                    <div className="flex w-96 flex-col justify-center gap-6">
-                        <div className="flex flex-col gap-3 text-center">
+                    <div className="flex w-384px flex-col justify-center gap-24px">
+                        <div className="flex flex-col gap-12px text-center">
                             <H3>{"Sign Up"}</H3>
 
-                            <Muted className="px-8">{"Fill out the details below to create an account."}</Muted>
+                            <Muted className="px-32px">{"Fill out the details below to create an account."}</Muted>
                         </div>
 
                         <SignUpForm callbackUrl={callbackUrl} />

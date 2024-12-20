@@ -64,7 +64,7 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
             <Form {...form}>
                 <form
                     onSubmit={onSubmit && form.handleSubmit(onSubmit)}
-                    className="flex flex-col items-center justify-center gap-3"
+                    className="flex flex-col items-center justify-center gap-12px"
                 >
                     <FormField
                         control={form.control}
@@ -100,8 +100,8 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
 
                     <Button className="w-full" type="submit" disabled={isPending}>
                         {isPending ? (
-                            <div className="flex items-center justify-center gap-0.5">
-                                <Spinner className="mr-2 h-4 w-4 animate-spin" />
+                            <div className="flex items-center justify-center gap-2px">
+                                <Spinner className="mr-8px size-16px animate-spin" />
                                 {"Submitting..."}
                             </div>
                         ) : (
@@ -111,7 +111,7 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
 
                     <Button asChild style="link" className="w-full">
                         <Link href="/sign-in/link">
-                            <LucideLink className="mr-2 h-4 w-4" />
+                            <LucideLink className="mr-8px size-16px" />
                             {"Sign in with Link"}
                         </Link>
                     </Button>
@@ -120,22 +120,22 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
 
             <div className="flex w-full items-center justify-center">
                 <Separator />
-                <Muted className="whitespace-nowrap px-2 uppercase">{"Or continue with"}</Muted>
+                <Muted className="whitespace-nowrap px-8px uppercase">{"Or continue with"}</Muted>
                 <Separator />
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2">
-                <div className="flex w-full flex-row items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-8px">
+                <div className="flex w-full flex-row items-center justify-center gap-8px">
                     <form action={application.routing.paths.api.auth.oauth.apple} method="POST" className="w-full">
                         <Button className="w-full" type="submit" style="outline" disabled={isPending}>
-                            <Apple className="mr-2 h-4 w-4" />
+                            <Apple className="mr-8px size-16px" />
                             {"Apple"}
                         </Button>
                     </form>
 
                     <form action={application.routing.paths.api.auth.oauth.google} method="POST" className="w-full">
                         <Button className="w-full" type="submit" style="outline" disabled={isPending}>
-                            <Google className="mr-2 h-4 w-4" />
+                            <Google className="mr-8px size-16px" />
                             {"Google"}
                         </Button>
                     </form>

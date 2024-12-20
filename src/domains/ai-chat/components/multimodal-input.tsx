@@ -163,14 +163,14 @@ function PureMultimodalInput({
     )
 
     return (
-        <div className="relative flex w-full flex-col gap-4">
+        <div className="relative flex w-full flex-col gap-16px">
             {messages.length === 0 && attachments.length === 0 && uploadQueue.length === 0 && (
                 <SuggestedActions append={append} chatId={chatId} />
             )}
 
             <input
                 type="file"
-                className="pointer-events-none fixed -left-4 -top-4 size-0.5 opacity-0"
+                className="pointer-events-none fixed -left-16px -top-16px size-2px opacity-zero"
                 ref={fileInputRef}
                 multiple
                 onChange={handleFileChange}
@@ -178,7 +178,7 @@ function PureMultimodalInput({
             />
 
             {(attachments.length > 0 || uploadQueue.length > 0) && (
-                <div className="flex flex-row items-end gap-2 overflow-x-scroll">
+                <div className="flex flex-row items-end gap-8px overflow-x-scroll">
                     {attachments.map(attachment => (
                         <PreviewAttachment key={attachment.url} attachment={attachment} />
                     ))}
@@ -203,7 +203,7 @@ function PureMultimodalInput({
                 value={input}
                 onChange={handleInput}
                 className={cx(
-                    "rounded-xl bg-main-sixteenth max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden !text-base",
+                    "max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-12px bg-main/sixteenth !text-16px",
                     className
                 )}
                 rows={3}
@@ -223,7 +223,7 @@ function PureMultimodalInput({
 
             {isLoading ? (
                 <Button
-                    className="absolute bottom-2 right-2 m-0.5 h-fit rounded-full border p-1.5 dark:border-zinc-600"
+                    className="absolute bottom-8px right-8px m-2px h-fit rounded-full border p-6px dark:border-zinc-600"
                     onClick={event => {
                         event.preventDefault()
                         stop()
@@ -234,7 +234,7 @@ function PureMultimodalInput({
                 </Button>
             ) : (
                 <Button
-                    className="absolute bottom-2 right-2 m-0.5 h-fit rounded-full border p-1.5 dark:border-zinc-600"
+                    className="absolute bottom-8px right-8px m-2px h-fit rounded-full border p-6px dark:border-zinc-600"
                     onClick={event => {
                         event.preventDefault()
                         submitForm()
@@ -246,7 +246,8 @@ function PureMultimodalInput({
             )}
 
             <Button
-                className="absolute bottom-2 right-11 m-0.5 h-fit rounded-full p-1.5 dark:border-zinc-700"
+                // was right-11
+                className="absolute bottom-8px right-48px m-2px h-fit rounded-full p-6px dark:border-zinc-700"
                 onClick={event => {
                     event.preventDefault()
                     fileInputRef.current?.click()

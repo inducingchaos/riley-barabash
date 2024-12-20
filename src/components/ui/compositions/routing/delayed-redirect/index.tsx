@@ -28,7 +28,7 @@ export function DelayedRedirect({
 }): JSX.Element {
     return (
         <>
-            <Card className="w-full max-w-[256px]">
+            <Card className="w-full max-w-256px">
                 <CardHeader>
                     <CardTitle>{title}</CardTitle>
                     <CardDescription>{description}</CardDescription>

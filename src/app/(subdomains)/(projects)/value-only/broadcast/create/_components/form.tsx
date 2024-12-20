@@ -78,7 +78,7 @@ export function BroadcastForm() {
     return (
         <>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-start justify-center gap-4">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-start justify-center gap-16px">
                     <FormField
                         control={form.control}
                         name="content"
@@ -87,7 +87,7 @@ export function BroadcastForm() {
                                 <FormLabel>Content</FormLabel>
                                 <FormControl>
                                     <Input
-                                        className="w-96 rounded-none border-2 tracking-tighter shadow-none"
+                                        className="w-384px rounded-0px border-2x tracking-tighter shadow-none"
                                         placeholder="Your next thought..."
                                         disabled={isLoading}
                                         {...field}
@@ -98,7 +98,7 @@ export function BroadcastForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="rounded-none border-2 shadow-none" style="outline" disabled={isLoading}>
+                    <Button type="submit" className="rounded-0px border-2x shadow-none" style="outline" disabled={isLoading}>
                         {isLoading ? "Creating..." : "Create"}
                     </Button>
                 </form>

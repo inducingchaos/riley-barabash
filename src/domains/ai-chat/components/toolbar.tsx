@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useMotionValue, useTransform } from "framer-mo
 import { type Dispatch, memo, type SetStateAction, useEffect, useRef, useState } from "react"
 import { useOnClickOutside } from "usehooks-ts"
 import { nanoid } from "nanoid"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/domains/ai-chat/components/ui/tooltip"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "~/components/ui/primitives/indicators"
 import { sanitizeUIMessages } from "~/domains/ai-chat/lib/utils"
 
 import { ArrowUpIcon, MessageIcon, PenIcon, StopIcon, SummarizeIcon } from "./icons"
@@ -81,8 +81,8 @@ const Tool = ({
         <Tooltip open={isHovered && !isAnimating}>
             <TooltipTrigger asChild>
                 <motion.div
-                    className={cx("rounded-full p-3", {
-                        "bg-accent-constant !text-primary-foreground": selectedTool === type
+                    className={cx("rounded-full p-12px", {
+                        "!text-primary-foreground bg-accent-constant": selectedTool === type
                     })}
                     onHoverStart={() => {
                         setIsHovered(true)
@@ -111,7 +111,7 @@ const Tool = ({
                     {selectedTool === type ? <ArrowUpIcon /> : icon}
                 </motion.div>
             </TooltipTrigger>
-            <TooltipContent side="left" sideOffset={16} className="bg-main text-alternate rounded-2xl p-3 px-4">
+            <TooltipContent side="left" sideOffset={16} className="rounded-16px bg-main p-12px px-16px text-alternate">
                 {description}
             </TooltipContent>
         </Tooltip>
@@ -159,7 +159,7 @@ const ReadingLevelSelector = ({
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.1 }}
                 >
-                    <div className="bg-main-quarter size-2 rounded-full" />
+                    <div className="size-8px rounded-full bg-main/quarter" />
                 </motion.div>
             ))}
 
@@ -167,7 +167,7 @@ const ReadingLevelSelector = ({
                 <Tooltip open={!isAnimating}>
                     <TooltipTrigger asChild>
                         <motion.div
-                            className={cx("bg-alternate absolute flex flex-row items-center rounded-full border p-3", {
+                            className={cx("absolute flex flex-row items-center rounded-full border bg-alternate p-12px", {
                                 "bg-accent-constant text-alternate-constant": currentLevel !== 2,
                                 "bg-alternate text-main": currentLevel === 2
                             })}
@@ -206,7 +206,7 @@ const ReadingLevelSelector = ({
                     <TooltipContent
                         side="left"
                         sideOffset={16}
-                        className="bg-main text-alternate rounded-2xl p-3 px-4 text-14"
+                        className="rounded-16px bg-main p-12px px-16px text-14px text-alternate"
                     >
                         {LEVELS[currentLevel]}
                     </TooltipContent>
@@ -219,17 +219,20 @@ const ReadingLevelSelector = ({
 export const Tools = ({
     isToolbarVisible,
     selectedTool,
-    setSelectedTool,
-    append,
+    setSelectedToolAction,
+    appendAction,
     isAnimating,
-    setIsToolbarVisible
+    setIsToolbarVisibleAction
 }: {
     isToolbarVisible: boolean
     selectedTool: string | null
-    setSelectedTool: Dispatch<SetStateAction<string | null>>
-    append: (message: Message | CreateMessage, chatRequestOptions?: ChatRequestOptions) => Promise<string | null | undefined>
+    setSelectedToolAction: Dispatch<SetStateAction<string | null>>
+    appendAction: (
+        message: Message | CreateMessage,
+        chatRequestOptions?: ChatRequestOptions
+    ) => Promise<string | null | undefined>
     isAnimating: boolean
-    setIsToolbarVisible: Dispatch<SetStateAction<boolean>>
+    setIsToolbarVisibleAction: Dispatch<SetStateAction<boolean>>
 }) => {
     return (
         <motion.div
@@ -246,8 +249,8 @@ export const Tools = ({
                             description="Adjust reading level"
                             icon={<SummarizeIcon />}
                             selectedTool={selectedTool}
-                            setSelectedTool={setSelectedTool}
-                            append={append}
+                            setSelectedTool={setSelectedToolAction}
+                            append={appendAction}
                             isAnimating={isAnimating}
                         />
 
@@ -256,8 +259,8 @@ export const Tools = ({
                             description="Request suggestions"
                             icon={<MessageIcon />}
                             selectedTool={selectedTool}
-                            setSelectedTool={setSelectedTool}
-                            append={append}
+                            setSelectedTool={setSelectedToolAction}
+                            append={appendAction}
                             isAnimating={isAnimating}
                         />
                     </>
@@ -269,10 +272,10 @@ export const Tools = ({
                 description="Add final polish"
                 icon={<PenIcon />}
                 selectedTool={selectedTool}
-                setSelectedTool={setSelectedTool}
+                setSelectedTool={setSelectedToolAction}
                 isToolbarVisible={isToolbarVisible}
-                setIsToolbarVisible={setIsToolbarVisible}
-                append={append}
+                setIsToolbarVisible={setIsToolbarVisibleAction}
+                append={appendAction}
                 isAnimating={isAnimating}
             />
         </motion.div>
@@ -339,7 +342,7 @@ const PureToolbar = ({
     return (
         <TooltipProvider delayDuration={0}>
             <motion.div
-                className="bg-alternate absolute bottom-6 right-6 flex cursor-pointer flex-col justify-end rounded-full border p-1.5 shadow-lg"
+                className="absolute bottom-24px right-24px flex cursor-pointer flex-col justify-end rounded-full border bg-alternate p-6px shadow-lg"
                 initial={{ opacity: 0, y: -20, scale: 1 }}
                 animate={
                     isToolbarVisible
@@ -387,7 +390,7 @@ const PureToolbar = ({
                         initial={{ scale: 1 }}
                         animate={{ scale: 1.4 }}
                         exit={{ scale: 1 }}
-                        className="p-3"
+                        className="p-12px"
                         onClick={() => {
                             stop()
                             setMessages(messages => sanitizeUIMessages(messages))
@@ -405,12 +408,12 @@ const PureToolbar = ({
                 ) : (
                     <Tools
                         key="tools"
-                        append={append}
+                        appendAction={append}
                         isAnimating={isAnimating}
                         isToolbarVisible={isToolbarVisible}
                         selectedTool={selectedTool}
-                        setIsToolbarVisible={setIsToolbarVisible}
-                        setSelectedTool={setSelectedTool}
+                        setIsToolbarVisibleAction={setIsToolbarVisible}
+                        setSelectedToolAction={setSelectedTool}
                     />
                 )}
             </motion.div>

@@ -50,14 +50,14 @@ type TableProps = {
  */
 export function Table({ columns, data, className, ...props }: TableProps): JSX.Element {
     return (
-        <div className={cn("my-6 w-full overflow-y-auto", className)} {...props}>
+        <div className={cn("my-24px w-full overflow-y-auto", className)} {...props}>
             <table className="w-full">
                 <thead>
-                    <tr className="m-0 border-t p-0 even:bg-main-sixteenth">
+                    <tr className="m-0px border-t p-0px even:bg-main/sixteenth">
                         {columns.map((column, index) => (
                             <th
                                 key={index}
-                                className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
+                                className="border px-16px py-8px text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
                             >
                                 {column.title}
                             </th>
@@ -66,11 +66,11 @@ export function Table({ columns, data, className, ...props }: TableProps): JSX.E
                 </thead>
                 <tbody>
                     {data.map((row, rowIndex) => (
-                        <tr key={rowIndex} className="m-0 border-t p-0 even:bg-main-sixteenth">
+                        <tr key={rowIndex} className="m-0px border-t p-0px even:bg-main/sixteenth">
                             {columns.map((column, colIndex) => (
                                 <td
                                     key={colIndex}
-                                    className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                                    className="border px-16px py-8px text-left [&[align=center]]:text-center [&[align=right]]:text-right"
                                 >
                                     {row[column.key]}
                                 </td>

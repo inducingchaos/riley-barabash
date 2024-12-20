@@ -40,17 +40,17 @@
 //   };
 
 //   return (
-//     <div className="flex h-dvh w-screen items-start pt-12 md:pt-0 md:items-center justify-center bg-alternate">
-//       <div className="w-full max-w-md overflow-hidden rounded-2xl flex flex-col gap-12">
-//         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
-//           <h3 className="text-20 font-semibold dark:text-zinc-50">Sign In</h3>
-//           <p className="text-14 text-gray-500 dark:text-zinc-400">
+//     <div className="flex h-dvh w-screen items-start pt-12 md:pt-0px md:items-center justify-center bg-alternate">
+//       <div className="w-full max-w-md overflow-hidden rounded-16px flex flex-col gap-12">
+//         <div className="flex flex-col items-center justify-center gap-8px px-16px text-center sm:px-64px">
+//           <h3 className="text-20px font-semibold dark:text-zinc-50">Sign In</h3>
+//           <p className="text-14px text-gray-500 dark:text-zinc-400">
 //             Use your email and password to sign in
 //           </p>
 //         </div>
 //         <AuthForm action={handleSubmit} defaultEmail={email}>
 //           <SubmitButton isSuccessful={isSuccessful}>Sign in</SubmitButton>
-//           <p className="text-center text-14 text-gray-600 mt-4 dark:text-zinc-400">
+//           <p className="text-center text-14px text-gray-600 mt-16px dark:text-zinc-400">
 //             {"Don't have an account? "}
 //             <Link
 //               href="/register"
