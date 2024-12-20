@@ -17,5 +17,9 @@ export const keyframes = {
     "otp-caret-blink": {
         "0%,70%,100%": { opacity: "1" },
         "20%,50%": { opacity: "0" }
-    }
+    },
+
+    //  Experimental.
+
+    shimmer: { to: { transform: "translateX(100%)" } }
 } satisfies ThemeConfig["keyframes"]

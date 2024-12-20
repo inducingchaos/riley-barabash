@@ -45,7 +45,7 @@ export function TextAreaTest() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-2/3">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-24px">
                 <FormField
                     control={form.control}
                     name="bio"

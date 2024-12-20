@@ -26,10 +26,10 @@ export const validateRequest = async (): Promise<SessionValidationResult> => {
         const fresh = isSessionExpiringSoon
 
         if (result.session && fresh) {
-            setSessionTokenCookie(result.session.value, result.session.expiresAt)
+            await setSessionTokenCookie(result.session.value, result.session.expiresAt)
         }
         if (!result.session) {
-            deleteSessionTokenCookie()
+            await deleteSessionTokenCookie()
         }
     } catch {}
 

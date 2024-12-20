@@ -28,30 +28,30 @@ export function DataTableColumnHeader<TData, TValue>({ column, title, className 
         <div className={cn("flex items-center space-x-8px", className)}>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button style="ghost" className="-ml-3 h-32px data-[state=open]:bg-accent">
+                    <Button style="ghost" className="-ml-12px h-32px data-[state=open]:bg-accent">
                         <span>{title}</span>
                         {column.getIsSorted() === "desc" ? (
-                            <ArrowDownIcon className="ml-8px h-16px w-16px" />
+                            <ArrowDownIcon className="ml-8px size-16px" />
                         ) : column.getIsSorted() === "asc" ? (
-                            <ArrowUpIcon className="ml-8px h-16px w-16px" />
+                            <ArrowUpIcon className="ml-8px size-16px" />
                         ) : (
-                            <CaretSortIcon className="ml-8px h-16px w-16px" />
+                            <CaretSortIcon className="ml-8px size-16px" />
                         )}
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
                     <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
                         {/* Each icon was h-3.5rem, w-12px */}
-                        <ArrowUpIcon className="text-muted-foreground/70 mr-8px h-12px w-12px" />
+                        <ArrowUpIcon className="mr-8px size-12px text-main/quarter" />
                         Asc
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-                        <ArrowDownIcon className="text-muted-foreground/70 mr-8px h-12px w-12px" />
+                        <ArrowDownIcon className="mr-8px size-12px text-main/quarter" />
                         Desc
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-                        <EyeNoneIcon className="text-muted-foreground/70 mr-8px h-12px w-12px" />
+                        <EyeNoneIcon className="mr-8px size-12px text-main/quarter" />
                         Hide
                     </DropdownMenuItem>
                 </DropdownMenuContent>

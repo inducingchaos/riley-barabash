@@ -8,7 +8,6 @@
 import { z } from "zod"
 import { unauthenticatedAction } from "~/lib/auth/utils"
 import { changePassword } from "~/lib/auth/email/password"
-import { Exception } from "~/meta"
 
 export const changePasswordAction = unauthenticatedAction
     .createServerAction()

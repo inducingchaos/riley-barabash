@@ -29,7 +29,7 @@ export default async function Landing(): Promise<JSX.Element> {
                                     src="/riley-barabash/profile-picture.jpg"
                                     alt="Profile Picture"
                                     fill
-                                    className="rounded-12px border border-main object-cover"
+                                    className="border border-main object-cover"
                                 />
                             </div>
                             <h1 className="text-48px font-semibold tracking-tight">{"My name is Riley."}</h1>

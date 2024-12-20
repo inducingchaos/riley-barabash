@@ -1,7 +1,7 @@
 import { cookies } from "next/headers"
 
 import { AppSidebar } from "~/domains/ai-chat/components/app-sidebar"
-import { SidebarInset, SidebarProvider } from "~/domains/ai-chat/components/ui/sidebar"
+import { SidebarInset, SidebarProvider } from "~/components/ui/layout/navigation"
 
 // import { auth } from "../(auth)/auth"
 

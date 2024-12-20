@@ -47,8 +47,8 @@
         --color-accent-alternate: var(--color-khaki-light);
         --color-accent-alternate-constant: var(--color-khaki-light);
 
-        --border-width: 0.125rem;
-        --border-radius: 0rem;
+        --border-width: 2px;
+        --border-radius: 0px;
 
         --ease-in: var(--ease-in-expo);
         --ease-out: var(--ease-out-expo);

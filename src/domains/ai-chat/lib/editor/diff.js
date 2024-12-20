@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
@@ -28,7 +33,6 @@ export const patchDocumentNode = (schema, oldNode, newNode) => {
     let right = 0
 
     for (; left < minChildLen; left++) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const oldChild = oldChildren[left]
         const newChild = newChildren[left]
         if (!isNodeEqual(oldChild, newChild)) {
@@ -251,7 +255,7 @@ const sentencesToChars = (oldSentences, newSentences) => {
     return { chars1, chars2, lineArray }
 }
 
-export const computeChildEqualityFactor = (node1, node2) => {
+export const computeChildEqualityFactor = (_node1, _node2) => {
     return 0
 }
 

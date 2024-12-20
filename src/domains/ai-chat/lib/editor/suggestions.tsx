@@ -1,6 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { Node } from "prosemirror-model"
 import { Plugin, PluginKey } from "prosemirror-state"
 import { type Decoration, DecorationSet, type EditorView } from "prosemirror-view"
@@ -72,6 +73,7 @@ export function createSuggestionWidget(suggestion: UISuggestion, view: EditorVie
     })
 
     const onApply = () => {
+        // eslint-disable-next-line @typescript-eslint/unbound-method
         const { state, dispatch } = view
 
         const decorationTransaction = state.tr
@@ -104,7 +106,7 @@ export function createSuggestionWidget(suggestion: UISuggestion, view: EditorVie
         dispatch(textTransaction)
     }
 
-    root.render(<PreviewSuggestion suggestion={suggestion} onApply={onApply} />)
+    root.render(<PreviewSuggestion suggestion={suggestion} onApplyAction={onApply} />)
 
     return {
         dom,
@@ -126,6 +128,7 @@ export const suggestionsPlugin = new Plugin({
         },
         apply(tr, state) {
             const newDecorations = tr.getMeta(suggestionsPluginKey)
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
             if (newDecorations) return newDecorations
 
             return {

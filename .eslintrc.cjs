@@ -10,7 +10,7 @@
  */
 const config = {
     parser: "@typescript-eslint/parser",
-    parserOptions: { project: true },
+    parserOptions: { project: true, warnOnUnsupportedTypeScriptVersion: false },
     plugins: ["@typescript-eslint", "drizzle"],
     extends: [
         "next/core-web-vitals",
