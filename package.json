@@ -27,7 +27,8 @@
         "db:check": "drizzle-kit check",
         "db:up": "drizzle-kit up",
         "execute": "sh -c 'IFS=\"\" tsx --env-file ./.env ./src/scripts/$@.ts $*' sh",
-        "stabilize": "node ./src/scripts/bash/stabilize/index.js"
+        "stabilize": "node ./src/scripts/bash/stabilize/index.js",
+        "codegen:cva": "tsx ./src/scripts/codegen/cva-compound-variants.ts"
     },
     "dependencies": {
         "@ai-sdk/openai": "^1.0.8",
