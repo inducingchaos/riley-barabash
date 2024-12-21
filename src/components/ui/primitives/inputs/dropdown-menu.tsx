@@ -26,7 +26,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     <DropdownMenuPrimitive.SubTrigger
         ref={ref}
         className={cn(
-            "flex cursor-default select-none items-center rounded-2px px-8px py-6px text-14px outline-none focus:bg-main/sixteenth data-[state=open]:bg-main/sixteenth",
+            "flex cursor-default select-none items-center gap-8px rounded-2x px-8px py-6px text-14px outline-none focus:bg-main/sixteenth data-[state=open]:bg-main/sixteenth [&_svg]:pointer-events-none [&_svg]:size-16px [&_svg]:shrink-0",
             inset && "pl-32px",
             className
         )}
@@ -46,7 +46,7 @@ const DropdownMenuSubContent = React.forwardRef<
     <DropdownMenuPrimitive.SubContent
         ref={ref}
         className={cn(
-            "z-50 min-w-[8rem] overflow-hidden rounded-6px border bg-alternate p-4px text-main shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
+            "z-50 min-w-[8rem] overflow-hidden rounded-6x border bg-alternate p-4px text-main data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
             className
         )}
         {...props}
@@ -64,7 +64,7 @@ const DropdownMenuContent = React.forwardRef<
             ref={ref}
             sideOffset={sideOffset}
             className={cn(
-                "z-50 min-w-[8rem] overflow-hidden rounded-6px border bg-alternate p-4px text-main shadow-md",
+                "z-50 min-w-[8rem] overflow-hidden rounded-6x border bg-alternate p-4px text-main",
                 "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
                 className
             )}
@@ -84,7 +84,7 @@ const DropdownMenuItem = React.forwardRef<
     <DropdownMenuPrimitive.Item
         ref={ref}
         className={cn(
-            "relative flex cursor-default select-none items-center rounded-2px px-8px py-6px text-14px outline-none transition-colors focus:bg-main/sixteenth focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-half",
+            "relative flex cursor-default select-none items-center gap-8px rounded-2x px-8px py-6px text-14px outline-none transition-colors focus:bg-main/sixteenth focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-half [&_svg]:pointer-events-none [&_svg]:size-16px [&_svg]:shrink-0",
             inset && "pl-32px",
             className
         )}
@@ -101,7 +101,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     <DropdownMenuPrimitive.CheckboxItem
         ref={ref}
         className={cn(
-            "relative flex cursor-default select-none items-center rounded-2px py-6px pl-32px pr-8px text-14px outline-none transition-colors focus:bg-main/sixteenth focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-half",
+            "relative flex cursor-default select-none items-center rounded-2x py-6px pl-32px pr-8px text-14px outline-none transition-colors focus:bg-main/sixteenth focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-half",
             className
         )}
         checked={checked}
@@ -126,7 +126,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     <DropdownMenuPrimitive.RadioItem
         ref={ref}
         className={cn(
-            "relative flex cursor-default select-none items-center rounded-2px py-6px pl-32px pr-8px text-14px outline-none transition-colors focus:bg-main/sixteenth focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-half",
+            "relative flex cursor-default select-none items-center rounded-2x py-6px pl-32px pr-8px text-14px outline-none transition-colors focus:bg-main/sixteenth focus:text-main data-[disabled]:pointer-events-none data-[disabled]:opacity-half",
             className
         )}
         {...props}

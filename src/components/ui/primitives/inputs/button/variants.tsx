@@ -27,6 +27,8 @@ const variants = {
         reduced: null
     },
 
+    //  Make a responsive variant, or size fit/fill?/fixed
+
     shape: {
         standard: "px-16px py-8px",
         compact: "h-32px rounded px-12px text-12px",
@@ -34,7 +36,7 @@ const variants = {
         //  Was h-10.
         display: "h-48px rounded px-32px",
         //  was size-9.
-        square: "size-32px"
+        square: "size-40px"
     }
 }
 
