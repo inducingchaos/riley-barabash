@@ -14,7 +14,7 @@ import {
     FormMessage,
     TextArea
 } from "~/components/ui/primitives/inputs"
-import { toast } from "~/hooks/ui"
+import { toast } from "sonner"
 
 const FormSchema = z.object({
     bio: z
@@ -33,8 +33,7 @@ export function TextAreaTest() {
     })
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
-        toast({
-            title: "You submitted the following values:",
+        toast.message("You submitted the following values:", {
             description: (
                 <pre className="mt-8px w-[340px] rounded-6px bg-slate-950 p-16px">
                     <code className="text-white">{JSON.stringify(data, null, 2)}</code>

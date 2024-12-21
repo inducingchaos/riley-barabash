@@ -8,7 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { type Metadata } from "next"
 import type { ReactNode } from "react"
 import { ThemeProvider } from "~/components/providers"
-import { Toaster } from "~/components/ui/compositions/indicators"
+import { Sonner } from "~/components/ui/primitives/indicators"
 import { project } from "~/config"
 import { TRPCReactProvider } from "~/lib/infra/rpc/react"
 import { geist, geistMono, hoeflerText, inter, pxGrotesk, pxGroteskMono, saans } from "~/styles/fonts"
@@ -53,7 +53,8 @@ export default async function RootLayout({ children }: { children: ReactNode }):
 
                         {/* Toast component. */}
 
-                        <Toaster />
+                        <Sonner position="top-center" />
+
                         {/* </AuthProvider> */}
                     </ThemeProvider>
                 </body>

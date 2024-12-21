@@ -8,6 +8,7 @@ import { resend } from "~/lib/providers/comms"
 import { db } from "~/server/data"
 import { createSenderIdentity } from "~/utils/comms/email"
 import { Exception } from "~/meta"
+import { generateRandomToken } from "~/utils/auth"
 
 export async function sendRecoveryLink({ to: { email } }: { to: { email: string } }) {
     const user = await getUser({ where: { email }, from: db })
@@ -33,8 +34,9 @@ export async function sendRecoveryLink({ to: { email } }: { to: { email: string 
     const token = await upsertToken({
         where: { userId: user.id },
         using: {
-            userId: user.id,
             type: "password-reset",
+            userId: user.id,
+            value: await generateRandomToken(),
             expiresAt: new Date(Date.now() + 30 * 60 * 1000)
         },
         in: db

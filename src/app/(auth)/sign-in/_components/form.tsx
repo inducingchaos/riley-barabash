@@ -9,6 +9,7 @@ import { LucideLink } from "lucide-react"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
 import { Apple, Google, Spinner } from "~/components/svgs/icons"
@@ -16,7 +17,6 @@ import { Separator } from "~/components/ui/primitives/display"
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "~/components/ui/primitives/inputs"
 import { Muted } from "~/components/ui/primitives/typography"
 import { application } from "~/config"
-import { useToast } from "~/hooks/ui"
 import { Exception } from "~/meta"
 import { signInAction } from "~/server/actions/auth"
 
@@ -26,8 +26,6 @@ const formSchema = z.object({
 })
 
 export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Element {
-    const { toast } = useToast()
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -40,10 +38,8 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
         onError({ err: error }) {
             const exception = new Exception(error)
 
-            toast({
-                title: exception.applyDefaults().info?.external?.label,
-                description: exception.applyDefaults().info?.external?.message,
-                variant: "destructive"
+            toast.error(exception.applyDefaults().info?.external?.label, {
+                description: exception.applyDefaults().info?.external?.message
             })
         },
 

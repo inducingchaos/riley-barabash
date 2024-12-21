@@ -8,12 +8,12 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { KeyRound } from "lucide-react"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
 import { Spinner } from "~/components/svgs/icons"
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "~/components/ui/primitives/inputs"
 import { H3, Muted } from "~/components/ui/primitives/typography"
-import { useToast } from "~/hooks/ui"
 import { Exception } from "~/meta"
 import { signInWithMagicLinkAction } from "~/server/actions/auth"
 
@@ -23,7 +23,6 @@ const formSchema = z.object({
 
 export default function SignInWithLink(): JSX.Element {
     // const searchParams = useSearchParams()
-    const { toast } = useToast()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -40,10 +39,8 @@ export default function SignInWithLink(): JSX.Element {
         onError({ err: error }) {
             const exception = new Exception(error)
 
-            toast({
-                title: exception.applyDefaults().info?.external?.label,
-                description: exception.applyDefaults().info?.external?.message,
-                variant: "destructive"
+            toast.error(exception.applyDefaults().info?.external?.label, {
+                description: exception.applyDefaults().info?.external?.message
             })
         }
     })

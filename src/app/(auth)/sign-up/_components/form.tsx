@@ -9,6 +9,7 @@ import { Lock } from "lucide-react"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
 import { Spinner } from "~/components/svgs/icons"
@@ -23,7 +24,6 @@ import {
     Input
 } from "~/components/ui/primitives/inputs"
 import { application } from "~/config"
-import { useToast } from "~/hooks/ui"
 import { Exception } from "~/meta"
 import { signUpAction } from "~/server/actions/auth"
 
@@ -40,8 +40,6 @@ const formSchema = z
     })
 
 export function SignUpForm({ callbackUrl }: { callbackUrl?: string }): JSX.Element {
-    const { toast } = useToast()
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -56,10 +54,8 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string }): JSX.Eleme
         onError({ err: error }) {
             const exception = new Exception(error)
 
-            toast({
-                title: exception.applyDefaults().info?.external?.label,
-                description: exception.applyDefaults().info?.external?.message,
-                variant: "destructive"
+            toast.error(exception.applyDefaults().info?.external?.label, {
+                description: exception.applyDefaults().info?.external?.message
             })
         },
 

@@ -13,5 +13,5 @@ export default {
     singleQuote: false,
     tabWidth: 4,
     trailingComma: "none",
-    tailwindFunctions: ["cva"]
+    tailwindFunctions: ["cn", "ucn", "clsx", "cva"]
 }

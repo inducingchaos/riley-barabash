@@ -46,7 +46,7 @@ const DropdownMenuSubContent = React.forwardRef<
     <DropdownMenuPrimitive.SubContent
         ref={ref}
         className={cn(
-            "z-50 min-w-[8rem] overflow-hidden rounded-6x border bg-alternate p-4px text-main data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
+            "z-50 min-w-128px-r overflow-hidden rounded-6x border bg-alternate p-4px text-main data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
             className
         )}
         {...props}
@@ -64,7 +64,7 @@ const DropdownMenuContent = React.forwardRef<
             ref={ref}
             sideOffset={sideOffset}
             className={cn(
-                "z-50 min-w-[8rem] overflow-hidden rounded-6x border bg-alternate p-4px text-main",
+                "z-50 min-w-128px-r overflow-hidden rounded-6x border bg-alternate p-4px text-main",
                 "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
                 className
             )}

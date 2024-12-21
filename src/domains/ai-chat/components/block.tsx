@@ -429,7 +429,7 @@ function PureBlock({
                             block={block}
                             currentVersionIndex={currentVersionIndex}
                             documents={documents}
-                            handleVersionChange={handleVersionChange}
+                            handleVersionChangeAction={handleVersionChange}
                         />
                     )}
                 </AnimatePresence>

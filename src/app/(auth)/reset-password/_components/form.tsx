@@ -9,11 +9,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
 import type { HTMLAttributes } from "react"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 import { useServerAction } from "zsa-react"
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input } from "~/components/ui/primitives/inputs"
 import { H3, Muted } from "~/components/ui/primitives/typography"
-import { useToast } from "~/hooks/ui"
 import { Exception } from "~/meta"
 import { changePasswordAction, resetPasswordAction } from "~/server/actions/auth"
 import { cn } from "~/utils/ui"
@@ -37,8 +37,6 @@ export function PasswordResetForm({
     className,
     ...props
 }: { token: string | undefined } & HTMLAttributes<HTMLDivElement>): JSX.Element {
-    const { toast } = useToast()
-
     const recoveryForm = useForm<z.infer<typeof recoveryFormSchema>>({
         resolver: zodResolver(recoveryFormSchema),
         defaultValues: {
@@ -54,10 +52,8 @@ export function PasswordResetForm({
         onError({ err: error }) {
             const exception = new Exception(error)
 
-            toast({
-                title: exception.applyDefaults().info?.external?.label,
-                description: exception.applyDefaults().info?.external?.message,
-                variant: "destructive"
+            toast.error(exception.applyDefaults().info?.external?.label, {
+                description: exception.applyDefaults().info?.external?.message
             })
         }
     })
@@ -85,10 +81,8 @@ export function PasswordResetForm({
 
     const onResetSubmit = async ({ password }: z.infer<typeof resetFormSchema>) => {
         if (!token) {
-            toast({
-                title: "Something went wrong.",
-                description: "Please contact support.",
-                variant: "destructive"
+            toast.error("Something went wrong.", {
+                description: "Please contact support."
             })
 
             return

@@ -1,8 +1,8 @@
+/**
+ *
+ */
+
 import type { Metadata } from "next"
-import { Toaster } from "sonner"
-
-import { ThemeProvider } from "~/domains/ai-chat/components/theme-provider"
-
 import "./styles.css"
 
 export const metadata: Metadata = {
@@ -40,18 +40,5 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <Toaster position="top-center" />
-            {children}
-        </ThemeProvider>
-    )
+    return { children }
 }
-
-/* <head>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: THEME_COLOR_SCRIPT
-                    }}
-                />
-            </head> */

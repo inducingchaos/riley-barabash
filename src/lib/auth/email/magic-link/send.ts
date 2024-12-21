@@ -7,6 +7,7 @@ import { createUser, getUser, upsertToken } from "~/server/data/access/shared/au
 import { resend } from "~/lib/providers/comms"
 import { db } from "~/server/data"
 import { createSenderIdentity } from "~/utils/comms/email"
+import { generateRandomToken } from "~/utils/auth"
 
 export async function sendMagicLink({ to: recipient }: { to: { email: string } }) {
     await db.transaction(async tx => {
@@ -15,7 +16,12 @@ export async function sendMagicLink({ to: recipient }: { to: { email: string } }
 
         const token = await upsertToken({
             where: { userId: user.id },
-            using: { type: "magic-link", userId: user.id, expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24) },
+            using: {
+                type: "magic-link",
+                userId: user.id,
+                value: await generateRandomToken(),
+                expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24)
+            },
             in: tx
         })
 
