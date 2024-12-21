@@ -1,3 +1,5 @@
+"use client"
+
 import { ViewVerticalIcon } from "@radix-ui/react-icons"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"

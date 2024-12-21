@@ -4,9 +4,10 @@
 
 import type { Metadata } from "next"
 import "./styles.css"
+import { application } from "~/config"
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://chat.vercel.ai"),
+    metadataBase: new URL(application.routing.urls.base!),
     title: "Next.js Chatbot Template",
     description: "Next.js chatbot template using the AI SDK."
 }
@@ -40,5 +41,5 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    return { children }
+    return children
 }
