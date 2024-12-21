@@ -35,19 +35,20 @@ function PureChatHeader({
 
             {(!open || windowWidth < 768) && (
                 <Tooltip>
-                    <TooltipTrigger asChild>
-                        <Button
-                            style="outline"
-                            className="order-2 ml-auto px-8px md:order-1 md:ml-0px md:h-fit md:px-8px"
-                            onClick={() => {
-                                router.push("/")
-                                router.refresh()
-                            }}
-                        >
+                    <Button
+                        style="outline"
+                        className="order-2 ml-auto px-8px md:order-1 md:ml-0px md:h-fit md:px-8px"
+                        onClick={() => {
+                            router.push("/")
+                            router.refresh()
+                        }}
+                        asChild
+                    >
+                        <TooltipTrigger>
                             <PlusIcon />
                             <span className="md:sr-only">New Chat</span>
-                        </Button>
-                    </TooltipTrigger>
+                        </TooltipTrigger>
+                    </Button>
                     <TooltipContent>New Chat</TooltipContent>
                 </Tooltip>
             )}

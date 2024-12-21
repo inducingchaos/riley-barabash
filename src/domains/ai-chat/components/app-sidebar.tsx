@@ -23,7 +23,7 @@ export function AppSidebar({ user }: { user: { email: string } | undefined }) {
     const { setOpenMobile } = useSidebar()
 
     return (
-        <Sidebar className="group-data-[side=left]:border-r-0px">
+        <Sidebar className="">
             <SidebarHeader>
                 <SidebarMenu>
                     <div className="flex flex-row items-center justify-between">
@@ -34,7 +34,7 @@ export function AppSidebar({ user }: { user: { email: string } | undefined }) {
                             }}
                             className="flex flex-row items-center gap-12px"
                         >
-                            <span className="cursor-pointer rounded-6px px-8px text-18px font-semibold hover:bg-main/sixteenth">
+                            <span className="cursor-pointer rounded-6x px-8px text-18px font-semibold hover:bg-main/sixteenth">
                                 Chatbot
                             </span>
                         </Link>

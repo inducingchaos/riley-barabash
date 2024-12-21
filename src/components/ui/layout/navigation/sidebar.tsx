@@ -208,7 +208,7 @@ const Sidebar = React.forwardRef<
             >
                 <div
                     data-sidebar="sidebar"
-                    className="flex size-full flex-col bg-alternate group-data-[variant=floating]:rounded-8px group-data-[variant=floating]:border group-data-[variant=floating]:border-main/eighth group-data-[variant=floating]:shadow"
+                    className="flex size-full flex-col bg-alternate group-data-[variant=floating]:rounded-8x group-data-[variant=floating]:border group-data-[variant=floating]:border-main/eighth group-data-[variant=floating]:shadow"
                 >
                     {children}
                 </div>
@@ -276,7 +276,7 @@ const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<"main
             ref={ref}
             className={cn(
                 "relative flex min-h-svh flex-1 flex-col bg-alternate",
-                "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.16px))] md:peer-data-[variant=inset]:m-8px md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-8px md:peer-data-[variant=inset]:ml-0px md:peer-data-[variant=inset]:rounded-12px md:peer-data-[variant=inset]:shadow",
+                "peer-data-[variant=inset]:min-h-[calc(100svh-theme(spacing.16px))] md:peer-data-[variant=inset]:m-8px md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-8px md:peer-data-[variant=inset]:ml-0px md:peer-data-[variant=inset]:rounded-12x md:peer-data-[variant=inset]:shadow",
                 className
             )}
             {...props}
@@ -362,7 +362,7 @@ const SidebarGroupLabel = React.forwardRef<HTMLDivElement, React.ComponentProps<
                 ref={ref}
                 data-sidebar="group-label"
                 className={cn(
-                    "flex h-32px shrink-0 items-center rounded-6px px-8px text-12px font-medium text-main/-quarter outline-none ring-accent-constant transition-[margin,opa] duration-quarter ease-linear focus-visible:ring-2 [&>svg]:size-16px [&>svg]:shrink-0",
+                    "flex h-32px shrink-0 items-center rounded-6x px-8px text-12px font-medium text-main/-quarter outline-none ring-accent-constant transition-[margin,opa] duration-quarter ease-linear focus-visible:ring-2 [&>svg]:size-16px [&>svg]:shrink-0",
                     "group-data-[collapsible=icon]:-mt-64px group-data-[collapsible=icon]:opacity-zero",
                     className
                 )}
@@ -383,7 +383,7 @@ const SidebarGroupAction = React.forwardRef<HTMLButtonElement, React.ComponentPr
                 data-sidebar="group-action"
                 // was w-5,top-3.5
                 className={cn(
-                    "absolute right-12px top-16px flex aspect-square w-24px items-center justify-center rounded-6px p-0px text-main outline-none ring-accent-constant transition-transform hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 [&>svg]:size-16px [&>svg]:shrink-0",
+                    "absolute right-12px top-16px flex aspect-square w-24px items-center justify-center rounded-6x p-0px text-main outline-none ring-accent-constant transition-transform hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 [&>svg]:size-16px [&>svg]:shrink-0",
                     // Increases the hit area of the button on mobile.
                     "after:absolute after:-inset-8px after:md:hidden",
                     "group-data-[collapsible=icon]:hidden",
@@ -412,7 +412,7 @@ const SidebarMenuItem = React.forwardRef<HTMLLIElement, React.ComponentProps<"li
 SidebarMenuItem.displayName = "SidebarMenuItem"
 
 const sidebarMenuButtonVariants = cva(
-    "peer/menu-button flex w-full items-center gap-8px overflow-hidden rounded-6px p-8px text-left text-14px outline-none ring-accent-constant transition-[width,height,padding] hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 active:bg-main/sixteenth active:text-main disabled:pointer-events-none disabled:opacity-half group-has-[[data-sidebar=menu-action]]/menu-item:pr-32px aria-disabled:pointer-events-none aria-disabled:opacity-half data-[active=true]:bg-main/sixteenth data-[active=true]:font-medium data-[active=true]:text-main data-[state=open]:hover:bg-main/sixteenth data-[state=open]:hover:text-main group-data-[collapsible=icon]:!size-64px group-data-[collapsible=icon]:!p-8px [&>span:last-child]:truncate [&>svg]:size-16px [&>svg]:shrink-0",
+    "peer/menu-button flex w-full items-center gap-8px overflow-hidden rounded-6x p-8px text-left text-14px outline-none ring-accent-constant transition-[width,height,padding] hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 active:bg-main/sixteenth active:text-main disabled:pointer-events-none disabled:opacity-half group-has-[[data-sidebar=menu-action]]/menu-item:pr-32px aria-disabled:pointer-events-none aria-disabled:opacity-half data-[active=true]:bg-main/sixteenth data-[active=true]:font-medium data-[active=true]:text-main data-[state=open]:hover:bg-main/sixteenth data-[state=open]:hover:text-main group-data-[collapsible=icon]:!size-64px group-data-[collapsible=icon]:!p-8px [&>span:last-child]:truncate [&>svg]:size-16px [&>svg]:shrink-0",
     {
         variants: {
             variant: {
@@ -490,7 +490,7 @@ const SidebarMenuAction = React.forwardRef<
             data-sidebar="menu-action"
             // was w-5
             className={cn(
-                "absolute right-4px top-6px flex aspect-square w-24px items-center justify-center rounded-6px p-0px text-main outline-none ring-accent-constant transition-transform hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 peer-hover/menu-button:text-main [&>svg]:size-16px [&>svg]:shrink-0",
+                "absolute right-4px top-6px flex aspect-square w-24px items-center justify-center rounded-6x p-0px text-main outline-none ring-accent-constant transition-transform hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 peer-hover/menu-button:text-main [&>svg]:size-16px [&>svg]:shrink-0",
                 // Increases the hit area of the button on mobile.
                 "after:absolute after:-inset-8px after:md:hidden",
                 "peer-data-[size=sm]/menu-button:top-4px",
@@ -514,7 +514,7 @@ const SidebarMenuBadge = React.forwardRef<HTMLDivElement, React.ComponentProps<"
         data-sidebar="menu-badge"
         className={cn(
             // was h-5, min-w-5
-            "pointer-events-none absolute right-4px flex h-24px min-w-24px select-none items-center justify-center rounded-6px px-4px text-12px font-medium tabular-nums text-main",
+            "pointer-events-none absolute right-4px flex h-24px min-w-24px select-none items-center justify-center rounded-6x px-4px text-12px font-medium tabular-nums text-main",
             "peer-hover/menu-button:text-main peer-data-[active=true]/menu-button:text-main",
             "peer-data-[size=sm]/menu-button:top-4px",
             "peer-data-[size=default]/menu-button:top-6px",
@@ -543,10 +543,10 @@ const SidebarMenuSkeleton = React.forwardRef<
         <div
             ref={ref}
             data-sidebar="menu-skeleton"
-            className={cn("flex h-32px items-center gap-8px rounded-6px px-8px", className)}
+            className={cn("flex h-32px items-center gap-8px rounded-6x px-8px", className)}
             {...props}
         >
-            {showIcon && <Skeleton className="size-16px rounded-6px" data-sidebar="menu-skeleton-icon" />}
+            {showIcon && <Skeleton className="size-16px rounded-6x" data-sidebar="menu-skeleton-icon" />}
             <Skeleton
                 className="h-16px max-w-[--skeleton-width] flex-1"
                 data-sidebar="menu-skeleton-text"
@@ -599,7 +599,7 @@ const SidebarMenuSubButton = React.forwardRef<
             data-active={isActive}
             // was h-7
             className={cn(
-                "flex h-32px min-w-0px -translate-x-1px items-center gap-8px overflow-hidden rounded-6px px-8px text-main outline-none ring-accent-constant hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 active:bg-main/sixteenth active:text-main disabled:pointer-events-none disabled:opacity-half aria-disabled:pointer-events-none aria-disabled:opacity-half [&>span:last-child]:truncate [&>svg]:size-16px [&>svg]:shrink-0 [&>svg]:text-main",
+                "flex h-32px min-w-0px -translate-x-1px items-center gap-8px overflow-hidden rounded-6x px-8px text-main outline-none ring-accent-constant hover:bg-main/sixteenth hover:text-main focus-visible:ring-2 active:bg-main/sixteenth active:text-main disabled:pointer-events-none disabled:opacity-half aria-disabled:pointer-events-none aria-disabled:opacity-half [&>span:last-child]:truncate [&>svg]:size-16px [&>svg]:shrink-0 [&>svg]:text-main",
                 "data-[active=true]:bg-main/sixteenth data-[active=true]:text-main",
                 size === "sm" && "text-12px",
                 size === "md" && "text-14px",
