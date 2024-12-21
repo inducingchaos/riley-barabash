@@ -1,5 +1,38 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const regions = ["US", "CA", "MX", "BR", "DE", "FR", "IT", "ES", "GB", "IN", "AU", "JP", "NL", "SG", "PL", "TR", "RU", "CN", "KR", "ZA", "PH", "MY", "TH", "ID", "VN", "AR", "CO", "EG", "PK", "CL", "ZA", "MX"]
+const regions = [
+    "US",
+    "CA",
+    "MX",
+    "BR",
+    "DE",
+    "FR",
+    "IT",
+    "ES",
+    "GB",
+    "IN",
+    "AU",
+    "JP",
+    "NL",
+    "SG",
+    "PL",
+    "TR",
+    "RU",
+    "CN",
+    "KR",
+    "ZA",
+    "PH",
+    "MY",
+    "TH",
+    "ID",
+    "VN",
+    "AR",
+    "CO",
+    "EG",
+    "PK",
+    "CL",
+    "ZA",
+    "MX"
+]
 
 type Region = (typeof regions)[number]
 

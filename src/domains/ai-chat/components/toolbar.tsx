@@ -153,7 +153,7 @@ const ReadingLevelSelector = ({
             {randomArr.map(id => (
                 <motion.div
                     key={id}
-                    className="flex size-[40px] flex-row items-center justify-center"
+                    className="flex size-40px flex-row items-center justify-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

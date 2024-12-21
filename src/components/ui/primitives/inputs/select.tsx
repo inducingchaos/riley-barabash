@@ -75,7 +75,7 @@ const SelectContent = forwardRef<
         <SelectPrimitive.Content
             ref={ref}
             className={cn(
-                "relative z-50 max-h-384px min-w-[8rem] overflow-hidden rounded-6px border bg-alternate text-main shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
+                "relative z-50 max-h-384px min-w-128px-r overflow-hidden rounded-6px border bg-alternate text-main shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-zero data-[state=open]:fade-in-zero data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-8px data-[side=left]:slide-in-from-right-8px data-[side=right]:slide-in-from-left-8px data-[side=top]:slide-in-from-bottom-8px",
                 position === "popper" &&
                     "data-[side=bottom]:translate-y-4px data-[side=left]:-translate-x-4px data-[side=right]:translate-x-4px data-[side=top]:-translate-y-4px",
                 className

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 
 "use client"
@@ -54,7 +54,13 @@ export function Entries(): JSX.Element {
 
                 {/* The message input. */}
 
-                <input className="border" type="text" placeholder="Message" value={message} onChange={e => setMessage(e.target.value)} />
+                <input
+                    className="border"
+                    type="text"
+                    placeholder="Message"
+                    value={message}
+                    onChange={e => setMessage(e.target.value)}
+                />
 
                 {/* Submit button. */}
 

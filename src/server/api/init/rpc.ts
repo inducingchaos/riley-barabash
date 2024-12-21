@@ -22,7 +22,6 @@ import { db } from "~/server/data"
  *
  * @see [tRPC Context](https://trpc.io/docs/server/context)
  */
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const createTrpcContext = async (opts: { headers: Headers }) => {
     return {
         db,

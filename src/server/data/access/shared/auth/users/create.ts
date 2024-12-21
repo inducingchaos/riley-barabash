@@ -10,13 +10,7 @@ import { users, type CreatableUser, type User } from "~/server/data/schemas"
 import { Exception } from "~/meta"
 import { getUser } from "."
 
-export async function createUser({
-    using: values,
-    in: db
-}: {
-    using: CreatableUser
-    in: Database
-}): Promise<User> {
+export async function createUser({ using: values, in: db }: { using: CreatableUser; in: Database }): Promise<User> {
     return await db.transaction(async tx => {
         const user = await getUser({ where: values, from: tx })
         if (user)

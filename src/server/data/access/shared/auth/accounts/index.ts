@@ -19,4 +19,3 @@ export const createAccount = initializeCreateDataFunction({
 })
 
 export * from "./update"
-

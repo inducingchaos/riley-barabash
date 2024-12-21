@@ -25,4 +25,3 @@ export const networkStatuses = {
     "503": "service-unavailable",
     "504": "gateway-timeout"
 } as const
-
