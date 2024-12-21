@@ -36,3 +36,7 @@
 
 7. **Utilize a Lockfile**:
     - **How**: Ensure you have a lockfile (`bun.lockb`) committed to your repository to maintain consistent dependency versions across builds.
+
+-   Potentially combine workflow jobs into steps
+-   Maybe build in workflow and pass to Vercel, or vice versa
+-   Maybe opt for disabling a workflow if ran locally

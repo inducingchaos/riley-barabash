@@ -3,66 +3,36 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-    format:
-        name: Format
+    prebuild:
+        name: Pre-Build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - uses: oven-sh/setup-bun@v1
+
+            - name: Initialize Bun
+              uses: oven-sh/setup-bun@v1
               with:
                   bun-version: latest
-            - uses: actions/cache@v4
+
+            - name: Cache Node Modules
+              uses: actions/cache@v4
               with:
                   path: node_modules
                   key: ${{ runner.os }}-modules-${{ hashFiles('bun.lockb') }}
-            - run: bun i
-            - run: bun run format
 
-    lint:
-        name: Lint
-        runs-on: ubuntu-latest
-        needs: format
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - uses: oven-sh/setup-bun@v1
-              with:
-                  bun-version: latest
-            - uses: actions/cache@v4
-              with:
-                  path: node_modules
-                  key: ${{ runner.os }}-modules-${{ hashFiles('bun.lockb') }}
-            - run: bun i
-            - run: bun run lint
+            - name: Install Packages
+              run: bun i
 
-    typecheck:
-        name: Typecheck
-        runs-on: ubuntu-latest
-        needs: lint
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - uses: oven-sh/setup-bun@v1
-              with:
-                  bun-version: latest
-            - uses: actions/cache@v4
-              with:
-                  path: node_modules
-                  key: ${{ runner.os }}-modules-${{ hashFiles('bun.lockb') }}
-            - run: bun i
-            - run: bun run typecheck
+            - name: Format
+              run: bun run format
 
-    commit-message:
-        name: Commit Message
-        runs-on: ubuntu-latest
-        needs: typecheck
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - run: bun i
-            - run: bunx commitlint --from HEAD~1 --to HEAD --verbose
+            - name: Lint Code
+              run: bun run lint
+
+            - name: Check Types
+              run: bun run typecheck
+
+            - name: Verify Commit
+              run: bunx commitlint --from HEAD~1 --to HEAD --verbose
