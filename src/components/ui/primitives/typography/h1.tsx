@@ -10,8 +10,8 @@ export function H1({
     ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & { children: React.ReactNode }): JSX.Element {
     return (
-        // was scroll-m-20
-        <h1 className={cn("scroll-m-96px text-36px font-bold tracking-tight lg:text-48px", className)} {...props}>
+        // was scroll-m-20, text-36px
+        <h1 className={cn("scroll-m-96px text-32px font-bold tracking-tight lg:text-48px", className)} {...props}>
             {children}
         </h1>
     )

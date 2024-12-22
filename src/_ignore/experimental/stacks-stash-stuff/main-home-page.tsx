@@ -60,7 +60,11 @@
 //                     >
 //                         <Stack label="Header" fill={true} spacing="none" className="gap-16px">
 //                             <Stack label="Logo" orientation="horizontal" alignment="center" className="gap-8px">
-//                                 <span className="text-18px font-bold">kyzn.</span>
+{
+    /* was text-18px */
+}
+
+//                                 <span className="text-16px font-bold">kyzn.</span>
 //                                 <InlineCode className="border-gray-[250]] border px-4px font-mono">preflight</InlineCode>
 //                             </Stack>
 //                             <H1>{"Riley Barabash"}</H1>

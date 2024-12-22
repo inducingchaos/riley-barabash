@@ -60,7 +60,8 @@ const NonMemoizedMarkdown = ({ children }: { children: string }) => {
         },
         h1: ({ node: _node, children, ...props }) => {
             return (
-                <h1 className="mb-8px mt-24px text-30px font-semibold" {...props}>
+                // was text-30px
+                <h1 className="mb-8px mt-24px text-32px font-semibold" {...props}>
                     {children}
                 </h1>
             )
@@ -81,7 +82,8 @@ const NonMemoizedMarkdown = ({ children }: { children: string }) => {
         },
         h4: ({ node: _node, children, ...props }) => {
             return (
-                <h4 className="mb-8px mt-24px text-18px font-semibold" {...props}>
+                // was text-18px
+                <h4 className="mb-8px mt-24px text-16px font-semibold" {...props}>
                     {children}
                 </h4>
             )

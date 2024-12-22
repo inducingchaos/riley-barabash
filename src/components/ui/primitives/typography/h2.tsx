@@ -12,7 +12,8 @@ export function H2({
     return (
         // was scroll-m-20
         <h2
-            className={cn("scroll-m-96px border-b pb-8px text-30px font-semibold tracking-tight first:mt-0px", className)}
+            // was text-30px
+            className={cn("scroll-m-96px border-b pb-8px text-32px font-semibold tracking-tight first:mt-0px", className)}
             {...props}
         >
             {children}

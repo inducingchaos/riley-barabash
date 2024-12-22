@@ -14,7 +14,8 @@ export default function ErrorPage({ error }: { error: Error & { digest?: string 
         <div className="container mx-auto min-h-screen space-y-32px py-48px">
             <>
                 <H1 className="text-center">{error.name}</H1>
-                <p className="text-18px">{error.message}</p>
+                {/* was text-18px */}
+                <p className="text-16px">{error.message}</p>
             </>
         </div>
     )
