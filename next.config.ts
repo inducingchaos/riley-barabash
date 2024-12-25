@@ -6,7 +6,8 @@ import type { NextConfig } from "next"
 
 export default {
     experimental: {
-        ppr: "incremental"
+        ppr: true
+        // dynamicIO: true
     },
 
     images: {

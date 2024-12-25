@@ -42,6 +42,9 @@ export default async function Landing(): Promise<JSX.Element> {
                             <Button style="outline" asChild className="font-mono">
                                 <Link href="/altered">{"Altered"}</Link>
                             </Button>
+                            <Button style="fill" color="danger" intensity="reduced" asChild className="font-mono">
+                                <Link href="/iiinput">{"iiinput"}</Link>
+                            </Button>
                         </div>
                     </div>
                 </section>
