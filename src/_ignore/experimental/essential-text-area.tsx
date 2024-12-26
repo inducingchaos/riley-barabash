@@ -12,6 +12,7 @@ export function EssentialTextArea({
     rows: rowConfig,
     layoutReferences,
     onEnter: enterAction,
+    allowEmptySubmit: initialAllowEmptySubmit,
     className,
     ...props
 }: {
@@ -23,12 +24,15 @@ export function EssentialTextArea({
         borderWidth: number
     }
     onEnter?: "submit" | "break" | (() => void)
+    allowEmptySubmit?: boolean
     className?: string
 } & Omit<React.ComponentProps<"textarea">, "rows">): JSX.Element {
     const defaultedRowConfig = {
         min: rowConfig?.min ?? 1,
         max: rowConfig?.max ?? 3
     }
+
+    const allowEmptySubmit = initialAllowEmptySubmit ?? false
 
     const ref = useRef<HTMLTextAreaElement>(null)
 
@@ -126,6 +130,7 @@ export function EssentialTextArea({
 
                     if (typeof enterAction === "function") return enterAction()
 
+                    if (!allowEmptySubmit && !event.currentTarget.value.trim()) return
                     event.currentTarget.form?.requestSubmit()
                 }
 

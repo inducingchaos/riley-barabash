@@ -60,8 +60,8 @@ export function TheMagicalComponent({
                         <li
                             key={msg.id}
                             className={cn(
-                                "flex w-fit flex-col gap-6px border-l-2x px-24px py-12px",
-                                msg.content.toUpperCase().startsWith("I") && "border-main"
+                                "group flex w-full flex-col gap-6px border-l-2x px-24px py-8px transition-colors duration-zero hover:border-main/3-32",
+                                msg.content.toUpperCase().startsWith("I") && "border-main hover:border-main/-quarter"
                             )}
                         >
                             <div className={cn("flex items-center gap-8px")}>
@@ -72,67 +72,72 @@ export function TheMagicalComponent({
                                 )}
                                 <p className="whitespace-pre-wrap break-words font-light tracking-wide">{msg.content}</p>
                             </div>
-                            <div className={cn("flex items-center gap-8px")}>
-                                <span className="text-14px font-bold tracking-wide text-main/quarter">{msg.createdAt}</span>
-                                {(msg.createdAt.includes(" 8:") ||
-                                    msg.createdAt.includes(" 11:") ||
-                                    msg.createdAt.includes(":12")) && (
-                                    <p className="shrink-0 bg-info/-quarter px-8px py-2px font-mono text-12px font-bold">
-                                        {"rewrite"}
-                                    </p>
-                                )}
-                                {(msg.createdAt.includes(":53:") ||
-                                    msg.createdAt.includes(":35:") ||
-                                    msg.createdAt.includes(":18:")) && (
-                                    <p className="shrink-0 bg-success/-quarter px-8px py-2px font-mono text-12px font-bold">
-                                        {"saved"}
-                                    </p>
-                                )}
-                                {(msg.createdAt.includes(":53:") ||
-                                    msg.createdAt.includes(":35:") ||
-                                    msg.createdAt.includes(":18:")) && (
+                            <div className={cn("flex w-full items-center justify-between gap-8px")}>
+                                <span className="text-14px font-bold tracking-wide text-main/quarter">
+                                    {"2024-12-25, 8:40 PM"}
+                                </span>
+                                {/* <Separator className="w-40px shrink" /> */}
+                                <div className="pointer-events-none flex items-center gap-8px opacity-zero transition-opacity duration-zero focus-within:opacity-full group-hover:pointer-events-auto group-hover:opacity-full">
+                                    {(msg.createdAt.includes(" 8:") ||
+                                        msg.createdAt.includes(" 11:") ||
+                                        msg.createdAt.includes(":12")) && (
+                                        <p className="shrink-0 bg-info/-quarter px-8px py-2px font-mono text-12px font-bold">
+                                            {"rewrite"}
+                                        </p>
+                                    )}
+                                    {(msg.createdAt.includes(":53:") ||
+                                        msg.createdAt.includes(":35:") ||
+                                        msg.createdAt.includes(":18:")) && (
+                                        <p className="shrink-0 bg-success/-quarter px-8px py-2px font-mono text-12px font-bold">
+                                            {"saved"}
+                                        </p>
+                                    )}
+                                    {(msg.createdAt.includes(":53:") ||
+                                        msg.createdAt.includes(":35:") ||
+                                        msg.createdAt.includes(":18:")) && (
+                                        <Button
+                                            style="outline"
+                                            color="main"
+                                            intensity="reduced"
+                                            shape="micro"
+                                            // className="text-main"
+                                        >
+                                            {"edit"}
+                                        </Button>
+                                    )}
                                     <Button
+                                        // style="fill"
+                                        // color="warning"
+                                        // // need to add some other intensities like medium, high, max (.25...)
+                                        // //  need to make the text white on colors, non changing (maybe with intensity)
+                                        // intensity="reduced"
+                                        // shape="micro"
+                                        // className="text-alternate-constant bg-warning-half hover:bg-warning-quarter"
+
                                         style="outline"
                                         color="main"
                                         intensity="reduced"
                                         shape="micro"
-                                        // className="text-main"
                                     >
-                                        {"edit"}
+                                        {"archive"}
                                     </Button>
-                                )}
-                                <Button
-                                    // style="fill"
-                                    // color="warning"
-                                    // // need to add some other intensities like medium, high, max (.25...)
-                                    // //  need to make the text white on colors, non changing (maybe with intensity)
-                                    // intensity="reduced"
-                                    // shape="micro"
-                                    // className="text-alternate-constant bg-warning-half hover:bg-warning-quarter"
+                                    <Button
+                                        // style="fill"
+                                        // color="danger"
+                                        // // need to add some other intensities like medium, high, max (.25...)
+                                        // //  need to make the text white on colors, non changing (maybe with intensity)
+                                        // intensity="reduced"
+                                        // shape="micro"
+                                        // className="text-alternate-constant bg-danger-half"
 
-                                    style="outline"
-                                    color="main"
-                                    intensity="reduced"
-                                    shape="micro"
-                                >
-                                    {"archive"}
-                                </Button>
-                                <Button
-                                    // style="fill"
-                                    // color="danger"
-                                    // // need to add some other intensities like medium, high, max (.25...)
-                                    // //  need to make the text white on colors, non changing (maybe with intensity)
-                                    // intensity="reduced"
-                                    // shape="micro"
-                                    // className="text-alternate-constant bg-danger-half"
-
-                                    style="outline"
-                                    color="main"
-                                    intensity="reduced"
-                                    shape="micro"
-                                >
-                                    {"delete"}
-                                </Button>
+                                        style="outline"
+                                        color="main"
+                                        intensity="reduced"
+                                        shape="micro"
+                                    >
+                                        {"delete"}
+                                    </Button>
+                                </div>
                             </div>
                         </li>
                     ))}
@@ -140,48 +145,49 @@ export function TheMagicalComponent({
             </div>
 
             {/* test boundary */}
-            <div className="flex flex-col pb-128px">
+            <div className="flex flex-col items-center pb-128px">
                 <div ref={messagesEndRef} />
 
                 {/* Fixed input area at bottom */}
-                <form
-                    action={async formData => {
-                        const message = formData.get("message") as string
-                        // Clear input immediately before any async operations
-                        setMessage("")
-                        addMessage(message)
-                        scrollToBottom()
-                        // Then do the server action
-                        await submitMessage(message)
-                    }}
-                    onSubmit={() => setMessage("")}
-                    className="fixed inset-x-0px bottom-0px p-16px"
-                >
-                    <div className="flex gap-8px">
-                        <EssentialTextArea
-                            name="message"
-                            value={message}
-                            onChange={e => {
-                                setMessage(e.target.value)
-                            }}
-                            // className="flex-1 border p-8px focus:outline-none"
-                            rows={{ min: 1, max: 4 }}
-                            layoutReferences={{
-                                lineHeight: 24,
-                                paddingTop: 8,
-                                paddingBottom: 8,
-                                borderWidth: 2
-                            }}
-                            onEnter="submit"
-                            className="w-full border bg-alternate/-quarter px-16px py-8px backdrop-blur"
-                            placeholder="Your next thought..."
-                        />
+                <div className="fixed bottom-0px flex w-full justify-center p-16px">
+                    <form
+                        action={async formData => {
+                            const message = formData.get("message") as string
+                            // Clear input immediately before any async operations
+                            addMessage(message)
+                            scrollToBottom()
+                            // Then do the server action
+                            await submitMessage(message)
+                        }}
+                        onSubmit={_ => setMessage("")}
+                        className="w-640px"
+                    >
+                        <div className="flex gap-8px">
+                            <EssentialTextArea
+                                name="message"
+                                value={message}
+                                onChange={e => {
+                                    setMessage(e.target.value)
+                                }}
+                                // className="flex-1 border p-8px focus:outline-none"
+                                rows={{ min: 1, max: 4 }}
+                                layoutReferences={{
+                                    lineHeight: 24,
+                                    paddingTop: 8,
+                                    paddingBottom: 8,
+                                    borderWidth: 2
+                                }}
+                                onEnter="submit"
+                                className="w-full border bg-alternate/-quarter px-16px py-8px backdrop-blur"
+                                placeholder="Your next thought..."
+                            />
 
-                        <Button type="submit" className="px-16px py-8px">
-                            Send
-                        </Button>
-                    </div>
-                </form>
+                            <Button type="submit" className="px-16px py-8px">
+                                Send
+                            </Button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     )
