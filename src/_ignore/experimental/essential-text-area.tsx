@@ -105,33 +105,33 @@ export function EssentialTextArea({
     }
 
     return (
-            <textarea
-                ref={ref}
-                onChange={e => {
-                    adjustLayout()
-                    props.onChange?.(e)
-                }}
-                className={cn(
-                    "scrollbar-hide w-full resize-none overflow-hidden bg-transparent transition-colors placeholder:text-main/half focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main/-eighth focus-visible:ring-offset-2 focus-visible:ring-offset-alternate disabled:cursor-not-allowed disabled:opacity-half",
-                    className
-                )}
-                style={{
-                    height: initialHeight()
-                }}
-                onKeyDown={event => {
-                    if (event.key === "Enter" && !event.shiftKey) {
-                        if (enterAction === "break") return
+        <textarea
+            ref={ref}
+            onChange={e => {
+                adjustLayout()
+                props.onChange?.(e)
+            }}
+            className={cn(
+                "scrollbar-hide w-full resize-none overflow-hidden bg-transparent transition-colors placeholder:text-main/half focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main/-eighth focus-visible:ring-offset-2 focus-visible:ring-offset-alternate disabled:cursor-not-allowed disabled:opacity-half",
+                className
+            )}
+            style={{
+                height: initialHeight()
+            }}
+            onKeyDown={event => {
+                if (event.key === "Enter" && !event.shiftKey) {
+                    if (enterAction === "break") return
 
-                        event.preventDefault()
+                    event.preventDefault()
 
-                        if (typeof enterAction === "function") return enterAction()
+                    if (typeof enterAction === "function") return enterAction()
 
-                        event.currentTarget.form?.requestSubmit()
-                    }
+                    event.currentTarget.form?.requestSubmit()
+                }
 
-                    props.onKeyDown?.(event)
-                }}
-                {...props}
-            />
+                props.onKeyDown?.(event)
+            }}
+            {...props}
+        />
     )
 }

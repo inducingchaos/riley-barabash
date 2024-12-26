@@ -17,7 +17,6 @@ type Message = {
 }
 
 export function TheMagicalComponent({
-    mostRecentMessage,
     messages: initialMessages
 }: {
     mostRecentMessage: string
@@ -46,7 +45,7 @@ export function TheMagicalComponent({
     useEffect(() => {
         // setMessages(initialMessages)
         scrollToBottom()
-    }, [mostRecentMessage, initialMessages])
+    }, [initialMessages])
 
     return (
         <>
@@ -55,14 +54,14 @@ export function TheMagicalComponent({
                 {JSON.stringify(messages)}
             </div> */}
 
-            <div className="pb-64px">
+            <div className="pb-32px lg:max-w-640px">
                 <ul className="flex w-full flex-col gap-16px p-16px">
                     {messages.map(msg => (
                         <li
                             key={msg.id}
                             className={cn(
-                                "flex w-fit flex-col gap-4px px-24px py-12px",
-                                msg.content.toUpperCase().startsWith("I") ? "items-end self-end bg-main/sixteenth" : "border"
+                                "flex w-fit flex-col gap-6px border-l-2x px-24px py-12px",
+                                msg.content.toUpperCase().startsWith("I") && "border-main"
                             )}
                         >
                             <div className={cn("flex items-center gap-8px")}>
@@ -71,10 +70,10 @@ export function TheMagicalComponent({
                                         {"AI"}
                                     </p>
                                 )}
-                                <p className="break-words">{msg.content}</p>
+                                <p className="whitespace-pre-wrap break-words font-light tracking-wide">{msg.content}</p>
                             </div>
                             <div className={cn("flex items-center gap-8px")}>
-                                <span className="">{msg.createdAt}</span>
+                                <span className="text-14px font-bold tracking-wide text-main/quarter">{msg.createdAt}</span>
                                 {(msg.createdAt.includes(" 8:") ||
                                     msg.createdAt.includes(" 11:") ||
                                     msg.createdAt.includes(":12")) && (
@@ -142,9 +141,8 @@ export function TheMagicalComponent({
 
             {/* test boundary */}
             <div className="flex flex-col pb-128px">
-                <p className="text-24px text-red-500" ref={messagesEndRef}>
-                    {mostRecentMessage}
-                </p>
+                <div ref={messagesEndRef} />
+
                 {/* Fixed input area at bottom */}
                 <form
                     action={async formData => {
