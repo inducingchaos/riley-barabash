@@ -22,7 +22,7 @@ import {
 
 export default {
     darkMode: ["class"],
-    content: ["./src/{app,components,domains}/**/*.{js,ts,jsx,tsx,mdx}"],
+    content: ["./src/{app,components,domains,_ignore/experimental}/**/*.{js,ts,jsx,tsx,mdx}"],
 
     theme: {
         spacing,

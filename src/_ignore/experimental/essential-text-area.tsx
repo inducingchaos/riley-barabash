@@ -113,8 +113,7 @@ export function EssentialTextArea({
                     props.onChange?.(e)
                 }}
                 className={cn(
-                    //  @fixme wtf is this opacity bug
-                    "scrollbar-hide w-full resize-none overflow-hidden bg-transparent transition-colors placeholder:text-main/eighth focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main/-quarter focus-visible:ring-offset-2 focus-visible:ring-offset-alternate disabled:cursor-not-allowed disabled:opacity-half",
+                    "scrollbar-hide w-full resize-none overflow-hidden bg-transparent transition-colors placeholder:text-main/half focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main/-eighth focus-visible:ring-offset-2 focus-visible:ring-offset-alternate disabled:cursor-not-allowed disabled:opacity-half",
                     className
                 )}
                 style={{
