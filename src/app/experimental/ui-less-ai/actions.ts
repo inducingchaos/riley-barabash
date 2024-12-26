@@ -6,6 +6,8 @@ import { db } from "~/server/data"
 import { messages } from "~/server/data/schemas/riley-barabash"
 
 export async function submitMessage(message: string) {
+    await new Promise(resolve => setTimeout(resolve, 5000)) // Artificial 5s delay
+
     await db.insert(messages).values({
         userId: "0221",
         content: message

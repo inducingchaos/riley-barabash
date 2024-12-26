@@ -105,7 +105,6 @@ export function EssentialTextArea({
     }
 
     return (
-        <>
             <textarea
                 ref={ref}
                 onChange={e => {
@@ -134,6 +133,5 @@ export function EssentialTextArea({
                 }}
                 {...props}
             />
-        </>
     )
 }

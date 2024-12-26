@@ -4,7 +4,7 @@
 
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useOptimistic, useRef, useState } from "react"
 import { submitMessage } from "../actions"
 import { EssentialTextArea } from "~/_ignore/experimental/essential-text-area"
 import { Button } from "~/components/ui/primitives/inputs"
@@ -26,17 +26,26 @@ export function TheMagicalComponent({
     const [message, setMessage] = useState("")
     const messagesEndRef = useRef<HTMLDivElement>(null)
 
-    const [messages, setMessages] = useState<Message[]>(initialMessages)
+    const [messages, addMessage] = useOptimistic<Message[], string>(initialMessages, (state, newMessage) => [
+        ...state,
+        {
+            id: crypto.randomUUID(),
+            content: newMessage,
+            createdAt: new Date().toISOString()
+        }
+    ])
+
+    // const [messages, setMessages] = useState<Message[]>(initialMessages)
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        requestAnimationFrame(() => {
+            messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+        })
     }
 
     useEffect(() => {
-        setMessages(initialMessages)
-        requestAnimationFrame(() => {
-            scrollToBottom()
-        })
+        // setMessages(initialMessages)
+        scrollToBottom()
     }, [mostRecentMessage, initialMessages])
 
     return (
@@ -52,8 +61,8 @@ export function TheMagicalComponent({
                         <li
                             key={msg.id}
                             className={cn(
-                                "flex w-fit flex-col gap-4px bg-main/thirty-second px-24px py-12px",
-                                msg.content.toUpperCase().startsWith("I") ? "items-end self-end" : ""
+                                "flex w-fit flex-col gap-4px px-24px py-12px",
+                                msg.content.toUpperCase().startsWith("I") ? "items-end self-end bg-main/sixteenth" : "border"
                             )}
                         >
                             <div className={cn("flex items-center gap-8px")}>
@@ -139,19 +148,24 @@ export function TheMagicalComponent({
                 {/* Fixed input area at bottom */}
                 <form
                     action={async formData => {
-                        await submitMessage(formData.get("message") as string)
+                        const message = formData.get("message") as string
+                        // Clear input immediately before any async operations
                         setMessage("")
-
-                        console.log("refreshing")
-                        // router.refresh()
+                        addMessage(message)
+                        scrollToBottom()
+                        // Then do the server action
+                        await submitMessage(message)
                     }}
+                    onSubmit={() => setMessage("")}
                     className="fixed inset-x-0px bottom-0px p-16px"
                 >
                     <div className="flex gap-8px">
                         <EssentialTextArea
                             name="message"
                             value={message}
-                            onChange={e => setMessage(e.target.value)}
+                            onChange={e => {
+                                setMessage(e.target.value)
+                            }}
                             // className="flex-1 border p-8px focus:outline-none"
                             rows={{ min: 1, max: 4 }}
                             layoutReferences={{
