@@ -12,7 +12,9 @@ export function EssentialTextArea({
     rows: rowConfig,
     layoutReferences,
     onEnter: enterAction,
+    onEscape,
     allowEmptySubmit: initialAllowEmptySubmit,
+    focusOnMount,
     className,
     ...props
 }: {
@@ -24,9 +26,11 @@ export function EssentialTextArea({
         borderWidth: number
     }
     onEnter?: "submit" | "break" | (() => void)
+    onEscape?: "blur" | (() => void)
     allowEmptySubmit?: boolean
+    focusOnMount?: boolean
     className?: string
-} & Omit<React.ComponentProps<"textarea">, "rows">): JSX.Element {
+} & Omit<Omit<React.ComponentProps<"textarea">, "autoFocus">, "rows">): JSX.Element {
     const defaultedRowConfig = {
         min: rowConfig?.min ?? 1,
         max: rowConfig?.max ?? 3
@@ -111,6 +115,7 @@ export function EssentialTextArea({
     return (
         <textarea
             ref={ref}
+            autoFocus={focusOnMount}
             onChange={e => {
                 adjustLayout()
                 props.onChange?.(e)
@@ -132,6 +137,11 @@ export function EssentialTextArea({
 
                     if (!allowEmptySubmit && !event.currentTarget.value.trim()) return
                     event.currentTarget.form?.requestSubmit()
+                }
+
+                if (event.key === "Escape" && onEscape) {
+                    if (onEscape === "blur") return ref.current?.blur()
+                    return onEscape()
                 }
 
                 props.onKeyDown?.(event)
