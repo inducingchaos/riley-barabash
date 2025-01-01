@@ -228,6 +228,18 @@ export function TheMagicalComponent({
                         action={async formData => {
                             const message = formData.get("message") as string
 
+                            if (!message.trim()) {
+                                // For generate, just add a placeholder AI message
+                                optimisticallyUpdateMessages({
+                                    type: "add",
+                                    content: "...",
+                                    role: "assistant"
+                                })
+                                scrollToBottom()
+                                await submitMessage("", messages)
+                                return
+                            }
+
                             // Add user message and placeholder AI message
                             const updatedMessages = [
                                 ...messages,
@@ -272,7 +284,7 @@ export function TheMagicalComponent({
                             />
 
                             <Button type="submit" className="px-16px py-8px">
-                                Send
+                                {message.trim() ? "Send" : "Generate"}
                             </Button>
                         </div>
                     </form>
