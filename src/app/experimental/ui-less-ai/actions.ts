@@ -29,7 +29,10 @@ export async function getMessages() {
 export async function updateMessage(messageId: string, content: string) {
     await new Promise(resolve => setTimeout(resolve, 2000)) // Artificial 2s delay
 
-    await db.update(messages).set({ content: content + " (edited - test)" }).where(eq(messages.id, messageId))
+    await db
+        .update(messages)
+        .set({ content: content + " (edited - test)" })
+        .where(eq(messages.id, messageId))
 
     revalidatePath("/experimental/ui-less-ai")
 }
