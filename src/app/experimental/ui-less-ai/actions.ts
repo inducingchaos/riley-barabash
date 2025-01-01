@@ -16,18 +16,31 @@ type Message = {
     role: string
 }
 
-export async function submitMessage(message: string, chatHistory: Message[]) {
+type SubmitOptions = {
+    generateOnly?: boolean
+    addOnly?: boolean
+}
+
+export async function submitMessage(chatHistory: Message[], options: SubmitOptions = {}) {
     const now = new Date()
     const aiTimestamp = new Date(now.getTime() + 1000)
+    const lastMessage = chatHistory[chatHistory.length - 1]
+    const messageContent = lastMessage?.content ?? ""
 
-    // Only insert user message if not generating
-    if (message.trim()) {
+    // Handle message storage (skip if generateOnly)
+    if (!options.generateOnly && messageContent.trim()) {
         await db.insert(messages).values({
             userId: "0221",
-            content: message,
+            content: messageContent,
             role: "user",
             createdAt: now
         })
+    }
+
+    // Skip AI generation if addOnly
+    if (options.addOnly) {
+        revalidatePath("/experimental/ui-less-ai")
+        return
     }
 
     // Convert chat history to AI SDK format
@@ -38,20 +51,17 @@ export async function submitMessage(message: string, chatHistory: Message[]) {
             content: msg.content
         })) as (CoreUserMessage | CoreAssistantMessage)[]
 
-    const lastMessage = aiMessages[aiMessages.length - 1]
-    const isGenerating = !message.trim()
+    const isGenerating = options.generateOnly ?? !messageContent.trim()
     const isLastMessageFromAI = lastMessage?.role === "assistant"
 
     const promptContext: PromptContext = {
         isGenerating,
         isLastMessageFromAI,
         lastMessage: lastMessage && {
-            content: lastMessage.content as string,
-            role: lastMessage.role
+            content: lastMessage.content,
+            role: lastMessage.role as "user" | "assistant"
         }
     }
-
-    console.log(digitalBrainAgent.compose(promptContext))
 
     // Generate AI response using the AI SDK with chat history
     const { text: aiResponse } = await generateText({

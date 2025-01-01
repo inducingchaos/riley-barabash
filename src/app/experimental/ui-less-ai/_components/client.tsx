@@ -31,6 +31,7 @@ export function TheMagicalComponent({
     const [message, setMessage] = useState("")
     const messagesEndRef = useRef<HTMLDivElement>(null)
     const [editingMessageId, setEditingMessageId] = useState<string | null>(null)
+    const [isAltPressed, setIsAltPressed] = useState(false)
 
     const [messages, optimisticallyUpdateMessages] = useOptimistic<Message[], OptimisticAction>(
         initialMessages,
@@ -75,6 +76,23 @@ export function TheMagicalComponent({
         // setMessages(initialMessages)
         scrollToBottom()
     }, [initialMessages])
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.altKey) setIsAltPressed(true)
+        }
+        const handleKeyUp = (e: KeyboardEvent) => {
+            if (!e.altKey) setIsAltPressed(false)
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        window.addEventListener("keyup", handleKeyUp)
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown)
+            window.removeEventListener("keyup", handleKeyUp)
+        }
+    }, [])
 
     return (
         <>
@@ -229,6 +247,8 @@ export function TheMagicalComponent({
                             const message = formData.get("message") as string
 
                             if (!message.trim()) {
+                                if (isAltPressed) return // Don't do anything if empty and alt is pressed
+
                                 // For generate, just add a placeholder AI message
                                 optimisticallyUpdateMessages({
                                     type: "add",
@@ -236,11 +256,11 @@ export function TheMagicalComponent({
                                     role: "assistant"
                                 })
                                 scrollToBottom()
-                                await submitMessage("", messages)
+                                await submitMessage(messages, { generateOnly: true })
                                 return
                             }
 
-                            // Add user message and placeholder AI message
+                            // Add user message and maybe placeholder AI message
                             const updatedMessages = [
                                 ...messages,
                                 {
@@ -252,13 +272,19 @@ export function TheMagicalComponent({
                             ]
 
                             optimisticallyUpdateMessages({ type: "add", content: message, role: "user" })
-                            optimisticallyUpdateMessages({
-                                type: "add",
-                                content: "...",
-                                role: "assistant"
-                            })
+
+                            if (!isAltPressed) {
+                                optimisticallyUpdateMessages({
+                                    type: "add",
+                                    content: "...",
+                                    role: "assistant"
+                                })
+                                await submitMessage(updatedMessages)
+                            } else {
+                                await submitMessage(updatedMessages, { addOnly: true })
+                            }
+
                             scrollToBottom()
-                            await submitMessage(message, updatedMessages)
                         }}
                         onSubmit={_ => setMessage("")}
                         className="w-640px"
@@ -270,7 +296,6 @@ export function TheMagicalComponent({
                                 onChange={e => {
                                     setMessage(e.target.value)
                                 }}
-                                // className="flex-1 border p-8px focus:outline-none"
                                 rows={{ min: 1, max: 4 }}
                                 layoutReferences={{
                                     lineHeight: 24,
@@ -284,7 +309,7 @@ export function TheMagicalComponent({
                             />
 
                             <Button type="submit" className="px-16px py-8px">
-                                {message.trim() ? "Send" : "Generate"}
+                                {message.trim() ? (isAltPressed ? "Add" : "Send") : "Generate"}
                             </Button>
                         </div>
                     </form>

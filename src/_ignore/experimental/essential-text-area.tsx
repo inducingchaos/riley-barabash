@@ -128,6 +128,8 @@ export function EssentialTextArea({
                 height: initialHeight()
             }}
             onKeyDown={event => {
+                props.onKeyDown?.(event)
+
                 if (event.key === "Enter" && !event.shiftKey) {
                     if (enterAction === "break") return
 
@@ -143,8 +145,6 @@ export function EssentialTextArea({
                     if (onEscape === "blur") return ref.current?.blur()
                     return onEscape()
                 }
-
-                props.onKeyDown?.(event)
             }}
             {...props}
         />
