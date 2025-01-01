@@ -5,7 +5,7 @@
 "use client"
 
 import { useEffect, useOptimistic, useRef, useState } from "react"
-import { submitMessage, updateMessage } from "../actions"
+import { submitMessage, updateMessage, deleteMessage } from "../actions"
 import { EssentialTextArea } from "~/_ignore/experimental/essential-text-area"
 import { Button } from "~/components/ui/primitives/inputs"
 import { cn } from "~/utils/ui"
@@ -16,7 +16,10 @@ type Message = {
     createdAt: string
 }
 
-type OptimisticAction = { type: "add"; content: string } | { type: "edit"; id: string; content: string }
+type OptimisticAction =
+    | { type: "add"; content: string }
+    | { type: "edit"; id: string; content: string }
+    | { type: "delete"; id: string }
 
 export function TheMagicalComponent({
     messages: initialMessages
@@ -43,6 +46,8 @@ export function TheMagicalComponent({
                     ]
                 case "edit":
                     return state.map(msg => (msg.id === action.id ? { ...msg, content: action.content } : msg))
+                case "delete":
+                    return state.filter(msg => msg.id !== action.id)
             }
         }
     )
@@ -83,6 +88,13 @@ export function TheMagicalComponent({
                         >
                             <form
                                 action={async formData => {
+                                    const action = formData.get("action")
+                                    if (action === "delete") {
+                                        optimisticallyUpdateMessages({ type: "delete", id: msg.id })
+                                        await deleteMessage(msg.id)
+                                        return
+                                    }
+
                                     const content = formData.get("message") as string
                                     optimisticallyUpdateMessages({
                                         type: "edit",
@@ -183,7 +195,15 @@ export function TheMagicalComponent({
                                                 >
                                                     {"edit"}
                                                 </Button>
-                                                <Button style="outline" color="main" intensity="reduced" shape="micro">
+                                                <Button
+                                                    style="outline"
+                                                    color="main"
+                                                    intensity="reduced"
+                                                    shape="micro"
+                                                    name="action"
+                                                    value="delete"
+                                                    type="submit"
+                                                >
                                                     {"delete"}
                                                 </Button>
                                             </>

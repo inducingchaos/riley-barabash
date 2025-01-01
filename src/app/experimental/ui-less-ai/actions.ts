@@ -36,3 +36,11 @@ export async function updateMessage(messageId: string, content: string) {
 
     revalidatePath("/experimental/ui-less-ai")
 }
+
+export async function deleteMessage(messageId: string) {
+    await new Promise(resolve => setTimeout(resolve, 2000)) // Artificial 2s delay
+
+    await db.delete(messages).where(eq(messages.id, messageId))
+
+    revalidatePath("/experimental/ui-less-ai")
+}
