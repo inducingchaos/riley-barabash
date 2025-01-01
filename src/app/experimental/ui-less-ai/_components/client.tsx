@@ -32,6 +32,7 @@ export function TheMagicalComponent({
     const messagesEndRef = useRef<HTMLDivElement>(null)
     const [editingMessageId, setEditingMessageId] = useState<string | null>(null)
     const [isAltPressed, setIsAltPressed] = useState(false)
+    const [isCmdPressed, setIsCmdPressed] = useState(false)
 
     const [messages, optimisticallyUpdateMessages] = useOptimistic<Message[], OptimisticAction>(
         initialMessages,
@@ -80,9 +81,11 @@ export function TheMagicalComponent({
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.altKey) setIsAltPressed(true)
+            if (e.metaKey) setIsCmdPressed(true)
         }
         const handleKeyUp = (e: KeyboardEvent) => {
             if (!e.altKey) setIsAltPressed(false)
+            if (!e.metaKey) setIsCmdPressed(false)
         }
 
         window.addEventListener("keydown", handleKeyDown)
@@ -248,6 +251,7 @@ export function TheMagicalComponent({
 
                             if (!message.trim()) {
                                 if (isAltPressed) return // Don't do anything if empty and alt is pressed
+                                if (!isCmdPressed) return // Don't do anything if empty and cmd not pressed
 
                                 // For generate, just add a placeholder AI message
                                 optimisticallyUpdateMessages({
@@ -304,12 +308,18 @@ export function TheMagicalComponent({
                                     borderWidth: 2
                                 }}
                                 onEnter="submit"
+                                allowEmptySubmit={isCmdPressed}
                                 className="w-full border bg-alternate/-quarter px-16px py-8px font-light backdrop-blur placeholder:font-normal"
                                 placeholder="Your next thought..."
                             />
 
-                            <Button type="submit" className="px-16px py-8px">
-                                {message.trim() ? (isAltPressed ? "Add" : "Send") : "Generate"}
+                            <Button
+                                type="submit"
+                                className="px-16px py-8px"
+                                disabled={!message.trim() && !isCmdPressed}
+                                intensity={!message.trim() && !isCmdPressed ? "reduced" : undefined}
+                            >
+                                {message.trim() ? (isAltPressed ? "Add" : "Send") : isCmdPressed ? "Generate" : "Send"}
                             </Button>
                         </div>
                     </form>
