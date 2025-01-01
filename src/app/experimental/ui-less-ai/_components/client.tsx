@@ -14,10 +14,11 @@ type Message = {
     id: string
     content: string
     createdAt: string
+    role: string
 }
 
 type OptimisticAction =
-    | { type: "add"; content: string }
+    | { type: "add"; content: string; role: string }
     | { type: "edit"; id: string; content: string }
     | { type: "delete"; id: string }
 
@@ -41,6 +42,7 @@ export function TheMagicalComponent({
                         {
                             id: crypto.randomUUID(),
                             content: action.content,
+                            role: action.role,
                             createdAt: new Date().toISOString()
                         }
                     ]
@@ -83,7 +85,7 @@ export function TheMagicalComponent({
                             key={msg.id}
                             className={cn(
                                 "group flex w-full flex-col gap-8px border-l-2x px-24px py-8px transition-colors duration-zero hover:border-main/3-32",
-                                msg.content?.toUpperCase().startsWith("I") && "border-main hover:border-main/-quarter"
+                                msg.role === "assistant" && "border-main hover:border-main/-quarter"
                             )}
                         >
                             <form
@@ -115,7 +117,7 @@ export function TheMagicalComponent({
                                             name="message"
                                             value={editingMessageContent}
                                             onChange={e => setEditingMessageContent(e.target.value)}
-                                            rows={{ min: 1, max: 4 }}
+                                            rows={{ min: 1, max: 9999 }}
                                             layoutReferences={{
                                                 lineHeight: 24,
                                                 paddingTop: 8,
@@ -130,7 +132,7 @@ export function TheMagicalComponent({
                                 ) : (
                                     <div className={cn("flex w-full items-center gap-8px")}>
                                         <p className="whitespace-pre-wrap break-words font-light tracking-wide">
-                                            {msg.content?.toUpperCase().startsWith("I") && (
+                                            {msg.role === "assistant" && (
                                                 <span className="inline-flex align-text-top">
                                                     <span className="bg-accent-alternate px-8px py-2px font-mono text-12px font-bold">
                                                         {"AI"}
@@ -225,7 +227,12 @@ export function TheMagicalComponent({
                     <form
                         action={async formData => {
                             const message = formData.get("message") as string
-                            optimisticallyUpdateMessages({ type: "add", content: message })
+                            optimisticallyUpdateMessages({ type: "add", content: message, role: "user" })
+                            optimisticallyUpdateMessages({
+                                type: "add",
+                                content: `AI response to: ${message}`,
+                                role: "assistant"
+                            })
                             scrollToBottom()
                             await submitMessage(message)
                         }}

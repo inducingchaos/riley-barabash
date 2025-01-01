@@ -10,7 +10,8 @@ export default async function UILessAI(): Promise<JSX.Element> {
     const messages = (await getMessages()).map(m => ({
         id: m.id,
         content: m.content ?? "",
-        createdAt: m.createdAt.toLocaleString()
+        createdAt: m.createdAt.toLocaleString(),
+        role: m.role
     }))
 
     return (
