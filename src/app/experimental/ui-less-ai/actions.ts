@@ -5,9 +5,19 @@ import { revalidatePath } from "next/cache"
 import { db } from "~/server/data"
 import { messages } from "~/server/data/schemas/iiinput"
 import { eq, asc } from "drizzle-orm"
+import { generateText, type CoreMessage } from "ai"
+import { customModel } from "~/domains/ai-chat/lib/ai"
 
-export async function submitMessage(message: string) {
+type Message = {
+    id: string
+    content: string
+    createdAt: string
+    role: string
+}
+
+export async function submitMessage(message: string, chatHistory: Message[]) {
     const now = new Date()
+    const aiTimestamp = new Date(now.getTime() + 1000)
 
     // Store user message with current timestamp
     await db.insert(messages).values({
@@ -17,12 +27,20 @@ export async function submitMessage(message: string) {
         createdAt: now
     })
 
-    // Add 1 second delay for AI message
-    const aiTimestamp = new Date(now.getTime() + 1000)
+    // Convert chat history to AI SDK format
+    const aiMessages: CoreMessage[] = chatHistory
+        .filter(msg => msg.role === "user" || msg.role === "assistant")
+        .map(msg => ({
+            role: msg.role === "user" ? "user" : "assistant",
+            content: msg.content
+        }))
 
-    // TODO: Add AI SDK integration here
-    // Simulate AI response for now
-    const aiResponse = `AI response to: ${message}`
+    // Generate AI response using the AI SDK with chat history
+    const { text: aiResponse } = await generateText({
+        model: customModel("gpt-4o-mini"),
+        system: "You are a helpful and knowledgeable AI assistant. Respond in a clear and concise manner.",
+        messages: aiMessages
+    })
 
     await db.insert(messages).values({
         userId: "0221",

@@ -15,15 +15,15 @@ export const pxGrotesk = localFont({
         },
 
         {
-            path: "../../public/shared/typefaces/px-grotesk-trial/light.otf",
+            path: "../../public/shared/typefaces/px-grotesk/light.woff2",
             weight: "300",
             style: "normal"
         },
-        {
-            path: "../../public/shared/typefaces/px-grotesk-trial/light-italic.otf",
-            weight: "300",
-            style: "italic"
-        },
+        // {
+        //     path: "../../public/shared/typefaces/px-grotesk-trial/light-italic.otf",
+        //     weight: "300",
+        //     style: "italic"
+        // },
 
         {
             path: "../../public/shared/typefaces/px-grotesk/regular.otf",

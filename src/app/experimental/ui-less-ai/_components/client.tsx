@@ -227,14 +227,26 @@ export function TheMagicalComponent({
                     <form
                         action={async formData => {
                             const message = formData.get("message") as string
+
+                            // Add user message and placeholder AI message
+                            const updatedMessages = [
+                                ...messages,
+                                {
+                                    id: crypto.randomUUID(),
+                                    content: message,
+                                    role: "user",
+                                    createdAt: new Date().toISOString()
+                                }
+                            ]
+
                             optimisticallyUpdateMessages({ type: "add", content: message, role: "user" })
                             optimisticallyUpdateMessages({
                                 type: "add",
-                                content: `AI response to: ${message}`,
+                                content: "...",
                                 role: "assistant"
                             })
                             scrollToBottom()
-                            await submitMessage(message)
+                            await submitMessage(message, updatedMessages)
                         }}
                         onSubmit={_ => setMessage("")}
                         className="w-640px"
