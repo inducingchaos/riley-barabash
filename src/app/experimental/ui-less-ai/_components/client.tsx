@@ -315,7 +315,7 @@ export function TheMagicalComponent({
 
                             <Button
                                 type="submit"
-                                className="px-16px py-8px"
+                                className="px-16px py-8px backdrop-blur disabled:text-main/half disabled:opacity-full disabled:backdrop-blur"
                                 disabled={!message.trim() && !isCmdPressed}
                                 intensity={!message.trim() && !isCmdPressed ? "reduced" : undefined}
                             >
